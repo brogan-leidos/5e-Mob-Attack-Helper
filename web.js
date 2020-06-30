@@ -11,7 +11,7 @@ export default () => {
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
 
-    var goButton = document.getElementById('goButton');
+    var addBlankButton = document.getElementById('addBlank');
     var skeletonButton = document.getElementById('addSkeleton');
     var zombieButton = document.getElementById('addZombie');
     var ghoulButton = document.getElementById('addGhoul');
@@ -19,7 +19,7 @@ export default () => {
     var mobArray = []
 
     
-    goButton.addEventListener('click', () => {
+    addBlankButton.addEventListener('click', () => {
         createPresent("");
     });
     
