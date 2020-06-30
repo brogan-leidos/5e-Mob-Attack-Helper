@@ -113,7 +113,7 @@ function parseWeapon(weapon, hitbonus) {
     
     var damageType = splitWeapon[1].trim();
     
-    return new Weapon("FILLER NAME", damageDie, numAttacks, damageType, hitbonus, bonusDmg);
+    return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);
     
     
 }
