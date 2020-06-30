@@ -1,6 +1,6 @@
-import * as Mob from './presents/Mob.js'
+import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
-import * as Skeleton from './presents/Skeleton.js'
+import Skeleton from './presents/Skeleton.js'
 
 var mobIncrement = 0;
 
