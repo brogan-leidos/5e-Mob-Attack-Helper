@@ -20,8 +20,9 @@ export default () => {
     
     goButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML += mobBlock();
-        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString() ));
+        var appendBlock = mobBlock();
+        appendBlock.replace("FILLER", "Mob".concat(mobIncrement.toString()));
+        mobBlockArea += appendBlock;
         mobIncrement++;
     });
     
