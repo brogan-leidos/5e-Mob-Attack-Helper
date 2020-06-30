@@ -50,7 +50,7 @@ function createPresent(presentName) {
    if (presentName == "Skeleton") {
       newMob = new Skeleton(); 
    }
-   if (presentName == "Zombie") {
+   else if (presentName == "Zombie") {
       newMob = new Zombie(); 
    }
    else {
