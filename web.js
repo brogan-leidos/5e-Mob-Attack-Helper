@@ -1,5 +1,5 @@
 import * from './presents/Mob.js'
-import * from './templates/Mob-Block.html'
+import Templates from './templates/Mob-Block.html'
 
 export default () => {
     var numSkeletons = document.getElementById('numSkeletons');
@@ -15,7 +15,7 @@ export default () => {
 
     goButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML +=  
+        mobBlockArea.innerHTML += Templates.mobBlock
     });
     
 };
