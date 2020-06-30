@@ -1,10 +1,10 @@
 class Mob:
     const AC = 0
-    Health = 0
-    Str, Dex, Con, Int, Wis, Chr = 0, 0, 0, 0, 0, 0
-    Weapons = []
-    EquipWeapon = None
-    Icon = "⚫"
+    const Health = 0
+    const Str, Dex, Con, Int, Wis, Chr = 0, 0, 0, 0, 0, 0
+    const Weapons = new Array<any>
+    const EquipWeapon = null
+    const Icon = "⚫"
     
     def __init__ (self):
         raise NotImplementedError()
