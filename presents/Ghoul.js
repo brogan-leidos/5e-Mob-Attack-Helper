@@ -18,8 +18,8 @@ export default class Ghoul extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Bite", "2d6", "piercing", 2, 2),
-      new Weapon("Claw", "2d4", "slashing", 4, 2)
+      new Weapon("Bite", 2, 6, "piercing", 2, 2),
+      new Weapon("Claw", 2, 4, "slashing", 4, 2)
     ];
     
     this.EquipWeapon = this.Weapons[0];
