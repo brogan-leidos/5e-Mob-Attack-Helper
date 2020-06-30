@@ -2,7 +2,7 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null) {
+    constructor(name= "", icon= "", weapon=null, vantage=0) {
     this.AC = 0;
     this.Health = 0;
     this.Str = 0;
@@ -18,8 +18,7 @@ export default class Mob {
     this.Icon = icon;
         
     this.rollClass = new DamageRoll();
-    this.Advantage = false;
-    this.Disadvantage = false;
+    this.Vantage = vantage;
     
     }
     
@@ -30,6 +29,15 @@ export default class Mob {
         
         //Math.floor(Math.random() * 10); //int 0 - 9
         var attackRoll = Math.floor(Math.random() * 20 + 1);
+        var attackRoll2 = Math.floor(Math.random() * 20 + 1);
+        
+        if (this.Vantage == 1) {
+            attackRoll = Math.max(attackRoll, attackRoll2);
+        }
+        else if (this.Vantage == -1) {
+            attackRoll = Math.min(attackRoll, attackRoll2);
+        }
+
         if (attackRoll == 1) {
             this.rollClass.hitRoll = 1;
             return 1;
