@@ -10,7 +10,7 @@ export function mobBlock() {
       <td style="width: 63px;">Icon:</td>
       <td style="width: 155px;"><select id="icons" name="Icons">
         <option value="smile">😀</option>
-        <option value="skull">🧟&zwj;</option>
+        <option value="skull">🧟</option>
         <option value="zombie">💀</option>
         <option value="shade">👤</option>
       </select>
