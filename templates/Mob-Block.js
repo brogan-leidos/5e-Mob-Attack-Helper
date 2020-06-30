@@ -1,9 +1,9 @@
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" name="mobBlock">
-<table style="border: thin solid #000000; width: 280px;">
+<table style="border: thin solid #000000; width: 250px;">
   <tbody>
     <tr>
-      <td style="width: 63px;">Name:</td>
+      <td style="width: 80px;">Name:</td>
       <td style="width: 155px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
@@ -27,13 +27,13 @@ export function mobBlock() {
       </td>
     </tr>
     <tr>
-      <td style="width: 63px;">Bonus to Hit:</td>
+      <td style="width: 80px;">Bonus to Hit:</td>
       <td style="width: 155px;">
         <input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT"/>
       </td>
     </tr>
     <tr>
-      <td style="width: 63px;">Weapon:</td>
+      <td style="width: 80px;">Weapon:</td>
       <td style="width: 155px;">
         <input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON"/>        
       </td>
