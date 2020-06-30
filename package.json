@@ -1,10 +1,10 @@
 {
-  "name": "persona5",
+  "name": "5e-mob-tool",
   "version": "1.0.0",
-  "description": "Persona 5 style font generator",
+  "description": "A tool to help with mobs in 5e",
   "main": "src/index.ts",
-  "repository": "https://github.com/LzxHahaha/persona5.git",
-  "author": "LzxHahaha <lzxglhf@live.com>",
+  "repository": "https://github.com/brogan-leidos/site-TEst.git",
+  "author": "brogan-leidos <andrew.p.brogan@leidos.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
