@@ -32,7 +32,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>Number:</td>
-      <td><input type="number"</td>
+      <td><input type="number" value=1 /></td>
     </tr>
   </tbody>
 </table>
