@@ -2,12 +2,20 @@ import Weapon from "./Weapon"
 import DamageRoll from './DamageRoll'
 
 class Mob {
-    var AC = 0;
-    var Health = 0;
-    var Str, Dex, Con, Int, Wis, Chr;
-    var Weapons = [];
-    var EquipWeapon;
-    var Icon = "⚫";
+    constructor() {
+    this.AC = 0;
+    this.Health = 0;
+    this.Str = 0;
+    this.Dex = 0; 
+    this.Con = 0; 
+    this.Int = 0;
+    this.Wis = 0;
+    this.Chr = 0;
+    this.Weapons = [];
+    this.EquipWeapon = null;
+    this.Icon = "⚫";
+    }
+    
     
     // Make an attack roll, modify by equip weapon
     makeAttack() {
