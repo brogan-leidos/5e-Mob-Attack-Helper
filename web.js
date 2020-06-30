@@ -154,7 +154,7 @@ function launchAttack() {
     
     // Take a sum of the attacks that landed. Boom, dead enemy, maybe.
     var totalDamage = 0;
-    var infoAppend = rollArray.length.toString.concat(" attacks landed\n");  
+    var infoAppend = rollArray.length.toString().concat(" attacks landed\n");  
     for (var i=0; i < rollArray.length; i++) {
         totalDamage += rollArray[i];          
         infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] "
