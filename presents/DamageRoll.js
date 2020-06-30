@@ -1,4 +1,4 @@
-class DamageRoll {
+export default class DamageRoll {
     constructor(){
         this.crit = false;
         this.hitRoll = 0;
