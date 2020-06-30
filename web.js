@@ -124,7 +124,7 @@ function launchAttack() {
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
         var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon")).value;
+        var icon = document.getElementById(blockArray[i].concat("-Icon")).innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
         var number = document.getElementById(blockArray[i].concat("-Number")).value;
@@ -151,17 +151,17 @@ function launchAttack() {
     
     // Take a sum of the attacks that landed. Boom, dead enemy, maybe.
     var totalDamage = 0;
-    var infoAppend = rollArray.length.toString().concat(" attacks landed\n");  
+    var infoAppend = rollArray.length.toString().concat(" attacks landed <br>");  
     for (var i=0; i < rollArray.length; i++) {
         totalDamage += rollArray[i].damageRoll;          
         infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] "
         if (rollArray[i].crit) {
          infoAppend += "🌟CRIT!";
         }
-        infoAppend += "\n";
+        infoAppend += "<br>";
     }
     
-    infoArea.innerHTML = totalDamage.toString().concat(" total damage delt\n");
+    infoArea.innerHTML = totalDamage.toString().concat(" total damage delt<br>");
     infoArea.innerHTML += infoAppend;
     
     
