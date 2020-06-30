@@ -1,5 +1,6 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
+import Weapon from './presents/Weapon.js'
 import Skeleton from './presents/Skeleton.js'
 import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
@@ -85,6 +86,35 @@ function createPresent(presentName) {
     return; 
 }
 
+
+
+function parseWeapon(weapon, hitbonus) {
+    // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
+    var splitWeapon = weapon.trim().split("d");
+    if (splitWeapon.length == 1) {
+        // Something something error check
+    }
+    var numAttacks = parseInt(splitWeapon[0].trim());
+    
+    splitWeapon = splitWeapon[1].split("+");
+    if (splitWeapon.length == 1) { // no result found for +, try -
+        splitWeapon = splitWeapon[0].split("-");       
+        if (splitWeapon.length == 1) {
+            // Something something error check
+        }
+    }
+    
+    var damageDie = parseInt(splitWeapon[0].trim());
+    splitWeapon = splitWeapon[1].split(" ");
+    var bonusDmg = parseInt(splitWeapon[0].trim());
+    
+    var damageType = splitWeapon[1].trim();
+    
+    return new Weapon("FILLER NAME", damageDie, numAttacks, damageType, hitbonus, bonusDmg);
+    
+    
+}
+
 function launchAttack() {
     mobArray = [];
     var numBlocks = blockArray.length;
@@ -97,6 +127,9 @@ function launchAttack() {
         var tohit = document.getElementById(blockArray[i].concat("-ToHit"));
         var weapon = document.getElementById(blockArray[i].concat("-Weapon"));
         var number = document.getElementById(blockArray[i].concat("-Number"));
+        
+        weapon = parseWeapon(weapon);
+        
         for(var j=0; j < number; j++) {
             mobArray.push(new Mob(name, icon, tohit, weapon, number))
         }
