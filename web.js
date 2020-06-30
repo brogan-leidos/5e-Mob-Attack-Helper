@@ -1,6 +1,8 @@
 import * as Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
 
+var mobIncrement = 0;
+
 export default () => {
     var casterProficiency = document.getElementById('casterProficiency');
     var targetAc = document.getElementById('targetAc');
@@ -15,8 +17,6 @@ export default () => {
 
     var mobArray = []
 
-
-    var mobIncrement = 0;
     
     goButton.addEventListener('click', () => {
         createPresent("");
