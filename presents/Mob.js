@@ -18,6 +18,8 @@ export default class Mob {
     this.Icon = icon;
         
     this.rollClass = new DamageRoll();
+    this.Advantage = false;
+    this.Disadvantage = false;
     
     }
     
