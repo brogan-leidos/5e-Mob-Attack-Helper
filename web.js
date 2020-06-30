@@ -138,12 +138,16 @@ function launchAttack() {
         icon = icon.options[icon.selectedIndex].innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
-        var number = document.getElementById(blockArray[i].concat("-Number")).value;
+        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
+        var advantage = document.getElementById(blockArray[i].concat("-Adv")).value;
+        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).value * -1;
         
         weapon = parseWeapon(weapon, tohit);
         
+        var vantage = advantage + disadvantage;
+        
         for(var j=0; j < number; j++) {
-            mobArray.push(new Mob(name, icon, weapon))
+            mobArray.push(new Mob(name, icon, weapon, vantage))
         }                
     }
     
