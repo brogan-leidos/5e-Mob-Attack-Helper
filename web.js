@@ -19,33 +19,52 @@ export default () => {
     var mobIncrement = 0;
     
     goButton.addEventListener('click', () => {
-        infoArea.innerHTML = "Hello world!"
-        var appendBlock = mobBlock();
-        appendBlock = appendBlock.replace("FILLER", "Mob".concat(mobIncrement.toString()));
-        mobBlockArea.innerHTML += appendBlock;
-        mobIncrement++;
+        createPresent("");
     });
     
      skeletonButton.addEventListener('click', () => {
-        infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
-        mobIncrement++;
+        createPresent("Skeleton");
     });
 
     zombieButton.addEventListener('click', () => {
-        infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
-        mobIncrement++;
+        createPresent("Zombie");
     });
     
     ghoulButton.addEventListener('click', () => {
-        infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
-        mobIncrement++;
+        createPresent("Ghoul");
     });    
     
     
 };
+
+
+function createPresent(presentName) {
+   var newMob;
+   var mobBlock = mobBlock();
+
+   if (presentName == "Skeleton") {
+      newMob = new Skeleton(); 
+   }
+   else {
+       mobBlock = mobBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+       mobIncrement++;
+       mobBlock = mobBlock.replace("FILLER-ICON", "smile");
+       mobBlock = mobBlock.replace("FILLER-WEAPON", "");
+       mobBlock = mobBlock.replace("FILLER-TOHIT", "0");
+       
+       mobBlockArea.innerHTML += mobBlock;
+       return;
+   }
+    
+    mobBlock = mobBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+    mobIncrement++;
+    mobBlock = mobBlock.replace("FILLER-ICON", newMob.Icon);
+    mobBlock = mobBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDamage);
+    mobBlock = mobBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
+
+    mobBlockArea.innerHTML += mobBlock;
+    return;
+    
+   
+    
+}
