@@ -50,7 +50,7 @@ function createPresent(presentName) {
        appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
        mobIncrement++;
        appendBlock = appendBlock.replace("FILLER-ICON", "smile");
-       appendBlock = appendBlock.replace("FILLER-WEAPON", "");
+       appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
        mobBlockArea.innerHTML += appendBlock;
