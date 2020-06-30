@@ -1,5 +1,5 @@
 export function mobBlock() {
-  return `<div id="FILLER-BLOCK">
+  return `<div id="FILLER-BLOCK" name="mobBlock">
 <table style="border: thin solid #000000; width: 234px;">
   <tbody>
     <tr>
