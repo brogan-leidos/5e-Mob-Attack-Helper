@@ -13,6 +13,8 @@ export function mobBlock() {
         <option value="skull">🧟</option>
         <option value="zombie">💀</option>
         <option value="shade">👤</option>
+        <option value="dragon">🐉</option>
+        <option value="dragon">🎃</option>
       </select>
       </td>
     </tr>
