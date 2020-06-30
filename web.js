@@ -164,7 +164,7 @@ function launchAttack() {
         infoAppend += "\n";
     }
     
-    infoArea.innerHTML = totalDamage.toString().concat(" total damage delt");
+    infoArea.innerHTML = totalDamage.toString().concat(" total damage delt\n");
     infoArea.innerHTML += infoAppend;
     
     
