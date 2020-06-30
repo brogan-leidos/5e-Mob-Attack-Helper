@@ -19,7 +19,9 @@ export default class Skeleton extends Mob {
       new Weapon("Shortsword", "1d6", "slashing", 4, 2),
       new Weapon("Shortbow", "1d6", "piercing", 4, 2),
       new Weapon("Light Crossbow", "1d8", "piercing", 4, 2),
-    ]
+    ];
+    
+    this.EquipWeapon = this.Weapons[0];
     
   }
   
