@@ -15,7 +15,7 @@ export default () => {
 
     goButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
-        mobBlockArea.innerHTML += Templates.mobBlock
+        mobBlockArea.innerHTML = "hello world"
     });
     
 };
