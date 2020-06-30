@@ -29,21 +29,21 @@ export default () => {
      skeletonButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
         mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob" + mobIncrement);
+        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
         mobIncrement++;
     });
 
     zombieButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
         mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob" + mobIncrement);
+        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
         mobIncrement++;
     });
     
     ghoulButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
         mobBlockArea.innerHTML += mobBlock()
-        mobBlockArea.innerHTML.replace("FILLER", "Mob" + mobIncrement);
+        mobBlockArea.innerHTML.replace("FILLER", "Mob".concat(mobIncrement.toString()));
         mobIncrement++;
     });    
     
