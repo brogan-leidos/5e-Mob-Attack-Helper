@@ -1,4 +1,4 @@
-import * as _ from './presents/Mob.js'
+import * as Mob from './presents/Mob.js'
 import Templates from './templates/Mob-Block.js'
 
 export default () => {
