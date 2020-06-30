@@ -6,6 +6,7 @@ import Ghoul from './presents/Ghoul.js'
 
 
 var mobIncrement = 0;
+var blockArray = [];
 
 export default () => {
     var casterProficiency = document.getElementById('casterProficiency');
@@ -20,9 +21,6 @@ export default () => {
     var ghoulButton = document.getElementById('addGhoul');
     
     var goButton = document.getElementById('goButton');
-
-    var mobArray = []
-
     
     addBlankButton.addEventListener('click', () => {
         createPresent("");
@@ -38,7 +36,11 @@ export default () => {
     
     ghoulButton.addEventListener('click', () => {
         createPresent("Ghoul");
-    });    
+    }); 
+    
+    goButton.addEventListener('click', () => {        
+        launchAttack();
+    }); 
     
     
 };
@@ -60,7 +62,9 @@ function createPresent(presentName) {
    else {
        appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
        appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+       blockArray.push("Mob".concat(mobIncrement.toString()));
        mobIncrement++;
+       
        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
@@ -69,15 +73,34 @@ function createPresent(presentName) {
    }
     
     appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
+    blockArray.push("Mob".concat(mobIncrement.toString()));
     mobIncrement++;
+    
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
     appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie.concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()));
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
     mobBlockArea.innerHTML += appendBlock;
-    return;
+    return; 
+}
+
+function launchAttack() {
+    mobArray = [];
+    var numBlocks = blockArray.length;
     
-   
-    
+    // Go though each creature block, spawn a number of mobs with those stats
+    for(var i=0;i < numBlocks;i++) {
+        //Name, Icon, to hit, weapon, number
+        var name = document.getElementById(blockArray[i].concat("-Name"));
+        var icon = document.getElementById(blockArray[i].concat("-Icon"));
+        var tohit = document.getElementById(blockArray[i].concat("-ToHit"));
+        var weapon = document.getElementById(blockArray[i].concat("-Weapon"));
+        var number = document.getElementById(blockArray[i].concat("-Number"));
+        for(var j=0; j < number; j++) {
+            mobArray.push(new Mob(name, icon, tohit, weapon, number))
+        }
+        
+        
+    }
 }
