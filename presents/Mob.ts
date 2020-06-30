@@ -1,19 +1,13 @@
-class Mob:
-    const AC = 0
-    const Health = 0
-    const Str, Dex, Con, Int, Wis, Chr = 0, 0, 0, 0, 0, 0
-    const Weapons = new Array<any>
-    const EquipWeapon = null
-    const Icon = "⚫"
-    
-    def __init__ (self):
-        raise NotImplementedError()
-        
-    def getDamageMod(self):
-        raise NotImplementedError()
+class Mob {
+    public AC = 0;
+    public Health = 0;
+    public Str, Dex, Con, Int, Wis, Chr = 0, 0, 0, 0, 0, 0;
+    public Weapons = new Array<any>();
+    public EquipWeapon = null;
+    public Icon = "⚫";
     
     # Make an attack roll, modify by equip weapon
-    def makeAttack(self):
+    public void makeAttack(self):
         self.rollClass.attacker = self
 
         attackRoll = random.randint(1,20)
@@ -56,3 +50,4 @@ class Mob:
         self.rollClass.damageDie = self.EquipWeapon.DamageDie
         self.rollClass.crit = True
         return self.rollClass
+}
