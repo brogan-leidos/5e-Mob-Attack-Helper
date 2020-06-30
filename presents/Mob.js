@@ -53,7 +53,7 @@ class Mob {
     }
         
     // Crit using equip weapon!
-    function dealCrit(self): any {
+     dealCrit() {
         var splitString = this.EquipWeapon.DamageDie.split("d")
         var numAttacks = splitString[0]
         var maxDamage = splitString[1]
