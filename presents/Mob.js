@@ -45,7 +45,7 @@ export default class Mob {
     dealDamage() {       
         var damageTotal = 0
         for(var i=0; i < this.EquipWeapon.NumDice; i++) {
-            damageTotal = damageTotal + Math.floor(Math.random() * maxDamage + 1) // 1 - maxdmg
+            damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1) // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg
         this.rollClass.damageRoll = damageTotal
@@ -57,7 +57,7 @@ export default class Mob {
      dealCrit() {
         var damageTotal = 0
         for(var i=0; i < this.EquipWeapon.NumDice*2; i++) {
-            damageTotal = damageTotal + Math.floor(Math.random() * maxDamage + 1) // 1 - maxdmg
+            damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1) // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg
         this.rollClass.damageRoll = damageTotal
