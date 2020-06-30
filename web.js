@@ -124,7 +124,8 @@ function launchAttack() {
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
         var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon")).options[icon.selectedIndex].innerHTML;
+        var icon = document.getElementById(blockArray[i].concat("-Icon"));
+        icon = icon.options[icon.selectedIndex].innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
         var number = document.getElementById(blockArray[i].concat("-Number")).value;
