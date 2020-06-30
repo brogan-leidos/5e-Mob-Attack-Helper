@@ -108,7 +108,7 @@ function parseWeapon(weapon, hitbonus) {
     } else {    
         var damageDie = parseInt(splitWeapon[0].trim());
     }
-    splitWeapon = splitWeapon[1].split(" ");
+    splitWeapon = splitWeapon[1].trim().split(" ");
     var bonusDmg = parseInt(splitWeapon[0].trim());
     
     var damageType = splitWeapon[1].trim();
