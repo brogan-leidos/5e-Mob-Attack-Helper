@@ -153,7 +153,7 @@ function launchAttack() {
     var totalDamage = 0;
     var infoAppend = rollArray.length.toString().concat(" attacks landed\n");  
     for (var i=0; i < rollArray.length; i++) {
-        totalDamage += rollArray[i];          
+        totalDamage += rollArray[i].damageRoll;          
         infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] "
         if (rollArray[i].crit) {
          infoAppend += "🌟CRIT!";
