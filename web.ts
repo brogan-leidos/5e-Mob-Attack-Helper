@@ -2,7 +2,7 @@ export default () => {
     const numSkeletons = <HTMLInputElement>document.getElementById('numSkeletons');
     const numZombies = <HTMLInputElement>document.getElementById('numZombies');
     const numGhouls = <HTMLInputElement>document.getElementById('numGhouls');
-
+    const targetAc = <HTMLInputElement>document.getElementById('targetAc');
 
     const goButton = <HTMLInputElement>document.getElementById('goButton');
 
@@ -19,14 +19,5 @@ export default () => {
         });
         box.draw(canvas);
     });
-    goButton.click();
-
-    saveButton.addEventListener('click', () => {
-        const imageURL = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-        const a = document.createElement('a');
-        a.href = imageURL;
-        a.download = `${contentInput.value}.png`;
-        a.target = 'blank';
-        a.click();
-    });
+    
 };
