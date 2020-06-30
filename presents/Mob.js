@@ -1,7 +1,7 @@
 import * as Weapon from "./Weapon.js"
 import * as DamageRoll from './DamageRoll.js'
 
-class Mob {
+export default class Mob {
     constructor() {
     this.AC = 0;
     this.Health = 0;
