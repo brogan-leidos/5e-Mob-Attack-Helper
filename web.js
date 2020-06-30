@@ -14,9 +14,13 @@ export default () => {
 
     var goButton = document.getElementById('goButton');
 
+    var mobIncrement = 0;
+    
     goButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
         mobBlockArea.innerHTML += mobBlock()
+        mobBlockArea.innerHTML.replace("FILLER", "Mob" + mobIncrement);
+        mobIncrement++;
     });
     
 };
