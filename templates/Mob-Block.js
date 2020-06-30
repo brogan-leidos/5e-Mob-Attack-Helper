@@ -15,9 +15,14 @@ export function mobBlock() {
         <option value="skull">💀</option>
         <option value="shade">👤</option>
         <option value="dragon">🐉</option>
-        <option value="pumpkin">🎃</option>
+        <option value="dino">🦕</option>
         <option value="devil">😈</option>
+        <option value="dolphin">🦄</option>
+        <option value="wolf">🐺</option>
         <option value="cat">🐱</option>
+        <option value="bird">🦅</option>
+        <option value="dolphin">🐬</option>
+        <option value="plant">🌲</option>
       </select>
       </td>
     </tr>
