@@ -1,11 +1,11 @@
 class Weapon {
-    Name: string = ""
-    DamageDie: string = ""
-    DamageType: string = ""
-    BonusToHit: string = 0
-    BonusToDmg: string = 0
+    var Name = ""
+    var DamageDie = ""
+    var DamageType = ""
+    var BonusToHit = 0
+    var BonusToDmg = 0
     
-    constructor (name: string, die: string, dtype: string, hit: number, dmg: number){
+    constructor (name, die, dtype, hit, dmg){
         this.Name = name
         this.DamageDie = die
         this.DamageType = dtype
