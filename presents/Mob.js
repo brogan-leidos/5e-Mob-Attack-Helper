@@ -1,15 +1,16 @@
 import * from "./Weapon"
+import * from './DamageRoll'
 
 class Mob {
-    public AC = 0;
-    public Health = 0;
-    Str, Dex, Con, Int, Wis, Chr: number;
-    public Weapons = new Array<Weapon>();
-    public EquipWeapon: Weapon;
-    public Icon = "⚫";
+    var AC = 0;
+    var Health = 0;
+    var Str, Dex, Con, Int, Wis, Chr;
+    var Weapons = [];
+    var EquipWeapon;
+    var Icon = "⚫";
     
     // Make an attack roll, modify by equip weapon
-    function makeAttack(): any {
+    makeAttack() {
         this.rollClass.attacker = this
         
         //Math.floor(Math.random() * 10); //int 0 - 9
@@ -26,7 +27,7 @@ class Mob {
     }
     
     // Make a strike using equip weapon
-    function dealDamage(self): any {
+    dealDamage(self) {
         splitString = this.EquipWeapon.DamageDie.split("d")
         numAttacks = int(splitString[0])
         maxDamage = int(splitString[1])
