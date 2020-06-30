@@ -47,6 +47,7 @@ function createPresent(presentName) {
       newMob = new Skeleton(); 
    }
    else {
+       appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
        appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
        mobIncrement++;
        appendBlock = appendBlock.replace("FILLER-ICON", "smile");
@@ -57,8 +58,9 @@ function createPresent(presentName) {
        return;
    }
     
-    appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+    appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
     mobIncrement++;
+    appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
     appendBlock = appendBlock.replace("FILLER-ICON", newMob.Icon);
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDmg);
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
