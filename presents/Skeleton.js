@@ -6,6 +6,7 @@ export default class Skeleton extends Mob {
   constructor() {
     super();
     this.Name = "Skeleton";
+    this.Icon = "skull"
     
     this.Str = 0;
     this.Dex = 2;
