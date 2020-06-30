@@ -1,3 +1,3 @@
-import onload from './web';
+import onload from './web.js';
 
 window.onload = onload;
