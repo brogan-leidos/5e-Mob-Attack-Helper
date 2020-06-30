@@ -1,11 +1,11 @@
 export default () => {
-    numSkeletons = document.getElementById('numSkeletons');
-    numZombies = document.getElementById('numZombies');
-    numGhouls = document.getElementById('numGhouls');
-    targetAc = document.getElementById('targetAc');
-    infoArea = document.getElementById('infoArea');
+    var numSkeletons = document.getElementById('numSkeletons');
+    var numZombies = document.getElementById('numZombies');
+    var numGhouls = document.getElementById('numGhouls');
+    var targetAc = document.getElementById('targetAc');
+    var infoArea = document.getElementById('infoArea');
 
-    goButton = document.getElementById('goButton');
+    var goButton = document.getElementById('goButton');
 
     goButton.addEventListener('click', () => {
         infoArea.innerHTML = "Hello world!"
