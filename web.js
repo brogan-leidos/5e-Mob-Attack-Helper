@@ -5,6 +5,7 @@ import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
 import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
+import Wolf from './presents/Wolf.js'
 
 
 var mobIncrement = 0;
@@ -18,6 +19,8 @@ export default () => {
     var skeletonButton = document.getElementById('addSkeleton');
     var zombieButton = document.getElementById('addZombie');
     var ghoulButton = document.getElementById('addGhoul');
+    var wolfButton = document.getElementById('addWolf');
+
     
     var goButton = document.getElementById('goButton');
     
@@ -35,6 +38,10 @@ export default () => {
     
     ghoulButton.addEventListener('click', () => {
         createPresent("Ghoul");
+    });
+    
+    wolfButton.addEventListener('click', () => {
+        createPresent("Wolf");
     }); 
     
     goButton.addEventListener('click', () => {        
@@ -57,6 +64,9 @@ function createPresent(presentName) {
    }
    else if (presentName == "Ghoul") {
       newMob = new Ghoul(); 
+   }
+   else if (presentName == "Wolf") {
+      newMob = new Wolf(); 
    }
    else {
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, "Mob".concat(mobIncrement.toString()));
