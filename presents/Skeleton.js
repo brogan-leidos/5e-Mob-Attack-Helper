@@ -4,6 +4,8 @@ import DamageRoll from './DamageRoll'
 
 export default class Skeleton extends Mob {
   constructor() {
+    this.Name = "Skeleton";
+    
     this.Str = 0;
     this.Dex = 2;
     this.Con = 2;
