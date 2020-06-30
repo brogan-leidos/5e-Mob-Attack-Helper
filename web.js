@@ -139,8 +139,8 @@ function launchAttack() {
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv"));
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis"));
+        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
+        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked;
         
         weapon = parseWeapon(weapon, tohit);
         
