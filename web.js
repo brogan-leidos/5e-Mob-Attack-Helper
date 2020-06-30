@@ -15,6 +15,8 @@ export default () => {
     var skeletonButton = document.getElementById('addSkeleton');
     var zombieButton = document.getElementById('addZombie');
     var ghoulButton = document.getElementById('addGhoul');
+    
+    var goButton = document.getElementById('goButton');
 
     var mobArray = []
 
