@@ -1,5 +1,5 @@
 import * as Mob from './presents/Mob.js'
-import Templates from './templates/Mob-Block.js'
+import * as Templates from './templates/Mob-Block.js'
 
 export default () => {
     var numSkeletons = document.getElementById('numSkeletons');
