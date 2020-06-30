@@ -1,13 +1,10 @@
-import BoxText from './lib/box/BoxText';
-
 export default () => {
-    const contentInput = <HTMLInputElement>document.getElementById('contentInput');
-    const fontSizeInput = <HTMLInputElement>document.getElementById('fontSizeInput');
-    const fontFamilyInput = <HTMLInputElement>document.getElementById('fontFamilyInput');
+    const numSkeletons = <HTMLInputElement>document.getElementById('numSkeletons');
+    const numZombies = <HTMLInputElement>document.getElementById('numZombies');
+    const numGhouls = <HTMLInputElement>document.getElementById('numGhouls');
+
 
     const goButton = <HTMLInputElement>document.getElementById('goButton');
-    const saveButton = <HTMLInputElement>document.getElementById('saveButton');
-    const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
     goButton.addEventListener('click', () => {
         const value = (contentInput.value || '').trim();
