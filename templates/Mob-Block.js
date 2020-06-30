@@ -8,7 +8,8 @@ export function mobBlock() {
     </tr>
     <tr>
       <td style="width: 63px;">Icon:</td>
-      <td style="width: 155px;"><select id="icons" name="Icons" value="FILLER-ICON">
+      <td style="width: 155px;">
+      <select id="icons" name="Icons">
         <option value="smile">😀</option>
         <option value="zombie">🧟</option>
         <option value="skull">💀</option>
