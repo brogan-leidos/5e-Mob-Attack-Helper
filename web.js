@@ -1,6 +1,8 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
 import Skeleton from './presents/Skeleton.js'
+import Zombie from './presents/Zombie.js'
+
 
 var mobIncrement = 0;
 
@@ -47,6 +49,9 @@ function createPresent(presentName) {
 
    if (presentName == "Skeleton") {
       newMob = new Skeleton(); 
+   }
+   if (presentName == "Zombie") {
+      newMob = new Zombie(); 
    }
    else {
        appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
