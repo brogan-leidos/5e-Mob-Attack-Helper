@@ -59,7 +59,7 @@ function createPresent(presentName) {
     mobBlock = mobBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
     mobIncrement++;
     mobBlock = mobBlock.replace("FILLER-ICON", newMob.Icon);
-    mobBlock = mobBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDamage);
+    mobBlock = mobBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDmg);
     mobBlock = mobBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
     mobBlockArea.innerHTML += mobBlock;
