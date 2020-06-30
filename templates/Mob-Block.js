@@ -4,12 +4,12 @@ export function mobBlock() {
   <tbody>
     <tr>
       <td style="width: 63px;">Name:</td>
-      <td style="width: 155px;"><input id="mobName" type="text" value="FILLER-NAME" /></td>
+      <td style="width: 155px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
       <td style="width: 63px;">Icon:</td>
       <td style="width: 155px;">
-      <select id="icons" name="Icons">
+      <select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
         <option value="zombie">🧟</option>
         <option value="skull">💀</option>
@@ -24,18 +24,18 @@ export function mobBlock() {
     <tr>
       <td style="width: 63px;">Bonus to Hit:</td>
       <td style="width: 155px;">
-        <input type="number" value="FILLER-TOHIT"/>
+        <input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT"/>
       </td>
     </tr>
     <tr>
       <td style="width: 63px;">Weapon:</td>
       <td style="width: 155px;">
-        <input type="text" value="FILLER-WEAPON"/>        
+        <input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON"/>        
       </td>
     </tr>    
     <tr>
       <td>Number:</td>
-      <td><input type="number" value=1 /></td>
+      <td><input id="FILLER-BLOCK-Number" type="number" value=1 /></td>
     </tr>
   </tbody>
 </table>
