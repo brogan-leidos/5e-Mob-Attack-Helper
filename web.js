@@ -133,7 +133,7 @@ function launchAttack() {
         var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
         var number = document.getElementById(blockArray[i].concat("-Number")).value;
         
-        weapon = parseWeapon(weapon);
+        weapon = parseWeapon(weapon, tohit);
         
         for(var j=0; j < number; j++) {
             mobArray.push(new Mob(name, icon, weapon))
