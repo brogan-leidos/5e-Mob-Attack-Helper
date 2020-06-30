@@ -52,7 +52,6 @@ function createPresent(presentName) {
        appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
        appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
        mobIncrement++;
-       appendBlock = appendBlock.replace("FILLER-ICON", "smile");
        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
@@ -63,7 +62,7 @@ function createPresent(presentName) {
     appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
     mobIncrement++;
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
-    appendBlock = appendBlock.replace("FILLER-ICON", newMob.Icon);
+    appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie.concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()));
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
