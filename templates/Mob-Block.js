@@ -22,17 +22,17 @@ export function mobBlock() {
       </td>
     </tr>
     <tr>
-      <td style="width: 63px;">Weapon:</td>
-      <td style="width: 155px;">
-        <input type="text" value="FILLER-WEAPON"/>        
-      </td>
-    </tr>
-    <tr>
       <td style="width: 63px;">Bonus to Hit:</td>
       <td style="width: 155px;">
         <input type="number" value="FILLER-TOHIT"/>
       </td>
     </tr>
+    <tr>
+      <td style="width: 63px;">Weapon:</td>
+      <td style="width: 155px;">
+        <input type="text" value="FILLER-WEAPON"/>        
+      </td>
+    </tr>    
     <tr>
       <td>Number:</td>
       <td><input type="number" value=1 /></td>
