@@ -7,10 +7,9 @@ import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
 
 
-
+var mobIncrement = 0;
 
 export default () => {    
-    var mobIncrement = 0;
     var blockArray = [];
     
     var casterProficiency = document.getElementById('casterProficiency');
