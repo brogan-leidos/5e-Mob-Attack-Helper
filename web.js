@@ -7,6 +7,7 @@ export default () => {
     var numGhouls = document.getElementById('numGhouls');
     var targetAc = document.getElementById('targetAc');
     
+    var mobArray = []
     
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
