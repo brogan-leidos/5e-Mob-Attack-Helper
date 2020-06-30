@@ -2,14 +2,14 @@
   "name": "5e-mob-tool",
   "version": "1.0.0",
   "description": "A tool to help with mobs in 5e",
-  "main": "src/index.ts",
+  "main": "./index.ts",
   "repository": "https://github.com/brogan-leidos/site-TEst.git",
   "author": "brogan-leidos <andrew.p.brogan@leidos.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "parcel serve src/index.html",
-    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+    "start": "parcel serve ./index.html",
+    "build": "cross-env NODE_ENV=production parcel build ./index.html --public-url .",
     "publish": "npm run build && node ./publish.js"
   },
   "devDependencies": {
