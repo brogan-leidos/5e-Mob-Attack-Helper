@@ -40,29 +40,29 @@ export default () => {
 
 function createPresent(presentName) {
    var newMob;
-   var mobBlock = mobBlock();
+   var appendBlock = mobBlock();
 
    if (presentName == "Skeleton") {
       newMob = new Skeleton(); 
    }
    else {
-       mobBlock = mobBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+       appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
        mobIncrement++;
-       mobBlock = mobBlock.replace("FILLER-ICON", "smile");
-       mobBlock = mobBlock.replace("FILLER-WEAPON", "");
-       mobBlock = mobBlock.replace("FILLER-TOHIT", "0");
+       appendBlock = appendBlock.replace("FILLER-ICON", "smile");
+       appendBlock = appendBlock.replace("FILLER-WEAPON", "");
+       appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
-       mobBlockArea.innerHTML += mobBlock;
+       mobBlockArea.innerHTML += appendBlock;
        return;
    }
     
-    mobBlock = mobBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
+    appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
     mobIncrement++;
-    mobBlock = mobBlock.replace("FILLER-ICON", newMob.Icon);
-    mobBlock = mobBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDmg);
-    mobBlock = mobBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
+    appendBlock = appendBlock.replace("FILLER-ICON", newMob.Icon);
+    appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.DamageDie + newMob.EquipWeapon.BonusToDmg);
+    appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
-    mobBlockArea.innerHTML += mobBlock;
+    mobBlockArea.innerHTML += appendBlock;
     return;
     
    
