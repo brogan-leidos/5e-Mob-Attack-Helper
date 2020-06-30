@@ -1,9 +1,11 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
 import Weapon from './presents/Weapon.js'
+import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
 import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
+
 
 
 var mobIncrement = 0;
@@ -117,7 +119,9 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function launchAttack() {
-    mobArray = [];
+    var mobArray = [];
+    var rollArray = [];
+    var numCrits = 0;
     var numBlocks = blockArray.length;
     
     // Go though each creature block, spawn a number of mobs with those stats
@@ -132,9 +136,28 @@ function launchAttack() {
         weapon = parseWeapon(weapon);
         
         for(var j=0; j < number; j++) {
-            mobArray.push(new Mob(name, icon, tohit, weapon, number))
-        }
-        
-        
+            mobArray.push(new Mob(name, icon, weapon))
+        }                
     }
+    
+    // Having spawned our army, let them all launch attacks. Record the attack if it lands
+    for (var i=0; i < mobArray.length;i++) {
+        var attackRoll = mobArray[i].makeAttack();
+        if (attackRoll == "crit") {
+            rollArray.push(mobArray[i].dealCrit());
+            numCrits = numCrits + 1;
+        }
+        else if (attackRoll >= targetAc) {
+            rollArray.push(mobArray[i].dealDamage());
+        }          
+    }
+    
+    // Take a sum of the attacks that landed. Boom, dead enemy, maybe.
+    var totalDamage = 0;
+    for (var i=0; i < rollArray.length; i++) {
+        totalDamage += rollArray[i];   
+    }
+    
+    infoArea.innerHTML = totalDamage;
+    
 }
