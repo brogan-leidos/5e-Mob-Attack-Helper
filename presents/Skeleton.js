@@ -1,6 +1,6 @@
-import Mob from './Mob'
-import Weapon from './Weapon'
-import DamageRoll from './DamageRoll'
+import Mob from './Mob.js'
+import Weapon from './Weapon.js'
+import DamageRoll from './DamageRoll.js'
 
 export default class Skeleton extends Mob {
   constructor() {
