@@ -42,6 +42,16 @@ export function mobBlock() {
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value=1 /></td>
     </tr>
+    <tr>
+      <td>
+        <input type="checkbox" id="FILLER-BLOCK-Adv" name="advantage">
+        <label for="advantage"> Advantage</label><br>
+      </td>
+      <td>
+        <input type="checkbox" id="FILLER-BLOCK-Dis" name="disadvantage">
+        <label for="disadvantage"> Disadvantage</label><br>
+      </td>
+    </tr>
   </tbody>
 </table>
 <div/>`
