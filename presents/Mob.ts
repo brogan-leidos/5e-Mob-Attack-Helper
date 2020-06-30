@@ -1,13 +1,18 @@
 class Mob {
     public AC = 0;
     public Health = 0;
-    public Str, Dex, Con, Int, Wis, Chr = 0, 0, 0, 0, 0, 0;
+    Str: number;
+    Dex: number;
+    Con: number;
+    Int: number;
+    Wis: number;
+    Chr: number;
     public Weapons = new Array<any>();
     public EquipWeapon = null;
     public Icon = "⚫";
     
-    # Make an attack roll, modify by equip weapon
-    public void makeAttack(self):
+    // Make an attack roll, modify by equip weapon
+    function makeAttack(): any {
         self.rollClass.attacker = self
 
         attackRoll = random.randint(1,20)
@@ -20,9 +25,10 @@ class Mob {
         
         self.rollClass.hitRoll = attackRoll + self.EquipWeapon.BonusToHit
         return self.rollClass.hitRoll
+    }
     
-    # Make a strike using equip weapon
-    def dealDamage(self):
+    // Make a strike using equip weapon
+    function dealDamage(self): any {
         splitString = self.EquipWeapon.DamageDie.split("d")
         numAttacks = int(splitString[0])
         maxDamage = int(splitString[1])
@@ -34,9 +40,10 @@ class Mob {
         self.rollClass.damageRoll = damageTotal
         self.rollClass.damageDie = self.EquipWeapon.DamageDie
         return self.rollClass
+    }
         
-    # Crit using equip weapon!
-    def dealCrit(self):
+    // Crit using equip weapon!
+    function dealCrit(self): any {
         splitString = self.EquipWeapon.DamageDie.split("d")
         numAttacks = int(splitString[0])
         maxDamage = int(splitString[1])
@@ -50,4 +57,5 @@ class Mob {
         self.rollClass.damageDie = self.EquipWeapon.DamageDie
         self.rollClass.crit = True
         return self.rollClass
+    }
 }
