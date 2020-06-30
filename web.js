@@ -1,13 +1,14 @@
 export default () => {
-    numSkeletons = <HTMLInputElement>document.getElementById('numSkeletons');
-    numZombies = <HTMLInputElement>document.getElementById('numZombies');
-    numGhouls = <HTMLInputElement>document.getElementById('numGhouls');
-    targetAc = <HTMLInputElement>document.getElementById('targetAc');
+    numSkeletons = document.getElementById('numSkeletons');
+    numZombies = document.getElementById('numZombies');
+    numGhouls = document.getElementById('numGhouls');
+    targetAc = document.getElementById('targetAc');
+    infoArea = document.getElementById('infoArea');
 
-    goButton = <HTMLInputElement>document.getElementById('goButton');
+    goButton = document.getElementById('goButton');
 
     goButton.addEventListener('click', () => {
-        temp = 0;
+        infoArea.innerHTML = "Hello world!"
     });
     
 };
