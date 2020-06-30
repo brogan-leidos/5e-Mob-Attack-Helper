@@ -1,8 +1,9 @@
 export default class Weapon {
     
-    constructor (name="", die="", dtype="", hit=0, dmg=0){
+    constructor (name="", ddie="", numdice=0, dtype="", hit=0, dmg=0){
         this.Name = name
-        this.DamageDie = die
+        this.DamageDie = ddie
+        this.NumDice = numdice
         this.DamageType = dtype
         this.BonusToHit = hit
         this.BonusToDmg = dmg
