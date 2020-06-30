@@ -1,4 +1,4 @@
-import * from './Mob'
+import Mob from './Mob'
 import Weapon from './Weapon'
 import DamageRoll from './DamageRoll'
 
