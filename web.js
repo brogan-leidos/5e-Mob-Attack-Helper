@@ -10,11 +10,7 @@ import Ghoul from './presents/Ghoul.js'
 var mobIncrement = 0;
 var blockArray = [];
 
-export default () => {    
-    
-    var casterProficiency = document.getElementById('casterProficiency');
-    var targetAc = document.getElementById('targetAc');
-        
+export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
 
@@ -141,6 +137,7 @@ function launchAttack() {
     }
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
+    var targetAc = document.getElementById('targetAc').value;
     for (var i=0; i < mobArray.length;i++) {
         var attackRoll = mobArray[i].makeAttack();
         if (attackRoll == "crit") {
