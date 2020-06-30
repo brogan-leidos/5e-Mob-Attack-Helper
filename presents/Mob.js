@@ -40,13 +40,9 @@ export default class Mob {
     }
     
     // Make a strike using equip weapon
-    dealDamage() {
-        var splitString = this.EquipWeapon.DamageDie.split("d")
-        var numAttacks = splitString[0]
-        var maxDamage = splitString[1]
-        
+    dealDamage() {       
         var damageTotal = 0
-        for(var i=0; i < numAttacks; i++) {
+        for(var i=0; i < this.equipWeapon.NumDice; i++) {
             damageTotal = damageTotal + Math.floor(Math.random() * maxDamage + 1) // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg
@@ -57,12 +53,8 @@ export default class Mob {
         
     // Crit using equip weapon!
      dealCrit() {
-        var splitString = this.EquipWeapon.DamageDie.split("d")
-        var numAttacks = splitString[0]
-        var maxDamage = splitString[1]
-        
         var damageTotal = 0
-        for(var i=0; i < numAttacks*2; i++) {
+        for(var i=0; i < this.equipWeapon.NumDice*2; i++) {
             damageTotal = damageTotal + Math.floor(Math.random() * maxDamage + 1) // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg
