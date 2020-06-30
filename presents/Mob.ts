@@ -3,12 +3,7 @@ import * from "./Weapon"
 class Mob {
     public AC = 0;
     public Health = 0;
-    Str: number;
-    Dex: number;
-    Con: number;
-    Int: number;
-    Wis: number;
-    Chr: number;
+    Str, Dex, Con, Int, Wis, Chr: number;
     public Weapons = new Array<Weapon>();
     public EquipWeapon: Weapon;
     public Icon = "⚫";
