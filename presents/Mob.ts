@@ -1,3 +1,5 @@
+import * from "./Weapon"
+
 class Mob {
     public AC = 0;
     public Health = 0;
@@ -7,8 +9,8 @@ class Mob {
     Int: number;
     Wis: number;
     Chr: number;
-    public Weapons = new Array<any>();
-    public EquipWeapon = null;
+    public Weapons = new Array<Weapon>();
+    public EquipWeapon: Weapon;
     public Icon = "⚫";
     
     // Make an attack roll, modify by equip weapon
