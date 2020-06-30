@@ -1,5 +1,5 @@
-import Weapon from "./Weapon.js"
-import DamageRoll from './DamageRoll.js'
+import * as Weapon from "./Weapon.js"
+import * as DamageRoll from './DamageRoll.js'
 
 class Mob {
     constructor() {
