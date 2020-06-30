@@ -7,17 +7,7 @@ export default () => {
     const goButton = <HTMLInputElement>document.getElementById('goButton');
 
     goButton.addEventListener('click', () => {
-        const value = (contentInput.value || '').trim();
-        if (!value) {
-            return;
-        }
-        const fontSize = Math.min(Math.abs(+fontSizeInput.value || 60));
-        const fontFamily = fontFamilyInput.value || 'sans-serif';
-        const box = new BoxText(value, {
-            fontSize,
-            fontFamily
-        });
-        box.draw(canvas);
+        const temp = 0;
     });
     
 };
