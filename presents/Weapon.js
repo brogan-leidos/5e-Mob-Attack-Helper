@@ -1,4 +1,4 @@
-class Weapon {
+export default class Weapon {
     
     constructor (name="", die="", dtype="", hit=0, dmg=0){
         this.Name = name
