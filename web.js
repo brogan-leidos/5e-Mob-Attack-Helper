@@ -22,7 +22,7 @@ export default () => {
         infoArea.innerHTML = "Hello world!"
         var appendBlock = mobBlock();
         appendBlock.replace("FILLER", "Mob".concat(mobIncrement.toString()));
-        mobBlockArea += appendBlock;
+        mobBlockArea.innerHTML += appendBlock;
         mobIncrement++;
     });
     
