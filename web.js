@@ -8,9 +8,9 @@ import Ghoul from './presents/Ghoul.js'
 
 
 var mobIncrement = 0;
+var blockArray = [];
 
 export default () => {    
-    var blockArray = [];
     
     var casterProficiency = document.getElementById('casterProficiency');
     var targetAc = document.getElementById('targetAc');
