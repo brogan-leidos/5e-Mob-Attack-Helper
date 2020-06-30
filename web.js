@@ -87,7 +87,7 @@ function createPresent(presentName) {
 }
 
 
-
+// Parse the weapon string, turn it into a weapon object we can send to the mob attack method
 function parseWeapon(weapon, hitbonus) {
     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
     var splitWeapon = weapon.trim().split("d");
@@ -102,9 +102,10 @@ function parseWeapon(weapon, hitbonus) {
         if (splitWeapon.length == 1) {
             // Something something error check
         }
+        var damageDie = parseInt(splitWeapon[0].trim()) * -1; // Flip that bit
+    } else {    
+        var damageDie = parseInt(splitWeapon[0].trim());
     }
-    
-    var damageDie = parseInt(splitWeapon[0].trim());
     splitWeapon = splitWeapon[1].split(" ");
     var bonusDmg = parseInt(splitWeapon[0].trim());
     
