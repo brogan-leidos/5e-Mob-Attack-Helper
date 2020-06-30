@@ -1,4 +1,4 @@
-import * from './present/Mob'
+import * from './presents/Mob'
 
 export default () => {
     var numSkeletons = document.getElementById('numSkeletons');
