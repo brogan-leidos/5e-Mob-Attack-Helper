@@ -63,7 +63,7 @@ function createPresent(presentName) {
       newMob = new Ghoul(); 
    }
    else {
-       appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
+       appendBlock = appendBlock.replace("/FILLER-BLOCK/g", "Mob".concat(mobIncrement.toString()));
        appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
        blockArray.push("Mob".concat(mobIncrement.toString()));
        mobIncrement++;
@@ -75,7 +75,7 @@ function createPresent(presentName) {
        return;
    }
     
-    appendBlock = appendBlock.replace("FILLER-BLOCK", "Mob".concat(mobIncrement.toString()));
+    appendBlock = appendBlock.replace("/FILLER-BLOCK/g", "Mob".concat(mobIncrement.toString()));
     blockArray.push("Mob".concat(mobIncrement.toString()));
     mobIncrement++;
     
