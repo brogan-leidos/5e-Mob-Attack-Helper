@@ -1,3 +1,5 @@
+import * from './present/Mob'
+
 export default () => {
     var numSkeletons = document.getElementById('numSkeletons');
     var numZombies = document.getElementById('numZombies');
