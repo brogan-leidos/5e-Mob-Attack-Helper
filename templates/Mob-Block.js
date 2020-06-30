@@ -1,6 +1,6 @@
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" name="mobBlock">
-<table style="border: thin solid #000000; width: 234px;">
+<table style="border: thin solid #000000; width: 250px;">
   <tbody>
     <tr>
       <td style="width: 63px;">Name:</td>
