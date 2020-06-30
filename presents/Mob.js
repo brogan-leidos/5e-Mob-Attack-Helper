@@ -1,5 +1,5 @@
-import * from "./Weapon"
-import * from './DamageRoll'
+import Weapon from "./Weapon"
+import DamageRoll from './DamageRoll'
 
 class Mob {
     var AC = 0;
