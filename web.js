@@ -7,11 +7,11 @@ import Skeleton from './presents/Skeleton.js'
 import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
 import Wolf from './presents/Wolf.js'
-import ObjectTiny from '/presents/ObjectTiny.js'
-import ObjectSmall from '/presents/ObjectSmall.js'
-import ObjectMedium from '/presents/ObjectMedium.js'
-import ObjectLarge from '/presents/ObjectLarge.js'
-import ObjectHuge from '/presents/ObjectHuge.js'
+import ObjectTiny from './presents/ObjectTiny.js'
+import ObjectSmall from './presents/ObjectSmall.js'
+import ObjectMedium from './presents/ObjectMedium.js'
+import ObjectLarge from './presents/ObjectLarge.js'
+import ObjectHuge from './presents/ObjectHuge.js'
 
 
 var mobIncrement = 0;
