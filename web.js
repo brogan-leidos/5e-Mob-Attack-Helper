@@ -53,9 +53,17 @@ export default () => {
 };
 
 function deleteMob(mobTag) {
-    //updateHtmlValues(blockArray);
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
     document.getElementById(mobTag).remove();    
+}
+
+function toggleMob(mogTag) {
+    var enabled = document.getElementById(mobTag + "-Enabled");
+    if (enabled) {
+        document.getElementById(mobTag).setAttribute("style", "background-color: grey;")
+    } else {
+        document.getElementById(mobTag).setAttribute("style", "background-color: white;")
+    }
 }
 
 function createPresent(presentName) {
@@ -104,8 +112,13 @@ function createPresent(presentName) {
     mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
     
     var deleteButton = document.getElementById(mobTag + "-Delete")  
-     deleteButton.addEventListener('click', () => {        
+    deleteButton.addEventListener('click', () => {        
         deleteMob(mobTag);
+    });
+    
+    var toggleButton = document.getElementById(mobTag + "-Enable")  
+    toggleButton.addEventListener('click', () => {        
+        toggleMob(mobTag);
     });
     
     return; 
