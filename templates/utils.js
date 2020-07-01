@@ -4,6 +4,7 @@ export function updateHtmlValues(blockArray) {
     
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
+        var xbutton = document.getElementById(blockArray[i].concat("-Delete"));
         var enabled = document.getElementById(blockArray[i].concat("-Enabled"));
         var name = document.getElementById(blockArray[i].concat("-Name"));
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
@@ -14,7 +15,10 @@ export function updateHtmlValues(blockArray) {
         var disadvantage = document.getElementById(blockArray[i].concat("-Dis"));
       
         //Update them values
-
+        
+        xbutton.addEventListener('click', () => {        
+          deleteMob(mobTag);
+        });
         name.setAttribute("value", name.value);
         icon.options[icon.selectedIndex].setAttribute("selected", true);
         tohit.setAttribute("value", tohit.value);
