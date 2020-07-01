@@ -1,5 +1,6 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
+import updateHtmlValues from './templates/utils.js'
 import Weapon from './presents/Weapon.js'
 import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
@@ -53,6 +54,8 @@ export default () => {
 
 
 function createPresent(presentName) {
+    updateHtmlValues(blockArray);
+    
    var newMob;
    var appendBlock = mobBlock();
 
