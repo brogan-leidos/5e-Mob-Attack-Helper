@@ -116,7 +116,7 @@ function createPresent(presentName) {
         deleteMob(mobTag);
     });
     
-    var toggleButton = document.getElementById(mobTag + "-Enable")  
+    var toggleButton = document.getElementById(mobTag + "-Enabled")  
     toggleButton.addEventListener('click', () => {        
         toggleMob(mobTag);
     });
