@@ -95,7 +95,7 @@ function createPresent(presentName) {
 
     mobBlockArea.innerHTML += appendBlock;
     
-    var deleteButton = document.getElementById(mobNumber + "-Delete"))
+    var deleteButton = document.getElementById(mobNumber + "-Delete")
      deleteButton.addEventListener('click', () => {        
         alert("Whoa this worked!");
     }); 
