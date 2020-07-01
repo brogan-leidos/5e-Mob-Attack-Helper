@@ -7,6 +7,7 @@ import Skeleton from './presents/Skeleton.js'
 import Zombie from './presents/Zombie.js'
 import Ghoul from './presents/Ghoul.js'
 import Wolf from './presents/Wolf.js'
+import ObjectTiny from '/presents/ObjectTiny.js'
 
 
 var mobIncrement = 0;
