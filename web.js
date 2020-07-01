@@ -60,9 +60,9 @@ function deleteMob(mobTag) {
 function toggleMob(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
-        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: grey;")
+        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: white;border: thin solid #000000; width: 283px;")
     } else {
-        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: white;")
+        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: grey;border: thin solid #000000; width: 283px;")
     }
 }
 
