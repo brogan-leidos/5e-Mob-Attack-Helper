@@ -122,17 +122,17 @@ function parseWeapon(weapon, hitbonus) {
     var numAttacks = parseInt(splitWeapon[0].trim());
     
     splitWeapon = splitWeapon[1].split("+");
+    var flipBit = 1;
     if (splitWeapon.length == 1) { // no result found for +, try -
         splitWeapon = splitWeapon[0].split("-");       
         if (splitWeapon.length == 1) {
             // Something something error check
         }
-        var damageDie = parseInt(splitWeapon[0].trim()) * -1; // Flip that bit
-    } else {    
-        var damageDie = parseInt(splitWeapon[0].trim());
-    }
+        flipBit = -1;
+    }   
+    var damageDie = parseInt(splitWeapon[0].trim());    
     splitWeapon = splitWeapon[1].trim().split(" ");
-    var bonusDmg = parseInt(splitWeapon[0].trim());
+    var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
     
     if (splitWeapon.length > 1) {
         var damageType = splitWeapon[1].trim();
