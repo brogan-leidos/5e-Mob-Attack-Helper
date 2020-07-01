@@ -60,7 +60,7 @@ function deleteMob(mobTag) {
 
 function createPresent(presentName) {
    // HTML fun stuff. Needed to preserve the values of existing mobs
-   updateHtmlValues(blockArray);
+   //updateHtmlValues(blockArray);
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
    blockArray.push(mobTag);
@@ -88,7 +88,7 @@ function createPresent(presentName) {
        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
-       mobBlockArea.innerHTML += appendBlock;
+       mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
        
        var deleteButton = document.getElementById(mobTag + "-Delete")  
        deleteButton.addEventListener('click', () => {        
@@ -103,7 +103,6 @@ function createPresent(presentName) {
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
-    //mobBlockArea.innerHTML += appendBlock;
     mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
     
     var deleteButton = document.getElementById(mobTag + "-Delete")  
