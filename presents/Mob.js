@@ -58,6 +58,7 @@ export default class Mob {
             damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1); // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg;
+        if (damageTotal < 0) { damageTotal = 0 }
         this.rollClass.damageRoll = damageTotal;
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
         return this.rollClass;
@@ -70,6 +71,7 @@ export default class Mob {
             damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1); // 1 - maxdmg
         }
         damageTotal = damageTotal + this.EquipWeapon.BonusToDmg;
+        if (damageTotal < 0) { damageTotal = 0 }
         this.rollClass.damageRoll = damageTotal;
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
         this.rollClass.crit = true;
