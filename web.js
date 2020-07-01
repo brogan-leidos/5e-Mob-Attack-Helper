@@ -60,9 +60,9 @@ function deleteMob(mobTag) {
 function toggleMob(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
-        document.getElementById(mobTag).setAttribute("style", "background-color: grey;")
+        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: grey;")
     } else {
-        document.getElementById(mobTag).setAttribute("style", "background-color: white;")
+        document.getElementById(mobTag).firstElementChild.setAttribute("style", "background-color: white;")
     }
 }
 
