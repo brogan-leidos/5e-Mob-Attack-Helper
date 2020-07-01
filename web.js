@@ -53,7 +53,7 @@ export default () => {
 };
 
 
-deleteMob(mobTag) {
+function deleteMob(mobTag) {
     alert("Hello world");
 }
 
