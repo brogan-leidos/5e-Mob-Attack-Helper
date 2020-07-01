@@ -1,6 +1,6 @@
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
-<table style="border: thin solid #000000; width: 283px;">
+<table style="border: thin solid #000000; width: 290px;">
   <tbody>
     <tr>
       <td style="width:10px;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
