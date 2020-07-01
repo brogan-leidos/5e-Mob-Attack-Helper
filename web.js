@@ -11,6 +11,7 @@ import Wolf from './presents/Wolf.js'
 
 var mobIncrement = 0;
 var blockArray = [];
+var listenerArray = [];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -102,10 +103,11 @@ function createPresent(presentName) {
 
     mobBlockArea.innerHTML += appendBlock;
     
-    var deleteButton = document.getElementById(mobTag + "-Delete")
+    var deleteButton = document.getElementById(mobTag + "-Delete")  
      deleteButton.addEventListener('click', () => {        
         deleteMob(mobTag);
-    }); 
+    });
+    listenerArray.push(deleteButton);
     
     return; 
 }
