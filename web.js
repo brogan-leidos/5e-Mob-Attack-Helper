@@ -53,11 +53,15 @@ export default () => {
 };
 
 
+deleteMob(mobTag) {
+    alert("Hello world");
+}
+
 function createPresent(presentName) {
    // HTML fun stuff. Needed to preserve the values of existing mobs
    updateHtmlValues(blockArray);
    // Create a unique ID for this new mob
-   var mobNumber = "Mob" + mobIncrement.toString();
+   var mobTag = "Mob" + mobIncrement.toString();
    blockArray.push(mobNumber);
    mobIncrement++;
     
@@ -77,8 +81,8 @@ function createPresent(presentName) {
       newMob = new Wolf(); 
    }
    else {
-       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobNumber);
-       appendBlock = appendBlock.replace("FILLER-NAME", mobNumber);
+       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
+       appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
        
        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
@@ -87,7 +91,7 @@ function createPresent(presentName) {
        return;
    }
     
-    appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobNumber);    
+    appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
     appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
@@ -95,7 +99,7 @@ function createPresent(presentName) {
 
     mobBlockArea.innerHTML += appendBlock;
     
-    var deleteButton = document.getElementById(mobNumber + "-Delete")
+    var deleteButton = document.getElementById(mobTag + "-Delete")
      deleteButton.addEventListener('click', () => {        
         alert("Whoa this worked!");
     }); 
