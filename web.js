@@ -54,7 +54,11 @@ export default () => {
 
 
 function deleteMob(mobTag) {
-    alert("Hello world");
+    alert("Delete initiated");
+    updateHtmlValues(blockArray);
+    blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
+    remove(document.getElementById(mobTag));
+    
 }
 
 function createPresent(presentName) {
