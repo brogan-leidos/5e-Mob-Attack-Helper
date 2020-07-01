@@ -96,6 +96,11 @@ function createPresent(presentName) {
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
        
        mobBlockArea.innerHTML += appendBlock;
+       
+       var deleteButton = document.getElementById(mobTag + "-Delete")  
+       deleteButton.addEventListener('click', () => {        
+           deleteMob(mobTag);
+       });
        return;
    }
     
