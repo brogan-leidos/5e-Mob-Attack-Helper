@@ -29,19 +29,19 @@ export default () => {
     
     document.getElementById('addTiny').addEventListener('click', () => {
         createPresent("TinyObject");
-    };
+    });
     document.getElementById('addSmall').addEventListener('click', () => {
         createPresent("SmallObject");
-    };
+    });
     document.getElementById('addMedium').addEventListener('click', () => {
         createPresent("MediumObject");
-    };
+    });
     document.getElementById('addLarge').addEventListener('click', () => {
         createPresent("LargeObject");
-    };
+    });
     document.getElementById('addHuge').addEventListener('click', () => {
         createPresent("HugeObject");
-    };
+    });
 
     
     var goButton = document.getElementById('goButton');
