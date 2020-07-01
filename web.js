@@ -11,7 +11,6 @@ import Wolf from './presents/Wolf.js'
 
 var mobIncrement = 0;
 var blockArray = [];
-var listenerArray = [];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -53,16 +52,10 @@ export default () => {
     
 };
 
-
-function myFunction() {
-    alert("Hello world!");   
-}
-
 function deleteMob(mobTag) {
     updateHtmlValues(blockArray);
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
-    document.getElementById(mobTag).remove();
-    
+    document.getElementById(mobTag).remove();    
 }
 
 function createPresent(presentName) {
@@ -110,7 +103,8 @@ function createPresent(presentName) {
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
-    mobBlockArea.innerHTML += appendBlock;
+    //mobBlockArea.innerHTML += appendBlock;
+    mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
     
     var deleteButton = document.getElementById(mobTag + "-Delete")  
      deleteButton.addEventListener('click', () => {        
