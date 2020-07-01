@@ -3,7 +3,7 @@ export function mobBlock() {
 <table style="border: thin solid #000000; width: 283px;">
   <tbody>
     <tr>
-      <td style="width:10px;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob" onclick="myFunction()">
+      <td style="width:10px;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
         &times;
       </button></td>
       <td style="width: 111px;">Name:</td>
