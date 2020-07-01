@@ -28,19 +28,19 @@ export default () => {
     var wolfButton = document.getElementById('addWolf');
     
     document.getElementById('addTiny').addEventListener('click', () => {
-        createPresent("TinyObject");
+        createPresent("ObjectTiny");
     });
     document.getElementById('addSmall').addEventListener('click', () => {
-        createPresent("SmallObject");
+        createPresent("ObjectSmall");
     });
     document.getElementById('addMedium').addEventListener('click', () => {
-        createPresent("MediumObject");
+        createPresent("ObjectMedium");
     });
     document.getElementById('addLarge').addEventListener('click', () => {
-        createPresent("LargeObject");
+        createPresent("ObjectLarge");
     });
     document.getElementById('addHuge').addEventListener('click', () => {
-        createPresent("HugeObject");
+        createPresent("ObjectHuge");
     });
 
     
