@@ -8,8 +8,8 @@ export default class Object-Small extends Mob {
     this.Name = "Object-Small";
     this.Icon = "\"robot\""
     
-    this.Str = -3;
-    this.Dex = 4;
+    this.Str = -2;
+    this.Dex = 2;
     this.Con = 0;
     this.Int = -4;
     this.Wis = -4;
