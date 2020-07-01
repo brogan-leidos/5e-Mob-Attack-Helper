@@ -26,6 +26,22 @@ export default () => {
     var zombieButton = document.getElementById('addZombie');
     var ghoulButton = document.getElementById('addGhoul');
     var wolfButton = document.getElementById('addWolf');
+    
+    document.getElementById('addTiny').addEventListener('click', () => {
+        createPresent("TinyObject");
+    };
+    document.getElementById('addSmall').addEventListener('click', () => {
+        createPresent("SmallObject");
+    };
+    document.getElementById('addMedium').addEventListener('click', () => {
+        createPresent("MediumObject");
+    };
+    document.getElementById('addLarge').addEventListener('click', () => {
+        createPresent("LargeObject");
+    };
+    document.getElementById('addHuge').addEventListener('click', () => {
+        createPresent("HugeObject");
+    };
 
     
     var goButton = document.getElementById('goButton');
@@ -91,6 +107,21 @@ function createPresent(presentName) {
    }
    else if (presentName == "Wolf") {
       newMob = new Wolf(); 
+   }
+   else if (presentName == "ObjectTiny") {
+      newMob = new ObjectTiny(); 
+   }
+   else if (presentName == "ObjectSmall") {
+      newMob = new ObjectSmall(); 
+   }
+   else if (presentName == "ObjectMedium") {
+      newMob = new ObjectMedium(); 
+   }
+   else if (presentName == "ObjectLarge") {
+      newMob = new ObjectLarge(); 
+   }
+   else if (presentName == "ObjectHuge") {
+      newMob = new ObjectHuge(); 
    }
    else {
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
