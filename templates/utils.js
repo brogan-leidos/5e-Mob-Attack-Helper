@@ -15,7 +15,6 @@ export function updateHtmlValues(blockArray) {
       
         //Update them values
 
-        enabled.setAttribute("value", enabled.value);
         name.setAttribute("value", name.value);
         icon.options[icon.selectedIndex].setAttribute("selected", true);
         tohit.setAttribute("value", tohit.value);
@@ -26,9 +25,13 @@ export function updateHtmlValues(blockArray) {
         else { 
           advantage.removeAttribute("checked"); }      
         if (disadvantage.checked) { 
-          disadvantage.setAttribute("checked", advantage.checked); }
+          disadvantage.setAttribute("checked", disadvantage.checked); }
         else { 
           disadvantage.removeAttribute("checked"); }
+        if (enabled.checked) { 
+          enabled.setAttribute("checked", enabled.checked); }
+        else { 
+          enabled.removeAttribute("checked"); }
       
     }
 }
