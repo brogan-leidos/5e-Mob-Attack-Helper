@@ -165,6 +165,10 @@ function launchAttack() {
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
+        if (!document.getElementById(blockArray[i].concat("-Enabled")).checked) {
+            continue; // If the box is not checked, skip that mob block
+        }        
+        
         var name = document.getElementById(blockArray[i].concat("-Name")).value;
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
