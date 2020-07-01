@@ -54,7 +54,12 @@ export default () => {
 
 
 function createPresent(presentName) {
-    updateHtmlValues(blockArray);
+   // HTML fun stuff. Needed to preserve the values of existing mobs
+   updateHtmlValues(blockArray);
+   // Create a unique ID for this new mob
+   var mobNumber = "Mob" + mobIncrement.toString();
+   blockArray.push(mobNumber);
+   mobIncrement++;
     
    var newMob;
    var appendBlock = mobBlock();
@@ -72,10 +77,8 @@ function createPresent(presentName) {
       newMob = new Wolf(); 
    }
    else {
-       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, "Mob".concat(mobIncrement.toString()));
-       appendBlock = appendBlock.replace("FILLER-NAME", "Mob".concat(mobIncrement.toString()));
-       blockArray.push("Mob".concat(mobIncrement.toString()));
-       mobIncrement++;
+       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobNumber);
+       appendBlock = appendBlock.replace("FILLER-NAME", mobNumber);
        
        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
        appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
@@ -84,10 +87,7 @@ function createPresent(presentName) {
        return;
    }
     
-    appendBlock = appendBlock.replace(/FILLER-BLOCK/g, "Mob".concat(mobIncrement.toString()));
-    blockArray.push("Mob".concat(mobIncrement.toString()));
-    mobIncrement++;
-    
+    appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobNumber);    
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
     appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
@@ -95,7 +95,7 @@ function createPresent(presentName) {
 
     mobBlockArea.innerHTML += appendBlock;
     
-    var deleteButton = document.getElementById("Mob".concat(mobIncrement.toString() + "-Delete"))
+    var deleteButton = document.getElementById(mobNumber + "-Delete"))
      deleteButton.addEventListener('click', () => {        
         alert("Whoa this worked!");
     }); 
