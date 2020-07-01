@@ -4,16 +4,25 @@ export function updateHtmlValues(blockArray) {
     
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
-        var enabled = document.getElemenyById(blockArray[i].concat("-Enabled")).value;
-        var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon")).value;
-        var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
-        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
-        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked;
+        var enabled = document.getElemenyById(blockArray[i].concat("-Enabled"));
+        var name = document.getElementById(blockArray[i].concat("-Name"));
+        var icon = document.getElementById(blockArray[i].concat("-Icon"));
+        var tohit = document.getElementById(blockArray[i].concat("-ToHit"));
+        var weapon = document.getElementById(blockArray[i].concat("-Weapon"));
+        var number = document.getElementById(blockArray[i].concat("-Number"));        
+        var advantage = document.getElementById(blockArray[i].concat("-Adv"));
+        var disadvantage = document.getElementById(blockArray[i].concat("-Dis"));
       
-      //Update them values
+        //Update them values
+
+        enabled.setAttribute("value", enabled.value);
+        name.setAttribute("value", name.value);
+        icon.setAttribute("value", icon.value);
+        tohit.setAttribute("value", tohit.value);
+        weapon.setAttribute("value", weapon.value);
+        number.setAttribute("value", number.value);
+        advantage.setAttribute("checked", advantage.checked);
+        disadvantage.setAttribute("checked", disadvantage.checked);
       
     }
 }
