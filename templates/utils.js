@@ -1,4 +1,4 @@
-export function updateHtmlValues(html) {
+export function updateHtmlValues(blockArray) {
   
   var numBlocks = blockArray.length;
     
@@ -13,6 +13,7 @@ export function updateHtmlValues(html) {
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
         var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked;
       
+      //Update them values
       
     }
 }
