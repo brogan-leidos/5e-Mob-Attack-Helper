@@ -8,17 +8,17 @@ export default class Object-Tiny extends Mob {
     this.Name = "Object-Tiny";
     this.Icon = "\"robot\""
     
-    this.Str = 1;
-    this.Dex = -2;
-    this.Con = 3;
+    this.Str = -3;
+    this.Dex = 4;
+    this.Con = 0;
     this.Int = -4;
-    this.Wis = -2;
-    this.Chr = -3;
+    this.Wis = -4;
+    this.Chr = -5;
     
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", 1, 6, "bludgeoning", 3, 1)
+      new Weapon("Slam", 1, 4, "bludgeoning", 8, 4)
     ];
     
     this.EquipWeapon = this.Weapons[0];
