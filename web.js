@@ -58,7 +58,7 @@ function deleteMob(mobTag) {
 }
 
 function toggleMob(mobTag) {
-    var enabled = document.getElementById(mobTag + "-Enabled");
+    var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
         document.getElementById(mobTag).setAttribute("style", "background-color: grey;")
     } else {
