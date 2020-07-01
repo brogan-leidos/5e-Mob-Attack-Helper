@@ -116,7 +116,6 @@ function createPresent(presentName) {
      deleteButton.addEventListener('click', () => {        
         deleteMob(mobTag);
     });
-    deleteButton.onclick = (function() { return function() { deleteMob(mobTag); }});
     
     return; 
 }
