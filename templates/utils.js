@@ -17,7 +17,7 @@ export function updateHtmlValues(blockArray) {
 
         enabled.setAttribute("value", enabled.value);
         name.setAttribute("value", name.value);
-        icon.options.setAttribute("selectedIndex", icon.selectedIndex);
+        icon.setAttribute("selectedIndex", icon.selectedIndex);
         tohit.setAttribute("value", tohit.value);
         weapon.setAttribute("value", weapon.value);
         number.setAttribute("value", number.value);
