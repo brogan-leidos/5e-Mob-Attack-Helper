@@ -54,6 +54,10 @@ export default () => {
 };
 
 
+function myFunction() {
+    alert("Hello world!");   
+}
+
 function deleteMob(mobTag) {
     updateHtmlValues(blockArray);
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
