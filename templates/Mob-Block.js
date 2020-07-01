@@ -2,11 +2,6 @@ export function mobBlock() {
   return `<div id="FILLER-BLOCK" name="mobBlock">
 <table style="border: thin solid #000000; width: 250px;">
   <tbody>
-<tr>
-<td>
-Sample
-</td>
-<td>
     <tr>
       <td style="width: 80px;">Name:</td>
       <td style="width: 155px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
@@ -57,8 +52,6 @@ Sample
         <label for="disadvantage"> Disadvantage</label><br>
       </td>
     </tr>
-</td>
-</tr>
   </tbody>
 </table>
 <div/>`
