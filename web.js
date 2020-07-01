@@ -1,6 +1,6 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
-import updateHtmlValues from './templates/utils.js'
+import {updateHtmlValues} from './templates/utils.js'
 import Weapon from './presents/Weapon.js'
 import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
