@@ -1,3 +1,3 @@
-export preserveHtml(html) {
+export function preserveHtml(html) {
 
 }
