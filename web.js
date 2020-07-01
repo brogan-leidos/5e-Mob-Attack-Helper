@@ -62,7 +62,7 @@ function createPresent(presentName) {
    updateHtmlValues(blockArray);
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
-   blockArray.push(mobNumber);
+   blockArray.push(mobTag);
    mobIncrement++;
     
    var newMob;
