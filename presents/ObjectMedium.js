@@ -2,10 +2,10 @@ import Mob from './Mob.js'
 import Weapon from './Weapon.js'
 import DamageRoll from './DamageRoll.js'
 
-export default class Object-Medium extends Mob {
+export default class ObjectMedium extends Mob {
   constructor() {
     super();
-    this.Name = "Object-Medium";
+    this.Name = "ObjectMedium";
     this.Icon = "\"robot\""
     
     this.Str = 0;
