@@ -4,7 +4,7 @@ export function updateHtmlValues(blockArray) {
     
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
-        var enabled = document.getElemenyById(blockArray[i].concat("-Enabled"));
+        var enabled = document.getElementById(blockArray[i].concat("-Enabled"));
         var name = document.getElementById(blockArray[i].concat("-Name"));
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         var tohit = document.getElementById(blockArray[i].concat("-ToHit"));
