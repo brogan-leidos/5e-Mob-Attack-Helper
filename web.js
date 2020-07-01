@@ -94,6 +94,12 @@ function createPresent(presentName) {
     appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
 
     mobBlockArea.innerHTML += appendBlock;
+    
+    var deleteButton = document.getElementById("Mob".concat(mobIncrement.toString() + "-Delete"))
+     deleteButton.addEventListener('click', () => {        
+        alert("Whoa this worked!");
+    }); 
+    
     return; 
 }
 
