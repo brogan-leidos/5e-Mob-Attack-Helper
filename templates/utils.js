@@ -21,8 +21,14 @@ export function updateHtmlValues(blockArray) {
         tohit.setAttribute("value", tohit.value);
         weapon.setAttribute("value", weapon.value);
         number.setAttribute("value", number.value);
-        advantage.setAttribute("checked", false);
-        disadvantage.setAttribute("checked", disadvantage.checked);
+        if (advantage.checked) { 
+          advantage.setAttribute("checked", advantage.checked); }
+        else { 
+          advantage.removeAttribute("checked"); }      
+        if (disadvantage.checked) { 
+          disadvantage.setAttribute("checked", advantage.checked); }
+        else { 
+          disadvantage.removeAttribute("checked"); }
       
     }
 }
