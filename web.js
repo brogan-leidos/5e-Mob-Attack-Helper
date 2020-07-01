@@ -53,14 +53,12 @@ export default () => {
 };
 
 function deleteMob(mobTag) {
-    updateHtmlValues(blockArray);
+    //updateHtmlValues(blockArray);
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
     document.getElementById(mobTag).remove();    
 }
 
 function createPresent(presentName) {
-   // HTML fun stuff. Needed to preserve the values of existing mobs
-   //updateHtmlValues(blockArray);
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
    blockArray.push(mobTag);
