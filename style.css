@@ -47,6 +47,7 @@ button {
 .addMobArea td {
   background-color: #90b3d5;
   text-align: left;
+  padding-left: 5px
 }
 
 /* Categories to add mobs */
