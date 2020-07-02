@@ -3,6 +3,7 @@ An application to assist all of the ambitious druids, necromancers, and warlords
 
 ToDo:
   - Make the info box a bit easier to comprehend: showing an expandable version of each mob's damage might work
+  - Show damage types in the assault overview
   - Weapon menu for present mobs
   - Save a JSON of current configuration
 
