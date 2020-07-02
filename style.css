@@ -1,8 +1,8 @@
-button {
+.button {
   border-radius: 12px;
 }
 
-header {
+.header {
   margin: 10px;
   background-color: blue;
   color: white;
