@@ -187,9 +187,7 @@ function parseWeapon(weapon, hitbonus) {
         var damageType = splitWeapon[1].trim();
     }
     
-    return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);
-    
-    
+    return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);       
 }
 
 function launchAttack() {
@@ -240,7 +238,7 @@ function launchAttack() {
     var totalDamage = 0;
     var infoAppend = rollArray.length.toString().concat(" attacks landed <br>");
     if (numCrits > 0) {
-        infoAppend += "  " + numCrits + " crits! <br>";
+        infoAppend += "  <b>" + numCrits + " crits! </b><br>";
     }
     for (var i=0; i < rollArray.length; i++) {
         totalDamage += rollArray[i].damageRoll;          
