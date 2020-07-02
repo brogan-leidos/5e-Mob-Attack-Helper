@@ -61,6 +61,7 @@ export default class Mob {
         if (damageTotal < 0) { damageTotal = 0 }
         this.rollClass.damageRoll = damageTotal;
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
+        this.rollClass.damageType = this.EquipWeapon.DamageType;
         return this.rollClass;
     }
         
@@ -74,6 +75,7 @@ export default class Mob {
         if (damageTotal < 0) { damageTotal = 0 }
         this.rollClass.damageRoll = damageTotal;
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
+        this.rollClass.damageType = this.EquipWeapon.DamageType;         
         this.rollClass.crit = true;
         return this.rollClass;
     }
