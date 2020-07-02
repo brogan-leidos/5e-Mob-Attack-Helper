@@ -65,7 +65,7 @@ function deleteMob(mobTag) {
 function toggleMob(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
-        document.getElementById(mobTag).firstElementChild.style.backgroundColor = "white";
+        document.getElementById(mobTag).firstElementChild.style.backgroundColor = "#f9f9eb";
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = "grey";
     }
