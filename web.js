@@ -48,17 +48,17 @@ export default () => {
     document.getElementById('addSkeleton').addEventListener('click', () => {
         createPresent("Skeleton");
     });
-    document.getElementById('addZombie');.addEventListener('click', () => {
+    document.getElementById('addZombie').addEventListener('click', () => {
         createPresent("Zombie");
     });    
-    document.getElementById('addGhoul');.addEventListener('click', () => {
+    document.getElementById('addGhoul').addEventListener('click', () => {
         createPresent("Ghoul");
     });    
-    document.getElementById('addWolf');.addEventListener('click', () => {
+    document.getElementById('addWolf').addEventListener('click', () => {
         createPresent("Wolf");
     });
     
-    document.getElementById('goButton');.addEventListener('click', () => {        
+    document.getElementById('goButton').addEventListener('click', () => {        
         launchAttack();
     });       
 };
