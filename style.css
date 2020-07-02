@@ -16,7 +16,7 @@ button {
   background-color: #f9f9eb;  
 }
 
-tr:nth-child(1) {
+.mobBlock tr:nth-child(1) {
   border-right: thin solid #000;
   background-color: white;
 }
