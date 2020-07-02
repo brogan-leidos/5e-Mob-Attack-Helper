@@ -65,6 +65,6 @@ button {
   font-weight: bold;
 }
 
-.workArea div {
+.workArea div:nth-child(1) {
   background-color: #dfe6ec; 
 }
