@@ -7,5 +7,16 @@
   background-color: #99ccff;
   color: #f2f2f2;
   font-family: Arial, Helvetica, sans-serif;
+}
 
+.mobBlock.table {
+  border: thin solid #000;
+  width: 300px;
+  border-collapse: collapse;
+  background-color: #99ccff;  
+}
+
+.mobBlock.table.tr {
+  padding: 5px;
+  background-color: white;
 }
