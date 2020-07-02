@@ -33,6 +33,10 @@ button {
   width: 50px;
 }
 
+.addMobArea table {
+  border-collapse: collapse; 
+}
+
 .addMobArea td {
   background-color: red 
 }
