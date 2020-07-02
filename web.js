@@ -183,6 +183,11 @@ function launchAttack() {
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "block";
     
+    if (numBlocks == 0){
+        infoArea.innerHTML = "There are no mobs available to attack with!";
+        return;
+    }
+           
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
