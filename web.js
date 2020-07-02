@@ -20,12 +20,6 @@ var blockArray = [];
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
-
-    var addBlankButton = document.getElementById('addBlank');
-    var skeletonButton = document.getElementById('addSkeleton');
-    var zombieButton = document.getElementById('addZombie');
-    var ghoulButton = document.getElementById('addGhoul');
-    var wolfButton = document.getElementById('addWolf');
     
     document.getElementById('addTiny').addEventListener('click', () => {
         createPresent("ObjectTiny");
