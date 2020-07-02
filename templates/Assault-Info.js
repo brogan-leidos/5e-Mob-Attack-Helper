@@ -1,4 +1,11 @@
-export function assaultInfo() {
+export function assaultInfo(rollArray) {
+  var returnString = "";
+  
+  for (var i=0; i < rollArray.length; i++) {
+    
+  }
+  
+  
   return `<div id="FILLER-BLOCK" >
 <table class="mobBlock">
   <tbody>
