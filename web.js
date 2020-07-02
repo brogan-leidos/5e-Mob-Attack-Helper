@@ -180,6 +180,9 @@ function launchAttack() {
     var numCrits = 0;
     var numBlocks = blockArray.length;
     
+    // Activate the info box
+    document.getElementById("infoBox").setAttribute("display", "block");
+    
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
