@@ -20,3 +20,8 @@ button {
   border-right: thin solid #000;
   background-color: white;
 }
+
+.infoArea {
+  float:left;
+  width: 50%;
+}
