@@ -5,5 +5,6 @@ export default class DamageRoll {
         this.damageRoll = 0;
         this.damageDie = 0;
         this.attacker = null;
+        this.damageType = "";
     }
 }
