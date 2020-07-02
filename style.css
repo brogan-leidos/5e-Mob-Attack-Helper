@@ -25,3 +25,7 @@ button {
   margin-bottom: 2px; 
 }
 
+.addMobArea td:nth-child(1) {
+  color:white;
+  background-color: #76d6d6;
+}
