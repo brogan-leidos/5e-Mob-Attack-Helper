@@ -31,9 +31,8 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   width: 50px;
-  border-right: thin solid #1d6262;
 }
 
-.addMobArea table {
-  border-collapse: collapse;
+.addMobArea td {
+  background-color: red 
 }
