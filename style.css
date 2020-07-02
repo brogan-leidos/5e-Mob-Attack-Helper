@@ -2,6 +2,8 @@ button {
   border-radius: 12px;
 }
 
-h2 {
-  color: red;
+header {
+  margin: 10px;
+  background-color: blue;
+  color: white;
 }
