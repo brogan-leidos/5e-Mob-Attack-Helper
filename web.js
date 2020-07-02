@@ -234,7 +234,7 @@ function launchAttack() {
     }
     for (var i=0; i < rollArray.length; i++) {
         totalDamage += rollArray[i].damageRoll;          
-        infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] "
+        infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] " + rollArray[i].damageType;
         if (rollArray[i].crit) {
          infoAppend += "🌟CRIT!";
         }
