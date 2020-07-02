@@ -1,16 +1,17 @@
 # 5e Mob Attack Helper
-An application to assist all of the ambitious druids, necromancers, and warlords out there!
+If you're like me and find the DMG rules for mob combat underwhelming - this is the tool for you!
+This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 ToDo:
-  - Make the info box a bit easier to comprehend: showing an expandable version of each mob's damage might work
-  - Show damage types in the assault overview
+  - Make the info box a bit easier to comprehend: showing an expandable version of each mob's total damage might work
+  - Show damage types in the assault overview. We should really do this first though ^
   - Weapon menu for present mobs
   - Save a JSON of current configuration
 
-
 Known issues:
+  - It's a bit ugly, and I'm a bit terrible at CSS
 
 
 
-Demo:
+Link to the application:
 https://brogan-leidos.github.io/5e-Mob-Attack-Helper/
