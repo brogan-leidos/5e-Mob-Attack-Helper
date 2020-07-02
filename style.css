@@ -67,5 +67,6 @@ button {
 
 .acArea {
   background-color: #dfe6ec; 
-  padding:5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 5px;
 }
