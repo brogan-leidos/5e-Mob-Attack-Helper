@@ -3,14 +3,14 @@ export function mobBlock() {
 <table class="mobBlock">
   <tbody>
     <tr>
-      <td style="width:10px;border-right:thin solid #000;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
+      <td style="width:10px;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
         &times;
       </button></td>
       <td style="width: 130px;">Name:</td>
       <td style="width: 150px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
-      <td style="border-right:thin solid #000; text-align: center"><input id="FILLER-BLOCK-Enabled" name="" type="checkbox" title="Enable/Disable mob" checked="true" /></td>
+      <td style="text-align: center"><input id="FILLER-BLOCK-Enabled" name="" type="checkbox" title="Enable/Disable mob" checked="true" /></td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
@@ -30,22 +30,22 @@ export function mobBlock() {
       </select></td>
     </tr>
     <tr>
-      <td style="border-right:thin solid #000;">&nbsp;</td>
+      <td>&nbsp;</td>
       <td>Bonus to Hit:</td>
       <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
     </tr>
     <tr>
-      <td style="border-right:thin solid #000;">&nbsp;</td>
+      <td>&nbsp;</td>
       <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
     </tr>
     <tr>
-      <td style="border-right:thin solid #000;">&nbsp;</td>
+      <td>&nbsp;</td>
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
     </tr>
     <tr>
-      <td style="border-right:thin solid #000;">&nbsp;</td>
+      <td">&nbsp;</td>
       <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" /> <label for="advantage"> Advantage</label></td>
       <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
