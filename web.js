@@ -41,36 +41,26 @@ export default () => {
     });
     document.getElementById('addHuge').addEventListener('click', () => {
         createPresent("ObjectHuge");
-    });
-
-    
-    var goButton = document.getElementById('goButton');
-    
-    addBlankButton.addEventListener('click', () => {
+    });        
+    document.getElementById('addBlank').addEventListener('click', () => {
         createPresent("");
-    });
-    
-     skeletonButton.addEventListener('click', () => {
+    });    
+    document.getElementById('addSkeleton').addEventListener('click', () => {
         createPresent("Skeleton");
     });
-
-    zombieButton.addEventListener('click', () => {
+    document.getElementById('addZombie');.addEventListener('click', () => {
         createPresent("Zombie");
-    });
-    
-    ghoulButton.addEventListener('click', () => {
+    });    
+    document.getElementById('addGhoul');.addEventListener('click', () => {
         createPresent("Ghoul");
+    });    
+    document.getElementById('addWolf');.addEventListener('click', () => {
+        createPresent("Wolf");
     });
     
-    wolfButton.addEventListener('click', () => {
-        createPresent("Wolf");
-    }); 
-    
-    goButton.addEventListener('click', () => {        
+    document.getElementById('goButton');.addEventListener('click', () => {        
         launchAttack();
-    }); 
-    
-    
+    });       
 };
 
 function deleteMob(mobTag) {
