@@ -1,12 +1,12 @@
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
-<table style="border: thin solid #000000; width: 290px; border-collapse: collapse">
+<table style="border: thin solid #000000; width: 300px; border-collapse: collapse">
   <tbody>
     <tr>
       <td style="width:10px;border-right:thin solid #000;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
         &times;
       </button></td>
-      <td style="width: 120px;">Name:</td>
+      <td style="width: 130px;">Name:</td>
       <td style="width: 150px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
