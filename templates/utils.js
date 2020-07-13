@@ -1,41 +1,17 @@
-export function updateHtmlValues(blockArray) {
+import Weapon from '../presents/Weapon.js'
+
+// Converts a weapon into an html option
+export function weaponsToHtml(weapons) {
+  // weapons is a weapons array
   
-  var numBlocks = blockArray.length;
-    
-    // Go though each creature block, spawn a number of mobs with those stats
-    for(var i=0;i < numBlocks;i++) {
-        var xbutton = document.getElementById(blockArray[i].concat("-Delete"));
-        var enabled = document.getElementById(blockArray[i].concat("-Enabled"));
-        var name = document.getElementById(blockArray[i].concat("-Name"));
-        var icon = document.getElementById(blockArray[i].concat("-Icon"));
-        var tohit = document.getElementById(blockArray[i].concat("-ToHit"));
-        var weapon = document.getElementById(blockArray[i].concat("-Weapon"));
-        var number = document.getElementById(blockArray[i].concat("-Number"));        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv"));
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis"));
-      
-        //Update them values
-        
-        xbutton.addEventListener('click', () => {        
-          deleteMob(mobTag);
-        });
-        name.setAttribute("value", name.value);
-        icon.options[icon.selectedIndex].setAttribute("selected", true);
-        tohit.setAttribute("value", tohit.value);
-        weapon.setAttribute("value", weapon.value);
-        number.setAttribute("value", number.value);
-        if (advantage.checked) { 
-          advantage.setAttribute("checked", advantage.checked); }
-        else { 
-          advantage.removeAttribute("checked"); }      
-        if (disadvantage.checked) { 
-          disadvantage.setAttribute("checked", disadvantage.checked); }
-        else { 
-          disadvantage.removeAttribute("checked"); }
-        if (enabled.checked) { 
-          enabled.setAttribute("checked", enabled.checked); }
-        else { 
-          enabled.removeAttribute("checked"); }
-      
-    }
+  htmlReturn = "";
+  for(var i=0; i < weapons.length; i++) {    
+    weapon = weapons[i];
+    htmlReturn += `
+      <option id="weapon.Name">
+        weapon.Name
+      </option>
+    `
+  }
+ 
 }
