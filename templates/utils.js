@@ -8,8 +8,8 @@ export function weaponsToHtml(weapons) {
   for(var i=0; i < weapons.length; i++) {    
     var weapon = weapons[i];
     htmlReturn += `
-      <option id="weapon.Name">
-        weapon.Name
+      <option id="${weapon.Name}">
+        ${weapon.Name}
       </option>
     `
   }
