@@ -294,7 +294,7 @@ function launchAttack() {
     if (numCrits > 0) {
         infoAppend += "  <b>" + numCrits + " crits! </b><br>";
     }
-    infoAppend = totalHits.length.toString().concat(" attacks landed <br>") + infoAppend;
+    infoAppend = totalHits.toString() + " attacks landed <br>" + infoAppend;
     infoArea.innerHTML = totalDamage.toString().concat(" total damage delt<br>");
     infoArea.innerHTML += infoAppend;
         
