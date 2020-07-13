@@ -7,7 +7,7 @@ export function weaponsToHtml(weapons) {
   var htmlReturn = "";
   for(var i=0; i < weapons.length; i++) {    
     var weapon = weapons[i];
-    var weaponString = weapon.NumDice.toString() + "d" + weapon.DamageDie.toString() + " + " + \
+    var weaponString = weapon.NumDice.toString() + "d" + weapon.DamageDie.toString() + " + " + 
         weapon.BonusToDmg.toString() + " " + weapon.DamageType
 
     htmlReturn += `
