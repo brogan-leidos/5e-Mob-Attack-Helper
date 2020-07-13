@@ -149,7 +149,7 @@ function createPresent(presentName) {
     });
     
     var weaponSelect = document.getElementById(mobTag + "-Weapon-Select")
-    weaponSelect.addEventListener('onchange', () => {
+    weaponSelect.addEventListener('change', () => {
         alert("Change yo");
     });
     
