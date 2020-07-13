@@ -37,7 +37,7 @@ export function mobBlock() {
     <tr>
       <td>
         <select style="width:30px" id="FILLER-BLOCK-Weapon-Select" tooltip="Common weapons for this mob type">
-          <option value="custom">Custom</option>
+          <option value="ToHit:0 Weapon:">Custom</option>
           ADDITIONAL-WEAPONS
         </select>
       </td>
