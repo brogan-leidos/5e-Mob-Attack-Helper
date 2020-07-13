@@ -249,10 +249,11 @@ function launchAttack() {
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
     for (var block=0; block < mobArray.length;block++) {
+        rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
-                rollArray.push(mobArray[block][i].dealCrit());
+                rollArray[block].push(mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
             }
             else if (attackRoll >= targetAc) {
@@ -268,7 +269,6 @@ function launchAttack() {
     
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
-        rollArray[block] = new Array();
         totalHits += rollArray[block].length;
         var attacker = rollArray[block][i].attacker;
         var numOfBlockCrits = 0;
