@@ -294,11 +294,13 @@ function launchAttack() {
         infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
         infoAppend += "<br>";
     }
+    
+    var header =  totalHits.toString() + " attacks landed <br>";    
     if (numCrits > 0) {
-        infoAppend += "  <b>" + numCrits + " crits! </b><br>";
+        header += "  <b>" + numCrits + " crits! </b><br>";
     }
-    infoAppend = totalHits.toString() + " attacks landed <br>" + infoAppend;
-    infoArea.innerHTML = totalDamage.toString().concat(" total damage delt<br>");
-    infoArea.innerHTML += infoAppend;
+    header += totalDamage.toString().concat(" total damage delt<br>")
+    infoAppend = header + infoAppend;
+    infoArea.innerHTML = infoAppend;
         
 }
