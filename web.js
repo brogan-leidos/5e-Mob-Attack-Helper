@@ -150,12 +150,17 @@ function createPresent(presentName) {
     
     var weaponSelect = document.getElementById(mobTag + "-Weapon-Select")
     weaponSelect.addEventListener('change', (temp) => {
-        alert("Change yo:" + temp);
+        changeMobWeapon(mobTag, temp.target.value);        
     });
     
     return; 
 }
 
+function changeMobWeapon (mobTag, newValue) {
+    var weapon = 
+    document.getElementById(mobTag + "-ToHit").value = asdf;
+    document.getElementById(mobTag + "-Weapon").value = asdf;
+}
 
 function combineEnds(stringArray) {
     if (stringArray.length == 1) {
