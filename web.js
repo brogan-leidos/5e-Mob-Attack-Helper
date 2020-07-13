@@ -303,6 +303,7 @@ function launchAttack() {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
     header += totalDamage.toString().concat(" total damage delt<br>")
+    header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
         
