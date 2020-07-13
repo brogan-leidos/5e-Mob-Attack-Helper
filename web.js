@@ -270,7 +270,7 @@ function launchAttack() {
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
         if (rollArray[block].length == 0) {
-            continue;
+            continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }
         totalHits += rollArray[block].length;
         var attacker = rollArray[block][0].attacker;
@@ -290,7 +290,7 @@ function launchAttack() {
 //             }
 //             infoAppend += "<br>";
         }
-        infoAppend += attacker.Icon + " " + attacker.Name + " : " + totalHits + " hits";
+        infoAppend += attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
         if (numOfBlockCrits > 1) {
             infoAppend += "(🌟" + numOfBlockCrits.toString() + " crits)";
         }
