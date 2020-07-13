@@ -207,8 +207,8 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function launchAttack() {
-    var mobArray = [];
-    var rollArray = [];
+    var mobArray = [][]; // Block type, attacks of that block
+    var rollArray = [][];
     var numCrits = 0;
     var numBlocks = blockArray.length;
     
@@ -241,40 +241,59 @@ function launchAttack() {
         var vantage = advantage + disadvantage;
         
         for(var j=0; j < number; j++) {
-            mobArray.push(new Mob(name, icon, weapon, vantage))
+            mobArray[i].push(new Mob(name, icon, weapon, vantage))
         }                
     }
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
-    for (var i=0; i < mobArray.length;i++) {
-        var attackRoll = mobArray[i].makeAttack();
-        if (attackRoll == "crit") {
-            rollArray.push(mobArray[i].dealCrit());
-            numCrits = numCrits + 1;
+    for (var block=0; block < mobArray.length;block++) {
+        for (var i=0; i < mobArray[block].length; i++) {
+            var attackRoll = mobArray[block][i].makeAttack();
+            if (attackRoll == "crit") {
+                rollArray.push(mobArray[block][i].dealCrit());
+                numCrits = numCrits + 1;
+            }
+            else if (attackRoll >= targetAc) {
+                rollArray[block].push(mobArray[block][i].dealDamage());
+            }          
         }
-        else if (attackRoll >= targetAc) {
-            rollArray.push(mobArray[i].dealDamage());
-        }          
     }
     
-    // Take a sum of the attacks that landed. Boom, dead enemy, maybe.
+    // Take a sum of the attacks that landed. Boom, dead enemy, maybe.    
     var totalDamage = 0;
-    var infoAppend = rollArray.length.toString().concat(" attacks landed <br>");
+    var totalHits = 0;
+    var infoAppend = "";
+    
+    // Go through each block, take a sum of damage and # of hits
+    for (var block=0; block < rollArray.length; block++) {
+        totalHits += rollArray[block].length;
+        var attacker = rollArray[block][i].attacker;
+        var numOfBlockCrits = 0;
+        var blockTotalDamage = 0;
+        
+        // Go through each unit in the block and tally up that damage
+        for (var i=0; i < rollArray[block].length; i++) {
+            totalDamage += rollArray[block][i].damageRoll;
+            blockTotalDamage += rollArray[block][i].damageRoll;
+//             infoAppend += rollArray[block][i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] " + rollArray[i].damageType;
+//             if (rollArray[i].crit) {
+//              infoAppend += "🌟CRIT!";
+//             }
+//             infoAppend += "<br>";
+        }
+        infoAppend += attacker.Icon + " " + attacker.Name + " -- " + totalHits + " hits";
+        if (numOfBlockCrits > 1) {
+            infoAppend += "(🌟" + numOfBlockCrits.toString() + " crits)";
+        }
+        infoAppend += " -- " + blockTotalDamage.toString() + " total damage";
+        infoAppend += "<br>";
+    }
     if (numCrits > 0) {
         infoAppend += "  <b>" + numCrits + " crits! </b><br>";
     }
-    for (var i=0; i < rollArray.length; i++) {
-        totalDamage += rollArray[i].damageRoll;          
-        infoAppend += rollArray[i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] " + rollArray[i].damageType;
-        if (rollArray[i].crit) {
-         infoAppend += "🌟CRIT!";
-        }
-        infoAppend += "<br>";
-    }
-    
+    infoAppend = totalHits.length.toString().concat(" attacks landed <br>") + infoAppend;
     infoArea.innerHTML = totalDamage.toString().concat(" total damage delt<br>");
     infoArea.innerHTML += infoAppend;
-    
-    
+        
 }
