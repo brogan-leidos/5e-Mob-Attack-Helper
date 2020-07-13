@@ -207,8 +207,8 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function launchAttack() {
-    var mobArray = [][]; // Block type, attacks of that block
-    var rollArray = [][];
+    var mobArray = []; // 2d arrays: Block type, attacks of that block
+    var rollArray = [];
     var numCrits = 0;
     var numBlocks = blockArray.length;
     
@@ -240,6 +240,7 @@ function launchAttack() {
         
         var vantage = advantage + disadvantage;
         
+        mobArray[i] = new Array();
         for(var j=0; j < number; j++) {
             mobArray[i].push(new Mob(name, icon, weapon, vantage))
         }                
@@ -267,6 +268,7 @@ function launchAttack() {
     
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
+        rollArray[block] = new Array();
         totalHits += rollArray[block].length;
         var attacker = rollArray[block][i].attacker;
         var numOfBlockCrits = 0;
