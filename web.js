@@ -287,11 +287,11 @@ function launchAttack() {
 //             }
 //             infoAppend += "<br>";
         }
-        infoAppend += attacker.Icon + " " + attacker.Name + " -- " + totalHits + " hits";
+        infoAppend += attacker.Icon + " " + attacker.Name + " : " + totalHits + " hits";
         if (numOfBlockCrits > 1) {
             infoAppend += "(🌟" + numOfBlockCrits.toString() + " crits)";
         }
-        infoAppend += " -- " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
+        infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
         infoAppend += "<br>";
     }
     if (numCrits > 0) {
