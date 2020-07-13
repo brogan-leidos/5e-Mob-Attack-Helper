@@ -125,7 +125,7 @@ function createPresent(presentName) {
     
     var additionalOptions = weaponsToHtml(newMob.Weapons);
     appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
-    appendBlock = appendBlock.replace(newMob.EquipWeapon.Name, newMob.EquipWeapon.Name.concat(" selected"));
+    appendBlock = appendBlock.replace(newMob.EquipWeapon.Name + "\"", newMob.EquipWeapon.Name.concat(" selected"));
     
     appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
