@@ -148,6 +148,11 @@ function createPresent(presentName) {
         toggleMob(mobTag);
     });
     
+    var weaponSelect = document.getElementById(mobTag + "-Weapon-Select")
+    weaponSelect.addEventListener('onchange', () => {
+        alert("Change yo");
+    });
+    
     return; 
 }
 
