@@ -11,7 +11,7 @@ export function weaponsToHtml(weapons) {
         weapon.BonusToDmg.toString() + " " + weapon.DamageType
 
     htmlReturn += `
-      <option id="${weapon.Name}" value="ToHit:${weapon.ToHit} Weapon:${weaponString}">
+      <option id="${weapon.Name}" value="ToHit:${weapon.BonusToHit.toString()} Weapon:${weaponString}">
         ${weapon.Name}
       </option>
     `
