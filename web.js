@@ -1,6 +1,6 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
-import {updateHtmlValues} from './templates/utils.js'
+import {weaponsToHtml} from './templates/utils.js'
 import Weapon from './presents/Weapon.js'
 import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
@@ -123,11 +123,15 @@ function createPresent(presentName) {
        return;
    }
     
+    var additionalOptions = weaponsToHtml(newMob.Weapons);
+    appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+    appendBlock = appendBlock.replace(newMob.EquipWeapon.Name, newMob.EquipWeapon.Name.concat(" selected"));
+    
     appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
     appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
     appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
     appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
-    appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);
+    appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
 
     mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
     
