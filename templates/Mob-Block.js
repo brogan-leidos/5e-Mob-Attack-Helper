@@ -35,8 +35,8 @@ export function mobBlock() {
       <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
     </tr>
     <tr>
-      <td style="width:30px">
-        <select id="FILLER-BLOCK-Weapon-Select>
+      <td>
+        <select style="width:30px" id="FILLER-BLOCK-Weapon-Select>
           <option value="custom">Custom</option>
           ADDITIONAL-WEAPONS
         </select>
