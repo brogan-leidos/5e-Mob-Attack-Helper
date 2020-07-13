@@ -116,6 +116,8 @@ function createPresent(presentName) {
        
        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
        
+       document.getElementById(mobTag + "Weapon-Select").remove();
+       
        var deleteButton = document.getElementById(mobTag + "-Delete")  
        deleteButton.addEventListener('click', () => {        
            deleteMob(mobTag);
