@@ -288,7 +288,7 @@ function launchAttack() {
         if (numOfBlockCrits > 1) {
             infoAppend += "(🌟" + numOfBlockCrits.toString() + " crits)";
         }
-        infoAppend += " -- " + blockTotalDamage.toString() + " total damage";
+        infoAppend += " -- " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
         infoAppend += "<br>";
     }
     if (numCrits > 0) {
