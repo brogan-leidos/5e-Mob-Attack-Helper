@@ -248,15 +248,23 @@ function launchAttack() {
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
-    for (var block=0; block < mobArray.length;block++) {
-        rollArray[block] = new Array();
+    for (var block=0; block < mobArray.length;block++) {        
+        var blockHit = false; // Kind of odd - but this is used to declare a new array only if something in the block actually hits
         for (var i=0; i < mobArray[block].length; i++) {
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
+                if (!blockHit) {
+                    rollArray[block] = new Array();
+                    blockHit = true;
+                }
                 rollArray[block].push(mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
             }
-            else if (attackRoll >= targetAc) {
+            else if (attackRoll >= targetAc) {                
+                if (!blockHit) {
+                    rollArray[block] = new Array();
+                    blockHit = true;
+                }
                 rollArray[block].push(mobArray[block][i].dealDamage());
             }          
         }
