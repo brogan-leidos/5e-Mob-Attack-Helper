@@ -13,5 +13,6 @@ export function weaponsToHtml(weapons) {
       </option>
     `
   }
+  return htmlReturn;
  
 }
