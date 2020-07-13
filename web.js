@@ -145,6 +145,17 @@ function createPresent(presentName) {
 }
 
 
+function combineEnds(stringArray) {
+    if (stringArray.length == 1) {
+        return;
+    }
+    var combined = "";
+    for (var i=1; i < stringArray.length; i++) {
+        combined += stringArray[i];
+    }
+    return combined;
+}
+
 // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
 function parseWeapon(weapon, hitbonus) {
     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
@@ -153,8 +164,9 @@ function parseWeapon(weapon, hitbonus) {
         // Something something error check
     }
     var numAttacks = parseInt(splitWeapon[0].trim());
+    splitWeapon = combineEnds(splitWeapon);
     
-    splitWeapon = splitWeapon[1].split("+");
+    splitWeapon = splitWeapon.split("+");
     var flipBit = 1;
     if (splitWeapon.length == 1) { // no result found for +, try -
         splitWeapon = splitWeapon[0].split("-");       
@@ -163,8 +175,10 @@ function parseWeapon(weapon, hitbonus) {
         }
         flipBit = -1;
     }   
-    var damageDie = parseInt(splitWeapon[0].trim());    
-    splitWeapon = splitWeapon[1].trim().split(" ");
+    var damageDie = parseInt(splitWeapon[0].trim());
+    splitWeapon = combineEnds(splitWeapon);
+    
+    splitWeapon = splitWeapon.trim().split(" ");
     var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
     
     if (splitWeapon.length > 1) {
