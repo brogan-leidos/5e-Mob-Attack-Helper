@@ -157,7 +157,7 @@ function createPresent(presentName) {
 }
 
 function changeMobWeapon (mobTag, newValue) {
-    var toHit = parseInt(newValue.split("ToHit:")[0].split("Weapon:")[0]);
+    var toHit = parseInt(newValue.split("ToHit:")[1].split("Weapon:")[0]);
     var weapon = newValue.split("Weapon:")[1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
