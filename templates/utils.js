@@ -7,8 +7,11 @@ export function weaponsToHtml(weapons) {
   var htmlReturn = "";
   for(var i=0; i < weapons.length; i++) {    
     var weapon = weapons[i];
+    var weaponString = weapon.NumDice.toString() + "d" + weapon.DamageDie.toString() + " + " + \
+        weapon.BonusToDmg.toString() + " " + weapon.DamageType
+
     htmlReturn += `
-      <option id="${weapon.Name}">
+      <option id="${weapon.Name}" value="ToHit:${weapon.ToHit} Weapon:${weaponString}">
         ${weapon.Name}
       </option>
     `
