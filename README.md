@@ -6,6 +6,7 @@ ToDo:
   - Make the info box a bit easier to comprehend: showing an expandable version of each mob's total damage might work
   - Weapon menu for present mobs
   - Save a JSON of current configuration
+  - Error checking when things dont go correctly in one of the fields
 
 Known issues:
   - It's a bit ugly, and I'm a bit terrible at CSS
