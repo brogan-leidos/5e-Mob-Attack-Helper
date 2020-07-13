@@ -270,7 +270,7 @@ function launchAttack() {
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
         totalHits += rollArray[block].length;
-        var attacker = rollArray[block][i].attacker;
+        var attacker = rollArray[block][0].attacker;
         var numOfBlockCrits = 0;
         var blockTotalDamage = 0;
         
