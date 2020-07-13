@@ -30,16 +30,18 @@ export function mobBlock() {
       </select></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td>Bonus to Hit:</td>
-      <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
-    </tr>
-    <tr>
       <td>
         <select style="width:30px" id="FILLER-BLOCK-Weapon-Select" tooltip="Common weapons for this mob type">
           <option value="ToHit:0 Weapon:">Custom</option>
           ADDITIONAL-WEAPONS
         </select>
+      </td>
+      <td>Bonus to Hit:</td>
+      <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
       </td>
       <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
