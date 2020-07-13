@@ -4,7 +4,6 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 ToDo:
   - Make the info box a bit easier to comprehend: showing an expandable version of each mob's total damage might work
-  - Weapon menu for present mobs
   - Save a JSON of current configuration
   - Error checking when things dont go correctly in one of the fields
 
