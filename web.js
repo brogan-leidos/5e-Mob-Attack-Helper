@@ -219,7 +219,8 @@ function parseWeapon(weapon, hitbonus) {
     return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);       
 }
 
-function toggleDetails(mobTag, rollArray) {
+function toggleDetails(taget, rollArray) {
+    var mobTag = target.target.id;
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
         var detailAppend = `<div id=${mobTag}-Details>`;
@@ -363,8 +364,8 @@ function launchAttack() {
     for (var block=0; block < numBlocks; block++) {
         var mobTag = blockArray[block];
         var id = `${mobTag}-Result`;
-        document.getElementById(id).addEventListener('click', () => {
-            toggleDetails(mobTag, rollArray);
+        document.getElementById(id).addEventListener('click', (target) => {
+            toggleDetails(target, rollArray);
         }); 
     }        
 }
