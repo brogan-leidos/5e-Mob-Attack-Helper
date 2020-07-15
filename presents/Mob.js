@@ -17,6 +17,8 @@ export default class Mob {
     this.Name = name;
     this.Icon = icon;
         
+    this.MobName = ""
+        
     this.rollClass = new DamageRoll();
     this.Vantage = vantage;
     
