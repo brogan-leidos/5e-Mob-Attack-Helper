@@ -284,14 +284,10 @@ function launchAttack() {
             if (rollArray[block][i].crit) {
                 numOfBlockCrits += 1;
             }
-//             infoAppend += rollArray[block][i].attacker.Icon + " ⚔" + rollArray[i].damageRoll.toString() + " [" + rollArray[i].hitRoll.toString() + "] " + rollArray[i].damageType;
-//             if (rollArray[i].crit) {
-//              infoAppend += "🌟CRIT!";
-//             }
-//             infoAppend += "<br>";
+
         }
         infoAppend += attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
-        if (numOfBlockCrits > 1) {
+        if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
         infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
