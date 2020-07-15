@@ -290,6 +290,7 @@ function launchAttack() {
     if (targetAc <= 0) {
         discoveryModeFlag = true;
         var minAc = -1;
+        var lowerCap = -1
     }
     
     for (var block=0; block < mobArray.length;block++) {
@@ -301,11 +302,16 @@ function launchAttack() {
                 numCrits = numCrits + 1;
             }
             else if (discoveryModeFlag) {
-                if (attackRoll < minAc || minAc == -1) {
+                if ((attackRoll < minAc && attackRoll > lowerCap) || minAc == -1) {
                     var response = confirm(attackRoll);
                     if (response) {
                         rollArray[block].push(mobArray[block][i].dealDamage());
                         minAc = attackRoll;
+                    }
+                    else {
+                        if (attackRoll > lowerCap) {
+                            lowerCap = attackRoll;
+                        }
                     }
                 }
                 else {
