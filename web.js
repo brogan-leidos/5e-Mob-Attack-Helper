@@ -300,8 +300,8 @@ function launchAttack() {
             if (attackRoll == "crit") {
                 rollArray[block].push(mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
-            }
-            else if (discoveryModeFlag) {
+            }            
+            else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here
                 if (attackRoll <= lowerCap) {
                     continue;
                 }
@@ -320,11 +320,10 @@ function launchAttack() {
                 else {
                     rollArray[block].push(mobArray[block][i].dealDamage());
                 }                
-
             }
             else if (attackRoll >= targetAc) {                
                 rollArray[block].push(mobArray[block][i].dealDamage());
-            }          
+            } 
         }
     }
     
