@@ -66,7 +66,7 @@ function discoveryCheck(newAc) {
         document.getElementById('discoveryTag').style.display = "inline";
     }
     else {
-        document.getElementById('discoveryTag').style.display = "none");
+        document.getElementById('discoveryTag').style.display = "none";
     }
 }
 
