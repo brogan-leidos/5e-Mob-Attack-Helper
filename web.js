@@ -320,7 +320,7 @@ function launchAttack() {
             }
 
         }
-        infoAppend += "<span class=\"mobHeader\" id=>" + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
+        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result">` + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
