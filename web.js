@@ -229,7 +229,7 @@ function toggleDetails(mobTag) {
             }
         }
     }   
-    detailAppend += </div>
+    detailAppend += "</div>";
     
     document.getElementById(tag).insertAdjacentHtml(detailAppend);
 }
