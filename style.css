@@ -31,13 +31,6 @@ button {
   width: 100%;
 }
 
-.addMobArea td {
-  background-color: #90b3d5;
-  text-align: left;
-  padding-left: 5px;
-  vertical-align: top;
-}
-
 /* Add mob text*/
 .addMobArea td:nth-child(1) {
   color: #f2f2f2;
@@ -57,6 +50,14 @@ button {
   text-align: left;
   vertical-align: top;
   width: 300px;
+}
+
+/* Add mob area */
+.addMobArea td {
+  background-color: #90b3d5;
+  text-align: left;
+  padding-left: 5px;
+  vertical-align: top;
 }
 
 /* Categories to add mobs */
