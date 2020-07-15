@@ -52,19 +52,23 @@ export default () => {
         createPresent("Wolf");
     });
     
-    document.getElementById('targetAc').addEventListener('change', (newAc) => {        
-        if (newAc.target.value <= 0) {
-            document.getElementById('discoveryTag').setAttribute("display", "block");
-        }
-        else {
-            document.getElementById('discoveryTag').setAttribute("display", "none");
-        }
-        
+    document.getElementById('targetAc').addEventListener('change', (newAc) => {
+        discoveryCheck(newAc);        
     });
     document.getElementById('goButton').addEventListener('click', () => {        
         launchAttack();
     });       
 };
+
+// Checks if the target ac is below zero, if so enable discovery mode
+function discoveryCheck(newAc) {
+    if (newAc.target.value <= 0) {
+        document.getElementById('discoveryTag').setAttribute("display", "block");
+    }
+    else {
+        document.getElementById('discoveryTag').setAttribute("display", "none");
+    }
+}
 
 function deleteMob(mobTag) {
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
