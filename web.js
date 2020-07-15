@@ -220,8 +220,8 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function toggleDetails(mobTag, rollArray) {
-    var details = document.getElemenyById(mobTag + "-Details");
-    if (details == null) {
+    var detailElement = document.getElemenyById(mobTag + "-Details");
+    if (detailElement == null) {
         var detailAppend = `<div id=${mobTag}-Details>`;
 
         for (var i=0; i < rollArray.length; i++) {
@@ -237,7 +237,7 @@ function toggleDetails(mobTag, rollArray) {
         document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
     }
     else {
-        details.remove();
+        detailElement.remove();
     }
 }
 
