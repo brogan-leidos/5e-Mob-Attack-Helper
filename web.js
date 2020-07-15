@@ -228,7 +228,12 @@ function toggleDetails(event, rollArray) {
         for (var i=0; i < rollArray.length; i++) {
             for (var j=0; j < rollArray[i].length; j++) {
                 if (rollArray[i][j].attacker.MobName == mobTag) {
-                    detailAppend += `<span style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} </span><br>`;
+                    if (rollArray[i][j].hitRoll == "crit") {
+                        detailAppend += `<span style="margin-left:15px; color:#b59800"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} </span><br>`;
+                    }
+                    else {
+                        detailAppend += `<span style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} </span><br>`;
+                    }
                 }
             }
         }   
