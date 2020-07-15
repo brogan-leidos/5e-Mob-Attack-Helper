@@ -63,10 +63,10 @@ export default () => {
 // Checks if the target ac is below zero, if so enable discovery mode
 function discoveryCheck(newAc) {
     if (newAc.target.value <= 0) {
-        document.getElementById('discoveryTag').setAttribute("display", "inline");
+        document.getElementById('discoveryTag').style.display = "inline";
     }
     else {
-        document.getElementById('discoveryTag').setAttribute("display", "none");
+        document.getElementById('discoveryTag').style.display = "none");
     }
 }
 
