@@ -315,7 +315,9 @@ function launchAttack() {
                     }
                 }
                 else {
-                    rollArray[block].push(mobArray[block][i].dealDamage());
+                    if (attackRoll > minAc) {
+                        rollArray[block].push(mobArray[block][i].dealDamage());
+                    }
                 }                
 
             }
