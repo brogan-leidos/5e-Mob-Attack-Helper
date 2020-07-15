@@ -271,7 +271,7 @@ function launchAttack() {
                 numCrits = numCrits + 1;
             }
             else if (discoveryModeFlag) {
-                if (attackRoll > minAc) {
+                if (attackRoll < minAc || minAc == 0) {
                     var response = confirm(attackRoll);
                     if (response) {
                         rollArray[block].push(mobArray[block][i].dealDamage());
