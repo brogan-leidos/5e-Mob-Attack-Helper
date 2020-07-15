@@ -71,6 +71,6 @@ button {
   margin-bottom: 5px;
 }
 
-.mobHeader:hover {
+.mobHeader *:hover {
   background-color: #d5d5d5;
 }
