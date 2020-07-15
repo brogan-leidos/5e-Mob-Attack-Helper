@@ -355,9 +355,10 @@ function launchAttack() {
     
     // After adding info to the box, add listeners for all of the headers so we can expand their details
     for (var block=0; block < numBlocks; block++) {
-        var id = `${blockArray[block]}-Result`;
+        var mobTag = blockArray[block];
+        var id = `${mobTag}-Result`;
         document.getElementById(id).addEventListener('click', () => {
-            toggleDetails(blockArray[block], rollArray);
+            toggleDetails(mobTag, rollArray);
         }); 
     }        
 }
