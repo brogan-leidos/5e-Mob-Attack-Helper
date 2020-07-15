@@ -255,7 +255,7 @@ function launchAttack() {
         
         mobArray[i] = new Array();
         for(var j=0; j < number; j++) {
-            mobArray[i].push(new Mob(name, icon, weapon, vantage))
+            mobArray[i].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
         }                
     }
     
@@ -320,7 +320,7 @@ function launchAttack() {
             }
 
         }
-        infoAppend += "<span class=\"mobHeader\">" + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
+        infoAppend += "<span class=\"mobHeader\" id=>" + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
