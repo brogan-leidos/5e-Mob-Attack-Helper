@@ -354,8 +354,9 @@ function launchAttack() {
     
     // After adding info to the box, add listeners for all of the headers so we can expand their details
     for (var block=0; block < numBlocks; block++) {
-        document.getElementById(`$[blockArray[block]}-Result`).addEventListener('click', () => {
-            toggleDetails(`${blockArray[block]}`);
+        var id = `$[blockArray[block]}-Result`;
+        document.getElementById(id).addEventListener('click', () => {
+            toggleDetails(blockArray[block]);
         }); 
     }        
 }
