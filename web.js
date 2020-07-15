@@ -53,7 +53,7 @@ export default () => {
     });
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {        
-        if (newAc <= 0) {
+        if (newAc.target.value <= 0) {
             alert("Will run in discovery mode");   
         }
         
