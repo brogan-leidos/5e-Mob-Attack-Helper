@@ -9,6 +9,7 @@ ToDo:
 
 Known issues:
   - It's a bit ugly, and I'm a bit terrible at CSS
+  - (+/-) split problem in weapon parse. Low priority
 
 
 
