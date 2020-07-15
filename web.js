@@ -52,6 +52,12 @@ export default () => {
         createPresent("Wolf");
     });
     
+    document.getElementById('targetAc').addEventListener('change', (newAc) => {        
+        if (newAc <= 0) {
+            alert("Will run in discovery mode");   
+        }
+        
+    });
     document.getElementById('goButton').addEventListener('click', () => {        
         launchAttack();
     });       
@@ -210,7 +216,7 @@ function launchAttack() {
     var mobArray = []; // 2d arrays: Block type, attacks of that block
     var rollArray = [];
     var numCrits = 0;
-    var numBlocks = blockArray.length;
+    var numBlocks = blockArray.length;    
     
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "block";
@@ -248,6 +254,13 @@ function launchAttack() {
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
+    
+    // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
+    var discoveryModeFlag = false;
+    if (targetAc <= 0) {
+        discoveryModeFlag = true;   
+    }
+    
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
