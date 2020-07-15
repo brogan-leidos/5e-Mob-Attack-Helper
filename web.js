@@ -220,7 +220,7 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function toggleDetails(mobTag, rollArray) {
-    var detailAppend = `<div id=${mobTag}-Details-Expanded>`;
+    var detailAppend = `<div id=${mobTag}-Details>`;
     
     for (var i=0; i < rollArray.length; i++) {
         for (var j=0; j < rollArray[i].length; j++) {
@@ -230,7 +230,7 @@ function toggleDetails(mobTag, rollArray) {
         }
     }   
     detailAppend += "</div>";
-    var tag = mobTag + "-Details";
+    var tag = mobTag + "-Result";
     
     document.getElementById(tag).insertAdjacentHtml(detailAppend);
 }
