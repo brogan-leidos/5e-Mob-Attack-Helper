@@ -34,7 +34,8 @@ button {
 .addMobArea td {
   background-color: #90b3d5;
   text-align: left;
-  padding-left: 5px
+  padding-left: 5px;
+  vertical-align: top;
 }
 
 /* Add mob text*/
@@ -48,7 +49,7 @@ button {
 }
 
 /* How to info */
-.addMobArea td:nth-child(3) {
+.addMobArea td:nth-child(4) {
   color: #f2f2f2;
   background-color: #b5cce3;
   font-family: Arial, Helvetica, sans-serif;
