@@ -12,6 +12,9 @@ import ObjectSmall from './presents/ObjectSmall.js'
 import ObjectMedium from './presents/ObjectMedium.js'
 import ObjectLarge from './presents/ObjectLarge.js'
 import ObjectHuge from './presents/ObjectHuge.js'
+import Dretch from './presents/Dretch.js'
+import Mane from './presents/Mane.js'
+
 
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
