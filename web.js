@@ -320,15 +320,15 @@ function launchAttack() {
             }
 
         }
-        infoAppend += attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
+        infoAppend += "<span class=\"mobHeader\">" + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
         infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
-        infoAppend += "<br>";
+        infoAppend += "</span><br>";
     }
     
-    var header =  totalHits.toString() + " attacks landed <br>";    
+    var header = totalHits.toString() + " attacks landed <br>";    
     if (numCrits > 0) {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
