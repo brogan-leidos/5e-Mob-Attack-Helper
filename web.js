@@ -14,8 +14,8 @@ import ObjectLarge from './presents/ObjectLarge.js'
 import ObjectHuge from './presents/ObjectHuge.js'
 
 
-var mobIncrement = 0;
-var blockArray = [];
+var mobIncrement = 0; // Used to generate unique names for each mob block
+var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -220,19 +220,25 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function toggleDetails(mobTag, rollArray) {
-    var detailAppend = `<div id=${mobTag}-Details>`;
-    
-    for (var i=0; i < rollArray.length; i++) {
-        for (var j=0; j < rollArray[i].length; j++) {
-            if (rollArray[i][j].attacker.MobName == mobTag) {
-                detailAppend += `[${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} <br>`;
+    var details = document.getElemenyById(mobTag + "-Details");
+    if (details == null) {
+        var detailAppend = `<div id=${mobTag}-Details>`;
+
+        for (var i=0; i < rollArray.length; i++) {
+            for (var j=0; j < rollArray[i].length; j++) {
+                if (rollArray[i][j].attacker.MobName == mobTag) {
+                    detailAppend += `[${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} <br>`;
+                }
             }
-        }
-    }   
-    detailAppend += "</div>";
-    var tag = mobTag + "-Result";
-    
-    document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
+        }   
+        detailAppend += "</div>";
+        var tag = mobTag + "-Result";
+
+        document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
+    }
+    else {
+        details.remove();
+    }
 }
 
 function launchAttack() {
