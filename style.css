@@ -41,6 +41,10 @@ button {
   width: 70px;
 }
 
+.addMobArea td:nth-child(2) {
+  width: 290px;
+}
+
 /* How to info */
 .addMobArea td:nth-child(4) {
   color: #f2f2f2;
