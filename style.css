@@ -71,6 +71,10 @@ button {
   margin-bottom: 5px;
 }
 
-.mobHeader *:hover {
+.mobHeader:hover {
   background-color: #e3e3e3;
+}
+
+.mobHeader:hover {
+  background-color: #e3e3e3; 
 }
