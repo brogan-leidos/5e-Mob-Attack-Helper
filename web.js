@@ -182,8 +182,7 @@ function parseWeapon(weapon, hitbonus) {
         // Something something error check   
     }
     var numAttacks = parseInt(weapon.substr(0, dSplitIndex).trim());
-    var splitWeapon = weapon.trim().split("d");
-    splitWeapon = combineEnds(splitWeapon);
+    var splitWeapon = weapon.substr(dSplitIndex + 1);
     
     splitWeapon = splitWeapon.split("+");
     var flipBit = 1;
