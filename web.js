@@ -302,7 +302,10 @@ function launchAttack() {
                 numCrits = numCrits + 1;
             }
             else if (discoveryModeFlag) {
-                if ((attackRoll < minAc && attackRoll > lowerCap) || minAc == -1) {
+                if (attackRoll <= lowerCap) {
+                    continue;
+                }
+                if (attackRoll < minAc || minAc == -1) {
                     var response = confirm(attackRoll);
                     if (response) {
                         rollArray[block].push(mobArray[block][i].dealDamage());
@@ -315,9 +318,7 @@ function launchAttack() {
                     }
                 }
                 else {
-                    if (attackRoll > minAc) {
-                        rollArray[block].push(mobArray[block][i].dealDamage());
-                    }
+                    rollArray[block].push(mobArray[block][i].dealDamage());
                 }                
 
             }
