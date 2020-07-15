@@ -220,7 +220,7 @@ function parseWeapon(weapon, hitbonus) {
 }
 
 function toggleDetails(taget, rollArray) {
-    var mobTag = target.target.id;
+    var mobTag = target.target.id.split("-")[0];
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
         var detailAppend = `<div id=${mobTag}-Details>`;
