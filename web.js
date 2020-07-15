@@ -258,7 +258,8 @@ function launchAttack() {
     // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
     var discoveryModeFlag = false;
     if (targetAc <= 0) {
-        discoveryModeFlag = true;   
+        discoveryModeFlag = true;
+        var minAc = 0;
     }
     
     for (var block=0; block < mobArray.length;block++) {
@@ -268,6 +269,19 @@ function launchAttack() {
             if (attackRoll == "crit") {
                 rollArray[block].push(mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
+            }
+            else if (discoveryModeFlag) {
+                if (attackRoll > minAc) {
+                    var response = confirm(attackRoll);
+                    if (response) {
+                        rollArray[block].push(mobArray[block][i].dealDamage());
+                        minAc = attackRoll;
+                    }
+                }
+                else {
+                    rollArray[block].push(mobArray[block][i].dealDamage());
+                }                
+
             }
             else if (attackRoll >= targetAc) {                
                 rollArray[block].push(mobArray[block][i].dealDamage());
