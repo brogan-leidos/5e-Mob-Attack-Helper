@@ -54,10 +54,10 @@ export default () => {
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {        
         if (newAc.target.value <= 0) {
-            document.getElementById('discoveryTag').setAttribute('display', block);
+            document.getElementById('discoveryTag').setAttribute("display", "block");
         }
         else {
-            document.getElementById('discoveryTag').setAttribute('display', none);
+            document.getElementById('discoveryTag').setAttribute("display", "none");
         }
         
     });
