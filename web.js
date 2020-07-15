@@ -177,11 +177,12 @@ function combineEnds(stringArray) {
 // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
 function parseWeapon(weapon, hitbonus) {
     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
-    var splitWeapon = weapon.trim().split("d");
-    if (splitWeapon.length == 1) {
-        // Something something error check
+    var dSplitIndex = weapon.indexOf("d");
+    if (dSplitIndex == -1) {
+        // Something something error check   
     }
-    var numAttacks = parseInt(splitWeapon[0].trim());
+    var numAttacks = parseInt(weapon.substr(0, dSplitIndex).trim());
+    var splitWeapon = weapon.trim().split("d");
     splitWeapon = combineEnds(splitWeapon);
     
     splitWeapon = splitWeapon.split("+");
