@@ -21,21 +21,15 @@ button {
   background-color: white;
 }
 
-.addMobArea {
-  div {
+.addMobArea div {
     margin-bottom: 2px; 
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 100%;  
-  }
+  } 
 }
 
-/* .addMobArea table {
+.addMobArea table {
   border-collapse: collapse;
   width: 100%;
-} */
+}
 
 .addMobArea td {
   background-color: #90b3d5;
