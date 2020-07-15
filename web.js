@@ -225,7 +225,7 @@ function toggleDetails(mobTag) {
     for (var i=0; i < rollArray.length; i++) {
         for (var j=0; j < rollArray[i].length; j++) {
             if (rollArray[i][j].attacker.MobName == mobTag) {
-                detailAppend += `[${rollArray[i][j].hitRoll}] ⚔${viableRolls[i][j].damageRoll} <br>`;
+                detailAppend += `[${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll} <br>`;
             }
         }
     }   
