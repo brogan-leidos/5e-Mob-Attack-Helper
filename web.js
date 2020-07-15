@@ -54,7 +54,10 @@ export default () => {
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {        
         if (newAc.target.value <= 0) {
-            alert("Will run in discovery mode");   
+            document.getElementById('discoveryTag').setAttribute('display', block);
+        }
+        else {
+            document.getElementById('discoveryTag').setAttribute('display', none);
         }
         
     });
@@ -259,7 +262,7 @@ function launchAttack() {
     var discoveryModeFlag = false;
     if (targetAc <= 0) {
         discoveryModeFlag = true;
-        var minAc = 0;
+        var minAc = -1;
     }
     
     for (var block=0; block < mobArray.length;block++) {
@@ -271,7 +274,7 @@ function launchAttack() {
                 numCrits = numCrits + 1;
             }
             else if (discoveryModeFlag) {
-                if (attackRoll < minAc || minAc == 0) {
+                if (attackRoll < minAc || minAc == -1) {
                     var response = confirm(attackRoll);
                     if (response) {
                         rollArray[block].push(mobArray[block][i].dealDamage());
