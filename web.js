@@ -232,7 +232,7 @@ function toggleDetails(mobTag, rollArray) {
     detailAppend += "</div>";
     var tag = mobTag + "-Result";
     
-    document.getElementById(tag).insertAdjacentHtml(detailAppend);
+    document.getElementById(tag).insertAdjacentHTML(detailAppend);
 }
 
 function launchAttack() {
