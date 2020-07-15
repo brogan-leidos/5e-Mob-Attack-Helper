@@ -219,6 +219,21 @@ function parseWeapon(weapon, hitbonus) {
     return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);       
 }
 
+function toggleDetails(mobTag) {
+    var detailAppend = `<div id=${mobTag}-Details-Expanded>`;
+    
+    for (var i=0; i < rollArray.length; i++) {
+        for (var j=0; j < rollArray[i].length; j++) {
+            if (rollArray[i][j].attacker.MobName == mobTag) {
+                detailAppend += `[${rollArray[i][j].hitRoll}] ⚔${viableRolls[i][j].damageRoll} <br>`;
+            }
+        }
+    }   
+    detailAppend += </div>
+    
+    document.getElementById(tag).insertAdjacentHtml(detailAppend);
+}
+
 function launchAttack() {
     var mobArray = []; // 2d arrays: Block type, attacks of that block
     var rollArray = [];
@@ -336,5 +351,11 @@ function launchAttack() {
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
-        
+    
+    // After adding info to the box, add listeners for all of the headers so we can expand their details
+    for (var block=0; block < numBlocks; block++) {
+        document.getElementById(`$[blockArray[block]}-Result`).addEventListener('click', () => {
+            toggleDetails(`${blockArray[block]}`);
+        }); 
+    }        
 }
