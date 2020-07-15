@@ -51,6 +51,12 @@ export default () => {
     document.getElementById('addWolf').addEventListener('click', () => {
         createPresent("Wolf");
     });
+    document.getElementById('addMane').addEventListener('click', () => {
+        createPresent("Mane");
+    });
+    document.getElementById('addDretch').addEventListener('click', () => {
+        createPresent("Dretch");
+    });
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
@@ -119,6 +125,12 @@ function createPresent(presentName) {
    }
    else if (presentName == "ObjectHuge") {
       newMob = new ObjectHuge(); 
+   }
+   else if (presentName == "Mane") {
+      newMob = new Mane(); 
+   }
+   else if (presentName == "Dretch") {
+      newMob = new Dretch(); 
    }
    else {
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
