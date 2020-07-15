@@ -6,6 +6,7 @@ ToDo:
   - Make the info box a bit easier to comprehend: showing an expandable version of each mob's total damage might work
   - Save a JSON of current configuration
   - Error checking when things dont go correctly in one of the fields
+  - An AC explore mode, for when the DM doesn't want to tell you the AC
 
 Known issues:
   - It's a bit ugly, and I'm a bit terrible at CSS
