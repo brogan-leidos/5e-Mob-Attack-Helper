@@ -6,8 +6,8 @@ export function mobBlock() {
       <td style="width:10px;"><button id="FILLER-BLOCK-Delete" style="color:red;" title="Delete mob">
         &times;
       </button></td>
-      <td style="width: 130px;">Name:</td>
-      <td style="width: 150px;"><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
+      <td style="">Name:</td>
+      <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
       <td style="text-align: center"><input id="FILLER-BLOCK-Enabled" name="" type="checkbox" title="Enable/Disable mob" checked="true" /></td>
