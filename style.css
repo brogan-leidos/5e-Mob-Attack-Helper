@@ -15,6 +15,11 @@ button {
   border: thin solid black;
 }
 
+.addMobArea button:active {
+  transition-duration: 0s;
+  background-color: #ccc;
+}
+
 .header {
   padding: 5px 10px;
   background-color: #99ccff;
