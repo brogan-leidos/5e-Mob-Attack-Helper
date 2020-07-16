@@ -1,5 +1,18 @@
 button {
-  border-radius: 12px;
+  border-radius: 12px; 
+}
+
+.addMobArea button {  
+  background-color: #ddd; /* Green */
+  color: black;
+  border: 1px solid #ddd;
+  transition-duration: 0.4s;
+}
+
+.addMobArea button:hover {
+  background-color: #fff; /* Green */
+  color: black;
+  border: thin solid black;
 }
 
 .header {
