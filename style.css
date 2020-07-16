@@ -19,11 +19,12 @@ button {
 .mobBlock td:nth-child(1) {
   border-right: thin solid #000;
   background-color: white;
+  text-align: center;
 }
 
 .addMobArea div {
     margin-bottom: 2px; 
-  } 
+} 
 
 .addMobArea table {
   border-collapse: collapse;
