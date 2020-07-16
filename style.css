@@ -4,14 +4,12 @@ button {
 
 .addMobArea button {  
   background-color: #ddd; /* Green */
-  color: black;
   border: 1px solid #ddd;
   transition-duration: 0.4s;
 }
 
 .addMobArea button:hover {
   background-color: #fff; /* Green */
-  color: black;
   border: thin solid black;
 }
 
@@ -39,6 +37,26 @@ button {
   border-right: thin solid #000;
   background-color: white;
   text-align: center;
+}
+
+.mobBlock button {
+  background-color: white;
+  color:red;
+  border: none;
+  transition-duration: 0.2s;
+  font-size: 18px;
+  vertical-align: top;
+  border-radius: 2px;
+}
+
+.mobBlock button:hover {
+  background-color: #ff1a1a;
+  color: white;
+}
+
+.mobBlock button:active {
+  transition-duration: 0s;
+  background-color: #ffcccc;
 }
 
 .addMobArea div {
