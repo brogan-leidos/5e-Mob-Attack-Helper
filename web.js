@@ -14,6 +14,7 @@ import ObjectLarge from './presents/ObjectLarge.js'
 import ObjectHuge from './presents/ObjectHuge.js'
 import Dretch from './presents/Dretch.js'
 import Mane from './presents/Mane.js'
+import Berserk from './presents/Berserk.js'
 
 
 
@@ -59,6 +60,9 @@ export default () => {
     });
     document.getElementById('addDretch').addEventListener('click', () => {
         createPresent("Dretch");
+    });
+    document.getElementById('addBerserk').addEventListener('click', () => {
+        createPresent("Berserk");
     });
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
@@ -134,6 +138,9 @@ function createPresent(presentName) {
    }
    else if (presentName == "Dretch") {
       newMob = new Dretch(); 
+   }
+    else if (presentName == "Berserk") {
+      newMob = new Berserk(); 
    }
    else {
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
