@@ -26,6 +26,10 @@ var mobBlockDisadvantageColor = "#ffede6";
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
 
+var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
+                    new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(),
+                    new Dretch(), new Mane(), new Berserk()]
+
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
@@ -110,44 +114,9 @@ function createPresent(presentName) {
     
    var newMob;
    var appendBlock = mobBlock();
-
-   if (presentName == "Skeleton") {
-      newMob = new Skeleton(); 
-   }
-   else if (presentName == "Zombie") {
-      newMob = new Zombie(); 
-   }
-   else if (presentName == "Ghoul") {
-      newMob = new Ghoul(); 
-   }
-   else if (presentName == "Wolf") {
-      newMob = new Wolf(); 
-   }
-   else if (presentName == "ObjectTiny") {
-      newMob = new ObjectTiny(); 
-   }
-   else if (presentName == "ObjectSmall") {
-      newMob = new ObjectSmall(); 
-   }
-   else if (presentName == "ObjectMedium") {
-      newMob = new ObjectMedium(); 
-   }
-   else if (presentName == "ObjectLarge") {
-      newMob = new ObjectLarge(); 
-   }
-   else if (presentName == "ObjectHuge") {
-      newMob = new ObjectHuge(); 
-   }
-   else if (presentName == "Mane") {
-      newMob = new Mane(); 
-   }
-   else if (presentName == "Dretch") {
-      newMob = new Dretch(); 
-   }
-    else if (presentName == "Berserk") {
-      newMob = new Berserk(); 
-   }
-   else {
+    
+   var filtered = mobReference.filter(a => a.Name == presentName);
+   if (filtered.length == 0) {     
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
        appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
        
@@ -163,7 +132,8 @@ function createPresent(presentName) {
            deleteMob(mobTag);
        });
        return;
-   }
+    }
+    newMob = filtered[0];
     
     var additionalOptions = weaponsToHtml(newMob.Weapons);
     appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
