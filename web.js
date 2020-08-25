@@ -149,10 +149,10 @@ function createPresent(presentName) {
     });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
-        changeVantage(mobTag, e.target.value);        
+        changeVantage(mobTag);        
     });
     document.getElementById(mobTag + "-Dis").addEventListener('change', (e) => {
-        changeVantage(mobTag, e.target.value);        
+        changeVantage(mobTag);        
     });
     
     return; 
@@ -165,7 +165,7 @@ function changeMobWeapon (mobTag, newValue) {
     document.getElementById(mobTag + "-Weapon").value = weapon;
 }
 
-function changeVantage(mobTag, newValue) {
+function changeVantage(mobTag) {
     var adv = document.getElementById(mobTag + "-Adv").checked;
     var dis = document.getElementById(mobTag + "-Dis").checked;
     var mob = document.getElementById(mobTag);
