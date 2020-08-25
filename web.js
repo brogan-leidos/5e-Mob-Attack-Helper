@@ -266,7 +266,7 @@ function toggleDetails(event, rollArray) {
     }
 }
 
-function launchAttack() {
+async function launchAttack() {
     var mobArray = []; // 2d arrays: Block type, attacks of that block
     var rollArray = [];
     var numCrits = 0;
