@@ -1,6 +1,7 @@
 import Mob from './presents/Mob.js'
 import {mobBlock} from './templates/Mob-Block.js'
 import {weaponsToHtml} from './templates/utils.js'
+import { discoveryTemplate } from './templates/Discovery-Template.js'
 import Weapon from './presents/Weapon.js'
 import DamageRoll from './presents/DamageRoll.js'
 import Skeleton from './presents/Skeleton.js'
@@ -324,25 +325,25 @@ function launchAttack() {
                 rollArray[block].push(mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
             }            
-            else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here
-                if (attackRoll <= lowerCap) {
-                    continue;
-                }
-                if (attackRoll < minAc || minAc == -1) {
-                    var response = confirm(attackRoll);
-                    if (response) {
-                        rollArray[block].push(mobArray[block][i].dealDamage());
-                        minAc = attackRoll;
-                    }
-                    else {
-                        if (attackRoll > lowerCap) {
-                            lowerCap = attackRoll;
-                        }
-                    }
-                }
-                else {
-                    rollArray[block].push(mobArray[block][i].dealDamage());
-                }                
+            else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
+              if (attackRoll <= lowerCap) {
+                  continue;
+              } 
+              if (attackRoll < minAc || minAc == -1) {
+                  var response = await discoveryStep(attackRoll, lowerCap);
+                  if (response) {
+                      rollArray[block].push(mobArray[block][i].dealDamage());
+                      minAc = attackRoll;
+                  }
+                  else {
+                      if (attackRoll > lowerCap) {
+                          lowerCap = attackRoll;
+                      }
+                  }
+              }
+              else {
+                  rollArray[block].push(mobArray[block][i].dealDamage());
+              }                
             }
             else if (attackRoll >= targetAc) {                
                 rollArray[block].push(mobArray[block][i].dealDamage());
@@ -400,3 +401,18 @@ function launchAttack() {
         }); 
     }        
 }
+
+async function discoveryStep(attackRoll, lowerCap, minAc) {
+  // spawn the block and wait for user input
+  return new Promise((resolve, reject) => {    
+    document.getElementById("discoveryArea").innerHTML = discoveryTemplate(attackRoll);
+
+    document.getElementById("hitButton").addEventListener("click", () => {
+      resolve(true);
+    });
+    document.getElementById("missButton").addEventListener("click", () => {
+      resolve(false);
+    });
+  }
+}
+  
