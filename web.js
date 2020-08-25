@@ -183,13 +183,13 @@ function changeVantage(mobTag, newValue) {
     var mob = document.getElementById(mobTag);
     
     if (adv && !dis) {
-        mob.style.backgroundColor = mobBlockAdvantageColor;
+        mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
     }
     else if (!adv && dis) {
-        mob.style.backgroundColor = mobBlockDisadvantageColor;
+        mob.firstElementChild.style.backgroundColor = mobBlockDisadvantageColor;
     }
     else {
-        mob.style.backgroundColor = mobBlockDefaultColor;
+        mob.firstElementChild.style.backgroundColor = mobBlockDefaultColor;
     }
    
 }
