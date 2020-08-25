@@ -104,7 +104,7 @@ function createPresent(presentName) {
    var appendBlock = mobBlock();
     
    var filtered = mobReference.filter(a => a.Name == presentName);
-   if (filtered.length == 0) {     
+   if (filtered.length == 0) {  // Generic
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
        appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
        
@@ -113,28 +113,28 @@ function createPresent(presentName) {
        
        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
        
-       document.getElementById(mobTag + "-Weapon-Select").remove();
-       
-       var deleteButton = document.getElementById(mobTag + "-Delete")  
-       deleteButton.addEventListener('click', () => {        
-           deleteMob(mobTag);
-       });
-       return;
+       document.getElementById(mobTag + "-Weapon-Select").remove();       
     }
-    newMob = filtered[0];
-    
-    var additionalOptions = weaponsToHtml(newMob.Weapons);
-    appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
-    var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
-    appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
-    
-    appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
-    appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
-    appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
-    appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
-    appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
+    else {
+        newMob = filtered[0];
 
-    mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
+        var additionalOptions = weaponsToHtml(newMob.Weapons);
+        appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+        var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
+        appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
+
+        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
+        appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
+        appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
+        appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
+        appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
+
+        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
+            
+        document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (temp) => {
+            changeMobWeapon(mobTag, temp.target.value);        
+        });
+    }
     
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);
@@ -142,11 +142,7 @@ function createPresent(presentName) {
     
     document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
         toggleMob(mobTag);
-    });
-    
-    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (temp) => {
-        changeMobWeapon(mobTag, temp.target.value);        
-    });
+    });    
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
