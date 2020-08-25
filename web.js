@@ -392,7 +392,7 @@ async function launchAttack() {
                 toggleDetails(event, rollArray);
             }); 
         } 
-        catch {
+        catch(err) {
         }             
     }        
 }
