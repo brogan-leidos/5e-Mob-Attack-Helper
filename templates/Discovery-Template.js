@@ -4,15 +4,17 @@ export function discoveryTemplate(roll) {
   <table class="discoveryBlock">
     <tbody>
       <tr>
-         ${roll}
+        <td>
+           ${roll}
+        </td>
       </tr>
       <tr>
-      <td>
-        <button id="hitButton">Hit!</button>
-      </td>
-      <td>
-        <button id="missButton">Missed</button>
-      </td>
+        <td>
+          <button id="hitButton">Hit!</button>
+        </td>
+        <td>
+          <button id="missButton">Missed</button>
+        </td>
       </tr>
     </tbody>
   </table>
