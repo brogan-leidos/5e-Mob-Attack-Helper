@@ -4,19 +4,23 @@ button {
 }
 
 .addMobArea button {  
-  background-color: #ddd; /* Green */
+  background-color: #ddd;
   border: 1px solid #ddd;
   transition-duration: 0.4s;
 }
 
 .addMobArea button:hover {
-  background-color: #fff; /* Green */
+  background-color: #fff;
   border: thin solid black;
 }
 
 .addMobArea button:active {
   transition-duration: 0s;
   background-color: #ccc;
+}
+
+.addMobArea {
+    box-shadow: 2px 2px 2px #666;
 }
 
 .header {
@@ -44,10 +48,6 @@ button {
 }
 
 .header {
-    box-shadow: 2px 2px 2px #666;
-}
-
-.addMobArea {
     box-shadow: 2px 2px 2px #666;
 }
 
@@ -159,6 +159,11 @@ body {
   border: thin solid black;  
 /*   border-collapse: collapse; */
   box-shadow: 2px 2px 2px #666;
+  background-color: #8fb3d9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+
 }
 
 .discoveryBlock button#hitButton:hover {
@@ -210,5 +215,6 @@ body {
 
 .discoveryBlock td {
   padding: 3px;
+  text-align: center;
 }
 
