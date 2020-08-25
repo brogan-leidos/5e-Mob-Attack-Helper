@@ -153,3 +153,61 @@ body {
 .mobHeader *:hover {
   background-color: #f3f3f3; 
 }
+
+.discoveryBlock {
+  margin-left: 20px;
+  border: thin solid black;  
+/*   border-collapse: collapse; */
+}
+
+.discoveryBlock button#hitButton:hover {
+  background-color: #34c239;
+  color: white;
+}
+
+.discoveryBlock button#hitButton:active {
+  transition-duration: 0s;
+  background-color: #adedaf;
+}
+
+.discoveryBlock button#hitButton {
+  background-color: white;
+  color: #34c239;
+  border: thin solid;
+  transition-duration: 0.2s;
+  font-size: 18px;
+  vertical-align: top;
+  border-radius: 2px;
+  width: 100%;
+  box-shadow: 0px 0px 0px;
+  padding: 2px 16px 2px 16px;
+}
+
+.discoveryBlock button#missButton:hover {
+  background-color: #ff1a1a;
+  color: white;
+}
+
+.discoveryBlock button#missButton:active {
+  transition-duration: 0s;
+  background-color: #ffcccc;
+}
+
+.discoveryBlock button#missButton {
+  background-color: white;
+  color:red;
+  border: thin solid;
+  transition-duration: 0.2s;
+  font-size: 18px;
+  vertical-align: top;
+  border-radius: 2px;
+  width: 100%;
+  box-shadow: 0px 0px 0px;
+  padding: 2px 10px 2px 10px;
+
+}
+
+.discoveryBlock td {
+  padding: 3px;
+}
+
