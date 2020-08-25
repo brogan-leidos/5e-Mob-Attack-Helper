@@ -396,7 +396,9 @@ async function launchAttack() {
 async function discoveryStep(attackRoll) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").innerHTML = discoveryTemplate(attackRoll);
+    var template = discoveryTemplate(attackRoll);
+    document.getElementById("discoveryArea").innerHTML = template; 
+             
 
     document.getElementById("hitButton").addEventListener("click", () => {
       resolve(true);
