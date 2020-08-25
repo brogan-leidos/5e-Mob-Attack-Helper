@@ -4,7 +4,7 @@ export function discoveryTemplate(roll) {
   <table class="discoveryBlock">
     <tbody>
       <tr>
-        <td>
+        <td colspan=2>
            ${roll}
         </td>
       </tr>
