@@ -12,6 +12,7 @@ button {
 .addMobArea button:hover {
   background-color: #fff;
   border: thin solid black;
+  cursor: pointer;
 }
 
 .addMobArea button:active {
@@ -80,6 +81,7 @@ body {
 .mobBlock button:hover {
   background-color: #ff1a1a;
   color: white;
+  cursor: pointer;
 }
 
 .mobBlock button:active {
