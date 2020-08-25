@@ -16,7 +16,7 @@ var blockArray = []; // Used globally as a reference to what mob blocks exist on
 
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(),
-                    new Dretch(), new Mane(), new Berserk()]
+                    new Dretch(), new Mane(), new Berserk()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -88,7 +88,7 @@ function deleteMob(mobTag) {
 function toggleMob(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
-        document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDefaultColor;
+        changeVantage(mobTag);        
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
     }
