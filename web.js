@@ -387,9 +387,13 @@ async function launchAttack() {
     for (var block=0; block < numBlocks; block++) {
         var mobTag = blockArray[block];
         var id = `${mobTag}-Result`;
-        document.getElementById(id).addEventListener('click', (event) => {
-            toggleDetails(event, rollArray);
-        }); 
+        try {
+            document.getElementById(id).addEventListener('click', (event) => {
+                toggleDetails(event, rollArray);
+            }); 
+        } 
+        catch {
+        }             
     }        
 }
 
