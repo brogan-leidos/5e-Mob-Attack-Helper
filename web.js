@@ -169,7 +169,12 @@ function changeVantage(mobTag) {
     var adv = document.getElementById(mobTag + "-Adv").checked;
     var dis = document.getElementById(mobTag + "-Dis").checked;
     var mob = document.getElementById(mobTag);
-    
+    var enabled = document.getElementById(mobTag + "-Enabled").checked;
+
+    if (!enabled) {
+        return;
+    }
+         
     if (adv && !dis) {
         mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
     }
