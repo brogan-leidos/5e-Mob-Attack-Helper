@@ -350,6 +350,10 @@ function launchAttack() {
             } 
         }
     }
+  
+    if (discoveryModeFlag) { //Cleanup after all rolls have been processed
+      document.getElementById("discoveryArea").innerHTML = "";
+    }
     
     // Take a sum of the attacks that landed. Boom, dead enemy, maybe.    
     var totalDamage = 0;
