@@ -1,6 +1,6 @@
 export function discoveryTemplate(roll) {  
   
-  return `<div id="FILLER-BLOCK" >
+  return `
 <table class="discoveryBlock">
   <tbody>
     <tr>
@@ -16,5 +16,5 @@ export function discoveryTemplate(roll) {
     </tr>
   </tbody>
 </table>
-</div>`
+`
 }
