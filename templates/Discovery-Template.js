@@ -1,6 +1,6 @@
 export function discoveryTemplate(roll) {  
   
-  var temp = `
+ return `
   <table class="discoveryBlock">
     <tbody>
       <tr>
@@ -19,6 +19,4 @@ export function discoveryTemplate(roll) {
     </tbody>
   </table>
   `
-  
-  return temp;
 }
