@@ -1,22 +1,9 @@
 import Mob from './presents/Mob.js'
-import {mobBlock} from './templates/Mob-Block.js'
-import {weaponsToHtml} from './templates/utils.js'
+import { mobBlock } from './templates/Mob-Block.js'
+import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate } from './templates/Discovery-Template.js'
-import Weapon from './presents/Weapon.js'
-import DamageRoll from './presents/DamageRoll.js'
-import Skeleton from './presents/Skeleton.js'
-import Zombie from './presents/Zombie.js'
-import Ghoul from './presents/Ghoul.js'
-import Wolf from './presents/Wolf.js'
-import ObjectTiny from './presents/ObjectTiny.js'
-import ObjectSmall from './presents/ObjectSmall.js'
-import ObjectMedium from './presents/ObjectMedium.js'
-import ObjectLarge from './presents/ObjectLarge.js'
-import ObjectHuge from './presents/ObjectHuge.js'
-import Dretch from './presents/Dretch.js'
-import Mane from './presents/Mane.js'
-import Berserk from './presents/Berserk.js'
-
+import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge,
+         Dretch, Mane, Berserk } from './presents/index.js'
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "grey";
