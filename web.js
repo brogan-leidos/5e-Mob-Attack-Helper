@@ -317,7 +317,7 @@ async function launchAttack() {
                   continue;
               } 
               if (attackRoll < minAc || minAc == -1) {
-                  var response = await discoveryStep(attackRoll, lowerCap);
+                  var response = await discoveryStep(attackRoll);
                   if (response) {
                       rollArray[block].push(mobArray[block][i].dealDamage());
                       minAc = attackRoll;
@@ -393,7 +393,7 @@ async function launchAttack() {
     }        
 }
 
-async function discoveryStep(attackRoll, lowerCap, minAc) {
+async function discoveryStep(attackRoll) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
     document.getElementById("discoveryArea").innerHTML = discoveryTemplate(attackRoll);
@@ -404,6 +404,6 @@ async function discoveryStep(attackRoll, lowerCap, minAc) {
     document.getElementById("missButton").addEventListener("click", () => {
       resolve(false);
     });
-  }
+  });
 }
   
