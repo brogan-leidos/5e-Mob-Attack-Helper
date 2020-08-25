@@ -287,9 +287,9 @@ async function launchAttack() {
         
         var vantage = advantage + disadvantage;
         
-        mobArray[i] = new Array();
+        mobArray.push(new Array());
         for(var j=0; j < number; j++) {
-            mobArray[i].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
         }                
     }
     
