@@ -17,6 +17,11 @@ import Mane from './presents/Mane.js'
 import Berserk from './presents/Berserk.js'
 
 
+var mobBlockDefaultColor = "#f9f9eb";
+var mobBlockDisableColor = "grey";
+var mobBlockAdvantageColor = "#efffe6";
+var mobBlockDisadvantageColor = "#ffede6";
+
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
@@ -91,9 +96,9 @@ function deleteMob(mobTag) {
 function toggleMob(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (enabled) {
-        document.getElementById(mobTag).firstElementChild.style.backgroundColor = "#f9f9eb";
+        document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDefaultColor;
     } else {
-        document.getElementById(mobTag).firstElementChild.style.backgroundColor = "grey";
+        document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
     }
 }
 
@@ -173,19 +178,23 @@ function createPresent(presentName) {
 
     mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
     
-    var deleteButton = document.getElementById(mobTag + "-Delete")  
-    deleteButton.addEventListener('click', () => {        
+    document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);
     });
     
-    var toggleButton = document.getElementById(mobTag + "-Enabled")  
-    toggleButton.addEventListener('click', () => {        
+    document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
         toggleMob(mobTag);
     });
     
-    var weaponSelect = document.getElementById(mobTag + "-Weapon-Select")
-    weaponSelect.addEventListener('change', (temp) => {
+    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (temp) => {
         changeMobWeapon(mobTag, temp.target.value);        
+    });
+    
+    document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
+        changeVantage(mobTag, e.target.value);        
+    });
+    document.getElementById(mobTag + "-Dis").addEventListener('change', (e) => {
+        changeVantage(mobTag, e.target.value);        
     });
     
     return; 
@@ -196,6 +205,23 @@ function changeMobWeapon (mobTag, newValue) {
     var weapon = newValue.split("Weapon:")[1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
+}
+
+function changeVantage(mobTag, newValue) {
+    var adv = document.getElementById(mobTag + "-Adv").checked;
+    var dis = document.getElementById(mobTag + "-Dis").checked;
+    var mob = document.getElementById(mobTag);
+    
+    if (adv && !dis) {
+        mob.style.backgroundColor = mobBlockAdvantageColor;
+    }
+    else if (!adv && dis) {
+        mob.style.backgroundColor = mobBlockDisadvantageColor;
+    }
+    else {
+        mob.style.backgroundColor = mobBlockDefaultColor;
+    }
+   
 }
 
 function combineEnds(stringArray) {
