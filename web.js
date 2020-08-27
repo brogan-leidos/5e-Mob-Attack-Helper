@@ -23,8 +23,8 @@ export default () => {
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
     
     var buttons = document.getElementsByClassName("addMobButton");
-    for (let button in buttons) {
-        button.addEventListener("click", (e) => {
+    for (var i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", (e) => {
            createPresent(e.target.id); 
         });
     }
