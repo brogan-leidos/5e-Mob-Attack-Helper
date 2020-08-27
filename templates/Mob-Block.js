@@ -24,6 +24,7 @@ export function mobBlock() {
         <option value="wolf">🐺</option>
         <option value="cat">🐱</option>
         <option value="bird">🦅</option>
+        <option value="elk">🦌</option>
         <option value="dolphin">🐬</option>
         <option value="plant">🌲</option>
         <option value="robot">🤖</option>
