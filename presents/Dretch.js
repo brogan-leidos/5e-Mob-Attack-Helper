@@ -6,7 +6,7 @@ export default class Dretch extends Mob {
   constructor() {
     super();
     this.Name = "Dretch";
-    this.Icon = "\"devil\""   
+    this.Icon = "\"ogre\""   
     
     this.DamageRoll = new DamageRoll();
     
