@@ -22,45 +22,52 @@ export default () => {
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
     
-    document.getElementById('addTiny').addEventListener('click', () => {
-        createPresent("ObjectTiny");
-    });
-    document.getElementById('addSmall').addEventListener('click', () => {
-        createPresent("ObjectSmall");
-    });
-    document.getElementById('addMedium').addEventListener('click', () => {
-        createPresent("ObjectMedium");
-    });
-    document.getElementById('addLarge').addEventListener('click', () => {
-        createPresent("ObjectLarge");
-    });
-    document.getElementById('addHuge').addEventListener('click', () => {
-        createPresent("ObjectHuge");
-    });        
-    document.getElementById('addBlank').addEventListener('click', () => {
-        createPresent("");
-    });    
-    document.getElementById('addSkeleton').addEventListener('click', () => {
-        createPresent("Skeleton");
-    });
-    document.getElementById('addZombie').addEventListener('click', () => {
-        createPresent("Zombie");
-    });    
-    document.getElementById('addGhoul').addEventListener('click', () => {
-        createPresent("Ghoul");
-    });    
-    document.getElementById('addWolf').addEventListener('click', () => {
-        createPresent("Wolf");
-    });
-    document.getElementById('addMane').addEventListener('click', () => {
-        createPresent("Mane");
-    });
-    document.getElementById('addDretch').addEventListener('click', () => {
-        createPresent("Dretch");
-    });
-    document.getElementById('addBerserk').addEventListener('click', () => {
-        createPresent("Berserk");
-    });
+    var buttons = document.getElementsByClassName("addMobButton");
+    for (let button in buttons) {
+        button.addEventListener("click", (e) => {
+           createPresent(e.target.id); 
+        });
+    }
+         
+//     document.getElementById('addTiny').addEventListener('click', () => {
+//         createPresent("ObjectTiny");
+//     });
+//     document.getElementById('addSmall').addEventListener('click', () => {
+//         createPresent("ObjectSmall");
+//     });
+//     document.getElementById('addMedium').addEventListener('click', () => {
+//         createPresent("ObjectMedium");
+//     });
+//     document.getElementById('addLarge').addEventListener('click', () => {
+//         createPresent("ObjectLarge");
+//     });
+//     document.getElementById('addHuge').addEventListener('click', () => {
+//         createPresent("ObjectHuge");
+//     });        
+//     document.getElementById('addBlank').addEventListener('click', () => {
+//         createPresent("");
+//     });    
+//     document.getElementById('addSkeleton').addEventListener('click', () => {
+//         createPresent("Skeleton");
+//     });
+//     document.getElementById('addZombie').addEventListener('click', () => {
+//         createPresent("Zombie");
+//     });    
+//     document.getElementById('addGhoul').addEventListener('click', () => {
+//         createPresent("Ghoul");
+//     });    
+//     document.getElementById('addWolf').addEventListener('click', () => {
+//         createPresent("Wolf");
+//     });
+//     document.getElementById('addMane').addEventListener('click', () => {
+//         createPresent("Mane");
+//     });
+//     document.getElementById('addDretch').addEventListener('click', () => {
+//         createPresent("Dretch");
+//     });
+//     document.getElementById('addBerserk').addEventListener('click', () => {
+//         createPresent("Berserk");
+//     });
     
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
