@@ -6,7 +6,7 @@ export default class Berserk extends Mob {
   constructor() {
     super();
     this.Name = "Berserk";
-    this.Icon = "\"devil\""   
+    this.Icon = "\"beard\""   
     
     this.DamageRoll = new DamageRoll();
     
