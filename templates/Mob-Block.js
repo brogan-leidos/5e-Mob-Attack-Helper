@@ -14,6 +14,7 @@ export function mobBlock() {
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
+        <option value="beard"></option>
         <option value="zombie">🧟</option>
         <option value="skull">💀</option>
         <option value="shade">👤</option>
