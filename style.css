@@ -236,7 +236,6 @@ body {
 #infoAreaDiv {
  margin: 0px 0px 0px 15px;
  float: left; 
- display: block;
 }
 
 #discoveryArea {
@@ -245,6 +244,7 @@ body {
 
 #mobBlockArea {
   float:left;
+  /*! width: 100%; */
 }
 
 @media screen and (max-width: 600px) {
@@ -284,13 +284,14 @@ body {
   }
   
   #infoArea {   
-    background-color: white;
+    background-color: white; 
   }
   
   #infoAreaDiv {
     margin: 0px 0px 0px 0px;
     float: none;
-    
+    display: inline-block;
+    box-shadow: 2px 2px 2px #666;
   } 
   
   .mobBlock {
@@ -298,10 +299,8 @@ body {
   }
   
   .mobBlock tr:nth-child(1) td:nth-child(1) {
-      width: 0px;
-    
+    width: 0px;    
   }
-  
-  
+    
 }
 
