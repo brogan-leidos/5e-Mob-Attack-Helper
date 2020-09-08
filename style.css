@@ -99,7 +99,7 @@ body {
 }
 
 /* Add mob text*/
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 660px) {
   .addMobArea td:nth-child(1) {
     color: #f2f2f2;
     background-color: #b5cce3;
@@ -257,7 +257,7 @@ body {
   grid-template-rows: auto minmax(min-content, 1fr) auto;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
   body {
     background-color: whitesmoke;
   }
