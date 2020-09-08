@@ -34,7 +34,6 @@ button {
 
 .mobBlock {
   border: thin solid #000;
-  width: ;
   border-collapse: collapse;
   background-color: #f9f9eb;
   margin-bottom: 5px;
@@ -244,7 +243,6 @@ body {
 
 #mobBlockArea {
   float:left;
-  /*! width: 100%; */
 }
 
 @media screen and (max-width: 600px) {
