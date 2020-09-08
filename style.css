@@ -7,6 +7,7 @@ button {
   background-color: #ddd;
   border: 1px solid #ddd;
   transition-duration: 0.4s;
+  margin-bottom: 2px;
 }
 
 .addMobArea button:hover {
