@@ -7,7 +7,7 @@ button {
   background-color: #ddd;
   border: 1px solid #ddd;
   transition-duration: 0.4s;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .addMobArea button:hover {
@@ -100,14 +100,22 @@ body {
 }
 
 /* Add mob text*/
-.addMobArea td:nth-child(1) {
-  color: #f2f2f2;
-  background-color: #b5cce3;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: middle;
-  width: 70px;
+@media screen and (min-width: 600px) {
+  .addMobArea td:nth-child(1) {
+    color: #f2f2f2;
+    background-color: #b5cce3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    width: 70px;
+  }
+  
+  #goButton {
+  color: red;
+  margin-left: 10px;
+  font-size: 16px;
+}
 }
 
 .addMobArea td:nth-child(2) {
@@ -218,5 +226,63 @@ body {
 .discoveryBlock td {
   padding: 3px;
   text-align: center;
+}
+
+#infoAreaDiv {
+ margin: 0px 0px 0px 15px;
+ float: left; 
+ display: block;
+}
+
+#discoveryArea {
+  float: left;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    background-color: whitesmoke;
+  }
+  
+  button {
+    font-size: 15px;
+  }
+  
+  .addMobArea td:nth-child(1) {
+    display: none;
+  }
+  
+  .addMobArea td:nth-child(3) {
+    padding-right: 5px;
+  }
+  
+  .addMobArea td:nth-child(4) {
+    display: none;
+  }
+  
+  #goButton {
+    margin: 1px 0px 1px 1px;;
+    color: red;
+    font-size: 16px;
+  }
+  
+  #discoveryArea {
+    margin: 5px 0px 0px 0px;
+  }
+  
+  #infoArea {   
+    background-color: white;
+  }
+  
+  #infoAreaDiv {
+    margin: 0px 0px 0px 0px;
+    float: left; 
+    display: block;
+  }
+  
+  .discoveryBlock {
+    margin: 0px 0px 0px 0px;
+  }
+  
+  
 }
 
