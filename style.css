@@ -288,12 +288,11 @@ body {
   }
   
   #infoAreaDiv {
-    margin: 0px 0px 0px 0px;
+    margin: 5px 0px 5px 0px;
     float: none;
     display: inline-block;
-    box-shadow: 2px 2px 2px #666;
     grid-row: 2
-  }  
+  } 
   
   #discoveryArea {
     margin: 5px 0px 0px 0px;
