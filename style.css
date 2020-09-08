@@ -234,15 +234,18 @@ body {
 
 #infoAreaDiv {
  margin: 0px 0px 5px 15px;
- float: left; 
+ float: left;
+ grid-row: 1;
 }
 
 #discoveryArea {
   float: left;
+  grid-row: 1;
 }
 
 #mobBlockArea {
   float:left;
+  grid-row: 1;
 }
 
 .mobArea {
@@ -277,12 +280,7 @@ body {
     color: red;
     font-size: 16px;
   }
-  
-  #discoveryArea {
-    margin: 5px 0px 0px 0px;
-    float:none;
-  }
-   
+
   .discoveryBlock {
     margin: 0px 0px 0px 0px;
   }
@@ -296,7 +294,19 @@ body {
     float: none;
     display: inline-block;
     box-shadow: 2px 2px 2px #666;
+    grid-row: 2
   } 
+  
+  #discoveryArea {
+    margin: 5px 0px 0px 0px;
+    float:none;
+    grid-row: 1
+  }
+
+  #mobBlockArea {
+    float:left;
+    grid-row: 3;
+  }
   
   .mobBlock {
     width: 100%;   
