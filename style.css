@@ -295,7 +295,7 @@ body {
   #infoAreaDiv {
     margin: 5px 0px 5px 0px;
     float: none;
-    display: inline-block;
+    display: none;
     grid-row: 2;
     grid-column: 1;
   } 
