@@ -235,6 +235,7 @@ body {
   margin: 0px 0px 5px 15px;
   grid-row: 1;
   grid-column: 2;
+  display: none;
 }
 
 #discoveryArea {
