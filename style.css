@@ -49,10 +49,6 @@ button {
 }
 
 .header {
-    box-shadow: 2px 2px 2px #666;
-}
-
-#infoAreaDiv {
   box-shadow: 2px 2px 2px #666;
 }
 
@@ -79,7 +75,6 @@ body {
   font-size: 18px;
   vertical-align: top;
   border-radius: 2px;
-  /*! width: 100%; */
   box-shadow: 0px 0px 0px;
 }
 
@@ -116,10 +111,10 @@ body {
   }
   
   #goButton {
-  color: red;
-  margin-left: 10px;
-  font-size: 16px;
-}
+    color: red;
+    margin-left: 10px;
+    font-size: 16px;
+  }
 }
 
 .addMobArea td:nth-child(2) {
@@ -232,9 +227,12 @@ body {
   text-align: center;
 }
 
+#infoAreaDiv table {
+  box-shadow: 2px 2px 2px #666;
+}
+
 #infoAreaDiv {
  margin: 0px 0px 5px 15px;
- float: left;
  grid-row: 1;
 }
 
@@ -250,7 +248,7 @@ body {
 
 .mobArea {
   display: grid;
-  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-columns: 4;
   grid-template-rows: auto minmax(min-content, 1fr) auto;
 }
 
@@ -295,7 +293,7 @@ body {
     display: inline-block;
     box-shadow: 2px 2px 2px #666;
     grid-row: 2
-  } 
+  }  
   
   #discoveryArea {
     margin: 5px 0px 0px 0px;
