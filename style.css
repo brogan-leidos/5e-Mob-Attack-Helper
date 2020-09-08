@@ -65,6 +65,7 @@ body {
   border-right: thin solid #000;
   background-color: white;
   text-align: center;
+  width: 10px;
 }
 
 .mobBlock button {
@@ -75,7 +76,7 @@ body {
   font-size: 18px;
   vertical-align: top;
   border-radius: 2px;
-  width: 100%;
+  /*! width: 100%; */
   box-shadow: 0px 0px 0px;
 }
 
@@ -238,6 +239,10 @@ body {
   float: left;
 }
 
+#mobBlockArea {
+  float:left;
+}
+
 @media screen and (max-width: 600px) {
   body {
     background-color: whitesmoke;
@@ -267,6 +272,11 @@ body {
   
   #discoveryArea {
     margin: 5px 0px 0px 0px;
+    float:none;
+  }
+   
+  .discoveryBlock {
+    margin: 0px 0px 0px 0px;
   }
   
   #infoArea {   
@@ -275,12 +285,17 @@ body {
   
   #infoAreaDiv {
     margin: 0px 0px 0px 0px;
-    float: left; 
-    display: block;
+    float: none;
+    
+  } 
+  
+  .mobBlock {
+    width: 100%;   
   }
   
-  .discoveryBlock {
-    margin: 0px 0px 0px 0px;
+  .mobBlock tr:nth-child(1) td:nth-child(1) {
+      width: 0px;
+    
   }
   
   
