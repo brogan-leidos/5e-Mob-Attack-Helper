@@ -228,7 +228,7 @@ async function launchAttack() {
     var numBlocks = blockArray.length;    
     
     // Activate the info box
-    document.getElementById("infoAreaDiv").style.display = "block";
+    document.getElementById("infoAreaDiv").style.display = "inline-block";
     
     if (numBlocks == 0){
         infoArea.innerHTML = "There are no mobs available to attack with!";
