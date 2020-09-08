@@ -245,6 +245,12 @@ body {
   float:left;
 }
 
+.mobArea {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+}
+
 @media screen and (max-width: 600px) {
   body {
     background-color: whitesmoke;
