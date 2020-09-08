@@ -34,7 +34,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-      <select id="FILLER-BLOCK-Weapon-Select" title="Common weapons for this mob type">
+      <select id="FILLER-BLOCK-Weapon-Select" class="weaponSelect" title="Common weapons for this mob type">
           <option value="ToHit:0 Weapon:">Custom</option>
           ADDITIONAL-WEAPONS
         </select>
