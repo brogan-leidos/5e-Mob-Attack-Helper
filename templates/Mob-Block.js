@@ -3,7 +3,6 @@ export function mobBlock() {
 <table class="mobBlock">
   <tbody>
     <tr>
-//       <td style="width:10px;"><button id="FILLER-BLOCK-Delete" title="Delete mob">
       <td><button id="FILLER-BLOCK-Delete" title="Delete mob">
         &times;
       </button></td>
@@ -35,7 +34,6 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-//         <select style="width:30px" id="FILLER-BLOCK-Weapon-Select" title="Common weapons for this mob type">
       <select id="FILLER-BLOCK-Weapon-Select" title="Common weapons for this mob type">
           <option value="ToHit:0 Weapon:">Custom</option>
           ADDITIONAL-WEAPONS
