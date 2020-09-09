@@ -369,6 +369,7 @@ async function launchAttack() {
     
     // Take a sum of the attacks that landed. Boom, dead enemy, maybe.    
     var totalDamage = 0;
+    var totalDamageBreakdown = {};
     var totalHits = 0;
     var infoAppend = "";
     
@@ -404,13 +405,24 @@ async function launchAttack() {
             infoAppend += ` + ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
         }
         infoAppend += "</span><br>";
+        
+        // Create a detailed breakdown while we're tallying damage. WE should come back and consolidate these two methods to just use the breakdown
+        if (!totalDamageBreakdown[rollArray[block][0].damageType]) { 
+            totalDamageBreakdown[rollArray[block][0].damageType] = 0;
+        }
+        totalDamageBreakdown[rollArray[block][0].damageType] += blockTotalDamage;
+        
+        if (!totalDamageBreakdown[rollArray[block][0].damageType2]) { 
+            totalDamageBreakdown[rollArray[block][0].damageType2] = 0;
+        }
+        totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
     }
     
     var header = totalHits.toString() + " attacks landed <br>";    
     if (numCrits > 0) {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
-    header += totalDamage.toString().concat(" total damage delt<br>")
+    header += `<span title="${displayBreakdown()}" style="cursor:pointer">${totalDamage} total damage delt</span><br>`;
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
@@ -427,6 +439,15 @@ async function launchAttack() {
         catch(err) {
         }             
     }        
+}
+
+function displayBreakdown() {
+    var ret = "";
+    var keys = totalDamageBreakdown.keys();
+    for (var i=0; i < keys.length; i++) {
+        ret += `-- ${keys[i]}:${totalDamageBreakdown[keys[i]]} -- `;
+    }
+    return ret;
 }
 
 async function discoveryStep(attackRoll) {
