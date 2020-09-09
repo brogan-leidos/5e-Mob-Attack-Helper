@@ -7,6 +7,7 @@ ToDo:
   - Error checking when things dont go correctly in one of the fields
   - A more versatile weapon input system
   - Using the discovery template, allow for enemy saving throws, and do some stuff with that.... :\
+  - Adamantine armor option (crit but no double damage)
 
 Known issues:
   - It's a bit ugly, and I'm a bit terrible at CSS
