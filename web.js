@@ -372,11 +372,15 @@ async function launchAttack() {
         var attacker = rollArray[block][0].attacker;
         var numOfBlockCrits = 0;
         var blockTotalDamage = 0;
+        var blockTotalDamage2 = 0;
         
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
             totalDamage += rollArray[block][i].damageRoll;
+            totalDamage += rollArray[block][i].damageRoll2;
             blockTotalDamage += rollArray[block][i].damageRoll;
+            blockTotalDamage2 += rollArray[block][i].damageRoll2;
+
             if (rollArray[block][i].crit) {
                 numOfBlockCrits += 1;
             }
@@ -387,6 +391,9 @@ async function launchAttack() {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
         infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
+        if (blockTotalDamage2 != 0) {
+            infoAppend += `and ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
+        }
         infoAppend += "</span><br>";
     }
     
