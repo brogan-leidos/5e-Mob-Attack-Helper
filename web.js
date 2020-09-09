@@ -128,6 +128,11 @@ function createPresent(presentName) {
         expandWeapon(mobTag);        
     });
     
+    if (newMob.EquipWeapon.WeaponString2) {
+        expandWeapon(mobTag);
+        document.getElementById(`${mobTag}-Weapon2`).value = newMob.EquipWeapon.WeaponString2;
+    }
+         
     return; 
 }
 
@@ -145,7 +150,7 @@ function expandWeapon(mobTag) {
                             <tr id="${mobTag}-WeaponExpandRow3">
                                 <td>&nbsp</td>
                                 <td><input id="${mobTag}-Something" name="idk" type="checkbox" /> <label for="idk">idk OwO</label></td>
-                                <td><input id="${mobTag}-HalfOnSave" name="halfOnSave" type="checkbox" /> <label for="halfOnSave"> 1/2 dmg on save</label></td>                                
+                                <td><input id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">include in crit</label></td>                                
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
@@ -284,18 +289,23 @@ async function launchAttack() {
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
-        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;
+        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;        
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
         var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
         
         weapon = parseWeapon(weapon, tohit);
+        if (document.getElementById(blockArray[i].concat("-Weapon2"))) {
+            var weapon2 = document.getElementById(blockArray[i].concat("-Weapon2")).value;
+            var partofcrit = document.getElementById(blockArray[i].concat("-IncludeCrit")).checked;
+            weapon2 = parseWeapon(weapon2, toHit);
+        }
         
         var vantage = advantage + disadvantage;
         
         mobArray.push(new Array());
         for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], weapon2, partofcrit))
         }                
     }
     
