@@ -9,7 +9,7 @@ export default class Weapon {
         if (typeof(arg2) === "string") {
             this.BonusToHit = arg1;
             this.WeaponString = arg2;
-            this.WeaponString2 = arg3;
+            this.WeaponString2 = arg3;            
         }
     }
     
