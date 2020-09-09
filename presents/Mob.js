@@ -2,7 +2,7 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", weapon2) {
+    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", weapon2, partofcrit=false) {
     this.AC = 0;
     this.Health = 0;
     this.Str = 0;
@@ -14,7 +14,7 @@ export default class Mob {
     this.Weapons = [];
     this.EquipWeapon = weapon;
     this.Weapon2 = weapon2;
-    this.Weapon2PartOfCrit = false;
+    this.Weapon2PartOfCrit = partofcrit;
         
     this.Name = name;
     this.Icon = icon;
