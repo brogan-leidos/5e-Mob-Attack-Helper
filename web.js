@@ -458,9 +458,9 @@ function displayBreakdown(totalDamageBreakdown) {
         if (keys[i] == "") {
             continue;
         }
-        ret += `${keys[i]}: ${totalDamageBreakdown[keys[i]]} `;
+        ret += `${keys[i]}: ${totalDamageBreakdown[keys[i]]}`;
         if (i < keys.length-1) { 
-            ret += ',';
+            ret += ', ';
         }
     }
     return ret;
