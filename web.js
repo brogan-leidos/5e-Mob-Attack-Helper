@@ -422,7 +422,7 @@ async function launchAttack() {
     if (numCrits > 0) {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
-    header += `<span title="${displayBreakdown()}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
+    header += `<span title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
@@ -441,7 +441,7 @@ async function launchAttack() {
     }        
 }
 
-function displayBreakdown() {
+function displayBreakdown(totalDamageBreakdown) {
     var ret = "";
     var keys = totalDamageBreakdown.keys();
     for (var i=0; i < keys.length; i++) {
