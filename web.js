@@ -422,7 +422,7 @@ async function launchAttack() {
     if (numCrits > 0) {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
-    header += `<span title="${displayBreakdown()}" style="cursor:pointer">${totalDamage} total damage delt</span><br>`;
+    header += `<span title="${displayBreakdown()}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
