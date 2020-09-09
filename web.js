@@ -412,7 +412,7 @@ async function launchAttack() {
         }
         totalDamageBreakdown[rollArray[block][0].damageType] += blockTotalDamage;
         
-        if (!totalDamageBreakdown[rollArray[block][0].damageType2] && totalDamageBreakdown[rollArray[block][0].damageType2 != "") { 
+        if (!totalDamageBreakdown[rollArray[block][0].damageType2] && totalDamageBreakdown[rollArray[block][0].damageType2] != "") { 
             totalDamageBreakdown[rollArray[block][0].damageType2] = 0;
         }
         totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
