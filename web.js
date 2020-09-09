@@ -136,7 +136,7 @@ function createPresent(presentName) {
     return; 
 }
 
-mobHasExpandedWeapon(mobTag) {
+function mobHasExpandedWeapon(mobTag) {
     return !!document.getElementById(`${mobTag}-WeaponExpandRow1`);
 }
 
