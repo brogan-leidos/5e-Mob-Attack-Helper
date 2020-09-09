@@ -126,7 +126,7 @@ function createPresent(presentName) {
     return; 
 }
 
-function expandWepaon(mobTag) {
+function expandWeapon(mobTag) {
     var weaponDetailsHtml = `<tr>
                                 <td>&nbsp</td>
                                 <td>Field 1</td>
