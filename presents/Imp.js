@@ -11,7 +11,7 @@ export default class Imp extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Sting", 5, "1d4 + 3 piercing", "3d6 poison"),
+      new Weapon("Sting", 5, "1d4 + 3 piercing", "3d6 + 0 poison"),
     ];
     
     this.EquipWeapon = this.Weapons[0];
