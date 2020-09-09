@@ -160,9 +160,14 @@ function expandWeapon(mobTag) {
 
 function changeMobWeapon (mobTag, newValue) {
     var toHit = parseInt(newValue.split("ToHit:")[1].split("Weapon:")[0]);
-    var weapon = newValue.split("Weapon:")[1];
+    var weapon = newValue.split("Weapon:")[1].split("Weapon2:")[0];
+    var weapon2 = newValue.split("Weapon2:")[1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
+    if (weapon2 != "") {
+        expandWeapon(mobTag);
+        document.getElementById(mobTag + "-Weapon2").value = weapon2;
+    }
 }
 
 function changeVantage(mobTag) {
