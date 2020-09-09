@@ -46,8 +46,10 @@ export function mobBlock() {
       <td>
         &nbsp;
       </td>
-      <td>Weapon:</td>
-      <td><button id="FILLER-BLOCK-Weapon-Expand">...</button></td>
+      <tr>
+        <td>Weapon:</td>
+        <td><button id="FILLER-BLOCK-Weapon-Expand">...</button></td>
+      </tr>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
     </tr>
     <tr>
