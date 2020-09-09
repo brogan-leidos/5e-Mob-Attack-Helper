@@ -10,10 +10,10 @@ export default class Weapon {
         this.WeaponString2 = "";
     }
     
-     constructor (name="", tohit=0, weapon="", weapon2="") {
-        this.Name = name;
-        this.BonusToHit = tohit;
-        this.WeaponString = weapon;
-        this.WeaponString2 = weapon2;
-    }       
+//      constructor (name="", tohit=0, weapon="", weapon2="") {
+//         this.Name = name;
+//         this.BonusToHit = tohit;
+//         this.WeaponString = weapon;
+//         this.WeaponString2 = weapon2;
+//     }       
 }
