@@ -95,7 +95,7 @@ function createPresent(presentName) {
         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
         appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
         appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
-        if (newMob.EquipWeapon.WeaponString == "") {
+        if (!newMob.EquipWeapon.WeaponString) {
             appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
         }
         else {
