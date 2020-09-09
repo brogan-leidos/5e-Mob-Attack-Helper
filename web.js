@@ -297,14 +297,15 @@ async function launchAttack() {
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
-        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;        
+        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;    
+        var weapon2 = "";
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
         var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
         
         weapon = parseWeapon(weapon, tohit);
         if (document.getElementById(blockArray[i].concat("-Weapon2"))) {
-            var weapon2 = document.getElementById(blockArray[i].concat("-Weapon2")).value;
+            weapon2 = document.getElementById(blockArray[i].concat("-Weapon2")).value;
             var partofcrit = document.getElementById(blockArray[i].concat("-IncludeCrit")).checked;
             weapon2 = parseWeapon(weapon2, tohit);
         }
