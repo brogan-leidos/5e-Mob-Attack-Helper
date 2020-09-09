@@ -119,8 +119,21 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Dis").addEventListener('change', (e) => {
         changeVantage(mobTag);        
     });
+    document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
+        expandWeapon(mobTag);        
+    });
     
     return; 
+}
+
+function expandWepaon(mobTag) {
+    var weaponDetailsHtml = `<tr>
+                                <td>&nbsp</td>
+                                <td>Field 1</td>
+                                <td>Field 2</td>
+                            </tr>`;
+    var element = document.getElementById(mobTag + "-Weapon-Expand");    
+    
 }
 
 function changeMobWeapon (mobTag, newValue) {
