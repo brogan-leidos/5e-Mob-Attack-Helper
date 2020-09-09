@@ -412,7 +412,7 @@ async function launchAttack() {
         }
         totalDamageBreakdown[rollArray[block][0].damageType] += blockTotalDamage;
         
-        if (!totalDamageBreakdown[rollArray[block][0].damageType2] && rollArray[block][0].damageType2 != "") { 
+        if (!totalDamageBreakdown[rollArray[block][0].damageType2]) { 
             totalDamageBreakdown[rollArray[block][0].damageType2] = 0;
         }
         totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
@@ -445,6 +445,9 @@ function displayBreakdown(totalDamageBreakdown) {
     var ret = "";
     var keys = Object.keys(totalDamageBreakdown);
     for (var i=0; i < keys.length; i++) {
+        if (keys[i] == "") {
+            continue;
+        }
         ret += `${keys[i]}: ${totalDamageBreakdown[keys[i]]}`;
         if (i < keys.length-1) { 
             ret += ',';
