@@ -392,7 +392,7 @@ async function launchAttack() {
         }
         infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
         if (blockTotalDamage2 != 0) {
-            infoAppend += `and ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
+            infoAppend += ` + ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
         }
         infoAppend += "</span><br>";
     }
