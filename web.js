@@ -168,7 +168,7 @@ function changeMobWeapon (mobTag, newValue) {
     var weapon2 = newValue.split("Weapon2:")[1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
-    if (weapon2 != "undefined") {
+    if (weapon2 != "undefined" && weapon2 != "") {
         if (!mobHasExpandedWeapon(mobTag)){
             expandWeapon(mobTag);
         }
