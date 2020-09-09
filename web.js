@@ -127,23 +127,30 @@ function createPresent(presentName) {
 }
 
 function expandWeapon(mobTag) {
-    var weaponDetailsHtml = `<tr>
+    var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
                                 <td>DC:</td>
                                 <td><input id="${mobTag}-DC" type="number" /></td>
                             </tr>
-                            <tr>
+                            <tr id="${mobTag}-WeaponExpandRow2">
                                 <td>&nbsp</td>
-                                <td>Weapon2:</td>
+                                <td>Weapon 2:</td>
                                 <td><input id="${mobTag}-Weapon2" type="text" /></td>
                             </tr>
-                            <tr>
+                            <tr id="${mobTag}-WeaponExpandRow3">
                                 <td>&nbsp</td>
                                 <td><input id="${mobTag}-HalfOnSave" name="halfOnSave" type="checkbox" /> <label for="halfOnSave"> 1/2 dmg on save</label></td>
                                 <td><input id="${mobTag}-Something" name="idk" type="checkbox" /> <label for="idk">idk OwO</label></td>
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
-    element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
+    if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
+        element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
+    }
+    else {
+        document.getElementById(`${mobTag}-WeaponExpandRow1`).remove();
+        document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
+        document.getElementById(`${mobTag}-WeaponExpandRow3`).remove();
+    }
     
 }
 
