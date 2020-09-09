@@ -195,6 +195,7 @@ body {
 .discoveryBlock button#hitButton:hover {
   background-color: #34c239;
   color: white;
+  cursor: pointer;
 }
 
 .discoveryBlock button#hitButton:active {
@@ -218,6 +219,7 @@ body {
 .discoveryBlock button#missButton:hover {
   background-color: #ff1a1a;
   color: white;
+  cursor: pointer;
 }
 
 .discoveryBlock button#missButton:active {
