@@ -105,7 +105,7 @@ export default class Mob {
             if (damageTotal < 0) { damageTotal = 0 }
             this.rollClass.damageRoll2 = damageTotal;
             this.rollClass.damageType2 = this.Weapon2.DamageType;         
-        } else {
+        } else if (this.Weapon2) {
             damageTotal = 0;
             for(var i=0; i < this.Weapon2.NumDice; i++) {
                 damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
