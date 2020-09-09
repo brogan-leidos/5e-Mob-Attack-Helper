@@ -136,6 +136,10 @@ function createPresent(presentName) {
     return; 
 }
 
+mobHasExpandedWeapon(mobTag) {
+    return !!document.getElementById(`${mobTag}-WeaponExpandRow1`);
+}
+
 function expandWeapon(mobTag) {
     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
@@ -165,8 +169,15 @@ function changeMobWeapon (mobTag, newValue) {
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
     if (weapon2 != "") {
-        expandWeapon(mobTag);
+        if (!mobHasExpandedWeapon(mobTag)){
+            expandWeapon(mobTag);
+        }
         document.getElementById(mobTag + "-Weapon2").value = weapon2;
+    }
+    else {
+        if (mobHasExpandedWeapon(mobTag)) {
+            expandWeapon(mobTag);
+        }
     }
 }
 
