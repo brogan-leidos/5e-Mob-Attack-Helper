@@ -139,8 +139,8 @@ function expandWeapon(mobTag) {
                             </tr>
                             <tr id="${mobTag}-WeaponExpandRow3">
                                 <td>&nbsp</td>
-                                <td><input id="${mobTag}-HalfOnSave" name="halfOnSave" type="checkbox" /> <label for="halfOnSave"> 1/2 dmg on save</label></td>
                                 <td><input id="${mobTag}-Something" name="idk" type="checkbox" /> <label for="idk">idk OwO</label></td>
+                                <td><input id="${mobTag}-HalfOnSave" name="halfOnSave" type="checkbox" /> <label for="halfOnSave"> 1/2 dmg on save</label></td>                                
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
