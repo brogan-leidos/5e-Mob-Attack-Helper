@@ -129,8 +129,18 @@ function createPresent(presentName) {
 function expandWeapon(mobTag) {
     var weaponDetailsHtml = `<tr>
                                 <td>&nbsp</td>
-                                <td>Field 1</td>
-                                <td>Field 2</td>
+                                <td>DC:</td>
+                                <td><input id="${mobTag}-DC" type="number" /></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td>Weapon2:</td>
+                                <td><input id="${mobTag}-Weapon2" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp</td>
+                                <td><input id="${mobTag}-HalfOnSave" name="halfOnSave" type="checkbox" /> <label for="halfOnSave"> 1/2 dmg on save</label></td>
+                                <td><input id="${mobTag}-Something" name="idk" type="checkbox" /> <label for="idk">idk OwO</label></td>
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
     element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
