@@ -443,7 +443,7 @@ async function launchAttack() {
 
 function displayBreakdown(totalDamageBreakdown) {
     var ret = "";
-    var keys = totalDamageBreakdown.keys();
+    var keys = Object.keys(totalDamageBreakdown);
     for (var i=0; i < keys.length; i++) {
         ret += `-- ${keys[i]}:${totalDamageBreakdown[keys[i]]} -- `;
     }
