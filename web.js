@@ -139,18 +139,13 @@ function createPresent(presentName) {
 function expandWeapon(mobTag) {
     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
-                                <td>DC:</td>
-                                <td><input id="${mobTag}-DC" type="number" /></td>
-                            </tr>
-                            <tr id="${mobTag}-WeaponExpandRow2">
-                                <td>&nbsp</td>
                                 <td>Weapon 2:</td>
                                 <td><input id="${mobTag}-Weapon2" type="text" /></td>
                             </tr>
-                            <tr id="${mobTag}-WeaponExpandRow3">
+                            <tr id="${mobTag}-WeaponExpandRow2">
                                 <td>&nbsp</td>
-                                <td><input id="${mobTag}-Something" name="idk" type="checkbox" /> <label for="idk">idk OwO</label></td>
-                                <td><input id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">include in crit</label></td>                                
+                                <td></td>
+                                <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">include in crit</label></td>                                
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
@@ -159,7 +154,6 @@ function expandWeapon(mobTag) {
     else {
         document.getElementById(`${mobTag}-WeaponExpandRow1`).remove();
         document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
-        document.getElementById(`${mobTag}-WeaponExpandRow3`).remove();
     }
     
 }
