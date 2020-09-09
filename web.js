@@ -29,6 +29,8 @@ export default () => {
         });
     }      
     
+    alert(navigator.userAgent.toLowerCase());
+         
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
     });
