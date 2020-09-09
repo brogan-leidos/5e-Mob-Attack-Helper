@@ -1,14 +1,15 @@
 export default class Weapon {    
-    constructor (name="", numdice=0, ddie=0, dtype="", hit=0, dmg=0){
-        this.Name = name
-        this.NumDice = numdice
-        this.DamageDie = ddie        
-        this.DamageType = dtype
-        this.BonusToHit = hit
-        this.BonusToDmg = dmg
-        if (typeof(this.NumDice) === "string") {            
-            this.WeaponString = numdice;
-            this.WeaponString2 = ddie;
+    constructor (name="", arg1=0, arg2=0, arg3="", arg4=0, arg5=0){
+        this.Name = name;
+        this.NumDice = arg1;
+        this.DamageDie = arg2;     
+        this.DamageType = arg3;
+        this.BonusToHit = arg4;
+        this.BonusToDmg = arg5;
+        if (typeof(arg2) === "string") {
+            this.BonusToHit = arg1;
+            this.WeaponString = arg2;
+            this.WeaponString2 = arg3;
         }
     }
     
