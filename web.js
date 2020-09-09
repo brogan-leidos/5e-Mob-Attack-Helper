@@ -298,7 +298,7 @@ async function launchAttack() {
         if (document.getElementById(blockArray[i].concat("-Weapon2"))) {
             var weapon2 = document.getElementById(blockArray[i].concat("-Weapon2")).value;
             var partofcrit = document.getElementById(blockArray[i].concat("-IncludeCrit")).checked;
-            weapon2 = parseWeapon(weapon2, toHit);
+            weapon2 = parseWeapon(weapon2, tohit);
         }
         
         var vantage = advantage + disadvantage;
