@@ -16,3 +16,6 @@ Known issues:
 
 Link to the application:
 https://brogan-leidos.github.io/5e-Mob-Attack-Helper/
+
+
+Note: If you're brave enough to venture into the source code, you have my condolences. This was my first ever shot at a JS project, and I can now say with certainty that it is a bit of a MESS. You have been warned - god speed brave adventurer (-_-)7
