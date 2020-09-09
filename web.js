@@ -469,7 +469,7 @@ function displayBreakdown(totalDamageBreakdown) {
 async function discoveryStep(attackRoll) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").innerHTML = discoveryTemplate(attackRoll);           
+    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("To Hit", attackRoll);           
 
     document.getElementById("hitButton").addEventListener("click", () => {
       resolve(true);
