@@ -2,7 +2,7 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default") {
+    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", weapon2) {
     this.AC = 0;
     this.Health = 0;
     this.Str = 0;
@@ -13,6 +13,8 @@ export default class Mob {
     this.Chr = 0;
     this.Weapons = [];
     this.EquipWeapon = weapon;
+    this.Weapon2 = weapon2;
+    this.Weapon2PartOfCrit = false;
         
     this.Name = name;
     this.Icon = icon;
@@ -22,9 +24,7 @@ export default class Mob {
     this.rollClass = new DamageRoll();
     this.Vantage = vantage;
 
-    // NOT SUPER INTUITIVE - MAY CHANGE LATER: Anything that has a "weapon 2" has additional effects (think Imp extra poison damage)
-    // These "weapon 2"s are in the weapon array immediately following 
-    this.HasWeaponTwo = false;
+    
     
     }
     
@@ -68,6 +68,18 @@ export default class Mob {
         this.rollClass.damageRoll = damageTotal;
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
         this.rollClass.damageType = this.EquipWeapon.DamageType;
+        
+        if (this.Weapon2) {
+            damageTotal = 0;
+            for(var i=0; i < this.Weapon2.NumDice; i++) {
+                damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
+            }
+            damageTotal = damageTotal + this.Weapon2.BonusToDmg;
+            if (damageTotal < 0) { damageTotal = 0 }
+            this.rollClass.damageRoll2 = damageTotal;
+            this.rollClass.damageType2 = this.Weapon2.DamageType;        
+        }
+        
         return this.rollClass;
     }
         
@@ -83,6 +95,18 @@ export default class Mob {
         this.rollClass.damageDie = this.EquipWeapon.DamageDie;
         this.rollClass.damageType = this.EquipWeapon.DamageType;         
         this.rollClass.crit = true;
+         
+        if (this.Weapon2PartOfCrit) {
+            damageTotal = 0;
+            for(var i=0; i < this.Weapon2.NumDice*2; i++) {
+                damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
+            }
+            damageTotal = damageTotal + this.Weapon2.BonusToDmg;
+            if (damageTotal < 0) { damageTotal = 0 }
+            this.rollClass.damageRoll2 = damageTotal;
+            this.rollClass.damageType2 = this.Weapon2.DamageType;         
+        }
+         
         return this.rollClass;
     }
 }
