@@ -29,7 +29,7 @@ export default () => {
         });
     }      
     
-    alert(navigator.userAgent.toLowerCase() + '\n' + window.outerWidth+' x '+window.outerHeight);
+    alert(navigator.userAgent.toLowerCase() + '\n' + window.outerWidth+' x '+window.outerHeight + '\n' + navigator.platform);
          
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
