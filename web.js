@@ -149,7 +149,7 @@ function expandWeapon(mobTag) {
                             <tr id="${mobTag}-WeaponExpandRow2">
                                 <td>&nbsp</td>
                                 <td></td>
-                                <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">include in crit</label></td>                                
+                                <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">Include in crit</label></td>                                
                             </tr>`;
     var element = document.getElementById(mobTag + "-Weapon-Expand");
     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
