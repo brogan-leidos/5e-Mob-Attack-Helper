@@ -1,8 +1,11 @@
-export function discoveryTemplate(roll) {  
+export function discoveryTemplate(title, roll) {  
   
  return `
   <table class="discoveryBlock">
     <tbody>
+      <tr>
+        <td colspan=2 style="border-bottom: thin solid black">${title}</td>
+      </tr>
       <tr>
         <td colspan=2>
            ${roll}
