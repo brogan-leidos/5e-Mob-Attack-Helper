@@ -21,6 +21,10 @@ export default class Mob {
         
     this.rollClass = new DamageRoll();
     this.Vantage = vantage;
+
+    // NOT SUPER INTUITIVE - MAY CHANGE LATER: Anything that has a "weapon 2" has additional effects (think Imp extra poison damage)
+    // These "weapon 2"s are in the weapon array immediately following 
+    this.HasWeaponTwo = false;
     
     }
     
