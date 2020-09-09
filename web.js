@@ -132,7 +132,8 @@ function expandWeapon(mobTag) {
                                 <td>Field 1</td>
                                 <td>Field 2</td>
                             </tr>`;
-    var element = document.getElementById(mobTag + "-Weapon-Expand");    
+    var element = document.getElementById(mobTag + "-Weapon-Expand");
+    element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
     
 }
 
