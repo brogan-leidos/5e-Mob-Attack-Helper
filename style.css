@@ -276,6 +276,14 @@ body {
   grid-template-rows: auto minmax(min-content, 1fr) auto;
 }
 
+#goButton {
+  display: inline;
+}
+
+.attackDivMobile {
+  display: none;
+}
+
 @media screen and (max-width: 660px) {
   body {
     background-color: whitesmoke;
@@ -283,6 +291,14 @@ body {
   
   button {
     font-size: 15px;
+  }
+
+  #goButton {
+    display: none;
+  }
+  
+  .attackDivMobile {
+    display: inline-block;
   }
   
   .addMobArea td:nth-child(1) {
