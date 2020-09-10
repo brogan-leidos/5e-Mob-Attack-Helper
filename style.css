@@ -40,14 +40,6 @@ button {
   box-shadow: 2px 2px 2px #666
 }
 
-.acArea {
-  box-shadow: 2px 2px 2px #666;
-}
-
-.acArea button {
-  box-shadow: 0px 0px 0px aliceblue;
-}
-
 .header {
   box-shadow: 2px 2px 2px #666;
 }
@@ -164,7 +156,28 @@ body {
   background-color: #dfe6ec; 
   padding: 5px 0px 5px 0px;
   margin-bottom: 5px;
+  box-shadow: 2px 2px 2px #666;
 }
+
+.acArea button {
+  box-shadow: 0px 0px 0px aliceblue;
+}
+
+.attackDivMobile {
+  background-color: transparent;
+  padding: 1px;
+}
+
+.attackDivMobile button {
+  width: 100%;
+  border-radius: 3px;
+  color: red;
+  background-color: #ddd;
+  border: thin black solid;
+  padding: 5px;
+/*   box-shadow: 2px 2px 2px #666; */
+}
+
 
 .mobHeader:hover {
   background-color: #e3e3e3;
@@ -298,7 +311,7 @@ body {
   }
   
   .attackDivMobile {
-    display: inline-block;
+    display: block;
   }
   
   .addMobArea td:nth-child(1) {
