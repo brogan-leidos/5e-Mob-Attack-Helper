@@ -10,6 +10,7 @@ var mobBlockDisableColor = "grey";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
 
+var smallScreen = false;
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
@@ -30,6 +31,9 @@ export default () => {
     }      
     
     alert(navigator.userAgent.toLowerCase() + '\n' + window.outerWidth+' x '+window.outerHeight + '\n' + navigator.platform);
+    if (window.outerWidth < 660) {
+        smallScreen = true;
+    }
          
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
@@ -436,6 +440,9 @@ async function launchAttack() {
         header += "  <b>" + numCrits + " crits! </b><br>";
     }
     header += `<span title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
+    if (smallScreen) {
+        header += `(${displayBreakdown(totalDamageBreakdown)})<br>`;
+    }
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
