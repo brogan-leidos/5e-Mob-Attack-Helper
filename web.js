@@ -36,7 +36,10 @@ export default () => {
     });
     document.getElementById('goButton').addEventListener('click', () => {        
         launchAttack();
-    });       
+    });
+    document.getElementById('goButton-mobile').addEventListener('click', () => {        
+        launchAttack();
+    });  
 };
 
 // Checks if the target ac is below zero, if so enable discovery mode
