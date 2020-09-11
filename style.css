@@ -101,7 +101,8 @@ body {
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  /*! width: 70px; */
+  grid-row: 1;
+  grid-column: 1;
 }
 
 /* How to info */
