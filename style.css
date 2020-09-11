@@ -380,6 +380,9 @@ body {
   .header {
     text-align: center;
   }
-    
+  
+  .title {
+    padding: 5px 0px 5px 0px;
+  }
 }
 
