@@ -100,7 +100,7 @@ body {
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  /*! width: 70px; */
+  padding-top: 100%;
 }
 
 /* How to info */
@@ -301,6 +301,10 @@ body {
   display: none;
 }
 
+.displayMobile {
+    display: none;
+  }
+
 @media screen and (max-width: 660px) {
   body {
     background-color: whitesmoke;
@@ -322,14 +326,22 @@ body {
     display: none;
   } 
  
-  .addMobArea .addMobCol {
+  .addMobArea .title {
     grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    display: block;
+    padding: 5px 0px 5px 0px;
+  }
+  
+  .addMobArea .addMobCol {
+    grid-row: 2;
     grid-column: 1;
     padding-left: 5px
   }
 
   .addMobArea .addMobCol2 {
-   grid-row: 2;
+   grid-row: 3;
    grid-column: 1;
    padding-left: 5px;
   }
@@ -373,6 +385,10 @@ body {
   
   .addMobArea .addMobGrid {
     grid-template-columns: auto;
+  }
+  
+  .displayMobile {
+    display: inline;
   }
     
 }
