@@ -295,17 +295,13 @@ body {
   grid-template-rows: auto minmax(min-content, 1fr) auto;
 }
 
-#goButton {
+mobile-hide {
   display: inline;
 }
 
-.attackDivMobile {
+mobile-display {
   display: none;
 }
-
-.mobile-display {
-    display: none;
-  }
 
 @media screen and (max-width: 660px) {
   body {
@@ -315,18 +311,14 @@ body {
   button {
     font-size: 15px;
   }
-
-  #goButton {
-    display: none;
-  }
   
-  .attackDivMobile {
-    display: block;
-  }
-  
-  .addMobArea .mobile-hide {
+  .mobile-hide {
     display: none;
   } 
+  
+  .mobile-display {
+    display: inline;
+  }
  
   .addMobArea .addMobCol {
     grid-row: 2;
@@ -388,9 +380,6 @@ body {
   .title {
     padding: 5px 0px 5px 0px;
   }
-  
-  .mobile-display {
-    display: inline;
-  }
+
 }
 
