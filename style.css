@@ -303,6 +303,10 @@ body {
   display: none;
 }
 
+.mobile-display {
+    display: none;
+  }
+
 @media screen and (max-width: 660px) {
   body {
     background-color: whitesmoke;
@@ -383,6 +387,10 @@ body {
   
   .title {
     padding: 5px 0px 5px 0px;
+  }
+  
+  .mobile-display {
+    display: inline;
   }
 }
 
