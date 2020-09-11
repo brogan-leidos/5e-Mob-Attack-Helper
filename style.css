@@ -103,6 +103,7 @@ body {
   vertical-align: middle;
   grid-row: 1;
   grid-column: 1;
+  padding: 100% 0px 0px 0px;
 }
 
 /* How to info */
@@ -377,7 +378,7 @@ mobile-display {
     text-align: center;
   }
   
-  .title {
+  .addMobArea .title {
     padding: 5px 0px 5px 0px;
   }
 
