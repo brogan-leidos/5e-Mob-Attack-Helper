@@ -180,6 +180,7 @@ body {
   background-color: #ddd;
   border: thin black solid;
   padding: 5px;
+  margin-bottom: 5px;
 }
 
 
@@ -339,7 +340,7 @@ body {
   }
   
   #infoAreaDiv {
-    margin: 5px 0px 5px 0px;
+    margin: 0px 0px 5px 0px;
     float: none;
     display: none;
     grid-row: 2;
@@ -347,7 +348,7 @@ body {
   } 
   
   #discoveryArea {
-    margin: 5px 0px 0px 0px;
+    margin: 0px 0px 5px 0px;
     float:none;
     grid-row: 1;
     grid-column: 1;
