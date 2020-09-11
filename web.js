@@ -438,8 +438,8 @@ async function launchAttack() {
         totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
     }
     
-    if (totalDamageBreakdown.has("")) {
-         totalDamageBreakdown = totalDamageBreakdown.delete("");
+    if ("" in totalDamageBreakdown) {
+         delete totalDamageBreakdown[""];
     }
          
     var header = totalHits.toString() + " attacks landed <br>";    
