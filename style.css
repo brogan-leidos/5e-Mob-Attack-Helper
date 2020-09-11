@@ -310,13 +310,12 @@ body {
   .addMobArea .mobile-hide {
     display: none;
   } 
-  
-  #goButton {
-    margin: 1px 0px 1px 1px;;
-    color: red;
-    font-size: 16px;
+ 
+  .addMobArea .addMobCol2 {
+    grid-row: 2;
+    grid-column: 1;
   }
-
+  
   .discoveryBlock {
     margin: 0px 0px 0px 0px;
   }
