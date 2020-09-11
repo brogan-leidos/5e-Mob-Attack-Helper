@@ -296,11 +296,11 @@ body {
   grid-template-rows: auto minmax(min-content, 1fr) auto;
 }
 
-mobile-hide {
+.mobile-hide {
   display: inline;
 }
 
-mobile-display {
+.mobile-display {
   display: none;
 }
 
