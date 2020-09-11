@@ -448,7 +448,7 @@ async function launchAttack() {
     }
     header += `<span title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
     if (totalDamage > 0) {
-         header += `<span class="display-mobile">(${displayBreakdown(totalDamageBreakdown)})<br></span>`;
+         header += `<span class="mobile-display">(${displayBreakdown(totalDamageBreakdown)})<br></span>`;
     }
     
     header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
