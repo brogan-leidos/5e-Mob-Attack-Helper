@@ -438,7 +438,7 @@ async function launchAttack() {
         totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
     }
     
-    if (totalDamageBreakdown[""]) {
+    if (totalDamageBreakdown.has("")) {
          totalDamageBreakdown = totalDamageBreakdown.delete("");
     }
          
