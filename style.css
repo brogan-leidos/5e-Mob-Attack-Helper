@@ -372,6 +372,10 @@ body {
   .mobBlock tr:nth-child(1) td:nth-child(1) {
     width: 0px;    
   }
+  
+  .addMobArea .addMobGrid {
+    grid-template-columns: auto;
+  }
     
 }
 
