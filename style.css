@@ -70,18 +70,10 @@ body {
   padding: 0px 2px 0px 2px;
 }
 
-.addMobArea div {
-    margin-bottom: 2px; 
-} 
-
-.addMobArea table {
-  border-collapse: collapse;
-  width: 100%;
-}
 
 /* Add mob text*/
 @media screen and (min-width: 660px) {
-  .addMobArea td:nth-child(1) {
+  .addMobArea div div:nth-child(1) {
     color: #f2f2f2;
     background-color: #b5cce3;
     font-family: Arial, Helvetica, sans-serif;
@@ -103,7 +95,7 @@ body {
 }
 
 /* How to info */
-.addMobArea div div:nth-child(4) {
+.addMobArea .guideArea {
   color: #f2f2f2;
   background-color: #b5cce3;
   font-family: Arial, Helvetica, sans-serif;
