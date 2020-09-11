@@ -70,26 +70,35 @@ body {
   padding: 0px 2px 0px 2px;
 }
 
-
-/* Add mob text*/
-.addMobArea div div:nth-child(1) {
-  color: #f2f2f2;
-  background-color: #b5cce3;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: middle;
-  width: 70px;
-}
-
 #goButton {
   color: red;
   margin-left: 10px;
   font-size: 16px;
 }
 
-.addMobArea div:nth-child(2) {
-  width: 290px;
+.addMobArea .addMobCol {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.addMobArea .addMobCol2 {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.addMobArea .addMobGrid {
+  grid-template-columns: 70px 300px auto 400px;
+}
+
+/* Add mob text*/
+.addMobArea .title {
+  color: #f2f2f2;
+  background-color: #b5cce3;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  /*! width: 70px; */
 }
 
 /* How to info */
@@ -100,7 +109,8 @@ body {
   font-weight: bold;
   text-align: left;
   vertical-align: top;
-  width: 400px;
+  
+  /*! width: 100%; */
 }
 
 /* Add mob area */
@@ -113,7 +123,7 @@ body {
 
 /* Categories to add mobs */
 .addMobArea div div div:nth-child(odd) {
-  margin-top: 3px;
+  padding-top: 3px;
   font-size: 12px;
   color: #f2f2f2;
   text-decoration: underline;
@@ -309,9 +319,21 @@ body {
     display: none;
   } 
  
-  .addMobArea .addMobCol2 {
-    grid-row: 2;
+  .addMobArea .addMobCol {
+    grid-row: 1;
     grid-column: 1;
+  }
+
+  .addMobArea .addMobCol2 {
+   grid-row: 2;
+   grid-column: 1;
+  }
+  
+  .addMobArea {
+    width: 100%;
+  }
+  .addMobArea div {
+    width: 100%;
   }
   
   .discoveryBlock {
