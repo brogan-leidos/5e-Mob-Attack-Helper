@@ -122,9 +122,7 @@ body {
 .addMobArea div div {
   background-color: #90b3d5;
   text-align: left;
-  /*! padding-left: 5px; */
   vertical-align: top;
-  /*! padding: 0px 5px 5px 5px; */
 }
 
 /* Categories to add mobs */
@@ -175,14 +173,13 @@ body {
   padding: 1px;
 }
 
-.attackDivMobile button {
+#goButton-mobile {
   width: 100%;
   border-radius: 3px;
   color: red;
   background-color: #ddd;
   border: thin black solid;
   padding: 5px;
-/*   box-shadow: 2px 2px 2px #666; */
 }
 
 
@@ -376,6 +373,7 @@ body {
   
   .header {
     text-align: center;
+    margin-bottom: 10px;
   }
   
   .addMobArea .title {
