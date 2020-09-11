@@ -307,17 +307,9 @@ body {
     display: block;
   }
   
-  .addMobArea td:nth-child(1) {
+  .addMobArea .mobile-hide {
     display: none;
-  }
-  
-  .addMobArea td:nth-child(3) {
-    padding-right: 5px;
-  }
-  
-  .addMobArea td:nth-child(4) {
-    display: none;
-  }
+  } 
   
   #goButton {
     margin: 1px 0px 1px 1px;;
