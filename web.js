@@ -225,7 +225,7 @@ function parseWeapon(weapon, hitbonus) {
     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
     var dSplitIndex = weapon.indexOf("d");
     if (dSplitIndex == -1) {
-        // Something something error check   
+        throwError(`Weapon string: ${weapon} is invalid`);
     }
     var numAttacks = parseInt(weapon.substr(0, dSplitIndex).trim());
     var splitWeapon = weapon.substr(dSplitIndex + 1);
@@ -235,7 +235,7 @@ function parseWeapon(weapon, hitbonus) {
     if (splitWeapon.length == 1) { // no result found for +, try -
         splitWeapon = splitWeapon[0].split("-");       
         if (splitWeapon.length == 1) {
-            // Something something error check
+            throwError(`Weapon string: ${weapon} is invalid`);
         }
         flipBit = -1;
     }   
@@ -250,6 +250,10 @@ function parseWeapon(weapon, hitbonus) {
     }
     
     return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);       
+}
+
+function throwError(msg) {
+    document.getElementById("infoArea").innerHTML = msg;
 }
 
 function toggleDetails(event, rollArray) {
