@@ -29,7 +29,7 @@ export default class Mob {
     }
     
     miss() {
-        this.rollClass.miss = true;
+        this.rollClass.missed = true;
         return this.rollClass;
     }
     
