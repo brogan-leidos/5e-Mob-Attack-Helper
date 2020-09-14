@@ -273,9 +273,15 @@ function toggleDetails(event, rollArray) {
                         detailAppend += ` </span><br>`;
                     }
                     else {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll}`;
-                        if (rollArray[i][j].damageRoll2 != 0) {
-                            detailAppend += ` ⚔${rollArray[i][j].damageRoll2}`;
+                        if (!rollArray[i][j].hitRoll.missed) {
+                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll}`;
+
+                            if (rollArray[i][j].damageRoll2 != 0) {
+                                detailAppend += ` ⚔${rollArray[i][j].damageRoll2}`;
+                            }
+                        }
+                        else {
+                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#ffb5b5"> [${rollArray[i][j].hitRoll}]`;
                         }
                         detailAppend += ` </span><br>`;
                     }
@@ -369,6 +375,7 @@ async function launchAttack() {
                   }
                   else {
                       if (attackRoll > lowerCap) {
+                          rollArray[block].push(mobArray[block][i].miss());
                           lowerCap = attackRoll;
                       }
                   }
@@ -406,6 +413,10 @@ async function launchAttack() {
         
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
+            if (rollArray[block][i].missed == true) {
+                  continue;
+            }
+                 
             totalDamage += rollArray[block][i].damageRoll;
             totalDamage += rollArray[block][i].damageRoll2;
             blockTotalDamage += rollArray[block][i].damageRoll;
