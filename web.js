@@ -273,7 +273,7 @@ function toggleDetails(event, rollArray) {
                         detailAppend += ` </span><br>`;
                     }
                     else {
-                        if (rollArray[i][j].hitRoll.missed == false) {
+                        if (rollArray[i][j].missed == false) {
                             detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll}`;
 
                             if (rollArray[i][j].damageRoll2 != 0) {
