@@ -386,7 +386,10 @@ async function launchAttack() {
             }
             else if (attackRoll >= targetAc) {                
                 rollArray[block].push(mobArray[block][i].dealDamage());
-            } 
+            }
+            else { //Assuming this is a miss
+                rollArray[block].push(mobArray[block][i].miss());
+            }
         }
     }
   
