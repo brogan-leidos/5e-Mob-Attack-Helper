@@ -281,7 +281,7 @@ function toggleDetails(event, rollArray) {
                             }
                         }
                         else {
-                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#ffb5b5"> [${rollArray[i][j].hitRoll}]`;
+                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#ffb5b5"> [${rollArray[i][j].hitRoll}] Miss`;
                         }
                         detailAppend += ` </span><br>`;
                     }
