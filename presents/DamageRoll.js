@@ -8,5 +8,6 @@ export default class DamageRoll {
         this.attacker = null;
         this.damageType = "";
         this.damageType2 = "";
+        this.missed = false;
     }
 }
