@@ -28,6 +28,10 @@ export default class Mob {
     
     }
     
+    miss() {
+        this.rollClass.miss = true;
+        return this.rollClass;
+    }
     
     // Make an attack roll, modify by equip weapon
     makeAttack() {
