@@ -67,9 +67,9 @@ function deleteMob(mobTag) {
 
 function displayHelp() {
     alert(`How to use:
-	1. Set the target's AC in the first input box (Use a number <= 0 if unsure of the AC) <br>
-	2. Create a "Mob" using one of the buttons in the Add Mobs section <br>
-	3. Click the Launch Attack button, causing all active mobs to attack the target AC! <br>`);
+1. Set the target's AC in the first input box (Use a number <= 0 if unsure of the AC)
+2. Create a "Mob" using one of the buttons in the Add Mobs section
+3. Click the Launch Attack button, causing all active mobs to attack the target AC!`);
 }
 
 function toggleMob(mobTag) {
