@@ -408,7 +408,7 @@ async function launchAttack() {
         if (rollArray[block].length == 0) {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }
-        totalHits += rollArray[block].length;
+        totalHits += rollArray[block].filter(a => a.missed == false).length;
         var attacker = rollArray[block][0].attacker;
         var numOfBlockCrits = 0;
         var blockTotalDamage = 0;
@@ -430,7 +430,8 @@ async function launchAttack() {
             }
 
         }
-        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result">` + attacker.Icon + " " + attacker.Name + " : " + rollArray[block].length + " hits";
+        var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
+        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result">` + attacker.Icon + " " + attacker.Name + " : " + blockNumHits + " hits";
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
