@@ -88,7 +88,7 @@ body {
   font-size: 13px;
   border-radius: 2px;
   padding: 0px 2px 0px 2px;
-  width: 1em;
+  width: auto;
 }
 
 #goButton {
