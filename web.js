@@ -443,7 +443,7 @@ async function launchAttack() {
 
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result"> <i class="arrow down"> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
+        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result"> <i class="arrow down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
