@@ -100,6 +100,17 @@ body {
   width: auto;
 }
 
+.mobBlock .rangeToggleButton {
+  background-color: transparent;
+  color: grey;
+  transition-duration: 0.2s;
+  font-size: 12px;
+  padding: 2px;
+  width: auto;
+  border: solid thin grey;
+  margin-left: 10px;
+}
+
 #goButton {
   color: red;
   margin-left: 10px;
