@@ -71,9 +71,10 @@ function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled");
     var enabled = toggle.checked;
     if (!enabled) {
+        toggle.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa fa-eye-slash";
-        toggle.checked = true;
+       
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
         toggle.classList = "fa fa-eye";
