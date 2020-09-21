@@ -68,11 +68,16 @@ function displayHelp() {
 }
 
 function toggleMob(mobTag) {
-    var enabled = document.getElementById(mobTag + "-Enabled").checked;
-    if (enabled) {
-        changeVantage(mobTag);        
+    var toggle = document.getElementById(mobTag + "-Enabled");
+    var enabled = toggle.checked;
+    if (!enabled) {
+        changeVantage(mobTag); 
+        toggle.classList = "fa fa-eye-slash";
+        toggle.checked = true;
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
+        toggle.classList = "fa fa-eye";
+        toggle.checked = false;
     }
 }
 
