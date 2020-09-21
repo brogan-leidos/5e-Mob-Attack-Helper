@@ -267,9 +267,9 @@ body {
   text-align: center;
 }
 
-#infoAreaDiv table {
+#infoArea {
   box-shadow: 2px 2px 2px #666;
-  border-collapse: collapse;
+  border: solid thin black;
 }
 
 #infoAreaDiv {
