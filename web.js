@@ -44,9 +44,6 @@ export default () => {
     });   
 };
 
-function isSmallScreen() {
-    return window.outerWidth < 660;
-}
 
 // Checks if the target ac is below zero, if so enable discovery mode
 function discoveryCheck(newAc) {
