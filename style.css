@@ -93,12 +93,11 @@ body {
 
 .mobBlock .weaponExpandButton {
   background-color: transparent;
-  color: grey;
+  color: green;
   transition-duration: 0.2s;
-  font-size: 18px;
-  padding: 3px 4px 1px 3px;
+  font-size: 12px;
+  padding: 0px;
   width: auto;
-  float: right;
 }
 
 #goButton {
