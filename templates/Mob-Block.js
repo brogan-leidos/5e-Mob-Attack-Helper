@@ -3,7 +3,7 @@ export function mobBlock() {
 <table class="mobBlock">
   <tbody>
     <tr>
-      <td><button id="FILLER-BLOCK-Delete" title="Delete mob">
+      <td><button class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">
         &times;
       </button></td>
       <td style="">Name:</td>
