@@ -39,7 +39,7 @@ body {
   width: 30px;
 }
 
-.mobBlock button {
+.mobBlock .mobCloseButton {
   background-color: white;
   color:red;
   border: none;
@@ -51,13 +51,13 @@ body {
   width: 100%;
 }
 
-.mobBlock button:hover {
+.mobBlock .mobCloseButton:hover {
   background-color: #ff1a1a;
   color: white;
   cursor: pointer;
 }
 
-.mobBlock button:active {
+.mobBlock .mobCloseButton:active {
   transition-duration: 0s;
   background-color: #ffcccc;
 }
