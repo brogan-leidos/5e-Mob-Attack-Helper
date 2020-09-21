@@ -157,7 +157,7 @@ body {
 }
 
 .addMobArea {
-    box-shadow: 2px 2px 2px #666;
+  box-shadow: 2px 2px 2px #666;
 }
 
 .acArea {
@@ -269,6 +269,7 @@ body {
 
 #infoAreaDiv table {
   box-shadow: 2px 2px 2px #666;
+  border-collapse: collapse;
 }
 
 #infoAreaDiv {
@@ -276,6 +277,27 @@ body {
   grid-row: 1;
   grid-column: 2;
   display: none;
+}
+
+#resultOverview {
+  color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-bottom: double black;
+  text-align: center;
+}
+
+#totalDamageTitle {
+  font-size: larger;
+  border-bottom: #b3d1f0 solid thin;
+  padding: 3px;
+  background-color: #99ccff;
+}
+
+#hitsOverview {
+  font-size: smaller;
+  background-color: #90b3d5;
+  padding: 3px;
 }
 
 #discoveryArea {
