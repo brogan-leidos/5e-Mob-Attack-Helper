@@ -22,3 +22,24 @@ export function addWeaponMobTemplate(title, roll) {
  
   `
 }
+
+export function modifierRow(title, roll) {  
+  
+  /// Add Modifier V
+ return `
+  <tr>
+    <td></td>
+    <td>
+      <select>
+        <option>Extra Damage</option>
+        <option>Condition</option>
+        <option>DC</option>
+      </select>
+    </td>
+    <td></td>
+  
+  <tr>
+ 
+  `
+}
+
