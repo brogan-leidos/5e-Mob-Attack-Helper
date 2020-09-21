@@ -47,8 +47,13 @@ export function mobBlock() {
       <td>
         &nbsp;
       </td>
-      <td>Weapon:<button class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></button></td>
+      <td>Weapon:</button></td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><button class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
