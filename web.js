@@ -302,11 +302,13 @@ function toggleDetails(event, rollArray) {
         }   
         detailAppend += "</div>";
         var tag = mobTag + "-Result";
-
         document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
+         
+        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-right";
     }
     else {
         detailElement.remove();
+        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-down";
     }
 }
 
@@ -443,7 +445,7 @@ async function launchAttack() {
 
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
+        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
