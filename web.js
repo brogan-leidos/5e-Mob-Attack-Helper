@@ -70,7 +70,7 @@ function displayHelp() {
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled");
     var enabled = toggle.checked;
-    if (!enabled && enabled !== undefined) {
+    if (!enabled) {
         toggle.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa fa-eye-slash";
@@ -133,6 +133,7 @@ function createPresent(presentName) {
         deleteMob(mobTag);
     });
     
+    document.getElementById(mobTag + "-Enabled").checked = true;
     document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
         toggleMob(mobTag);
     });    
