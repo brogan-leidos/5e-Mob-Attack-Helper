@@ -373,7 +373,8 @@ async function launchAttack() {
                 numCrits = numCrits + 1;
             }            
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
-              if (attackRoll <= lowerCap) {
+              if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
+                  rollArray[block].push(mobArray[block][i].miss());
                   continue;
               } 
               if (attackRoll < minAc || minAc == -1) {
@@ -426,7 +427,7 @@ async function launchAttack() {
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
             if (rollArray[block][i].missed == true) {
-                  continue;
+                continue;
             }
                  
             totalDamage += rollArray[block][i].damageRoll;
