@@ -467,7 +467,7 @@ async function launchAttack() {
          delete totalDamageBreakdown[""];
     }
          
-    var header = <div id="resultOverview">
+    var header = `<div id="resultOverview">`;
     header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
     if (totalDamage > 0) {
          header += `<span class="mobile-display">(${displayBreakdown(totalDamageBreakdown)})<br></span>`;
