@@ -441,7 +441,7 @@ async function launchAttack() {
 
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        infoAppend += `<span class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
+        infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
@@ -449,7 +449,7 @@ async function launchAttack() {
         if (blockTotalDamage2 != 0) {
             infoAppend += ` + ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
         }
-        infoAppend += "</span><br>";
+        infoAppend += "</div>";
         
         // Create a detailed breakdown while we're tallying damage. WE should come back and consolidate these two methods to just use the breakdown
         if (!totalDamageBreakdown[rollArray[block][0].damageType]) { 
@@ -467,16 +467,18 @@ async function launchAttack() {
          delete totalDamageBreakdown[""];
     }
          
-    var header = totalHits.toString() + " attacks landed <br>";    
-    if (numCrits > 0) {
-        header += "  <b>" + numCrits + " crits! </b><br>";
-    }
-    header += `<span title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt</span><br>`;
+    var header = <div id="resultOverview">
+    header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
     if (totalDamage > 0) {
          header += `<span class="mobile-display">(${displayBreakdown(totalDamageBreakdown)})<br></span>`;
     }
-    
-    header += "-=-=-=-=-=-=-=-=-=-=-=-=-=-<br>"
+    header += "</div>";
+    header += `<div id="hitsOverview">${totalHits} attacks landed <br>`;
+    if (numCrits > 0) {
+        header += `<b style="color:gold">" ${numCrits} crits! </b><br>`;
+    }
+    //#b3d1f0 solid thin
+    header += "</div></div>";
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
     
