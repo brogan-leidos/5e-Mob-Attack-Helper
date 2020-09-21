@@ -70,7 +70,7 @@ function displayHelp() {
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled");
     var enabled = toggle.checked || false;
-    if (!enabled) {
+    if (!enabled && enabled !== undefined) {
         toggle.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa fa-eye-slash";
