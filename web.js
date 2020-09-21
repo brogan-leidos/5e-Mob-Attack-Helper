@@ -475,7 +475,7 @@ async function launchAttack() {
     header += "</div>";
     header += `<div id="hitsOverview">${totalHits} attacks landed <br>`;
     if (numCrits > 0) {
-        header += `<b style="color:gold">" ${numCrits} crits! </b><br>`;
+        header += `<b style="color:gold">${numCrits} crits! </b><br>`;
     }
     //#b3d1f0 solid thin
     header += "</div></div>";
