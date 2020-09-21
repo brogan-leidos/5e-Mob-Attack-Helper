@@ -69,7 +69,7 @@ function displayHelp() {
 
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled");
-    var enabled = toggle.checked;
+    var enabled = toggle.checked || false;
     if (!enabled) {
         toggle.checked = true;
         changeVantage(mobTag); 
