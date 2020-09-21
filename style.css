@@ -186,14 +186,14 @@ body {
   margin-bottom: 5px;
 }
 
+.mobHeader {
+  padding: 0px 3px 0px 3px;
+  margin: 3px;
+}
 
 .mobHeader:hover {
   background-color: #e3e3e3;
   cursor: pointer;
-}
-
-.mobHeader *:hover {
-  background-color: #f3f3f3; 
 }
 
 .discoveryBlock {
