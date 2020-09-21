@@ -86,16 +86,19 @@ body {
   background-color: #ffcccc;
 }
 
-.mobBlock .weaponExpandButton {
-  margin-left: 3px;
+.mobBlock .weaponExpandButton:hover {
   background-color: transparent;
-  color: #99ccff;
-  border: thin grey solid;
+  color: lightskyblue;
+}
+
+.mobBlock .weaponExpandButton {
+  background-color: transparent;
+  color: grey;
   transition-duration: 0.2s;
-  font-size: 13px;
-  border-radius: 2px;
-  padding: 0px 2px 0px 2px;
+  font-size: 18px;
+  padding: 3px 4px 1px 3px;
   width: auto;
+  float: right;
 }
 
 #goButton {
