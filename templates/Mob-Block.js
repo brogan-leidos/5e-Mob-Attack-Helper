@@ -11,7 +11,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td style="text-align: center">
-        <input id="FILLER-BLOCK-Enabled" name="" type="checkbox" title="Enable/Disable mob" checked="true" /></td>
+        <button id="FILLER-BLOCK-Enabled" title="Enable/Disable mob" checked="true" class="fa fa-eye-slash" /></td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
