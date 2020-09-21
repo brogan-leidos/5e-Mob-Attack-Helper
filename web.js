@@ -73,11 +73,11 @@ function toggleMob(mobTag) {
     if (!enabled) {
         toggle.checked = true;
         changeVantage(mobTag); 
-        toggle.classList = "fa fa-eye-slash";
+        toggle.classList = "fa fa-eye";
        
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
-        toggle.classList = "fa fa-eye";
+        toggle.classList = "fa fa-eye-slash";
         toggle.checked = false;
     }
 }
