@@ -3,10 +3,17 @@ If you're like me and find the DMG rules for mob combat underwhelming - this is 
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 ToDo:
-  - Save a JSON of current configuration  
-  ? Using the discovery template, allow for enemy saving throws, and do some stuff with that.... :\
-  - Brittle weapon parsing system. Could be updated to support multiple dice but would require an overhaul (damn my ignorant past self :( )
-  - Adamantine armor option (crits are just 20s)
+  1. Allow options to Disallow/Always crit target
+  2. Add an "Advanced options" menu, should be able to set Target AC, target stat Mods (for Saving Throws), and crits and the like there.
+    -- Should look reasonable
+  3. Speaking of DCs... Expand on weapons to allow for DCs/Saving Throws,
+    -- Should save for 1/2 damage (imp/quasit poison)
+    -- Should save for "Cripple effects" (elk charge, Ghoul paralysis)
+      -- Should be able to tell the difference between being knocked prone and paralyzed...
+      -- Should atleast TRY to consider what would be the most optimal flow of combat if crippling effects are being used
+        -- If it cant figure that out, atleast allow the user to order their mobs to choose what attacks first
+  4. Revise weapon parsing to allow multiple kinds of dice and modifiers in a single input box
+  Far Future: Save a JSON of current configuration
 
 Known issues:
   - It's a bit ugly, and I'm a bit terrible at CSS
