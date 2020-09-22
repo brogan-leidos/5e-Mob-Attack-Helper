@@ -452,10 +452,10 @@ async function launchAttack() {
             infoAppend += ` : `;
             var keys = Object.keys(blockDamageBreakdown);
             for (var i=0; i < keys.length; i++) {
-             infoAppend += `${blockDamageBreakdown[keys[i]]} total ${keys[i]} damage`;
-             if (i != keys.length - 1) {
-                 infoAppend += ` + `;
-             }
+                infoAppend += `${blockDamageBreakdown[keys[i]]} total ${keys[i]} damage`;
+                if (i != keys.length - 1) {
+                    infoAppend += ` + `;
+                }
             }
         }
         infoAppend += "</div>";        
