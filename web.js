@@ -414,17 +414,13 @@ async function launchAttack() {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }        
         var attacker = rollArray[block][0].attacker;
-        var numOfBlockCrits = 0;
+        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true).length;
         var blockTotalDamage = 0;
         
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
             if (rollArray[block][i].missed == true) {
                 continue;
-            }
-            
-            if (rollArray[block][i].crit) {
-                numOfBlockCrits += 1;
             }
             
             for (var weps=0; weps < rollArray[block][i].damageResults.length; weps++) {
