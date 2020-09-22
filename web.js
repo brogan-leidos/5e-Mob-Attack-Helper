@@ -285,17 +285,6 @@ function changeVantage(mobTag) {
    
 }
 
-function combineEnds(stringArray) {
-    if (stringArray.length == 1) {
-        return;
-    }
-    var combined = "";
-    for (var i=1; i < stringArray.length; i++) {
-        combined += stringArray[i];
-    }
-    return combined;
-}
-
 function throwError(msg) {
     document.getElementById("infoArea").innerHTML = msg;
 }
