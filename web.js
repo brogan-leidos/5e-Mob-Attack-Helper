@@ -224,7 +224,7 @@ function collapseRow(e) {
     prevTr.remove();
     prevTr = document.getElementById(e.target.id).parentElement.parentElement.previousElementSibling;
     var mobTag = e.target.id.split("-")[0];
-    if (prevTr.children[2].firstElement.id == `${mobTag}-Weapon`) {
+    if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
         document.getElementById(e.target.id).remove();
     }
 
