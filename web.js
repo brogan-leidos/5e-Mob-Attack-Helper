@@ -408,12 +408,12 @@ async function launchAttack() {
     var totalHits = 0;
     var infoAppend = "";
     
+    
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
         if (rollArray[block].length == 0) {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
-        }
-        totalHits += rollArray[block].filter(a => a.missed == false).length;
+        }        
         var attacker = rollArray[block][0].attacker;
         var numOfBlockCrits = 0;
         var blockTotalDamage = 0;
@@ -423,39 +423,38 @@ async function launchAttack() {
             if (rollArray[block][i].missed == true) {
                 continue;
             }
-                 
-            totalDamage += rollArray[block][i].damageRoll;
-            blockTotalDamage += rollArray[block][i].damageRoll;
-
+            
             if (rollArray[block][i].crit) {
                 numOfBlockCrits += 1;
             }
-
+            
+            for (var weps=0; weps < rollArray[block][i].damageRoll.damageResults.length; weps++) {
+                var wepDamage = rollArray[block][i].damageRoll.damageResults[weps][0];
+                var damageType = rollArray[block][i].damageRoll.damageResults[weps][1];
+                totalDamage += wepDamage;
+                blockTotalDamage += wepDamage;
+                
+                if (!totalDamageBreakdown[damageType]) { 
+                    totalDamageBreakdown[damageType] = 0;
+                }
+                totalDamageBreakdown[damageType] += wepDamage;
+            }
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
+        totalHits += blockNumHits;
         infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
-            infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
+            infoAppend += ` (🌟 ${numOfBlockCrits} crits)`;
         }
-        infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";   
-        infoAppend += "</div>";
-        
-        // Create a detailed breakdown while we're tallying damage. WE should come back and consolidate these two methods to just use the breakdown
-        if (!totalDamageBreakdown[rollArray[block][0].damageType]) { 
-            totalDamageBreakdown[rollArray[block][0].damageType] = 0;
+        infoAppend += ` : `;
+        for (var i=0; i < rollArray[block][0].damageResults.length; i++) {
+            infoAppend += `${blockTotalDamage} total ${rollArray[block][0].damageResults[i][1]} damage`;
+            if (i != rollArray[block][0].damageResults.length - 1) {
+                infoAppend += ` + `;
+            }
         }
-        totalDamageBreakdown[rollArray[block][0].damageType] += blockTotalDamage;
-        
-        if (!totalDamageBreakdown[rollArray[block][0].damageType2]) { 
-            totalDamageBreakdown[rollArray[block][0].damageType2] = 0;
-        }
-        totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
-    }
-    
-    // Quick clean of the dict so strange things dont display
-    if ("" in totalDamageBreakdown) {
-         delete totalDamageBreakdown[""];
-    }
+        infoAppend += "</div>";        
+    }    
 
     generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
     
