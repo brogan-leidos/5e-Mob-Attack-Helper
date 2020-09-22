@@ -185,7 +185,7 @@ function expandWeapon(mobTag, event) {
 
     modSelect = document.getElementById(mobTag + "-Mod-Select");
     modSelect.addEventListener('change', (e) => {
-        modifyRow(e);
+        modifyRow(e.target.value, e.target.id.split("-")[0]);
     });
          
          
@@ -210,10 +210,7 @@ function expandWeapon(mobTag, event) {
     
 }
 
-function modifyRow(e) {
-    var value = e.target.value;
-    var mobTag = e.target.id.split("-")[0];
-    
+function modifyRow(value, mobTag) {    
     //TODO: < 1 Row
     var targetCell = document.getElementById(mobTag + "-Mod");
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);   
