@@ -42,7 +42,7 @@ export function modifierRow() {
 
 export function chooseModifierType(type, mobTag, modRow) {
     if (type == "DC") {
-      return `<input id="${mobTag}-${modRow}-Mod" type="number" value="10" />
+      return `<input id="${mobTag}-${modRow}-Mod" type="number" value="10" style="width:78px" />
               <select id="${mobTag}-${modRow}-Mod-Dc">
                 <option>Str</option>
                 <option>Dex</option>
