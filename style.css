@@ -112,6 +112,7 @@ body {
   font-size: 12px;
   padding: 0px;
   width: auto;
+  margin-right: 5px;
 }
 
 .mobBlock .rangeToggleButton {
