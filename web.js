@@ -190,7 +190,7 @@ function expandWeapon(mobTag, event) {
 
     modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     modSelect.addEventListener('change', (e) => {
-        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-").split("-")[0]);
+        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
     });                  
     
 }
