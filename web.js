@@ -428,9 +428,9 @@ async function launchAttack() {
                 numOfBlockCrits += 1;
             }
             
-            for (var weps=0; weps < rollArray[block][i].damageRoll.damageResults.length; weps++) {
-                var wepDamage = rollArray[block][i].damageRoll.damageResults[weps][0];
-                var damageType = rollArray[block][i].damageRoll.damageResults[weps][1];
+            for (var weps=0; weps < rollArray[block][i].damageResults.length; weps++) {
+                var wepDamage = rollArray[block][i].damageResults[weps][0];
+                var damageType = rollArray[block][i].damageResults[weps][1];
                 totalDamage += wepDamage;
                 blockTotalDamage += wepDamage;
                 
