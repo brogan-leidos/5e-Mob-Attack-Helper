@@ -196,12 +196,12 @@ function expandWeapon(mobTag, event) {
 }
 
 function modifyRow(value, mobTag, modRow) {    
-    var targetCell = document.getElementById(mobTag + "-" + modRow +"-Mod");
+    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
-            selectSeek.parentElement.style.backgroundColor = mobBlockDcColor;
+            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
         }
     }
     
