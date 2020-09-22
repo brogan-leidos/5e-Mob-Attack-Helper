@@ -347,7 +347,8 @@ function toggleDetails(event, rollArray) {
 async function launchAttack() {
     var rollArray = [];
     var numCrits = 0;       
-    
+    var numBlocks = blockArray.length; 
+         
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "inline-block";
     
@@ -356,7 +357,7 @@ async function launchAttack() {
         return;
     }              
     
-    var mobArray = parseMobs();
+    var mobArray = parseMobs(numBlocks);
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
@@ -471,8 +472,7 @@ async function launchAttack() {
 }
 
 function parseMobs(numBlocks) {
-    var mobArray = []; // 2d arrays: Block type, attacks of that block
-    var numBlocks = blockArray.length; 
+    var mobArray = []; // 2d arrays: Block type, attacks of that block    
 
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
