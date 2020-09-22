@@ -6,7 +6,7 @@ export default class DamageRoll {
         this.damageDie = 0;
         this.attacker = null;
         this.damageType = "";
-        this.damageResults = [];
+        this.damageResults = []; // Expects: [[damage, type]]
         this.missed = false;
     }
 }
