@@ -414,8 +414,8 @@ async function launchAttack() {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }        
         var attacker = rollArray[block][0].attacker;
-        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true).length;
         var blockTotalDamage = 0;
+        var blockDamageBreakdown = {};
         
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
@@ -433,18 +433,26 @@ async function launchAttack() {
                     totalDamageBreakdown[damageType] = 0;
                 }
                 totalDamageBreakdown[damageType] += wepDamage;
+                
+                if (!blockDamageBreakdown[damageType]) { 
+                    blockDamageBreakdown[damageType] = 0;
+                }
+                blockDamageBreakdown[damageType] += wepDamage;
             }
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
+        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true).length;
+             
         totalHits += blockNumHits;
         infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
             infoAppend += ` (🌟 ${numOfBlockCrits} crits)`;
         }
         infoAppend += ` : `;
-        for (var i=0; i < rollArray[block][0].damageResults.length; i++) {
-            infoAppend += `${blockTotalDamage} total ${rollArray[block][0].damageResults[i][1]} damage`;
-            if (i != rollArray[block][0].damageResults.length - 1) {
+        var keys = Object.keys(blockDamageBreakdown);
+        for (var i=0; i < keys.length; i++) {
+            infoAppend += `${blockDamageBreakdown[keys[i]]} total ${keys[i]} damage`;
+            if (i != keys.length - 1) {
                 infoAppend += ` + `;
             }
         }
