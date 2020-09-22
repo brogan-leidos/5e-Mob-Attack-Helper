@@ -220,7 +220,13 @@ function modifyRow(value, mobTag) {
 }
 
 function collapseRow(e) {
-    var temp = document.getElementById(e.target.id).parentElement;
+    var prevTr = document.getElementById(e.target.id).parentElement.parentElement.previousSibling;
+    prevTr.remove();
+    prevTr = document.getElementById(e.target.id).parentElement.parentElement.previousSibling;
+    var mobTag = e.target.id.split("-")[0];
+    if (prevTr.children[2].firstElement.id == `${mobTag}-Weapon`) {
+        document.getElementById(e.target.id).remove();
+    }
 
 }
 
