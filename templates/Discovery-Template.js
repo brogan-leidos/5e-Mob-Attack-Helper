@@ -1,4 +1,4 @@
-export function discoveryTemplate(title, roll) {  
+export function discoveryTemplate(title, roll, option1="Hit!", option2="Missed") {  
   
  return `
   <table class="discoveryBlock">
@@ -13,10 +13,10 @@ export function discoveryTemplate(title, roll) {
       </tr>
       <tr>
         <td>
-          <button id="hitButton">Hit!</button>
+          <button id="hitButton">${option1}</button>
         </td>
         <td>
-          <button id="missButton">Missed</button>
+          <button id="missButton">${option2}</button>
         </td>
       </tr>
     </tbody>
