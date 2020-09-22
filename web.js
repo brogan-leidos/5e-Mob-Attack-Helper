@@ -2,7 +2,7 @@ import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate } from './templates/Discovery-Template.js'
-import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
+import { modifierRow, modifierRowUnderDc, modifierRowNoTr, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit } from './presents/index.js'
 
@@ -202,16 +202,21 @@ function expandWeapon(mobTag, event) {
 function modifyRow(value, mobTag, modRow) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
-    updateModColors(value, mobTag, modRow);
+    updateModRows(value, mobTag, modRow);
 }
 
-function updateModColors(value, mobTag, modRow) {
+function updateModRows(value, mobTag, modRow) {
     // If it falls under a DC, mark it as so
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
-            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;                 
             if (value != "DC") {
+                modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement;
+                modSelect.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
+                    modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+                });
                 return;
             }
         }
@@ -221,9 +226,17 @@ function updateModColors(value, mobTag, modRow) {
         var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
         if (dcChild) {
             if (value == "DC") {
+                dcChild.parentElement.parentElement.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
+                    modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+                });
                 dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
             }
             else if (dcChild.value != "DC") {
+                dcChild.parentElement.parentElement.innerHTML = modifierRowNoTr().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
+                    modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+                });
                 dcChild.parentElement.parentElement.style.backgroundColor = "transparent";
             }
             else { break; }
