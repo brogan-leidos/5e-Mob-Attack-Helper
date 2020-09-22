@@ -199,7 +199,7 @@ function expandWeapon(mobTag, event) {
 
 function modifyRow(value, mobTag, modRow) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
