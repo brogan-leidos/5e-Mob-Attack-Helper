@@ -358,14 +358,17 @@ async function launchAttack() {
         var lowerCap = -1
     }
     
+    var ailments = {};
+    
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
                  
             //TODO
+            var rollResult = "";
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
-                rollArray[block].push(mobArray[block][i].dealCrit());
+                rollResult = mobArray[block][i].dealCrit());
                 numCrits = numCrits + 1;
             }            
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
@@ -376,33 +379,47 @@ async function launchAttack() {
               if (attackRoll < minAc || minAc == -1) {
                   var response = await discoveryStep(attackRoll);
                   if (response) {
-                      rollArray[block].push(mobArray[block][i].dealDamage());
+                      rollResult = mobArray[block][i].dealDamage();
                       minAc = attackRoll;
                   }
                   else {
                       if (attackRoll > lowerCap) {
                           rollArray[block].push(mobArray[block][i].miss());
                           lowerCap = attackRoll;
+                          continue;
                       }
                   }
               }
               else {
-                  rollArray[block].push(mobArray[block][i].dealDamage());
+                  rollResult = mobArray[block][i].dealDamage();
               }                
             }
             else if (attackRoll >= targetAc) {                
-                rollArray[block].push(mobArray[block][i].dealDamage());
+                rollResult = mobArray[block][i].dealDamage();
             }
             else { //Assuming this is a miss
                 rollArray[block].push(mobArray[block][i].miss());
+                continue;
             }
          
             if (mobArray[block][i].checkIfHasDc()) {
                 var savingThrow = await dcCheck();
                 if (!savingThrow) {
-                    var failureResults = mobArray[block][i].failedDc();
+                    var failureResults = mobArray[block][i].failedDc(); // Changes to make after a dc fail
+                    for (var fail=0; fail < failureResults.length; fail++) {
+                        if (fail[0] == "Condition") {
+                            ailments[fail[1]] = true;
+                        }
+                        else if (fail[0] == "Roll Class") {
+                            rollResult = fail[1];
+                        }
+                    }
+                }
+                else {
+                    var successResults = mobArray[block][i].succeedDc();
                 }
             }
+            rollArray[block].push(rollResult);
         }
     }
   
