@@ -346,8 +346,7 @@ function toggleDetails(event, rollArray) {
 
 async function launchAttack() {
     var rollArray = [];
-    var numCrits = 0;
-    var numBlocks = blockArray.length;    
+    var numCrits = 0;       
     
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "inline-block";
@@ -471,8 +470,9 @@ async function launchAttack() {
     
 }
 
-function parseMobs() {
+function parseMobs(numBlocks) {
     var mobArray = []; // 2d arrays: Block type, attacks of that block
+    var numBlocks = blockArray.length; 
 
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
