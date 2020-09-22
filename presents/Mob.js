@@ -132,6 +132,17 @@ export default class Mob {
         return {"numDice": numDice, "damageDie":damageDie, "bonusDmg":bonusDmg, "damageType":damageType};     
     }
     
+    combineEnds(stringArray) {
+        if (stringArray.length == 1) {
+            return;
+        }
+        var combined = "";
+        for (var i=1; i < stringArray.length; i++) {
+            combined += stringArray[i];
+        }
+        return combined;
+    }
+    
     checkIfHasDc() {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             if (this.EquipWeapon[i][0] == "DC") {
