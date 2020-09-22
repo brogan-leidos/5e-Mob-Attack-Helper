@@ -401,24 +401,16 @@ async function launchAttack() {
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
         var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
-        var weapon = document.getElementById(blockArray[i].concat("-Weapon")).value;    
-        var weapon2 = "";
+        var weapon = getWeaponSet(blockArray[i]);    
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
         var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
-        
-        weapon = parseWeapon(weapon, tohit);
-        if (document.getElementById(blockArray[i].concat("-Weapon2"))) {
-            weapon2 = document.getElementById(blockArray[i].concat("-Weapon2")).value;
-            var partofcrit = document.getElementById(blockArray[i].concat("-IncludeCrit")).checked;
-            weapon2 = parseWeapon(weapon2, tohit);
-        }
         
         var vantage = advantage + disadvantage;
         
         mobArray.push(new Array());
         for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], weapon2, partofcrit))
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
         }                
     }
     
@@ -491,7 +483,6 @@ async function launchAttack() {
         var attacker = rollArray[block][0].attacker;
         var numOfBlockCrits = 0;
         var blockTotalDamage = 0;
-        var blockTotalDamage2 = 0;
         
         // Go through each unit in the block and tally up that damage
         for (var i=0; i < rollArray[block].length; i++) {
@@ -500,9 +491,7 @@ async function launchAttack() {
             }
                  
             totalDamage += rollArray[block][i].damageRoll;
-            totalDamage += rollArray[block][i].damageRoll2;
             blockTotalDamage += rollArray[block][i].damageRoll;
-            blockTotalDamage2 += rollArray[block][i].damageRoll2;
 
             if (rollArray[block][i].crit) {
                 numOfBlockCrits += 1;
@@ -514,10 +503,7 @@ async function launchAttack() {
         if (numOfBlockCrits > 0) {
             infoAppend += " (🌟" + numOfBlockCrits.toString() + " crits)";
         }
-        infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";
-        if (blockTotalDamage2 != 0) {
-            infoAppend += ` + ${blockTotalDamage2} total ${rollArray[block][0].damageType2} damage`;
-        }
+        infoAppend += " : " + blockTotalDamage.toString() + " total " + rollArray[block][0].damageType + " damage";   
         infoAppend += "</div>";
         
         // Create a detailed breakdown while we're tallying damage. WE should come back and consolidate these two methods to just use the breakdown
@@ -535,7 +521,34 @@ async function launchAttack() {
     if ("" in totalDamageBreakdown) {
          delete totalDamageBreakdown[""];
     }
-         
+
+    generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
+    
+}
+
+function getWeaponSet(mobTag) {    
+    var weapon = document.getElementById(mobTag + "-Weapon").value;
+    var ret = [["Weapon", weapon]];
+    var rowCount = 0
+    while(true) {
+        var modSelect = document.getElementById(`${mobTag}-${rowCount}-Mod-Select`);
+        if (modSelect) {
+            var mod = document.getElementById(`${mobTag}-${rowCount}-Mod`);
+            if (modSelect.value == "DC") {
+                ret.push(modSelect.value, mod.value, document.getElementById(`${mobTag}-${rowCount}-Mod-Dc`).value);
+            }
+            else {
+                ret.push(modSelect.value, mod.value);
+            }
+        }
+        else {
+            break;
+        }
+    }
+    return ret;
+}
+
+function generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
     var header = `<div id="resultOverview">`;
     header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
     if (totalDamage > 0) {
