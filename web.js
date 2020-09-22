@@ -215,18 +215,18 @@ function updateModColors(value, mobTag, modRow) {
     }
     // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
     while(true) {
-        modRow++;
         var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
         if (dcChild) {
             if (value == "DC") {
                 dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
             }
             else if (dcChild.value != "DC") {
-                dcChild.parentElement.parentElement.style.backgroundColor = transparent;
+                dcChild.parentElement.parentElement.style.backgroundColor = "transparent";
             }
             else { break; }
         }       
         else { break; }
+        modRow++;
     }
 }
 
