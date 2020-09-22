@@ -202,6 +202,11 @@ function expandWeapon(mobTag, event) {
 function modifyRow(value, mobTag, modRow) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
+    updateModColors(value, mobTag, modRow);
+}
+
+function updateModColors(value, mobTag, modRow) {
+    // If it falls under a DC, mark it as so
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
@@ -216,15 +221,10 @@ function modifyRow(value, mobTag, modRow) {
             if (dcChild.value != "DC") {
                 dcChild.parentElement.parentElement.style.backgroundColor = transparent;
             }
-            else {
-                break;
-            }
+            else { break; }
         }       
-        else {
-            break;
-        }
+        else { break; }
     }
-
 }
 
 function collapseRow(e) {
