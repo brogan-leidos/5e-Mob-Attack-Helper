@@ -99,6 +99,17 @@ export default class Mob {
         return this.rollClass;
     }
   
+    rollDamageForWeapon(weaponBreakdown){
+        var damageTotal = 0;
+        for(var j=0; j < weaponBreakdown["numDice"]; j++) {
+            damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
+        }
+        damageTotal += weaponBreakdown["bonusDmg"];
+        if (damageTotal < 0) { damageTotal = 0; }
+        this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
+        return this.rollClass;
+    }
+    
     // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
     parseWeapon(weaponString) {
     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
@@ -145,10 +156,30 @@ export default class Mob {
     checkIfHasDc() {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             if (this.EquipWeapon[i][0] == "DC") {
-                return true;
+                return this.EquipWeapon[i][1];
             }
         }
         return false;
+    }
+    
+    failedDc() {
+        var afterDc = false;
+        var ret = [];
+        for (var i=0; i < this.EquipWeapon.length; i++) {
+            if (this.EquipWeapon[i][0] == "DC") {
+                afterDc = true;
+            }
+            else if (afterDc) {
+                if (this.EquipWeapon[i][0] == "Extra Damage") {
+                    this.rollClass = this.rollDamageForWeapon(parseWeapon(this.EquipWeapon[i][1]));
+                }
+                else if (this.EquipWeapon[i][0] == "Condition") {
+                    ret.push(["Condition", this.EquipWeapon[i][1]]);
+                }
+            }
+        }
+        ret.push(["Roll Class", this.rollClass]);
+        return ret;
     }
     
 }
