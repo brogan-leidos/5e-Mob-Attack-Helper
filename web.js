@@ -361,6 +361,8 @@ async function launchAttack() {
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
+                 
+            //TODO
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
                 rollArray[block].push(mobArray[block][i].dealCrit());
@@ -393,6 +395,13 @@ async function launchAttack() {
             }
             else { //Assuming this is a miss
                 rollArray[block].push(mobArray[block][i].miss());
+            }
+         
+            if (mobArray[block][i].checkIfHasDc()) {
+                var savingThrow = await dcCheck();
+                if (!savingThrow) {
+                    var failureResults = mobArray[block][i].failedDc();
+                }
             }
         }
     }
@@ -575,4 +584,19 @@ async function discoveryStep(attackRoll) {
     });
   });
 }
-  
+
+async function dcCheck() {
+  var roll = Math.floor(Math.random() * 20 + 1);
+  // spawn the block and wait for user input
+  return new Promise((resolve, reject) => {    
+    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("Saving Throw", roll, "Success", "Failure");           
+
+    document.getElementById("hitButton").addEventListener("click", () => {
+      resolve(true);
+    });
+    document.getElementById("missButton").addEventListener("click", () => {
+      resolve(false);
+    });
+  });
+}
+
