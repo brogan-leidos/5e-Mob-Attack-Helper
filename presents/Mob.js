@@ -94,7 +94,8 @@ export default class Mob {
             else if (this.EquipWeapon[i][0] == "DC") {
                 break;
             }
-        }                       
+        }
+        this.rollClass.crit = true;
         return this.rollClass;
     }
   
