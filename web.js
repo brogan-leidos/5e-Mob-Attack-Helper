@@ -342,7 +342,7 @@ async function launchAttack() {
     document.getElementById("infoAreaDiv").style.display = "inline-block";
     
     if (numBlocks == 0){
-        infoArea.innerHTML = "There are no mobs available to attack with!";
+        throwError("There are no mobs available to attack with!");
         return;
     }              
     
