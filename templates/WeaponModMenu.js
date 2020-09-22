@@ -40,20 +40,20 @@ export function modifierRow() {
   `
 }
 
-export function chooseModifierType(type, mobTag) {
+export function chooseModifierType(type, mobTag, modRow) {
     if (type == "DC") {
-      return `<input id="${mobTag}-Mod" type="number" value="10" />`; 
+      return `<input id="${mobTag}-${modRow}-Mod" type="number" value="10" />`; 
     }
     else if (type == "Condition") {
       return `
-      <select id="${mobTag}-Mod">
+      <select id="${mobTag}-${modRow}-Mod">
         <option>Knock Prone</option>
         <option>Restrain</option>
         <option>Paralyze</option>
       </select>`;
     }
     else if (type == "Extra Damage") {
-      return `<input id="${mobTag}-Mod" value="1d6 + 2 slashing" />`; 
+      return `<input id="${mobTag}-${modRow}-Mod" value="1d6 + 2 slashing" />`; 
     }
 }
 
