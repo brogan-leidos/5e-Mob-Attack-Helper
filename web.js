@@ -226,10 +226,12 @@ function updateModRows(value, mobTag, modRow) {
         var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
         if (dcChild) {
             if (value == "DC") {
-                dcChild.parentElement.parentElement.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
-                    modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
-                });
+                if (dcChild.value != "DC") {
+                    dcChild.parentElement.parentElement.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
+                        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+                    });
+                }
                 dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
             }
             else if (dcChild.value != "DC") {
