@@ -178,6 +178,9 @@ function expandWeapon(mobTag, event) {
     var modSelect = document.getElementById(mobTag + "-Mod-Select");
     if (!modSelect) {
         document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
+        document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
+        collapseRow(e);
+    });  
     }
     var newRow = modifierRow().replace(/FILLER-BLOCK/g, mobTag);
     var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
@@ -214,6 +217,11 @@ function modifyRow(value, mobTag) {
     //TODO: < 1 Row
     var targetCell = document.getElementById(mobTag + "-Mod");
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);   
+}
+
+function collapseRow(e) {
+    var temp = document.getElementById(e.target.id).parentElement;
+
 }
 
 function changeMobWeapon (mobTag, newValue) {
