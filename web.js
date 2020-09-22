@@ -452,6 +452,7 @@ async function launchAttack() {
         totalDamageBreakdown[rollArray[block][0].damageType2] += blockTotalDamage2;
     }
     
+    // Quick clean of the dict so strange things dont display
     if ("" in totalDamageBreakdown) {
          delete totalDamageBreakdown[""];
     }
@@ -489,9 +490,10 @@ function parseMobs(numBlocks) {
     return mobArray;
 }
 
-function getWeaponSet(mobTag) {    
+function getWeaponSet(mobTag) {
+    var toHit = document.getElementById(mobTag + "-ToHit").value;
     var weapon = document.getElementById(mobTag + "-Weapon").value;
-    var ret = [["Weapon", weapon]];
+    var ret = [["ToHit", toHit], ["Weapon", weapon]];
     var rowCount = 0
     while(true) {
         var modSelect = document.getElementById(`${mobTag}-${rowCount}-Mod-Select`);
