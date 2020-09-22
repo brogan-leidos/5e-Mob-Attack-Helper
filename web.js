@@ -358,13 +358,16 @@ async function launchAttack() {
         var lowerCap = -1
     }
     
+    var dcHighestSave = -1;
+    var dcLowestFail = -1;
+    
     var ailments = {};
     
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
                  
-            //TODO
+            //TODO: Add ailments and bonuses
             var rollResult = "";
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
@@ -402,10 +405,14 @@ async function launchAttack() {
                 continue;
             }
          
-            if (mobArray[block][i].checkIfHasDc()) {
+            //var dcHighestSave = -1;
+        //    var dcLowestFail = -1;
+            var dcCheck = mobArray[block][i].checkIfHasDc();
+            if (dcCheck != false) {
+                if (dcCheck > highestSuccess) {
                 var savingThrow = await dcCheck();
                 if (!savingThrow) {
-                    var failureResults = mobArray[block][i].failedDc(); // Changes to make after a dc fail
+                    var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (fail[0] == "Condition") {
                             ailments[fail[1]] = true;
@@ -416,7 +423,7 @@ async function launchAttack() {
                     }
                 }
                 else {
-                    var successResults = mobArray[block][i].succeedDc();
+                    rollResult = mobArray[block][i].succeedDc();                         
                 }
             }
             rollArray[block].push(rollResult);
