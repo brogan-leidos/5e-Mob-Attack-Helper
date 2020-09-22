@@ -176,14 +176,14 @@ function mobHasExpandedWeapon(mobTag) {
 }
 
 function expandWeapon(mobTag, event) {
-    var modSelect = document.getElementById(mobTag + "-Mod-Select");
+    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     if (!modSelect) {
         document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
             collapseRow(e);
         });  
     }
-    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
     var newRow = modifierRow().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
     var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
