@@ -23,21 +23,20 @@ export function addWeaponMobTemplate(title, roll) {
   `
 }
 
-export function modifierRow(title, roll) {  
+export function modifierRow() {  
   
   /// Add Modifier V
  return `
   <tr>
     <td></td>
     <td>
-      <select>
+      <select id="FILLER-BLOCK-Mod-Select">
         <option>Extra Damage</option>
         <option>Condition</option>
         <option>DC</option>
       </select>
     </td>
-    <td></td>
-  
+    <td><div id="FILLER-BLOCK-Mod"></div></td>  
   <tr>
  
   `
