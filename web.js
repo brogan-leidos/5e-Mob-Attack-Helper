@@ -504,10 +504,10 @@ function getWeaponSet(mobTag) {
         if (modSelect) {
             var mod = document.getElementById(`${mobTag}-${rowCount}-Mod`);
             if (modSelect.value == "DC") {
-                ret.push(modSelect.value, mod.value, document.getElementById(`${mobTag}-${rowCount}-Mod-Dc`).value);
+                ret.push([modSelect.value, mod.value, document.getElementById(`${mobTag}-${rowCount}-Mod-Dc`).value]);
             }
             else {
-                ret.push(modSelect.value, mod.value);
+                ret.push([modSelect.value, mod.value]);
             }
         }
         else {
