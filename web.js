@@ -208,7 +208,14 @@ function modifyRow(value, mobTag, modRow) {
             document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
         }
     }
-    
+    if (value == "DC") {
+        for (var i=0; i < modRow; i++) {
+            var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod`);
+            if (dcChild) {
+               dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+            }
+        }
+    }
 }
 
 function collapseRow(e) {
