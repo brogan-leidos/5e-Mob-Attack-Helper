@@ -208,14 +208,23 @@ function modifyRow(value, mobTag, modRow) {
             document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
         }
     }
-    if (value == "DC") {
-        for (var i=0; i < modRow; i++) {
-            var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod`);
-            if (dcChild) {
-               dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
+    while(true) {
+        modRow++;
+        var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+        if (dcChild) {
+            if (dcChild.value != "DC") {
+                dcChild.parentElement.parentElement.style.backgroundColor = transparent;
             }
+            else {
+                break;
+            }
+        }       
+        else {
+            break;
         }
     }
+
 }
 
 function collapseRow(e) {
