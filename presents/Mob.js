@@ -2,7 +2,7 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", weapon2, partofcrit=false) {
+    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default") {
     this.AC = 0;
     this.Health = 0;
     this.Str = 0;
@@ -12,9 +12,8 @@ export default class Mob {
     this.Wis = 0;
     this.Chr = 0;
     this.Weapons = [];
-    this.EquipWeapon = weapon;
-    this.Weapon2 = weapon2;
-    this.Weapon2PartOfCrit = partofcrit;
+    this.EquipWeapon = weapon; // An array of modifiers
+                               // EX: [["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
         
     this.Name = name;
     this.Icon = icon;
@@ -24,8 +23,6 @@ export default class Mob {
     this.rollClass = new DamageRoll();
     this.Vantage = vantage;
 
-    
-    
     }
     
     miss() {
@@ -63,63 +60,85 @@ export default class Mob {
     
     // Make a strike using equip weapon
     dealDamage() {       
-        var damageTotal = 0;
-        for(var i=0; i < this.EquipWeapon.NumDice; i++) {
-            damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1); // 1 - maxdmg
-        }
-        damageTotal = damageTotal + this.EquipWeapon.BonusToDmg;
-        if (damageTotal < 0) { damageTotal = 0 }
-        this.rollClass.damageRoll = damageTotal;
-        this.rollClass.damageDie = this.EquipWeapon.DamageDie;
-        this.rollClass.damageType = this.EquipWeapon.DamageType;
-        
-        if (this.Weapon2) {
-            damageTotal = 0;
-            for(var i=0; i < this.Weapon2.NumDice; i++) {
-                damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
+        var damageTotal = 0;        
+        for (var i=0; i < this.EquipWeapon.length; i++) {
+            if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
+                for(var j=0; j < weaponBreakdown["numDice"]; j++) {
+                    damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
+                }
+                damageTotal += weaponBreakdown["bonusDmg"];
+                if (damageTotal < 0) { damageTotal = 0; }
+                this.rollClass.damageRoll = damageTotal;
+                this.rollClass.damageType = weaponBreakdown["damageType"];
             }
-            damageTotal = damageTotal + this.Weapon2.BonusToDmg;
-            if (damageTotal < 0) { damageTotal = 0 }
-            this.rollClass.damageRoll2 = damageTotal;
-            this.rollClass.damageType2 = this.Weapon2.DamageType;        
-        }
-        
+            else if (this.EquipWeapon[i][0] == "DC") {
+                break;
+            }
+        }                       
         return this.rollClass;
     }
         
     // Crit using equip weapon!
      dealCrit() {
-        var damageTotal = 0;
-        for(var i=0; i < this.EquipWeapon.NumDice*2; i++) {
-            damageTotal = damageTotal + Math.floor(Math.random() * this.EquipWeapon.DamageDie + 1); // 1 - maxdmg
-        }
-        damageTotal = damageTotal + this.EquipWeapon.BonusToDmg;
-        if (damageTotal < 0) { damageTotal = 0 }
-        this.rollClass.damageRoll = damageTotal;
-        this.rollClass.damageDie = this.EquipWeapon.DamageDie;
-        this.rollClass.damageType = this.EquipWeapon.DamageType;         
-        this.rollClass.crit = true;
-         
-        if (this.Weapon2PartOfCrit) {
-            damageTotal = 0;
-            for(var i=0; i < this.Weapon2.NumDice*2; i++) {
-                damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
+        var damageTotal = 0;        
+        for (var i=0; i < this.EquipWeapon.length; i++) {
+            if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
+                for(var j=0; j < weaponBreakdown["numDice"]*2; j++) {
+                    damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
+                }
+                damageTotal += weaponBreakdown["bonusDmg"];
+                if (damageTotal < 0) { damageTotal = 0; }
+                this.rollClass.damageRoll = damageTotal;
+                this.rollClass.damageType = weaponBreakdown["damageType"];
             }
-            damageTotal = damageTotal + this.Weapon2.BonusToDmg;
-            if (damageTotal < 0) { damageTotal = 0 }
-            this.rollClass.damageRoll2 = damageTotal;
-            this.rollClass.damageType2 = this.Weapon2.DamageType;         
-        } else if (this.Weapon2) {
-            damageTotal = 0;
-            for(var i=0; i < this.Weapon2.NumDice; i++) {
-                damageTotal = damageTotal + Math.floor(Math.random() * this.Weapon2.DamageDie + 1); // 1 - maxdmg
+            else if (this.EquipWeapon[i][0] == "DC") {
+                break;
             }
-            damageTotal = damageTotal + this.Weapon2.BonusToDmg;
-            if (damageTotal < 0) { damageTotal = 0 }
-            this.rollClass.damageRoll2 = damageTotal;
-            this.rollClass.damageType2 = this.Weapon2.DamageType;  
-        }
-         
+        }          
         return this.rollClass;
     }
+  
+    // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
+    parseWeapon(weaponString) {
+    // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
+        var dSplitIndex = weaponString.indexOf("d");
+        if (dSplitIndex == -1) {
+            return false;
+        }
+        var numDice = parseInt(weaponString.substr(0, dSplitIndex).trim());
+        var splitWeapon = weaponString.substr(dSplitIndex + 1);
+
+        splitWeapon = splitWeapon.split("+");
+        var flipBit = 1;
+        if (splitWeapon.length == 1) { // no result found for +, try -
+            splitWeapon = splitWeapon[0].split("-");       
+            if (splitWeapon.length == 1) {
+                return false;
+            }
+            flipBit = -1;
+        }   
+        var damageDie = parseInt(splitWeapon[0].trim());
+        splitWeapon = combineEnds(splitWeapon);
+
+        splitWeapon = splitWeapon.trim().split(" ");
+        var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
+
+        if (splitWeapon.length > 1) {
+            var damageType = splitWeapon[1].trim();
+        }
+    
+        return {"numDice": numDice, "damageDie":damageDie, "bonusDmg":bonusDmg, "damageType":damageType};     
+    }
+    
+    checkIfHasDc() {
+        for (var i=0; i < this.EquipWeapon.length; i++) {
+            if (this.EquipWeapon[i][0] == "DC") {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
