@@ -513,6 +513,7 @@ function getWeaponSet(mobTag) {
         else {
             break;
         }
+        rowCount++;
     }
     return ret;
 }
