@@ -88,9 +88,11 @@ function toggleRange(mobTag) {
     var range = document.getElementById(mobTag + "-Range");
     if (range.classList[2] == "fa-compress") {
         range.classList = "rangeToggleButton fa fa-expand";
+        range.title = "Attacks outside of 5ft";
     }
     else {
         range.classList = "rangeToggleButton fa fa-compress";
+        range.title = "Attacks within 5ft";
     }
 }
 
