@@ -39,6 +39,22 @@ export function modifierRow() {
   `
 }
 
+export function modifierRowNoTr() {    
+ return `
+  <tr>
+    <td></td>
+    <td>
+      <select id="FILLER-BLOCK-Mod-Select">
+        <option>Extra Damage</option>
+        <option>Condition</option>
+        <option>DC</option>
+      </select>
+    </td>
+    <td><div id="FILLER-BLOCK-Mod"></div></td>  
+  </tr> 
+  `
+}
+
 export function modifierRowUnderDc() {    
  return `
   
