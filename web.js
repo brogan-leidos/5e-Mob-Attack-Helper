@@ -218,7 +218,10 @@ function updateModColors(value, mobTag, modRow) {
         modRow++;
         var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
         if (dcChild) {
-            if (dcChild.value != "DC") {
+            if (value == "DC") {
+                dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+            }
+            else if (dcChild.value != "DC") {
                 dcChild.parentElement.parentElement.style.backgroundColor = transparent;
             }
             else { break; }
