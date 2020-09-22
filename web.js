@@ -2,7 +2,7 @@ import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate } from './templates/Discovery-Template.js'
-import { modifierRow } from './templates/WeaponModMenu.js'
+import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit } from './presents/index.js'
 
@@ -178,6 +178,12 @@ function expandWeapon(mobTag) {
     var newRow = modifierRow().replace(/FILLER-BLOCK/g, mobTag);
     var parentRow = document.getElementById(mobTag + "-Number").parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
+
+    var modSelect = document.getElementById(mobTag + "-Mod-Select");
+    modSelect.addEvenetListener('change', (e) => {
+        modifiyRow(e);
+    });
+         
          
     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
@@ -198,6 +204,15 @@ function expandWeapon(mobTag) {
         document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
     }
     
+}
+
+function modifyRow(e) {
+    var value = e.target.value;
+    var mobTag = e.target.id.split("-")[0];
+    
+    //TODO: < 1 Row
+    var targetCell = document.getElementById(mobTag + "-Mod");
+    targetCell.parentElement.innerHTML = chooseModifierType(value);   
 }
 
 function changeMobWeapon (mobTag, newValue) {
