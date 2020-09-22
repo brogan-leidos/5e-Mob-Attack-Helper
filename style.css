@@ -99,6 +99,7 @@ body {
   padding: 0px;
   width: auto;
   vertical-align: top;
+  cursor: pointer;
 }
 
 .mobBlock .weaponCollapseButton:hover {
@@ -115,6 +116,7 @@ body {
   width: auto;
   margin-right: 5px;
   vertical-align: top;
+  cursor: pointer;
 }
 
 .mobBlock .rangeToggleButton {
