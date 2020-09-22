@@ -180,29 +180,29 @@ function expandWeapon(mobTag) {
     parentRow.insertAdjacentHTML('beforebegin', newRow);
 
     var modSelect = document.getElementById(mobTag + "-Mod-Select");
-    modSelect.addEvenetListener('change', (e) => {
+    modSelect.addEventListener('change', (e) => {
         modifiyRow(e);
     });
          
          
-    var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
-                                <td>&nbsp</td>
-                                <td>Weapon 2:</td>
-                                <td><input id="${mobTag}-Weapon2" type="text" /></td>
-                            </tr>
-                            <tr id="${mobTag}-WeaponExpandRow2">
-                                <td>&nbsp</td>
-                                <td></td>
-                                <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">Include in crit</label></td>                                
-                            </tr>`;
-    var element = document.getElementById(mobTag + "-Weapon-Expand");
-    if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
-        element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
-    }
-    else {
-        document.getElementById(`${mobTag}-WeaponExpandRow1`).remove();
-        document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
-    }
+//     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
+//                                 <td>&nbsp</td>
+//                                 <td>Weapon 2:</td>
+//                                 <td><input id="${mobTag}-Weapon2" type="text" /></td>
+//                             </tr>
+//                             <tr id="${mobTag}-WeaponExpandRow2">
+//                                 <td>&nbsp</td>
+//                                 <td></td>
+//                                 <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">Include in crit</label></td>                                
+//                             </tr>`;
+//     var element = document.getElementById(mobTag + "-Weapon-Expand");
+//     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
+//         element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
+//     }
+//     else {
+//         document.getElementById(`${mobTag}-WeaponExpandRow1`).remove();
+//         document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
+//     }
     
 }
 
