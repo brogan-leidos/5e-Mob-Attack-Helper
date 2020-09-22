@@ -2,6 +2,7 @@ import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate } from './templates/Discovery-Template.js'
+import { modifierRow } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit } from './presents/index.js'
 
@@ -174,6 +175,9 @@ function mobHasExpandedWeapon(mobTag) {
 }
 
 function expandWeapon(mobTag) {
+    var newRow = modifierRow().replace("/FILLER-BLOCK/g", mobTag);
+    var parentRow = document.getElementById(mobTag + "-Number");    
+         
     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
                                 <td>Weapon 2:</td>
