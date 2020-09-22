@@ -456,7 +456,7 @@ async function launchAttack() {
         infoAppend += "</div>";        
     }    
 
-    generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
+    generateFinalOutput(infoAppend, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
     
 }
 
@@ -512,7 +512,7 @@ function getWeaponSet(mobTag) {
     return ret;
 }
 
-function generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
+function generateFinalOutput(infoAppend, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
     var header = `<div id="resultOverview">`;
     header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
     if (totalDamage > 0) {
