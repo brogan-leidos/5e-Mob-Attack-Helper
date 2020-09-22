@@ -157,7 +157,7 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
     });
-    document.getElementById(mogTag + "-Range").addEventListener('click', (e) => {
+    document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
     });
     
