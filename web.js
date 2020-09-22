@@ -299,18 +299,17 @@ function toggleDetails(event, rollArray) {
             for (var j=0; j < rollArray[i].length; j++) {
                 if (rollArray[i][j].attacker.MobName == mobTag) {
                     if (rollArray[i][j].hitRoll == "crit") {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll}`;
-                         if (rollArray[i][j].damageRoll2 != 0) {
-                                detailAppend += ` ⚔${rollArray[i][j].damageRoll2}`;
-                            }
+                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [${rollArray[i][j].hitRoll}]`;
+                        for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
+                            detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
+                        }
                         detailAppend += ` </span><br>`;
                     }
                     else {
                         if (rollArray[i][j].missed == false) {
-                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}] ⚔${rollArray[i][j].damageRoll}`;
-
-                            if (rollArray[i][j].damageRoll2 != 0) {
-                                detailAppend += ` ⚔${rollArray[i][j].damageRoll2}`;
+                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}]`;
+                            for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
+                                detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
                             }
                         }
                         else {
