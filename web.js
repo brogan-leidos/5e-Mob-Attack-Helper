@@ -84,11 +84,11 @@ function toggleMob(mobTag) {
 
 function toggleRange(mobTag) {
     var range = document.getElementById(mobTag + "-Range").classList;
-    if (range == "fa fa-compress") {
-        range = "fa fa-expand";
+    if (range == "rangeToggleButton fa fa-compress") {
+        range = "rangeToggleButton fa fa-expand";
     }
     else {
-        range = "fa fa-compress";
+        range = "rangeToggleButton fa fa-compress";
     }
 }
 
