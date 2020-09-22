@@ -296,38 +296,6 @@ function combineEnds(stringArray) {
     return combined;
 }
 
-// Parse the weapon string, turn it into a weapon object we can send to the mob attack method
-function parseWeapon(weapon, hitbonus) {
-    // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
-    var dSplitIndex = weapon.indexOf("d");
-    if (dSplitIndex == -1) {
-        throwError(`Weapon string: ${weapon} is invalid`);
-    }
-    var numAttacks = parseInt(weapon.substr(0, dSplitIndex).trim());
-    var splitWeapon = weapon.substr(dSplitIndex + 1);
-    
-    splitWeapon = splitWeapon.split("+");
-    var flipBit = 1;
-    if (splitWeapon.length == 1) { // no result found for +, try -
-        splitWeapon = splitWeapon[0].split("-");       
-        if (splitWeapon.length == 1) {
-            throwError(`Weapon string: ${weapon} is invalid`);
-        }
-        flipBit = -1;
-    }   
-    var damageDie = parseInt(splitWeapon[0].trim());
-    splitWeapon = combineEnds(splitWeapon);
-    
-    splitWeapon = splitWeapon.trim().split(" ");
-    var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
-    
-    if (splitWeapon.length > 1) {
-        var damageType = splitWeapon[1].trim();
-    }
-    
-    return new Weapon("FILLER NAME", numAttacks, damageDie, damageType, hitbonus, bonusDmg);       
-}
-
 function throwError(msg) {
     document.getElementById("infoArea").innerHTML = msg;
 }
@@ -377,7 +345,6 @@ function toggleDetails(event, rollArray) {
 }
 
 async function launchAttack() {
-    var mobArray = []; // 2d arrays: Block type, attacks of that block
     var rollArray = [];
     var numCrits = 0;
     var numBlocks = blockArray.length;    
@@ -388,31 +355,9 @@ async function launchAttack() {
     if (numBlocks == 0){
         infoArea.innerHTML = "There are no mobs available to attack with!";
         return;
-    }
-           
-    // Go though each creature block, spawn a number of mobs with those stats
-    for(var i=0;i < numBlocks;i++) {
-        //Name, Icon, to hit, weapon, number
-        if (!document.getElementById(blockArray[i].concat("-Enabled")).checked) {
-            continue; // If the box is not checked, skip that mob block
-        }        
-        
-        var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon"));
-        icon = icon.options[icon.selectedIndex].innerHTML;
-        var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
-        var weapon = getWeaponSet(blockArray[i]);    
-        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
-        
-        var vantage = advantage + disadvantage;
-        
-        mobArray.push(new Array());
-        for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
-        }                
-    }
+    }              
+    
+    var mobArray = parseMobs();
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
@@ -524,6 +469,35 @@ async function launchAttack() {
 
     generateFinalOutput(totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
     
+}
+
+function parseMobs() {
+    var mobArray = []; // 2d arrays: Block type, attacks of that block
+
+    // Go though each creature block, spawn a number of mobs with those stats
+    for(var i=0;i < numBlocks;i++) {
+        //Name, Icon, to hit, weapon, number
+        if (!document.getElementById(blockArray[i].concat("-Enabled")).checked) {
+            continue; // If the box is not checked, skip that mob block
+        }        
+        
+        var name = document.getElementById(blockArray[i].concat("-Name")).value;
+        var icon = document.getElementById(blockArray[i].concat("-Icon"));
+        icon = icon.options[icon.selectedIndex].innerHTML;
+        var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
+        var weapon = getWeaponSet(blockArray[i]);    
+        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
+        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
+        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
+        
+        var vantage = advantage + disadvantage;
+        
+        mobArray.push(new Array());
+        for(var j=0; j < number; j++) {
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
+        }                
+    }
+    return mobArray;
 }
 
 function getWeaponSet(mobTag) {    
