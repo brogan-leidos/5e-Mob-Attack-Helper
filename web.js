@@ -210,8 +210,7 @@ function updateModColors(value, mobTag, modRow) {
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
-            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
-            return;
+            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;            
         }
     }
     // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
