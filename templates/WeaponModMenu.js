@@ -41,7 +41,7 @@ export function modifierRow() {
 
 export function modifierRowNoTr() {    
  return `
-  <tr>
+  
     <td></td>
     <td>
       <select id="FILLER-BLOCK-Mod-Select">
@@ -51,7 +51,7 @@ export function modifierRowNoTr() {
       </select>
     </td>
     <td><div id="FILLER-BLOCK-Mod"></div></td>  
-  </tr> 
+  
   `
 }
 
