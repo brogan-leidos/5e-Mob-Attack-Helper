@@ -216,7 +216,7 @@ function modifyRow(e) {
     
     //TODO: < 1 Row
     var targetCell = document.getElementById(mobTag + "-Mod");
-    targetCell.parentElement.innerHTML = chooseModifierType(value);   
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);   
 }
 
 function changeMobWeapon (mobTag, newValue) {
