@@ -175,8 +175,9 @@ function mobHasExpandedWeapon(mobTag) {
 }
 
 function expandWeapon(mobTag) {
-    var newRow = modifierRow().replace("/FILLER-BLOCK/g", mobTag);
-    var parentRow = document.getElementById(mobTag + "-Number");    
+    var newRow = modifierRow().replace(/FILLER-BLOCK/g, mobTag);
+    var parentRow = document.getElementById(mobTag + "-Number").parentElement.parentElement;    
+    parentRow.insertAdjacentHTML('beforebegin', newRow);
          
     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
                                 <td>&nbsp</td>
