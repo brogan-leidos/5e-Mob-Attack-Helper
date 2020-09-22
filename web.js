@@ -185,7 +185,7 @@ function expandWeapon(mobTag, event) {
 
     modSelect = document.getElementById(mobTag + "-Mod-Select");
     modSelect.addEventListener('change', (e) => {
-        modifiyRow(e);
+        modifyRow(e);
     });
          
          
