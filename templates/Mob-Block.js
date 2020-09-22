@@ -53,7 +53,7 @@ export function mobBlock() {
     <tr>
       <td></td>
       <td></td>
-      <td><button class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></td>
+      <td><span class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
