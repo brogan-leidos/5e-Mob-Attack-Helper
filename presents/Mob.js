@@ -13,7 +13,7 @@ export default class Mob {
     this.Chr = 0;
     this.Weapons = [];
     this.EquipWeapon = weapon; // An array of modifiers
-                               // EX: [["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
+                               // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
         
     this.Name = name;
     this.Icon = icon;
@@ -54,7 +54,7 @@ export default class Mob {
             return "crit";
         }
         
-        this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon.BonusToHit);
+        this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon[0][1]);
         return this.rollClass.hitRoll;
     }
     
