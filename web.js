@@ -199,8 +199,9 @@ function modifyRow(value, mobTag, modRow) {
     var targetCell = document.getElementById(mobTag + "-" + modRow +"-Mod");
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);
     for (var i=modRow; i >= 0; i--) {
-        if (document.getElementById(`${mobTag}-${i}-Mod-Select`).value == "DC") {
-            targetCell.parentElement.style.backgroundColor = mobBlockDcColor;
+        var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
+        if (selectSeek.value == "DC") {
+            selectSeek.parentElement.style.backgroundColor = mobBlockDcColor;
         }
     }
     
