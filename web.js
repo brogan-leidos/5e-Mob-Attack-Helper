@@ -358,8 +358,8 @@ async function launchAttack() {
         var lowerCap = -1
     }
     
-    var dcHighestSave = -1;
-    var dcLowestFail = -1;
+    var dcLowestSave = -1;
+    var dcHighestFail = -1;
     
     var ailments = {};
     
@@ -405,13 +405,24 @@ async function launchAttack() {
                 continue;
             }
          
-            //var dcHighestSave = -1;
-        //    var dcLowestFail = -1;
+//             var dcLowestSave = -1;
+//             var dcHighestFail = -1;
             var dcCheck = mobArray[block][i].checkIfHasDc();
             if (dcCheck != false) {
-                if (dcCheck > highestSuccess) {
-                var savingThrow = await dcCheck();
+                var savingThrow = null;
+                if ((dcCheck < dcLowestSave || dcLowestSave == -1) && (dcCheck > dcHighestFail)) {
+                    savingThrow = await dcCheck();
+                }
+                else if (dcCheck > dcLowestSave) {
+                    savingThrow = true;
+                }
+                else if (dcCheck < dcHighestFail) {
+                    savingThrow = false;
+                }
                 if (!savingThrow) {
+                    if (dcCheck > dcHighestFail) {
+                        dcHighestFail = dcCheck;
+                    }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (fail[0] == "Condition") {
@@ -423,6 +434,9 @@ async function launchAttack() {
                     }
                 }
                 else {
+                    if (dcCheck < dcLowestSave) {
+                        dcLowestSave = dcCheck;
+                    }
                     rollResult = mobArray[block][i].succeedDc();                         
                 }
             }
