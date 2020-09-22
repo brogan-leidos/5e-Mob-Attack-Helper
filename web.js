@@ -187,6 +187,8 @@ function expandWeapon(mobTag, event) {
     var newRow = modifierRow().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
     var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
+         
+    modifyRow("Extra Damage", mobTag, modRow);
 
     modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     modSelect.addEventListener('change', (e) => {
