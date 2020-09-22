@@ -23,8 +23,7 @@ export function addWeaponMobTemplate(title, roll) {
   `
 }
 
-export function modifierRow() {  
-  
+export function modifierRow() {    
   /// Add Modifier V
  return `
   <tr>
@@ -37,8 +36,24 @@ export function modifierRow() {
       </select>
     </td>
     <td><div id="FILLER-BLOCK-Mod"></div></td>  
-  <tr>
- 
+  <tr> 
   `
+}
+
+export function chooseModifierType(type, mobTag) {
+    if (type == "DC") {
+      return `<input id="${mobTag}-Mod" type="number" value="10" />`; 
+    }
+    else if (type == "Condition") {
+      return `
+      <select id="${mobTag}-Mod">
+        <option>Knock Prone</option>
+        <option>Restrain</option>
+        <option>Paralyze</option>
+      </select>`;
+    }
+    else if (type == "Extra Damage") {
+      return `<input id="${mobTag}-Mod" value="1d6 + 2 slashing" />`; 
+    }
 }
 
