@@ -384,7 +384,7 @@ async function launchAttack() {
             var rollResult = "";
             var attackRoll = mobArray[block][i].makeAttack();
             if (attackRoll == "crit") {
-                rollResult = mobArray[block][i].dealCrit());
+                rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
             }            
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
