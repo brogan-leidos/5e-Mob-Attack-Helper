@@ -162,7 +162,27 @@ export default class Mob {
         return false;
     }
     
-    failedDc() {
+    failDc() {
+        var afterDc = false;
+        var ret = [];
+        for (var i=0; i < this.EquipWeapon.length; i++) {
+            if (this.EquipWeapon[i][0] == "DC") {
+                afterDc = true;
+            }
+            else if (afterDc) {
+                if (this.EquipWeapon[i][0] == "Extra Damage") {
+                    this.rollClass = this.rollDamageForWeapon(parseWeapon(this.EquipWeapon[i][1]));
+                }
+                else if (this.EquipWeapon[i][0] == "Condition") {
+                    ret.push(["Condition", this.EquipWeapon[i][1]]);
+                }
+            }
+        }
+        ret.push(["Roll Class", this.rollClass]);
+        return ret;
+    }
+    
+    succeedDc() {
         var afterDc = false;
         var ret = [];
         for (var i=0; i < this.EquipWeapon.length; i++) {
