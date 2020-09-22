@@ -177,7 +177,7 @@ function mobHasExpandedWeapon(mobTag) {
 
 function expandWeapon(mobTag, event) {
     var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
-    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+    var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
     if (!modSelect) {
         document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
