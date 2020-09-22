@@ -170,7 +170,7 @@ export default class Mob {
                 afterDc = true;
             }
             else if (afterDc) {
-                if (this.EquipWeapon[i][0] == "Extra Damage") {
+                if (this.EquipWeapon[i][0].includes("Extra Damage")) {
                     this.rollClass = this.rollDamageForWeapon(parseWeapon(this.EquipWeapon[i][1]));
                 }
                 else if (this.EquipWeapon[i][0] == "Condition") {
@@ -190,16 +190,12 @@ export default class Mob {
                 afterDc = true;
             }
             else if (afterDc) {
-                if (this.EquipWeapon[i][0] == "Extra Damage") {
+                if (this.EquipWeapon[i][0] == "Extra Damage (1/2 on success)") {
                     this.rollClass = this.rollDamageForWeapon(parseWeapon(this.EquipWeapon[i][1]));
-                }
-                else if (this.EquipWeapon[i][0] == "Condition") {
-                    ret.push(["Condition", this.EquipWeapon[i][1]]);
                 }
             }
         }
-        ret.push(["Roll Class", this.rollClass]);
-        return ret;
+        return this.rollClass;
     }
     
 }
