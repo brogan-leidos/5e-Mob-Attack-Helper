@@ -156,7 +156,7 @@ function createPresent(presentName) {
         changeVantage(mobTag);        
     });
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
-        expandWeapon(mobTag);        
+        expandWeapon(mobTag, e);        
     });
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
@@ -174,12 +174,16 @@ function mobHasExpandedWeapon(mobTag) {
     return !!document.getElementById(`${mobTag}-WeaponExpandRow1`);
 }
 
-function expandWeapon(mobTag) {
+function expandWeapon(mobTag, event) {
+    var modSelect = document.getElementById(mobTag + "-Mod-Select");
+    if (!modSelect) {
+        document.getElementById(event.target.id).insertAdjacentHtml('afterend',`<button class="weaponCollapseButton fa fa-plus-square-o" id="${mobTag}-Weapon-Collapse"></button>`);
+    }
     var newRow = modifierRow().replace(/FILLER-BLOCK/g, mobTag);
-    var parentRow = document.getElementById(mobTag + "-Number").parentElement.parentElement;    
+    var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
 
-    var modSelect = document.getElementById(mobTag + "-Mod-Select");
+    modSelect = document.getElementById(mobTag + "-Mod-Select");
     modSelect.addEventListener('change', (e) => {
         modifiyRow(e);
     });
