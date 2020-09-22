@@ -10,6 +10,7 @@ var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "grey";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
+var mobBlockDcColor = "lightgrey";
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
@@ -179,44 +180,30 @@ function expandWeapon(mobTag, event) {
     if (!modSelect) {
         document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-        collapseRow(e);
-    });  
+            collapseRow(e);
+        });  
     }
-    var newRow = modifierRow().replace(/FILLER-BLOCK/g, mobTag);
+    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var newRow = modifierRow().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
     var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
 
-    modSelect = document.getElementById(mobTag + "-Mod-Select");
+    modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     modSelect.addEventListener('change', (e) => {
-        modifyRow(e.target.value, e.target.id.split("-")[0]);
-    });
-         
-         
-//     var weaponDetailsHtml = `<tr id="${mobTag}-WeaponExpandRow1">
-//                                 <td>&nbsp</td>
-//                                 <td>Weapon 2:</td>
-//                                 <td><input id="${mobTag}-Weapon2" type="text" /></td>
-//                             </tr>
-//                             <tr id="${mobTag}-WeaponExpandRow2">
-//                                 <td>&nbsp</td>
-//                                 <td></td>
-//                                 <td><input title="If checked, these dice will also be doubled in a crit" id="${mobTag}-IncludeCrit" name="includeCrit" type="checkbox" /> <label for="includeCrit">Include in crit</label></td>                                
-//                             </tr>`;
-//     var element = document.getElementById(mobTag + "-Weapon-Expand");
-//     if (!document.getElementById(`${mobTag}-WeaponExpandRow1`)) {
-//         element.parentElement.parentElement.insertAdjacentHTML('afterend', weaponDetailsHtml);
-//     }
-//     else {
-//         document.getElementById(`${mobTag}-WeaponExpandRow1`).remove();
-//         document.getElementById(`${mobTag}-WeaponExpandRow2`).remove();
-//     }
+        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-").split("-")[0]);
+    });                  
     
 }
 
-function modifyRow(value, mobTag) {    
-    //TODO: < 1 Row
-    var targetCell = document.getElementById(mobTag + "-Mod");
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);   
+function modifyRow(value, mobTag, modRow) {    
+    var targetCell = document.getElementById(mobTag + "-" + modRow +"-Mod");
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag);
+    for (var i=modRow; i >= 0; i--) {
+        if (document.getElementById(`${mobTag}-${i}-Mod-Select`).value == "DC") {
+            targetCell.parentElement.style.backgroundColor = mobBlockDcColor;
+        }
+    }
+    
 }
 
 function collapseRow(e) {
