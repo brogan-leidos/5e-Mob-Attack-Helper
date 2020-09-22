@@ -120,7 +120,7 @@ export default class Mob {
             flipBit = -1;
         }   
         var damageDie = parseInt(splitWeapon[0].trim());
-        splitWeapon = combineEnds(splitWeapon);
+        splitWeapon = this.combineEnds(splitWeapon);
 
         splitWeapon = splitWeapon.trim().split(" ");
         var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
