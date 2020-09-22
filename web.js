@@ -82,6 +82,16 @@ function toggleMob(mobTag) {
     }
 }
 
+function toggleRange(mobTag) {
+    var range = document.getElementById(mobTag + "-Range").classList;
+    if (range == "fa fa-compress") {
+        range = "fa fa-expand";
+    }
+    else {
+        range = "fa fa-compress";
+    }
+}
+
 function createPresent(presentName) {
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
@@ -146,6 +156,9 @@ function createPresent(presentName) {
     });
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
+    });
+    document.getElementById(mogTag + "-Range").addEventListener('click', (e) => {
+        toggleRange(mobTag);
     });
     
     if (newMob.EquipWeapon.WeaponString2) {
