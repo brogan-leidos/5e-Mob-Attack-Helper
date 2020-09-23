@@ -291,6 +291,7 @@ function collapseRow(e) {
 
 function changeMobWeapon (mobTag, weaponMods) {
     if (typeof weaponMods == "string") {
+        weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
     }
          
