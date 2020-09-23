@@ -204,7 +204,7 @@ function assignListenersToModRow(mobTag, modRow) {
 
 function modifyRow(value, mobTag, modRow) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow, underDc);
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
     updateWeaponModRows(value, mobTag, modRow);
 }
 
