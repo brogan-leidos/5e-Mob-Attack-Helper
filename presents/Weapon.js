@@ -1,8 +1,8 @@
 export default class Weapon {    
-    constructor (name="", tohit=0, args){
+    constructor (name="", args){
         this.Name = name;
-        this.BonusToHit = tohit;
-        this.WeaponString = args[0][1];
+        this.BonusToHit = args[0][1];
+        this.WeaponString = args[1][1];
         this.WeaponMods = args;
     }
        
