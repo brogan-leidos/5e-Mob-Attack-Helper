@@ -468,6 +468,7 @@ async function launchAttack() {
             // Everything past here is assumed to take part on a hit
             
             if (allowParalyzeCrit && !attackRollClass.crit) {
+                mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
                 rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
             }
