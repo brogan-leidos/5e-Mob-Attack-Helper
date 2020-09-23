@@ -10,7 +10,7 @@ export function weaponsToHtml(weapons) {
   for(var i=0; i < weapons.length; i++) {    
     var weapon = weapons[i];
     var stringify = JSON.stringify(weapon.WeaponMods);
-    stringify = stringify.replace(/\\/g, "");
+    stringify = stringify.replace(/\"/g, "");
 
     htmlReturn += `
       <option id="${weapon.Name}" value=${stringify}>
