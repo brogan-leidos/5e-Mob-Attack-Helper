@@ -19,7 +19,7 @@ export default class Skeleton extends Mob {
     
     this.Weapons = [
       new Weapon("Shortsword", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d6 + 2 slashing"]]),
-      new Weapon("Shortbow", [["ToHit", 4],  ["IsMelee", false], ["Weapon","1d6 + 2 slashing"]]),
+      new Weapon("Shortbow", [["ToHit", 4],  ["IsMelee", false], ["Weapon","1d6 + 2 piercing"]]),
       new Weapon("Light Crossbow", [["ToHit", 4],  ["IsMelee", false], ["Weapon","1d8 + 2 piercing"]]),
       new Weapon("Morningstar", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d8 + 2 piercing"]])
     ];
