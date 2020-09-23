@@ -98,6 +98,19 @@ function toggleRange(mobTag) {
     }
 }
 
+function setRange(mobTag, inMelee) {
+    if (inMelee) {
+        document.getElementById(mobTag + "-Ranged").style.color = "black";
+        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
+        document.getElementById(mobTag + "-Range").checked = false;
+    }
+    else {
+        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
+        document.getElementById(mobTag + "-Melee").style.color = "black";
+        document.getElementById(mobTag + "-Range").checked = true;
+    }
+}
+
 function createPresent(presentName) {
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
@@ -273,11 +286,8 @@ function changeMobWeapon (mobTag, weaponMods) {
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
-    document.getElementById(mobTag + "-Weapon").value = weapon;
-    
-   if (!isMelee) {
-       toggleRange(mobTag)
-   }
+    document.getElementById(mobTag + "-Weapon").value = weapon;    
+    setRange(mobTag, isMelee)   
     
     for (var i=3; i < weaponMods.length; i++) {
         assignWeaponMod(mobTag, weaponMods[i]);        
