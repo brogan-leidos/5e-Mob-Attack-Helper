@@ -269,7 +269,6 @@ function collapseRow(e) {
 }
 
 function changeMobWeapon (mobTag, weaponMods) {
-    weaponMods = JSON.parse(weaponMods); // Expects [["ToHit", #], ["Weapon", ""], ...mods]
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[1][1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
