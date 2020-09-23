@@ -18,9 +18,10 @@ export default class Skeleton extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Shortsword", 1, 6, "slashing", 4, 2),
-      new Weapon("Shortbow", 1, 6, "piercing", 4, 2),
-      new Weapon("Light Crossbow", 1, 8, "piercing", 4, 2),
+      new Weapon("Shortsword", 4, [["Weapon","1d6 + 2 slashing"]]),
+      new Weapon("Shortbow", 4, [["Weapon","1d6 + 2 slashing"]]),
+      new Weapon("Light Crossbow", 4, [["Weapon","1d8 + 2 piercing"]]),
+      new Weapon("Morningstar", 4, [["Weapon","1d8 + 2 piercing"]])
     ];
     
     this.EquipWeapon = this.Weapons[0];
