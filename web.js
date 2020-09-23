@@ -650,12 +650,14 @@ function displayBreakdown(totalDamageBreakdown) {
 async function discoveryStep(attackRoll) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll));           
+    var option1 = "Hit!";
+    var option2 = "Miss";
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll, option1, option2));           
 
-    document.getElementById("hitButton").addEventListener("click", (e) => {      
+    document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
     });
-    document.getElementById("missButton").addEventListener("click", (e) => {
+    document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
     });
   });
@@ -663,13 +665,15 @@ async function discoveryStep(attackRoll) {
 
 async function promptDc(roll) { 
   // spawn the block and wait for user input
-  return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("Saving Throw (Before modifiers)", roll, "Success", "Failure"));           
+  return new Promise((resolve, reject) => {  
+    var option1 = "Success";
+    var option2 = "Failure";
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("Saving Throw (Before modifiers)", roll, option1, option2));           
 
-    document.getElementById("hitButton").addEventListener("click", () => {
+    document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
     });
-    document.getElementById("missButton").addEventListener("click", () => {
+    document.getElementById(`missButton-${option2}`).addEventListener("click", () => {
       resolve(false);
     });
   });
