@@ -456,7 +456,7 @@ async function launchAttack() {
                     savingThrow = false;
                 }
                 if (!savingThrow) {
-                    if (roll > dcHighestFail || dcHighestFail == -2) {
+                    if (roll > dcHighestFail || dcHighestFail == -1) {
                         dcHighestFail = roll;
                     }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
