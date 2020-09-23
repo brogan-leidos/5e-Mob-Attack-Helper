@@ -14,10 +14,9 @@ export default class Mob {
     this.Weapons = [];
     this.EquipWeapon = weapon; // An array of modifiers
                                // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
-        
+    this.isMelee = false;
     this.Name = name;
-    this.Icon = icon;
-        
+    this.Icon = icon;        
     this.MobName = mobname;
         
     this.rollClass = new DamageRoll();
