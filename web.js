@@ -389,15 +389,40 @@ async function launchAttack() {
     }
     
     var dcLowestSave = -1;
-    var dcHighestFail = -1;
-    
+    var dcHighestFail = -1;    
     var ailments = {};
     
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
-            //TODO: Add ailments and bonuses
+            
+            var advantage = 0;
+            var disadvantage = 0;
+            var inMelee = document.getElementById(`${mobArray[block][i].MobName}-Range`).checked;
+            var allowParalyzeCrit = false;
+            if (ailments["Knock Prone"]) {
+                // if ranged gets disadvantage, else melee gets advantage               
+                if (inMelee) {
+                    advantage = 1;                
+                } else {
+                    disadvantage = -1;                    
+                }
+            }
+            if (ailments["Restrain"]) {
+                // advantage, disadv on dex saves
+                advantage = 1;
+            }
+             if (ailments["Paralyze"]) {
+                // advantage, auto fails str/dex saves
+                 advantage = 1;
+                 if (inMelee) {
+                    allowParalyzeCrit = true;
+                 }
+            }
+            
+            mobArray[block][i].Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
+                 
             var rollResult = "";
             var attackRollClass = mobArray[block][i].makeAttack();
             var attackRoll = attackRollClass.hitRoll;
@@ -440,6 +465,13 @@ async function launchAttack() {
                 continue;
             }
          
+            // Everything past here is assumed to take part on a hit
+            
+            if (allowParalyzeCrit) {
+                rollResult = mobArray[block][i].dealCrit();
+                numCrits = numCrits + 1;
+            }
+            
             var mobDc = mobArray[block][i].checkIfHasDc();
             if (mobDc != false) {
                 mobDc = parseInt(mobDc);
@@ -475,6 +507,7 @@ async function launchAttack() {
                     rollResult = mobArray[block][i].succeedDc();                         
                 }
             }
+                       
             rollArray[block].push(rollResult);
         }
     }
@@ -487,8 +520,7 @@ async function launchAttack() {
     var totalDamage = 0;
     var totalDamageBreakdown = {};
     var totalHits = 0;
-    var infoAppend = "";
-    
+    var infoAppend = "";    
     
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
