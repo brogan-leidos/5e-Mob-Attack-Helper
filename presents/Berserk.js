@@ -11,7 +11,7 @@ export default class Berserk extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Great Ax", 1, 12, "slashing", 5, 3)
+      new Weapon("Great Ax", [["ToHit", 5], ["Weapon","1d12 + 3 slashing"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
