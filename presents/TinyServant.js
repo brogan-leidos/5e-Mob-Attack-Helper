@@ -18,7 +18,7 @@ export default class TinyServant extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", 1, 4, "bludgeoning", 5, 3)
+      new Weapon("Slam", [["ToHit", 5], ["Weapon","1d4 + 3 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
