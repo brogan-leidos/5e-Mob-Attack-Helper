@@ -467,7 +467,7 @@ async function launchAttack() {
          
             // Everything past here is assumed to take part on a hit
             
-            if (allowParalyzeCrit) {
+            if (allowParalyzeCrit && !attackRollClass.crit) {
                 rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
             }
