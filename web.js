@@ -275,6 +275,10 @@ function changeMobWeapon (mobTag, weaponMods) {
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
     
+   if (!isMelee) {
+       toggleRange(mobTag)
+   }
+    
     for (var i=3; i < weaponMods.length; i++) {
         assignWeaponMod(mobTag, weaponMods[i]);        
     }                     
