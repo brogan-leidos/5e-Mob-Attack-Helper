@@ -472,18 +472,28 @@ async function launchAttack() {
                 numCrits = numCrits + 1;
             }
             
-            var mobDc = mobArray[block][i].checkIfHasDc();
-            if (mobDc != false) {
-                mobDc = parseInt(mobDc);
+            var mobDcInfo = mobArray[block][i].checkIfHasDc();
+            if (mobDcInfo != false) {
+                var dcType = mobDcInfo[1];
                 var savingThrow = null;
-                var roll = Math.floor(Math.random() * 20 + 1);;
-                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail)) {                    
-                    savingThrow = await promptDc(roll);
+                var roll = Math.floor(Math.random() * 20 + 1);
+                var autoFailSave = false;
+                
+                if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadv to dex saves
+                    var roll2 = Math.floor(Math.random() * 20 + 1);
+                    roll = Math.min(roll, roll2);
+                }
+                if (ailments["Paralyze"] && (dcType == "Dex" || dcType == "Str")) { // Auto fails str and dex saves
+                    autoFailSave = true;
+                }
+                
+                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
+                    savingThrow = await promptDc(`roll | DC: ${mobDcInfo[0]} ${dcType}`);
                 }
                 else if (roll >= dcLowestSave) {
                     savingThrow = true;
                 }
-                else if (roll <= dcHighestFail) {
+                else if (roll <= dcHighestFail || autoFailSave) {
                     savingThrow = false;
                 }
                 if (!savingThrow) {
