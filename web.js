@@ -663,7 +663,7 @@ async function discoveryStep(attackRoll) {
 async function promptDc(roll) { 
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("Saving Throw", roll, "Success", "Failure");           
+    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("Saving Throw (Before modifiers)", roll, "Success", "Failure");           
 
     document.getElementById("hitButton").addEventListener("click", () => {
       resolve(true);
