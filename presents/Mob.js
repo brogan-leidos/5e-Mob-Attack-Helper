@@ -48,16 +48,17 @@ export default class Mob {
         if (attackRoll == 1) {
             this.rollClass.hitRoll = 1;
             this.rollClass.crit = true;
-            this.rollClass.miss = true;
-            return 1;
+            this.rollClass.miss = true;            
         }
         if (attackRoll == 20) {
             this.rollClass.hitRoll = "crit";
-            return "crit";
+            this.rollClass.crit = true;            
         }
         
-        this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon[0][1]);
-        return this.rollClass.hitRoll;
+        if (this.rollClass.crit == false) {
+            this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon[0][1]);
+        }
+        return this.rollClass;
     }
     
     // Make a strike using equip weapon
