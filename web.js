@@ -335,6 +335,13 @@ function toggleDetails(event, rollArray) {
                     else if (rollArray[i][j].crit && rollArray[i][j].missed) {
                         detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss</span><br>`;                        
                     }
+                    else if (rollArray[i][j].autoCrit) {
+                        detailAppend += `<span id="${mobTag}-Detail" title="auto crit" style="margin-left:15px; color:#a6b500"> [20*]`;
+                        for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
+                            detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
+                        }
+                        detailAppend += ` </span><br>`;
+                    }
                     else {
                         if (rollArray[i][j].missed == false) {
                             detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}]`;
@@ -470,7 +477,7 @@ async function launchAttack() {
             if (allowParalyzeCrit && !attackRollClass.crit) {
                 mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
                 rollResult = mobArray[block][i].dealCrit();
-                rollResult.crit = true;
+                rollResult.autoCrit = true;
                 numCrits = numCrits + 1;
             }
             
