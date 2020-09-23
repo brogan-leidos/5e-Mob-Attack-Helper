@@ -86,7 +86,7 @@ function toggleMob(mobTag) {
 
 function toggleRange(mobTag) {    
     var isMelee = document.getElementById(mobTag + "-Range").checked;
-    if (!isMelee) {
+    if (isMelee) {
         document.getElementById(mobTag + "-Ranged").style.color = "black";
         document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
         document.getElementById(mobTag + "-Range").checked = false;
