@@ -386,6 +386,7 @@ async function launchAttack() {
         discoveryModeFlag = true;
         var minAc = -1;
         var lowerCap = -1
+        document.getElementById("discoveryArea").innerHTML = ""; // Keep our workspace clean!    
     }
     
     var dcLowestSave = -1;
