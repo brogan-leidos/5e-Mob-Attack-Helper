@@ -98,6 +98,10 @@ export default class Mob {
         return this.rollClass;
     }
   
+    purgeDamageResults() {
+        this.rollClass.damageResults = [];
+    }
+    
     rollDamageForWeapon(weaponBreakdown, halfDamage=false){
         var damageTotal = 0;
         for(var j=0; j < weaponBreakdown["numDice"]; j++) {
