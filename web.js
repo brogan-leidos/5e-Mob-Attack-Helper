@@ -205,6 +205,9 @@ function assignListenersToModRow(mobTag, modRow) {
 function modifyRow(value, mobTag, modRow) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
+    if (value == "DC") {
+        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    }
     updateWeaponModRows(value, mobTag, modRow);
 }
 
