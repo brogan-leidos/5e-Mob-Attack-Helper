@@ -1,4 +1,4 @@
-export function discoveryTemplate(title, roll, option1="Hit!", option2="Missed") {  
+export function discoveryTemplate(title, roll, option1="op1", option2="op2") {  
   
  return `
   <table class="discoveryBlock">
