@@ -47,6 +47,7 @@ export default class Mob {
 
         if (attackRoll == 1) {
             this.rollClass.hitRoll = 1;
+            this.rollClass.crit = true;
             return 1;
         }
         if (attackRoll == 20) {
