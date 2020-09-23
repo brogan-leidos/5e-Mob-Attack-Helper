@@ -47,12 +47,18 @@ export function mobBlock() {
       <td>
         &nbsp;
       </td>
-      <td>Weapon:<button id="FILLER-BLOCK-Range" class="rangeToggleButton fa fa-compress" title="Attacks within 5ft"></button></td>
+      <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
     </tr>
     <tr>
       <td></td>
-      <td></td>
+      <td>
+        <span id="FILLER-BLOCK-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">
+          <span id="FILLER-BLOCK-Melee">Melee</span>
+            / 
+          <span id="FILLER-BLOCK-Ranged">Ranged</span>
+        </span>
+      </td>
       <td style="display:flex"><span class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></span></td>
     </tr>
     <tr>
