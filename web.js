@@ -409,7 +409,7 @@ async function launchAttack() {
                 rollResult = mobArray[block][i].miss();
             }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
-              if (attackRoll <= lowerCap || ) { // Auto assign miss to anything lower than a declared miss
+              if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
                   rollArray[block].push(mobArray[block][i].miss());
                   continue;
               } 
