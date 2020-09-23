@@ -325,14 +325,14 @@ function toggleDetails(event, rollArray) {
         for (var i=0; i < rollArray.length; i++) {
             for (var j=0; j < rollArray[i].length; j++) {
                 if (rollArray[i][j].attacker.MobName == mobTag) {
-                    if (rollArray[i][j].crit && rollArray[i][j].hitRoll != 1) {
+                    if (rollArray[i][j].crit && !rollArray[i][j].missed) {
                         detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [20!]`;
                         for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
                             detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
                         }
                         detailAppend += ` </span><br>`;
                     }
-                    else if (rollArray[i][j].crit && rollArray[i][j].hitRoll == 1) {
+                    else if (rollArray[i][j].crit && rollArray[i][j].missed) {
                         detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss</span><br>`;                        
                     }
                     else {
