@@ -120,14 +120,10 @@ body {
 }
 
 .mobBlock .rangeToggleButton {
-  background-color: transparent;
-  color: grey;
-  transition-duration: 0.2s;
-  font-size: 12px;
-  padding: 2px;
-  width: auto;
-  border: solid thin grey;
-  margin-left: 10px;
+  color: lightgrey;
+  font-size: 10px;
+  vertical-align: top;
+  padding: 0px;  
 }
 
 .mobBlock .weaponModSelect {
