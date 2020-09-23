@@ -166,18 +166,9 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
-    });
-    
-    if (newMob.EquipWeapon.WeaponString2) {
-        expandWeapon(mobTag);
-        document.getElementById(`${mobTag}-Weapon2`).value = newMob.EquipWeapon.WeaponString2;
-    }
+    });   
          
     return; 
-}
-
-function mobHasExpandedWeapon(mobTag) {
-    return !!document.getElementById(`${mobTag}-WeaponExpandRow1`);
 }
 
 function expandWeapon(mobTag, event) {
