@@ -386,7 +386,6 @@ async function launchAttack() {
         discoveryModeFlag = true;
         var minAc = -1;
         var lowerCap = -1
-        document.getElementById("discoveryArea").innerHTML = ""; // Keep our workspace clean!    
     }
     
     var dcLowestSave = -1;
@@ -397,7 +396,7 @@ async function launchAttack() {
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) {
-                 
+            document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
             //TODO: Add ailments and bonuses
             var rollResult = "";
             var attackRollClass = mobArray[block][i].makeAttack();
