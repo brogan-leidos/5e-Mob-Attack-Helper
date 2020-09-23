@@ -208,7 +208,11 @@ function assignWeaponMod(mobTag, weaponMod) {
     parentRow.insertAdjacentHTML('afterend', newRow);
     
     modifyRow(weaponMod[0], mobTag, modRow);
+    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).value = weaponMod[0];
     document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
+    if (weaponMod[2]) {
+        document.getElementById(`${mobTag}-${modRow}-Mod-Dc`).value = weaponMod[2];
+    }
     assignListenersToModRow(mobTag, modRow); 
 }
 
