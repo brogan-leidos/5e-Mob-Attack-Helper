@@ -84,15 +84,17 @@ function toggleMob(mobTag) {
     }
 }
 
-function toggleRange(mobTag) {
-    var range = document.getElementById(mobTag + "-Range");
-    if (range.classList[2] == "fa-compress") {
-        range.classList = "rangeToggleButton fa fa-expand";
-        range.title = "Attacks outside of 5ft";
+function toggleRange(mobTag) {    
+    var inMelee = document.getElementById(mobTag + "-Range").checked;
+    if (inMelee) {
+        document.getElementById(mobTag + "-Ranged").style.color = "black";
+        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
+        document.getElementById(mobTag + "-Range").checked = false;
     }
     else {
-        range.classList = "rangeToggleButton fa fa-compress";
-        range.title = "Attacks within 5ft";
+        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
+        document.getElementById(mobTag + "-Melee").style.color = "black";
+        document.getElementById(mobTag + "-Range").checked = true;
     }
 }
 
@@ -161,6 +163,7 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag, e);        
     });
+    document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
     });
