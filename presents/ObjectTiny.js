@@ -18,7 +18,7 @@ export default class ObjectTiny extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", [["ToHit", 8], ["Weapon","1d4 + 4 bludgeoning"]]),
+      new Weapon("Slam", [["ToHit", 8],  ["IsMelee", true], ["Weapon","1d4 + 4 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
