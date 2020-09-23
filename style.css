@@ -273,18 +273,18 @@ body {
   background-color: #7491b0;
 }
 
-.discoveryBlock button#hitButton:hover {
+.discoveryBlock .hitButton:hover {
   background-color: #34c239;
   color: white;
   cursor: pointer;
 }
 
-.discoveryBlock button#hitButton:active {
+.discoveryBlock .hitButton:active {
   transition-duration: 0s;
   background-color: #adedaf;
 }
 
-.discoveryBlock button#hitButton {
+.discoveryBlock .hitButton {
   background-color: white;
   color: #34c239;
   border: thin solid;
@@ -297,18 +297,18 @@ body {
   padding: 2px 16px 2px 16px;
 }
 
-.discoveryBlock button#missButton:hover {
+.discoveryBlock .missButton:hover {
   background-color: #ff1a1a;
   color: white;
   cursor: pointer;
 }
 
-.discoveryBlock button#missButton:active {
+.discoveryBlock .missButton:active {
   transition-duration: 0s;
   background-color: #ffcccc;
 }
 
-.discoveryBlock button#missButton {
+.discoveryBlock .missButton {
   background-color: white;
   color:red;
   border: thin solid;
