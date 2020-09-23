@@ -194,7 +194,7 @@ export default class Mob {
             }
             else if (afterDc) {
                 if (this.EquipWeapon[i][0] == "Damage (1/2 on save)") {
-                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]), halfDamage=true);
+                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]), true);
                 }
             }
         }
