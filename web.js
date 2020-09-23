@@ -270,8 +270,8 @@ function collapseRow(e) {
 
 function changeMobWeapon (mobTag, weaponMods) {
     var toHit = weaponMods[0][1];
-    var weapon = weaponMods[1][1];
-    var isMelee = weaponMods[2][1];
+    var weapon = weaponMods[2][1];
+    var isMelee = weaponMods[1][1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
     
