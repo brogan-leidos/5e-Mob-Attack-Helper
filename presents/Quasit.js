@@ -11,7 +11,7 @@ export default class Quasit extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Claw", [["ToHit", 4], ["Weapon","1d4 + 3 piercing"], ["Extra Damage", "2d4 + 0 poison"]]),
+      new Weapon("Claw", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d4 + 3 piercing"], ["Extra Damage", "2d4 + 0 poison"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
