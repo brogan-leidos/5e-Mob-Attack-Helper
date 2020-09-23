@@ -18,7 +18,7 @@ export default class Zombie extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", [["ToHit", 3], ["Weapon","1d6 + 1 bludgeoning"]]),
+      new Weapon("Slam", [["ToHit", 3],  ["IsMelee", true], ["Weapon","1d6 + 1 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
