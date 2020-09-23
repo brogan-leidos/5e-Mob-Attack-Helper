@@ -282,6 +282,10 @@ function collapseRow(e) {
 }
 
 function changeMobWeapon (mobTag, weaponMods) {
+    if (typeof weaponMods == "string") {
+        weaponMods = JSON.parse(weaponMods)
+    }
+         
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
