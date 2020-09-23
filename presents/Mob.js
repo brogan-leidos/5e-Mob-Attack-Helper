@@ -99,14 +99,17 @@ export default class Mob {
         return this.rollClass;
     }
   
-    rollDamageForWeapon(weaponBreakdown){
+    rollDamageForWeapon(weaponBreakdown, halfDamage=false){
         var damageTotal = 0;
         for(var j=0; j < weaponBreakdown["numDice"]; j++) {
             damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
         }
         damageTotal += weaponBreakdown["bonusDmg"];
         if (damageTotal < 0) { damageTotal = 0; }
-        this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
+        if (halfDamage) {
+            damageTotal = Math.floor(damageTotal / 2);
+        }
+        this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"], halfDamage]);
         return this.rollClass;
     }
     
@@ -191,7 +194,7 @@ export default class Mob {
             }
             else if (afterDc) {
                 if (this.EquipWeapon[i][0] == "Damage (1/2 on save)") {
-                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]));
+                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]), halfDamage=true);
                 }
             }
         }
