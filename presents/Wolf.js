@@ -18,7 +18,7 @@ export default class Wolf extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Bite", [["ToHit", 4],  ["IsMelee", true], ["Weapon","2d4 + 2 piercing"]]),
+      new Weapon("Bite", [["ToHit", 4],  ["IsMelee", true], ["Weapon","2d4 + 2 piercing"], ["DC", 11, "Str"], ["Condition", "Knock Prone"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
