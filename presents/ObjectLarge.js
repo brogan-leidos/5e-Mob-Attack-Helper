@@ -18,7 +18,7 @@ export default class ObjectLarge extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", [["ToHit", 6], ["Weapon","2d10 + 2 bludgeoning"]]),
+      new Weapon("Slam", [["ToHit", 6],  ["IsMelee", true], ["Weapon","2d10 + 2 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
