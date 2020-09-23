@@ -207,6 +207,8 @@ function modifyRow(value, mobTag, modRow) {
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
     if (value == "DC") {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    } else {
+        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
     updateWeaponModRows(value, mobTag, modRow);
 }
