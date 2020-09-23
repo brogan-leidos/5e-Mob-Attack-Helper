@@ -48,7 +48,7 @@ export default class Mob {
         if (attackRoll == 1) {
             this.rollClass.hitRoll = 1;
             this.rollClass.crit = true;
-            this.rollClass.miss = true;            
+            this.rollClass.missed = true;            
         }
         if (attackRoll == 20) {
             this.rollClass.hitRoll = "crit";
