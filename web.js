@@ -649,12 +649,12 @@ function displayBreakdown(totalDamageBreakdown) {
 async function discoveryStep(attackRoll) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("To Hit", attackRoll);           
+    document.getElementById("discoveryArea").insertAdjacentHTML('afterend', discoveryTemplate("To Hit", attackRoll));           
 
-    document.getElementById("hitButton").addEventListener("click", () => {
+    document.getElementById("hitButton").addEventListener("click", (e) => {      
       resolve(true);
     });
-    document.getElementById("missButton").addEventListener("click", () => {
+    document.getElementById("missButton").addEventListener("click", (e) => {
       resolve(false);
     });
   });
@@ -663,7 +663,7 @@ async function discoveryStep(attackRoll) {
 async function promptDc(roll) { 
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
-    document.getElementById("discoveryArea").innerHTML = discoveryTemplate("Saving Throw (Before modifiers)", roll, "Success", "Failure");           
+    document.getElementById("discoveryArea").insertAdjacentHTML('afterend', discoveryTemplate("Saving Throw (Before modifiers)", roll, "Success", "Failure"));           
 
     document.getElementById("hitButton").addEventListener("click", () => {
       resolve(true);
