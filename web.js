@@ -444,15 +444,14 @@ async function launchAttack() {
             if (mobDc != false) {
                 mobDc = parseInt(mobDc);
                 var savingThrow = null;
-                var roll = null;
-                if ((mobDc < dcLowestSave || dcLowestSave == -1) && (mobDc > dcHighestFail)) {
-                    roll = Math.floor(Math.random() * 20 + 1);
+                var roll = Math.floor(Math.random() * 20 + 1);;
+                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail)) {                    
                     savingThrow = await promptDc(roll);
                 }
-                else if (mobDc > dcLowestSave) {
+                else if (roll >= dcLowestSave) {
                     savingThrow = true;
                 }
-                else if (mobDc < dcHighestFail) {
+                else if (roll <= dcHighestFail) {
                     savingThrow = false;
                 }
                 if (!savingThrow) {
