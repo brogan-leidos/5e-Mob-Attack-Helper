@@ -158,7 +158,7 @@ export default class Mob {
     checkIfHasDc() {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             if (this.EquipWeapon[i][0] == "DC") {
-                return this.EquipWeapon[i][1];
+                return [this.EquipWeapon[i][1], this.EquipWeapon[i][2]];
             }
         }
         return false;
