@@ -130,18 +130,14 @@ function createPresent(presentName) {
         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
         appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
         appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
-        if (!newMob.EquipWeapon.WeaponString) {
-            appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.NumDice.toString() + "d" + newMob.EquipWeapon.DamageDie.toString().concat(" + ").concat(newMob.EquipWeapon.BonusToDmg.toString()).concat(" " + newMob.EquipWeapon.DamageType));
-        }
-        else {
-            appendBlock = appendBlock.replace("FILLER-WEAPON", newMob.EquipWeapon.WeaponString);
-        }
+ 
         appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
 
         mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
-            
-        document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (temp) => {
-            changeMobWeapon(mobTag, temp.target.value);        
+        
+        changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
+            changeMobWeapon(mobTag, e.target.value);        
         });
     }
     
@@ -187,6 +183,16 @@ function expandWeapon(mobTag, event) {
          
     modifyRow("Extra Damage", mobTag, modRow);
     assignListenersToModRow(mobTag, modRow);                     
+}
+
+// Not created by user, used to change present weapons
+function assignWeaponMod(mobTag, weaponMod) {
+    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var underDc = checkIfUnderDc(mobTag, modRow);
+    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+    modifyRow(weaponMod[0], mobTag, modRow);
+    document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
+    assignListenersToModRow(mobTag, modRow); 
 }
 
 function assignListenersToModRow(mobTag, modRow) {
@@ -262,23 +268,16 @@ function collapseRow(e) {
 
 }
 
-function changeMobWeapon (mobTag, newValue) {
-    var toHit = parseInt(newValue.split("ToHit:")[1].split("Weapon:")[0]);
-    var weapon = newValue.split("Weapon:")[1].split("Weapon2:")[0];
-    var weapon2 = newValue.split("Weapon2:")[1];
+function changeMobWeapon (mobTag, weaponMods) {
+    weaponMods = JSON.parse(weaponMods); // Expects [["ToHit", #], ["Weapon", ""], ...mods]
+    var toHit = weaponMods[0][1];
+    var weapon = weaponMods[1][1];
     document.getElementById(mobTag + "-ToHit").value = toHit;
     document.getElementById(mobTag + "-Weapon").value = weapon;
-    if (weapon2 != "undefined" && weapon2 != "") {
-        if (!mobHasExpandedWeapon(mobTag)){
-            expandWeapon(mobTag);
-        }
-        document.getElementById(mobTag + "-Weapon2").value = weapon2;
-    }
-    else {
-        if (mobHasExpandedWeapon(mobTag)) {
-            expandWeapon(mobTag);
-        }
-    }
+    
+    for (var i=2; i < weaponMods.length; i++) {
+        assignWeaponMod(mobTag, weaponMods[i]);        
+    }                     
 }
 
 function changeVantage(mobTag) {
