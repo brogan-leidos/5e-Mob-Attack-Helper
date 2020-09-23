@@ -333,7 +333,7 @@ function toggleDetails(event, rollArray) {
                         detailAppend += ` </span><br>`;
                     }
                     else if (rollArray[i][j].crit && rollArray[i][j].hitRoll == 1) {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss`;                        
+                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss</span><br>`;                        
                     }
                     else {
                         if (rollArray[i][j].missed == false) {
