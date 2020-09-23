@@ -434,21 +434,23 @@ async function launchAttack() {
          
 //             var dcLowestSave = -1;
 //             var dcHighestFail = -1;
-            var dcCheck = mobArray[block][i].checkIfHasDc();
-            if (dcCheck != false) {
+            var mobDc = mobArray[block][i].checkIfHasDc();
+            if (mobDc != false) {
                 var savingThrow = null;
-                if ((dcCheck < dcLowestSave || dcLowestSave == -1) && (dcCheck > dcHighestFail)) {
-                    savingThrow = await promptDc();
+                var roll = null;
+                if ((mobDc < dcLowestSave || dcLowestSave == -1) && (mobDc > dcHighestFail)) {
+                    roll = Math.floor(Math.random() * 20 + 1);
+                    savingThrow = await promptDc(roll);
                 }
-                else if (dcCheck > dcLowestSave) {
+                else if (mobDc > dcLowestSave) {
                     savingThrow = true;
                 }
-                else if (dcCheck < dcHighestFail) {
+                else if (mobDc < dcHighestFail) {
                     savingThrow = false;
                 }
                 if (!savingThrow) {
-                    if (dcCheck > dcHighestFail) {
-                        dcHighestFail = dcCheck;
+                    if (roll > dcHighestFail) {
+                        dcHighestFail = roll;
                     }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
@@ -461,8 +463,8 @@ async function launchAttack() {
                     }
                 }
                 else {
-                    if (dcCheck < dcLowestSave) {
-                        dcLowestSave = dcCheck;
+                    if (roll < dcLowestSave) {
+                        dcLowestSave = roll;
                     }
                     rollResult = mobArray[block][i].succeedDc();                         
                 }
@@ -650,8 +652,7 @@ async function discoveryStep(attackRoll) {
   });
 }
 
-async function promptDc() {
-  var roll = Math.floor(Math.random() * 20 + 1);
+async function promptDc(roll) { 
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
     document.getElementById("discoveryArea").innerHTML = discoveryTemplate("Saving Throw", roll, "Success", "Failure");           
