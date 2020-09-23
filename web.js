@@ -196,7 +196,7 @@ function expandWeapon(mobTag, event) {
 }
 
 function assignListenersToModRow(mobTag, modRow) {
-    modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     modSelect.addEventListener('change', (e) => {
         modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
     });  
