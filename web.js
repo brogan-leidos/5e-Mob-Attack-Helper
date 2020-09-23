@@ -204,8 +204,8 @@ function assignWeaponMod(mobTag, weaponMod) {
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
     
-    var parentRow = document.getElementById(`${mobTag}-Weapon`).parentElement.parentElement;
-    parentRow.insertAdjacentHTML('afterend', newRow);
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
+    parentRow.insertAdjacentHTML('beforebegin', newRow);
     
     modifyRow(weaponMod[0], mobTag, modRow);
     document.getElementById(`${mobTag}-${modRow}-Mod-Select`).value = weaponMod[0];
