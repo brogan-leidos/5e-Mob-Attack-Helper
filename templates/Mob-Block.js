@@ -36,7 +36,7 @@ export function mobBlock() {
     <tr>
       <td>
       <select id="FILLER-BLOCK-Weapon-Select" class="weaponSelect" title="Common weapons for this mob type">
-          <option value="ToHit:0 Weapon: Weapon2:">Custom</option>
+          <option value="[["ToHit", 0],["IsMelee", true],["Weapon", "1d6 + 2 slashing"]]">Custom</option>
           ADDITIONAL-WEAPONS
         </select>
       </td>
