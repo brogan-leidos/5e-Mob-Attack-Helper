@@ -11,7 +11,7 @@ export function weaponsToHtml(weapons) {
     var stringify = JSON.stringify(weapon.WeaponMods);
 
     htmlReturn += `
-      <option id="${weapon.Name}" value="${weapon.WeaponMods.toString()}">
+      <option id="${weapon.Name}" value="${stringify}">
         ${weapon.Name}
       </option>
     `
