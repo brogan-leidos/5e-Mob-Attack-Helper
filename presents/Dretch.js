@@ -11,8 +11,8 @@ export default class Dretch extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Claws", [["ToHit", 2], ["Weapon","2d4 + 0 slashing"]]),
-      new Weapon("Bite", [["ToHit", 2], ["Weapon","1d6 + 0 piercing"]]),
+      new Weapon("Claws", [["ToHit", 2], ["IsMelee", true], ["Weapon","2d4 + 0 slashing"]]),
+      new Weapon("Bite", [["ToHit", 2], ["IsMelee", true], ["Weapon","1d6 + 0 piercing"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
