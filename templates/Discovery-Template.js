@@ -13,10 +13,10 @@ export function discoveryTemplate(title, roll, option1="op1", option2="op2") {
       </tr>
       <tr>
         <td>
-          <button id="hitButton-${option1}">${option1}</button>
+          <button class="hitButton" id="hitButton-${option1}">${option1}</button>
         </td>
         <td>
-          <button id="missButton-${option2}">${option2}</button>
+          <button class="missButton" id="missButton-${option2}">${option2}</button>
         </td>
       </tr>
     </tbody>
