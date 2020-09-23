@@ -502,11 +502,11 @@ async function launchAttack() {
                     }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
-                        if (fail[0] == "Condition") {
-                            ailments[fail[1]] = true;
+                        if (failureResults[fail] == "Condition") {
+                            ailments[failureResults[fail][1]] = true;
                         }
-                        else if (fail[0] == "Roll Class") {
-                            rollResult = fail[1];
+                        else if (failureResults[fail] == "Roll Class") {
+                            rollResult = failureResults[fail][1];
                         }
                     }
                 }
