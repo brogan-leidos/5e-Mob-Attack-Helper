@@ -664,7 +664,6 @@ async function discoveryStep(attackRoll) {
 }
 
 async function promptDc(roll) { 
-  // spawn the block and wait for user input
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
