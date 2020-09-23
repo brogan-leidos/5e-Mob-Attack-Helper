@@ -325,12 +325,15 @@ function toggleDetails(event, rollArray) {
         for (var i=0; i < rollArray.length; i++) {
             for (var j=0; j < rollArray[i].length; j++) {
                 if (rollArray[i][j].attacker.MobName == mobTag) {
-                    if (rollArray[i][j].hitRoll == "crit") {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [${rollArray[i][j].hitRoll}]`;
+                    if (rollArray[i][j].crit && rollArray[i][j].hitRoll != 1) {
+                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [20!]`;
                         for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
                             detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
                         }
                         detailAppend += ` </span><br>`;
+                    }
+                    else if (rollArray[i][j].crit && rollArray[i][j].hitRoll == 1) {
+                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss`;                        
                     }
                     else {
                         if (rollArray[i][j].missed == false) {
@@ -517,7 +520,7 @@ async function launchAttack() {
             }
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true).length;
+        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true && a.hitRoll != 1).length;
              
         totalHits += blockNumHits;
         infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
