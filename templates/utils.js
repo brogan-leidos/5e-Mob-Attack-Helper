@@ -13,7 +13,7 @@ export function weaponsToHtml(weapons) {
     stringify = stringify.replace(/\"/g, "'");
 
     htmlReturn += `
-      <option id="${weapon.Name}" value=${stringify}>
+      <option id="${weapon.Name}" value="${stringify}" >
         ${weapon.Name}
       </option>
     `
