@@ -456,7 +456,7 @@ async function launchAttack() {
                     savingThrow = false;
                 }
                 if (!savingThrow) {
-                    if (roll > dcHighestFail) {
+                    if (roll > dcHighestFail || dcHighestFail == -2) {
                         dcHighestFail = roll;
                     }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
@@ -470,7 +470,7 @@ async function launchAttack() {
                     }
                 }
                 else {
-                    if (roll < dcLowestSave) {
+                    if (roll < dcLowestSave || dcLowestSave == -1) {
                         dcLowestSave = roll;
                     }
                     rollResult = mobArray[block][i].succeedDc();                         
