@@ -192,12 +192,14 @@ function expandWeapon(mobTag, event) {
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
     modifyRow("Extra Damage", mobTag, modRow);
+    assignListenersToModRow(mobTag, modRow);                     
+}
 
+function assignListenersToModRow(mobTag, modRow) {
     modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
     modSelect.addEventListener('change', (e) => {
         modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
-    });                  
-    
+    });  
 }
 
 function modifyRow(value, mobTag, modRow) {    
@@ -207,7 +209,7 @@ function modifyRow(value, mobTag, modRow) {
 }
 
 function checkIfUnderDc(mobTag, modRow) {
-    for (var i=modRow; i >= 0; i--) {
+    for (var i = modRow-1; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
             return true;          
@@ -219,28 +221,31 @@ function checkIfUnderDc(mobTag, modRow) {
 function updateWeaponModRows(value, mobTag, modRow) {
     // If it falls under a DC, mark it as so
     if (checkIfUnderDc(mobTag, modRow)) {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor; 
+        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
     else {
         // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
         while(true) {
+            modRow++;
             var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
             if (seekMod) {
-                if (seekMod.options.include("DC") {
-                    }
-                
-                if (value == "DC") {
-                    if (dcChild.value != "DC") {
-                    }
-                    dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+                if (seekMod.innerHTML.includes("DC") && value == "DC") { // Not marked as under DC, but under focus row which is DC
+                     // fix the selection
+                    var rowReplace = seekMod.parentElement.parentElement;
+                    rowReplace.innerHTML = modifierRow(true).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    rowReplace.style.backgroundColor = mobBlockDcColor;
+                    assignListenersToModRow(mobTag, modRow);
                 }
-                else if (dcChild.value != "DC") {
-                    dcChild.parentElement.parentElement.style.backgroundColor = "transparent";
-                }
+                else if (!seekMod.innerHTML.includes("DC") && value != "DC") { // Marked as under DC, but under focus row which is not DC
+                    // Fix row
+                    var rowReplace = seekMod.parentElement.parentElement;
+                    rowReplace.innerHTML = modifierRow(false).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    rowReplace.style.backgroundColor = "transparent";
+                    assignListenersToModRow(mobTag, modRow);
+                }               
                 else { break; }
             }       
-            else { break; }
-            modRow++;
+            else { break; }            
         }
     }
 }
