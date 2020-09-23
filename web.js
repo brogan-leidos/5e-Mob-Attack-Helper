@@ -524,7 +524,7 @@ async function launchAttack() {
             }
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true && a.hitRoll != 1).length;
+        var numOfBlockCrits = rollArray[block].filter(a => a.crit == true && !a.missed).length;
              
         totalHits += blockNumHits;
         infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
