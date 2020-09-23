@@ -203,6 +203,10 @@ function assignWeaponMod(mobTag, weaponMod) {
     var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+    
+    var parentRow = document.getElementById(`${mobTag}-Weapon`).parentElement.parentElement;
+    parentRow.insertAdjacentHTML('afterend', newRow);
+    
     modifyRow(weaponMod[0], mobTag, modRow);
     document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
     assignListenersToModRow(mobTag, modRow); 
