@@ -11,7 +11,7 @@ export default class Mane extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Claws", 2, 4, "slashing", 2, 0),
+      new Weapon("Claws", [["ToHit", 2], ["Weapon","2d4 + 0 slashing"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
