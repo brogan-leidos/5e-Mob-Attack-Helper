@@ -53,7 +53,7 @@ export function mobBlock() {
     <tr>
       <td></td>
       <td id="FILLER-BLOCK-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
-          <span id="FILLER-BLOCK-Melee">Melee</span>
+          <span id="FILLER-BLOCK-Melee" style="color:black">Melee</span>
             / 
           <span id="FILLER-BLOCK-Ranged">Ranged</span>       
       </td>
