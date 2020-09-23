@@ -18,7 +18,7 @@ export default class ObjectMedium extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Slam", [["ToHit", 5], ["Weapon","2d6 + 1 bludgeoning"]]),
+      new Weapon("Slam", [["ToHit", 5],  ["IsMelee", true], ["Weapon","2d6 + 1 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
