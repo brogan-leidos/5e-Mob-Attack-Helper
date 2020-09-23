@@ -9,7 +9,7 @@ export function weaponsToHtml(weapons) {
   for(var i=0; i < weapons.length; i++) {    
     var weapon = weapons[i];
     htmlReturn += `
-      <option id="${weapon.Name}" value="${weapon.WeaponMods}">
+      <option id="${weapon.Name}" value="${JSON.stringify(weapon.WeaponMods)}">
         ${weapon.Name}
       </option>
     `
