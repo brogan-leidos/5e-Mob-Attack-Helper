@@ -233,14 +233,16 @@ function updateWeaponModRows(value, mobTag, modRow) {
                      // fix the selection
                     var rowReplace = seekMod.parentElement.parentElement;
                     rowReplace.innerHTML = modifierRow(true).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    rowReplace.style.backgroundColor = mobBlockDcColor;
+                    modifyRow("Damage (1/2 on save)", mobTag, modRow);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
                     assignListenersToModRow(mobTag, modRow);
                 }
                 else if (!seekMod.innerHTML.includes("DC") && value != "DC") { // Marked as under DC, but under focus row which is not DC
                     // Fix row
                     var rowReplace = seekMod.parentElement.parentElement;
                     rowReplace.innerHTML = modifierRow(false).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    rowReplace.style.backgroundColor = "transparent";
+                    modifyRow("Extra Damage", mobTag, modRow);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = "transparent";
                     assignListenersToModRow(mobTag, modRow);
                 }               
                 else { break; }
