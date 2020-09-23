@@ -23,8 +23,9 @@ export function addWeaponMobTemplate(title, roll) {
   `
 }
 
-export function modifierRow() {    
- return `
+export function modifierRow(underDc) {    
+ if (!underDc) {
+  return `
   <tr>
     <td></td>
     <td>
@@ -36,39 +37,23 @@ export function modifierRow() {
     </td>
     <td><div id="FILLER-BLOCK-Mod"></div></td>  
   </tr> 
-  `
-}
-
-export function modifierRowNoTr() {    
- return `
-  
+  `;
+ }
+ else {
+   return `
+  <tr>
     <td></td>
     <td>
       <select id="FILLER-BLOCK-Mod-Select">
-        <option>Extra Damage</option>
-        <option>Condition</option>
-        <option>DC</option>
-      </select>
-    </td>
-    <td><div id="FILLER-BLOCK-Mod"></div></td>  
-  
-  `
-}
-
-export function modifierRowUnderDc() {    
- return `
-  
-    <td></td>
-    <td>
-      <select id="FILLER-BLOCK-Mod-Select">
-        <option>Extra Damage (1/2 on save)</option>
-        <option>Extra Damage (none on save)</option>
+        <option>Damage (1/2 on save)</option>
+        <option>Damage (none on save)</option>
         <option>Condition</option>
       </select>
     </td>
     <td><div id="FILLER-BLOCK-Mod"></div></td>  
-   
-  `
+  </tr> 
+  `;
+ }
 }
 
 export function chooseModifierType(type, mobTag, modRow) {
@@ -88,7 +73,7 @@ export function chooseModifierType(type, mobTag, modRow) {
         <option>Paralyze</option>
       </select>`;
     }
-    else if (type.includes("Extra Damage")) {
+    else if (type.includes("Damage")) {
       return `<input id="${mobTag}-${modRow}-Mod" value="1d6 + 2 slashing" />`; 
     }
 }
