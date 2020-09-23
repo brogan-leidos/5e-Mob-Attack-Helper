@@ -443,6 +443,7 @@ async function launchAttack() {
 //             var dcHighestFail = -1;
             var mobDc = mobArray[block][i].checkIfHasDc();
             if (mobDc != false) {
+                mobDc = parseInt(mobDc);
                 var savingThrow = null;
                 var roll = null;
                 if ((mobDc < dcLowestSave || dcLowestSave == -1) && (mobDc > dcHighestFail)) {
