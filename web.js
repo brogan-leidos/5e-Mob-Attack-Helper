@@ -438,7 +438,7 @@ async function launchAttack() {
             if (dcCheck != false) {
                 var savingThrow = null;
                 if ((dcCheck < dcLowestSave || dcLowestSave == -1) && (dcCheck > dcHighestFail)) {
-                    savingThrow = await dcCheck();
+                    savingThrow = await promptDc();
                 }
                 else if (dcCheck > dcLowestSave) {
                     savingThrow = true;
@@ -650,7 +650,7 @@ async function discoveryStep(attackRoll) {
   });
 }
 
-async function dcCheck() {
+async function promptDc() {
   var roll = Math.floor(Math.random() * 20 + 1);
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
