@@ -399,13 +399,17 @@ async function launchAttack() {
                  
             //TODO: Add ailments and bonuses
             var rollResult = "";
-            var attackRoll = mobArray[block][i].makeAttack();
-            if (attackRoll == "crit") {
+            var attackRollClass = mobArray[block][i].makeAttack();
+            var attackRoll = attackRollClass.hitRoll;
+            if (attackRollClass.crit && !attackRollClass.missed) {
                 rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
-            }            
+            }
+            else if (attackRollClass.crit && !attackRollClass.missed) {
+                rollResult = mobArray[block][i].miss();
+            }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
-              if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
+              if (attackRoll <= lowerCap || ) { // Auto assign miss to anything lower than a declared miss
                   rollArray[block].push(mobArray[block][i].miss());
                   continue;
               } 
