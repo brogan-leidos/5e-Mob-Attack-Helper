@@ -98,8 +98,8 @@ function toggleRange(mobTag) {
     }
 }
 
-function setRange(mobTag, inMelee) {
-    if (inMelee) {
+function setRange(mobTag, isMelee) {
+    if (!isMelee) {
         document.getElementById(mobTag + "-Ranged").style.color = "black";
         document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
         document.getElementById(mobTag + "-Range").checked = false;
