@@ -19,7 +19,7 @@ export default class Ghoul extends Mob {
     
     this.Weapons = [
       new Weapon("Bite", [["ToHit", 2],  ["IsMelee", true], ["Weapon","2d6 + 2 piercing"]]),
-      new Weapon("Claw", [["ToHit", 3],  ["IsMelee", true], ["Weapon","2d4 + 2 slashing"]]),
+      new Weapon("Claw", [["ToHit", 4],  ["IsMelee", true], ["Weapon","2d4 + 2 slashing"], ["DC", 10, "Con"], ["Condition", "Paralyze"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
