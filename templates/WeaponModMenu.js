@@ -38,7 +38,10 @@ export function chooseModifierType(type, mobTag, modRow) {
               <select id="${mobTag}-${modRow}-Mod-Dc">
                 <option>Str</option>
                 <option>Dex</option>
-                <option>Other</option>
+                <option>Con</option>
+                <option>Int</option>
+                <option>Wis</option>
+                <option>Chr</option>
               </select>`; 
     }
     else if (type == "Condition") {
