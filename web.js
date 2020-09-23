@@ -2,7 +2,7 @@ import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate } from './templates/Discovery-Template.js'
-import { modifierRow, modifierRowUnderDc, modifierRowNoTr, chooseModifierType } from './templates/WeaponModMenu.js'
+import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit } from './presents/index.js'
 
@@ -186,7 +186,8 @@ function expandWeapon(mobTag, event) {
             collapseRow(e);
         });  
     }
-    var newRow = modifierRow().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
+    var underDc = checkIfUnderDc(mobTag, modRow);
+    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
     var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
@@ -200,51 +201,47 @@ function expandWeapon(mobTag, event) {
 }
 
 function modifyRow(value, mobTag, modRow) {    
-    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
-    updateModRows(value, mobTag, modRow);
+    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow, underDc);
+    updateWeaponModRows(value, mobTag, modRow);
 }
 
-function updateModRows(value, mobTag, modRow) {
-    // If it falls under a DC, mark it as so
+function checkIfUnderDc(mobTag, modRow) {
     for (var i=modRow; i >= 0; i--) {
         var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
         if (selectSeek.value == "DC") {
-            document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;                 
-            if (value != "DC") {
-                modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement;
-                modSelect.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
-                    modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
-                });
-                return;
-            }
+            return true;          
         }
     }
-    // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
-    while(true) {
-        var dcChild = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
-        if (dcChild) {
-            if (value == "DC") {
-                if (dcChild.value != "DC") {
-                    dcChild.parentElement.parentElement.innerHTML = modifierRowUnderDc().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
-                        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
-                    });
+    return false;
+}
+
+function updateWeaponModRows(value, mobTag, modRow) {
+    // If it falls under a DC, mark it as so
+    if (checkIfUnderDc(mobTag, modRow)) {
+        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor; 
+    }
+    else {
+        // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
+        while(true) {
+            var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+            if (seekMod) {
+                if (seekMod.options.include("DC") {
+                    }
+                
+                if (value == "DC") {
+                    if (dcChild.value != "DC") {
+                    }
+                    dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
                 }
-                dcChild.parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
-            }
-            else if (dcChild.value != "DC") {
-//                 dcChild.parentElement.parentElement.innerHTML = modifierRowNoTr().replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-//                 document.getElementById(`${mobTag}-${modRow}-Mod-Select`).addEventListener('change', (e) => {
-//                     modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
-//                 });
-                dcChild.parentElement.parentElement.style.backgroundColor = "transparent";
-            }
+                else if (dcChild.value != "DC") {
+                    dcChild.parentElement.parentElement.style.backgroundColor = "transparent";
+                }
+                else { break; }
+            }       
             else { break; }
-        }       
-        else { break; }
-        modRow++;
+            modRow++;
+        }
     }
 }
 
