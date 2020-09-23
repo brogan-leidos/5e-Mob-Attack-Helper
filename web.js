@@ -408,6 +408,7 @@ async function launchAttack() {
             }
             else if (attackRollClass.crit && attackRollClass.missed) {
                 rollResult = mobArray[block][i].miss();
+                continue;
             }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
               if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
@@ -440,8 +441,6 @@ async function launchAttack() {
                 continue;
             }
          
-//             var dcLowestSave = -1;
-//             var dcHighestFail = -1;
             var mobDc = mobArray[block][i].checkIfHasDc();
             if (mobDc != false) {
                 mobDc = parseInt(mobDc);
