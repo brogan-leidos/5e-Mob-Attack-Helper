@@ -88,7 +88,7 @@ export function chooseModifierType(type, mobTag, modRow) {
         <option>Paralyze</option>
       </select>`;
     }
-    else if (type == "Extra Damage") {
+    else if (type.includes("Extra Damage")) {
       return `<input id="${mobTag}-${modRow}-Mod" value="1d6 + 2 slashing" />`; 
     }
 }
