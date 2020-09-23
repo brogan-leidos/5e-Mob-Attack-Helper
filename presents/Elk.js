@@ -11,8 +11,8 @@ export default class Elk extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Ram", 5, "1d6 + 3 bludgeoning"),
-      new Weapon("Hooves", 2, 4, "bludgeoning ", 5, 3),
+      new Weapon("Ram", [["ToHit", 5], ["Weapon","1d6 + 3 bludgeoning"]]),
+      new Weapon("Hooves", [["ToHit", 5], ["Weapon","2d4 + 3 bludgeoning"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
