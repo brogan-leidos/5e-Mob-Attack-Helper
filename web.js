@@ -488,7 +488,7 @@ async function launchAttack() {
                 }
                 
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
-                    savingThrow = await promptDc(`roll | DC: ${mobDcInfo[0]} ${dcType}`);
+                    savingThrow = await promptDc(`${roll} | DC: ${mobDcInfo[0]} ${dcType}`);
                 }
                 else if (roll >= dcLowestSave) {
                     savingThrow = true;
