@@ -311,7 +311,7 @@ function changeMobWeapon (mobTag, weaponMods) {
     // clean up existing rows
     var numModRows = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
     for (var i=0; i < numModRows; i++) {
-        collapseRow(document.getElementById(mobTag + "-Weapon-Collapse"));
+        collapseRow(`${mobTag}-Weapon-Collapse`);
     }
     
     var toHit = weaponMods[0][1];
