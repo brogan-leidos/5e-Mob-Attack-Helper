@@ -417,7 +417,8 @@ function toggleDetails(event, rollArray) {
                     else if (rollClass.vantage == -1) {
                         rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
-  
+                    
+                    var superConditionColor = "";
                     if (rollClass.crit && !rollClass.missed) {
                         superConditionColor = "color:#b59800";
                     }
@@ -427,7 +428,7 @@ function toggleDetails(event, rollArray) {
                     else if (rollClass.autoCrit) {
                         superConditionColor = "color:#a6b500";
                     }
-                    var superConditionColor = "";
+                    
                     detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
                     var diceRollsDisplay = "";
                     if (rollsOrder.length > 0) {
