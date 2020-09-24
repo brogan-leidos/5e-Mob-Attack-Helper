@@ -177,9 +177,21 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
-    });   
+    });
+         
+    document.getElementById(mobTag + "-Move-Up").addEventListener('click', (e) => {
+        moveMob(mobTag, "Up");
+    });
+    document.getElementById(mobTag + "-Move-Down").addEventListener('click', (e) => {
+        moveMob(mobTag, "Down");
+    }); 
          
     return; 
+}
+
+function moveMob(mobTag, direction) {
+    var mobBlock = document.getElementById(mobTag);
+    
 }
 
 function expandWeapon(mobTag) {
@@ -534,7 +546,7 @@ async function launchAttack() {
                 }
                 
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
-                    savingThrow = await promptDc(`${roll} | DC: ${mobDcInfo[0]} ${dcType}`);
+                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll);
                 }
                 else if (roll >= dcLowestSave) {
                     savingThrow = true;
@@ -748,11 +760,11 @@ async function discoveryStep(attackRoll) {
   });
 }
 
-async function promptDc(roll) { 
+async function promptDc(dcInfo, roll) { 
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw (Before modifiers)", roll, option1, option2));           
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw (Before modifiers)", dcInfo, roll, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
