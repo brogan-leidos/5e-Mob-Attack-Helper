@@ -302,7 +302,7 @@ function updateWeaponModRows(value, mobTag, modRow, automated=false) {
     if (checkIfUnderDc(mobTag, modRow)) {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
-    else if ((modRow + 1) == getNumModRows(mobTag) && value == "DC" && !automated) {
+    else if (((modRow + 1) == getNumModRows(mobTag)) && (value == "DC") && !automated) {
         // User created DC on the last available row. Create a new row to help them out
         assignWeaponMod(mobTag, ["Condition", "Knock Prone"]);
     }
