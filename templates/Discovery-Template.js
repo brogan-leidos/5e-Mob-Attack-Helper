@@ -28,7 +28,7 @@ export function discoveryTemplate(title, roll, source, option1="op1", option2="o
 }
 
 
-export function dcTemplate(title, dc, roll, option1="op1", option2="op2") {  
+export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2") {  
   
  return `
   <table class="discoveryBlock dcBlock">
@@ -51,6 +51,9 @@ export function dcTemplate(title, dc, roll, option1="op1", option2="op2") {
         <td>
           <button class="missButton" id="missButton-${option2}">${option2}</button>
         </td>
+      </tr>
+      <tr>
+        <td colspan=2 style="border-top: thin solid black">${source}</td>
       </tr>
     </tbody>
   </table>
