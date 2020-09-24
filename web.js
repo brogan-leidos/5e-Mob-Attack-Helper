@@ -210,8 +210,8 @@ function moveMob(mobTag, direction) {
 
     var holdBlock = document.getElementById(holdTag);    
     var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
-    holdBlock.style.gridRow = selectedIndex + dir;
-    swapBlock.style.gridRow = selectedIndex;
+    holdBlock.style.gridRow = selectedIndex + 1 + dir;
+    swapBlock.style.gridRow = selectedIndex + 1;
     
     var holdTag = blockArray[selectedIndex];
     blockArray[selectedIndex] = blockArray[selectedIndex + dir];
