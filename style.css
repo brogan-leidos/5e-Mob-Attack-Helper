@@ -339,6 +339,7 @@ button {
 #infoArea {
   box-shadow: 2px 2px 2px #666;
   border: solid thin black;
+  background-color: white;
 }
 
 #infoAreaDiv {
