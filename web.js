@@ -194,7 +194,7 @@ function expandWeapon(mobTag) {
     }
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;    
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
     modifyRow("Extra Damage", mobTag, modRow);
@@ -215,7 +215,7 @@ function assignWeaponMod(mobTag, weaponMod) {
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
     
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     parentRow.insertAdjacentHTML('beforebegin', newRow);
     
     modifyRow(weaponMod[0], mobTag, modRow);
