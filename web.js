@@ -433,11 +433,11 @@ function toggleDetails(event, rollArray) {
                         superConditionColor = "color:#a6b500";
                     }
                     var superConditionColor = "";
-                    detailAppend = `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
+                    detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
                     var diceRollsDisplay = "";
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage == 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}] </span>`;
+                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}]</span> `;
                     }
                     else {
                         diceRollsDisplay = `<span>[${rollClass.attackRoll1}]</span>`;
