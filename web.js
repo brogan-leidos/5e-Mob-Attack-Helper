@@ -207,15 +207,13 @@ function moveMob(mobTag, direction) {
     }
     
     var dir = direction == "Up" ? -1 : 1;
+
+    var holdBlock = document.getElementById(holdTag);    
+    var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
+    holdBlock.style.gridRow = selectedIndex + dir;
+    swapBlock.style.gridRow = selectedIndex;
     
     var holdTag = blockArray[selectedIndex];
-    var holdBlock = document.getElementById(holdTag);
-    var holdHtml = holdBlock.innerHTML;
-    
-    var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
-    holdBlock.innerHTML = swapBlock.innerHTML;
-    swapBlock.innerHTML = holdHtml;
-    
     blockArray[selectedIndex] = blockArray[selectedIndex + dir];
     blockArray[selectedIndex + dir] = holdTag;
            
