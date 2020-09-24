@@ -1,26 +1,26 @@
 
 export function modifierRow(underDc) {    
- if (!underDc) {
-  return `
-  <tr>
-    <td></td>
-    <td>
-      <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select">
-        <option>Extra Damage</option>
-        <option>Condition</option>
-        <option>DC</option>
-      </select>
-    </td>
-    <td><div id="FILLER-BLOCK-Mod"></div></td>  
-  </tr> 
-  `;
+  if (!underDc) {
+      return `
+      <tr>
+        <td></td>
+        <td>
+          <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select">
+            <option>Extra Damage</option>
+            <option>Condition</option>
+            <option>DC</option>
+          </select>
+        </td>
+        <td><div id="FILLER-BLOCK-Mod"></div></td>  
+      </tr> 
+      `;
  }
  else {
    return `
   <tr>
     <td></td>
     <td>
-      <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select">
+      <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select" style="width: 80px; margin-left: 13px">
         <option>Damage (1/2 on save)</option>
         <option>Damage (none on save)</option>
         <option>Condition</option>
