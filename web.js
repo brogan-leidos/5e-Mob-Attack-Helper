@@ -404,8 +404,19 @@ function toggleDetails(event, rollArray) {
     if (detailElement == null) {
         var detailAppend = `<div id=${mobTag}-Details>`;                                  
         for (var i=0; i < rollArray.length; i++) {
-            for (var j=0; j < rollArray[i].length; j++) {
-                var rollClass = rollArray[i][j];
+            var mobBlockRolls = [];
+            if (rollArray[i][0].attacker.MobName == mobTag) {
+                mobBlockRolls = rollArray[i];
+            }
+            else {
+                continue;
+            }
+            
+            // Sort array based on number
+            mobBlockRolls.sort(function(a, b) {return a.attacker.Number - b.attacker.Number});
+            
+            for (var j=0; j < mobBlockRolls.length; j++) {
+                var rollClass = mobBlockRolls[j];
                 if (rollClass.attacker.MobName == mobTag) {
                     //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
                     var rollsOrder = [];
