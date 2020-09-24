@@ -125,8 +125,8 @@ function createPresent(presentName) {
        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
        appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
        
-       appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3");
-       appendBlock = appendBlock.replace("FILLER-TOHIT", "0");
+       appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
+       appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
        
        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
        
