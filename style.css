@@ -273,6 +273,12 @@ body {
   background-color: #7491b0;
 }
 
+.dcBlock tr:nth-child(2) td {
+  font-size: 12px;
+  padding: 1px 0px 1px 0px;
+  background-color: #7491b0;
+}
+
 .discoveryBlock .hitButton:hover {
   background-color: #34c239;
   color: white;
