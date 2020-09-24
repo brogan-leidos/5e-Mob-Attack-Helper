@@ -785,7 +785,7 @@ async function discoveryStep(attackRoll, attacker) {
     var option1 = "Hit!";
     var option2 = "Miss";
     var attackerInfo = `${attacker.Icon} ${attacker.Name}`;
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("To Hit", attackerInfo, attackRoll, option1, option2));           
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll, attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
