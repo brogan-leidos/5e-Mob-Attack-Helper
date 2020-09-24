@@ -409,8 +409,6 @@ function toggleDetails(event, rollArray) {
                 if (rollClass.attacker.MobName == mobTag) {
                     //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
                     var rollsOrder = [];
-                    var critMiss = false;
-                    var critHit = false;
                     var superConditionColor = "";
 
                     if (rollClass.vantage == 1) {
@@ -422,14 +420,11 @@ function toggleDetails(event, rollArray) {
   
                     if (rollClass.crit && !rollClass.missed) {
                         superConditionColor = "color:#b59800";
-                        critHit = true;
                     }
                     else if (rollClass.crit && rollClass.missed) {
-                        critMiss = true;
                         superConditionColor = "color:#b00000"                      
                     }
                     else if (rollClass.autoCrit) {
-                        autoCrit = true;
                         superConditionColor = "color:#a6b500";
                     }
                     var superConditionColor = "";
