@@ -454,13 +454,11 @@ function toggleDetails(event, rollArray) {
 async function launchAttack() {
     var rollArray = [];
     var numCrits = 0;       
-    var numBlocks = blockArray.length; 
-         
-    // Activate the info box
-    document.getElementById("infoAreaDiv").style.display = "inline-block";
+    var numBlocks = blockArray.length;              
     
     if (numBlocks == 0){
         throwError("There are no mobs available to attack with!");
+        document.getElementById("infoAreaDiv").style.display = "inline-block";
         return;
     }              
     
@@ -676,7 +674,7 @@ async function launchAttack() {
         }
         infoAppend += "</div>";        
     }    
-
+         
     generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
     
 }
@@ -736,6 +734,9 @@ function getWeaponSet(mobTag) {
 }
 
 function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
+    // Activate the info box
+    document.getElementById("infoAreaDiv").style.display = "inline-block";
+         
     var header = `<div id="resultOverview">`;
     header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
     if (totalDamage > 0) {
