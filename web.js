@@ -413,7 +413,7 @@ function toggleDetails(event, rollArray) {
                     var critMiss = false;
                     var critHit = false;
                     var superConditionColor = "";
-                    // Begin with roll display, consider vantage
+
                     if (rollClass.vantage == 1) {
                         rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
@@ -432,33 +432,33 @@ function toggleDetails(event, rollArray) {
                     else if (rollClass.autoCrit) {
                         autoCrit = true;
                         superConditionColor = "color:#a6b500";
-//                         for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
-//                             detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
-//                         }
-//                         detailAppend += ` </span><br>`;
                     }
                     var superConditionColor = "";
                     detailAppend = `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
                     var diceRollsDisplay = "";
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage == 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}] </span>;
+                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}] </span>`;
                     }
                     else {
+                        diceRollsDisplay = `<span>[${rollClass.attackRoll1}]</span>`;
                     }
                     
-                    
+                    var damageTotalsDisplay = "";
+                    if (!rollClass.missed) {
+                        for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
+                            damageTotalsDisplay += ` ⚔${rollClass.damageResults[dmg][0]}`;
+                        }                        
+                    }
+                    else if (rollClass.missed && rollClass.crit) {
+                        damageTotalsDisplay = "Crit Miss";
+                    }
                     else {
-                        if (rollArray[i][j].missed == false) {
-                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}]`;
-                            for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
-                                detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
-                            }
-                        }
-                        else {
-                            detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#ff9191"> [${rollArray[i][j].hitRoll}] Miss`;
-                        }
-                        detailAppend += ` </span><br>`;
+                        damageTotalsDisplay = "Miss";
+                    }
+                    
+                    detailAppend += `${diceRollsDisplay} ${damageTotalsDisplay}`;
+                    detailAppend += `</span><br>`;
                     }
                 }
             }
