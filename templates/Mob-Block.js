@@ -57,7 +57,12 @@ export function mobBlock() {
             / 
           <span id="FILLER-BLOCK-Ranged">Ranged</span>       
       </td>
-      <td style="display:flex"><span class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></span><span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 3px;">Add Modifier</span></td>
+      <td style="display:flex">
+        <span class="weaponExpandButton" id="FILLER-BLOCK-Weapon-Expand">
+          <i class="fa fa-plus-square-o"></i>
+          <span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 3px;">Add Modifier</span>
+        </span>
+      </td>
     </tr>
     <tr>
       <td><span id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up mobMoveButton"></span></td>
