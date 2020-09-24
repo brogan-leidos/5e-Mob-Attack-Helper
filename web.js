@@ -186,7 +186,7 @@ function expandWeapon(mobTag, event) {
     var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
     var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
     if (!modSelect) {
-        document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
+        document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";  
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
             collapseRow(e.target.id);
@@ -194,7 +194,7 @@ function expandWeapon(mobTag, event) {
     }
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
-    var parentRow = document.getElementById(event.target.id).parentElement.parentElement;    
+    var parentRow = document.getElementById(event.target.id).parentElement.parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
     modifyRow("Extra Damage", mobTag, modRow);
@@ -215,7 +215,7 @@ function assignWeaponMod(mobTag, weaponMod) {
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
     
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;
     parentRow.insertAdjacentHTML('beforebegin', newRow);
     
     modifyRow(weaponMod[0], mobTag, modRow);
