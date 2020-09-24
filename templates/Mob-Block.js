@@ -35,17 +35,17 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-      <select id="FILLER-BLOCK-Weapon-Select" class="weaponSelect" title="Common weapons for this mob type">
-          <option value="[["ToHit", 0],["IsMelee", true],["Weapon", "1d6 + 2 slashing"]]">Custom</option>
-          ADDITIONAL-WEAPONS
-        </select>
+        <span id="FILLER-BLOCK-Disable-Label"></span>
       </td>
       <td>Bonus to Hit:</td>
       <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
     </tr>
     <tr>
       <td>
-        &nbsp;
+        <select id="FILLER-BLOCK-Weapon-Select" class="weaponSelect" title="Common weapons for this mob type">
+          <option value="[["ToHit", 0],["IsMelee", true],["Weapon", "1d6 + 2 slashing"]]">Custom</option>
+          ADDITIONAL-WEAPONS
+        </select>
       </td>
       <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Format must follow XdX +/- X" /></td>
