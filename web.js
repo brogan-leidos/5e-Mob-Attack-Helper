@@ -172,7 +172,7 @@ function createPresent(presentName) {
         changeVantage(mobTag);        
     });
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
-        expandWeapon(mobTag, e);        
+        expandWeapon(mobTag);        
     });
     document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
@@ -182,11 +182,11 @@ function createPresent(presentName) {
     return; 
 }
 
-function expandWeapon(mobTag, event) {
+function expandWeapon(mobTag) {
     var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
     var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
     if (!modSelect) {
-        document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
+        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";  
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
             collapseRow(e.target.id);
@@ -194,7 +194,7 @@ function expandWeapon(mobTag, event) {
     }
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
-    var parentRow = document.getElementById(event.target.id).parentElement.parentElement.parentElement;    
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
     modifyRow("Extra Damage", mobTag, modRow);
