@@ -191,7 +191,32 @@ function createPresent(presentName) {
 
 function moveMob(mobTag, direction) {
     var mobBlock = document.getElementById(mobTag);
+    var tmp = blockArray;
+    var selectedIndex = -1;
+    for (var i=0; i < blockArray.length; i++) {
+        if (blockArray[i] == mobTag) {
+            selectedIndex = 1
+            break;
+        }
+    }
     
+    if ((direction == "Up" && selectedIndex == 0) || (direction == "Down" && selectedIndex == blockArray.length-1)) {
+        return;
+    }
+    
+    var dir = direction == "Up" ? -1 : 1;
+    
+    var holdTag = blockArray[selectedIndex];
+    var holdBlock = document.getElementById(holdTag);
+    var holdHtml = holdBlock.innerHTML;
+    
+    var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
+    holdBlock.innerHTML = swapBlock.innerHTML;
+    swapBlock.innerHTML = holdHtml;
+    
+    blockArray[selectedIndex] = blockArray[selectedIndex + dir];
+    blockArray[selectedIndex + dir] = holdTag;
+           
 }
 
 function expandWeapon(mobTag) {
