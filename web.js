@@ -259,7 +259,7 @@ function assignWeaponMod(mobTag, weaponMod) {
     var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     parentRow.insertAdjacentHTML('beforebegin', newRow);
     
-    modifyRow(weaponMod[0], mobTag, modRow);
+    modifyRow(weaponMod[0], mobTag, modRow, true);
     document.getElementById(`${mobTag}-${modRow}-Mod-Select`).value = weaponMod[0];
     document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
     if (weaponMod[2]) {
@@ -275,7 +275,7 @@ function assignListenersToModRow(mobTag, modRow) {
     });  
 }
 
-function modifyRow(value, mobTag, modRow) {    
+function modifyRow(value, mobTag, modRow, automated=false) {    
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
     if (value == "DC") {
@@ -283,7 +283,7 @@ function modifyRow(value, mobTag, modRow) {
     } else {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
-    updateWeaponModRows(value, mobTag, modRow);
+    updateWeaponModRows(value, mobTag, modRow, automated);
 }
 
 function checkIfUnderDc(mobTag, modRow) {
@@ -297,12 +297,12 @@ function checkIfUnderDc(mobTag, modRow) {
 }
 
 // Updates DC grouping/ungrouping
-function updateWeaponModRows(value, mobTag, modRow) {
+function updateWeaponModRows(value, mobTag, modRow, automated=false) {
     // If it falls under a DC, mark it as so
     if (checkIfUnderDc(mobTag, modRow)) {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
-    else if ((modRow + 1) == getNumModRows(mobTag) && value == "DC") {
+    else if ((modRow + 1) == getNumModRows(mobTag) && value == "DC" && automated) {
         // User created DC on the last available row. Create a new row to help them out
         assignWeaponMod(mobTag, ["Condition", "Knock Prone"]);
     }
