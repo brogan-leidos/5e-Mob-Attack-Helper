@@ -402,8 +402,7 @@ function toggleDetails(event, rollArray) {
     var mobTag = event.target.id.split("-")[0];
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
-        var detailAppend = `<div id=${mobTag}-Details>`;
-
+        var detailAppend = `<div id=${mobTag}-Details>`;                                  
         for (var i=0; i < rollArray.length; i++) {
             for (var j=0; j < rollArray[i].length; j++) {
                 var rollClass = rollArray[i][j];
@@ -459,7 +458,7 @@ function toggleDetails(event, rollArray) {
                     
                     detailAppend += `${diceRollsDisplay} ${damageTotalsDisplay}`;
                     detailAppend += `</span><br>`;
-                    }
+                    
                 }
             }
         }   
