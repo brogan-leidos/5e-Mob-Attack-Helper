@@ -578,7 +578,7 @@ async function launchAttack() {
                 }
                 
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
-                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll);
+                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, attackRollClass.attacker);
                 }
                 else if (roll >= dcLowestSave) {
                     savingThrow = true;
@@ -797,11 +797,12 @@ async function discoveryStep(attackRoll, attacker) {
   });
 }
 
-async function promptDc(dcInfo, roll) { 
+async function promptDc(dcInfo, roll, attacker) { 
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw (Before modifiers)", dcInfo, roll, option1, option2));           
+    var attackerInfo = `${attacker.Icon} ${attacker.Name}`;
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
