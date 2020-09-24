@@ -702,7 +702,7 @@ function parseMobs(numBlocks) {
         
         mobArray.push(new Array());
         for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j))
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j+1))
         }                
     }
     return mobArray;
