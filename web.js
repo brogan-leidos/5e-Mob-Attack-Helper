@@ -195,7 +195,7 @@ function moveMob(mobTag, direction) {
     var selectedIndex = -1;
     for (var i=0; i < blockArray.length; i++) {
         if (blockArray[i] == mobTag) {
-            selectedIndex = 1
+            selectedIndex = i;
             break;
         }
     }
