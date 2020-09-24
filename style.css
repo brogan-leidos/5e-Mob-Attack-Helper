@@ -95,10 +95,11 @@ body {
   color: green;
   transition-duration: 0.2s;
   font-size: 12px;
-  padding: 0px;
+  padding: 1px 0px 0px 0px;
   width: auto;
   vertical-align: top;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .mobBlock .weaponCollapseButton:hover {
