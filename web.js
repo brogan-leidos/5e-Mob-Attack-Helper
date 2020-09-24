@@ -542,7 +542,7 @@ async function launchAttack() {
                 numCrits = numCrits + 1;
             }
             else if (attackRollClass.crit && attackRollClass.missed) {
-                rollResult = mobArray[block][i].miss();
+                rollArray[block].push(mobArray[block][i].miss());
                 continue;
             }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
