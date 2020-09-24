@@ -28,7 +28,7 @@ export function discoveryTemplate(title, roll, option1="op1", option2="op2") {
 export function dcTemplate(title, dc, roll, option1="op1", option2="op2") {  
   
  return `
-  <table class="dcBlock">
+  <table class="discoveryBlock dcBlock">
     <tbody>
       <tr>
         <td colspan=2 style="border-bottom: thin solid black">${title}</td>
