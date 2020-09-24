@@ -60,12 +60,12 @@ export function mobBlock() {
       <td style="display:flex"><span class="weaponExpandButton fa fa-plus-square-o" id="FILLER-BLOCK-Weapon-Expand"></span><span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 3px;">Add Modifier</span></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td><span id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up" style="cursor:pointer"></span></td>
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
     </tr>
     <tr>
-      <td><span class="fa fa-arrows-v"></span></td>
+      <td><span id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down" style="cursor:pointer"></span></td>
       <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" /> <label for="advantage"> Advantage</label></td>
       <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
