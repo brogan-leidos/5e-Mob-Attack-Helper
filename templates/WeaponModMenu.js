@@ -20,7 +20,7 @@ export function modifierRow(underDc) {
   <tr>
     <td></td>
     <td>
-      <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select" style="width: 80px; margin-left: 13px">
+      <select class="weaponModSelect" id="FILLER-BLOCK-Mod-Select" style="width: 85px; margin-left: 8px">
         <option>Damage (1/2 on save)</option>
         <option>Damage (none on save)</option>
         <option>Condition</option>
