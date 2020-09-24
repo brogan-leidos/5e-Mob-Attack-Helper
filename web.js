@@ -505,9 +505,7 @@ async function launchAttack() {
         var minAc = -1;
         var lowerCap = -1
     }
-    
-    var dcLowestSave = -1;
-    var dcHighestFail = -1;    
+    var dcSaves = {};   
     var ailments = {};
     
     for (var block=0; block < mobArray.length;block++) {
@@ -608,6 +606,13 @@ async function launchAttack() {
                     autoFailSave = true;
                 }
                 
+                if (!dcSaves[dcType]) {
+                    dcSaves[dcType] = {"dcLowestSave": -1, "dcHighestFail": -1};
+                }
+                var dcLowestSave = dcSaves[dcType]["dcLowestSave"];
+                var dcHighestFail = dcSaves[dcType]["dcHighestFail"];
+                     
+                     
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
                     savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, attackRollClass.attacker);
                 }
@@ -619,7 +624,7 @@ async function launchAttack() {
                 }
                 if (!savingThrow) {
                     if (roll > dcHighestFail || dcHighestFail == -1) {
-                        dcHighestFail = roll;
+                        dcSaves[dcType]["dcHighestFail"] = roll;
                     }
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
@@ -633,7 +638,7 @@ async function launchAttack() {
                 }
                 else {
                     if (roll < dcLowestSave || dcLowestSave == -1) {
-                        dcLowestSave = roll;
+                        dcSaves[dcType]["dcLowestSave"] = roll;
                     }
                     rollResult = mobArray[block][i].succeedDc();                         
                 }
