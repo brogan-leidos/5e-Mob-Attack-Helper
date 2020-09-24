@@ -201,7 +201,8 @@ function expandWeapon(mobTag, event) {
 // Not created by user, used to change present weapons
 function assignWeaponMod(mobTag, weaponMod) {
     if (!document.getElementById(`${mobTag}-Weapon-Collapse`) && weaponMod) {
-        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('afterend',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
+        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";     
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
             collapseRow(e);
         });  
@@ -292,6 +293,7 @@ function collapseRow(e) {
     var mobTag = e.target.id.split("-")[0];
     if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
         document.getElementById(e.target.id).remove();
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline";
     }
 
 }
