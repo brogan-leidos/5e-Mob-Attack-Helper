@@ -60,7 +60,7 @@ export function mobBlock() {
       <td style="display:flex">
         <span class="weaponExpandButton" id="FILLER-BLOCK-Weapon-Expand">
           <i class="fa fa-plus-square-o"></i>
-          <span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top">Add Modifier</span>
+          <span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Add Modifier</span>
         </span>
       </td>
     </tr>
