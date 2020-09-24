@@ -406,24 +406,48 @@ function toggleDetails(event, rollArray) {
 
         for (var i=0; i < rollArray.length; i++) {
             for (var j=0; j < rollArray[i].length; j++) {
-                if (rollArray[i][j].attacker.MobName == mobTag) {
-                    if (rollArray[i][j].crit && !rollArray[i][j].missed) {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b59800"> [20!]`;
-                        for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
-                            detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
-                        }
-                        detailAppend += ` </span><br>`;
+                var rollClass = rollArray[i][j];
+                if (rollClass.attacker.MobName == mobTag) {
+                    //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
+                    var rollsOrder = [];
+                    var critMiss = false;
+                    var critHit = false;
+                    var superConditionColor = "";
+                    // Begin with roll display, consider vantage
+                    if (rollClass.vantage == 1) {
+                        rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
-                    else if (rollArray[i][j].crit && rollArray[i][j].missed) {
-                        detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; color:#b00000"> [1] Crit Miss</span><br>`;                        
+                    else if (rollClass.vantage == -1) {
+                        rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
-                    else if (rollArray[i][j].autoCrit) {
-                        detailAppend += `<span id="${mobTag}-Detail" title="auto crit" style="margin-left:15px; color:#a6b500"> [20*]`;
-                        for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
-                            detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
-                        }
-                        detailAppend += ` </span><br>`;
+  
+                    if (rollClass.crit && !rollClass.missed) {
+                        superConditionColor = "color:#b59800";
+                        critHit = true;
                     }
+                    else if (rollClass.crit && rollClass.missed) {
+                        critMiss = true;
+                        superConditionColor = "color:#b00000"                      
+                    }
+                    else if (rollClass.autoCrit) {
+                        autoCrit = true;
+                        superConditionColor = "color:#a6b500";
+//                         for (var dmg=0; dmg < rollArray[i][j].damageResults.length; dmg++) {
+//                             detailAppend += ` ⚔${rollArray[i][j].damageResults[dmg][0]}`;
+//                         }
+//                         detailAppend += ` </span><br>`;
+                    }
+                    var superConditionColor = "";
+                    detailAppend = `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
+                    var diceRollsDisplay = "";
+                    if (rollsOrder.length > 0) {
+                        var vantageColor = rollClass.vantage == 1 ? "#004713" : "#470200";
+                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}] </span>;
+                    }
+                    else {
+                    }
+                    
+                    
                     else {
                         if (rollArray[i][j].missed == false) {
                             detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px"> [${rollArray[i][j].hitRoll}]`;
