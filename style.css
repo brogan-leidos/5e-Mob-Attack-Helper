@@ -284,7 +284,13 @@ button {
 }
 
 .dcBlock tr:nth-child(2) td {
-  font-size: 12px;
+  font-size: 10px;
+  padding: 1px 3px 1px 3px;
+  background-color: #7491b0;
+}
+
+.dcBlock tr:nth-child(5) td {
+  font-size: 10px;
   padding: 1px 3px 1px 3px;
   background-color: #7491b0;
 }
