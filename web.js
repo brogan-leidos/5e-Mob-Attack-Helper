@@ -76,13 +76,13 @@ function toggleMob(mobTag) {
         toggle.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa fa-eye";
-        document.getElementById(mobTag + "-Disable-Label").value = "";
+        document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
        
     } else {
         document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
         toggle.classList = "fa fa-eye-slash";
         toggle.checked = false;
-        document.getElementById(mobTag + "-Disable-Label").value = "Disabled";
+        document.getElementById(mobTag + "-Disable-Label").innerHTML = "Disabled";
     }
 }
 
