@@ -156,6 +156,8 @@ function createPresent(presentName) {
         });
     }
     
+    document.getElementById(mobTag).style.gridRow = blockArray.length;
+         
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);
     });
