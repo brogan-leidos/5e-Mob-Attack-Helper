@@ -702,7 +702,7 @@ function parseMobs(numBlocks) {
         
         mobArray.push(new Array());
         for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i]))
+            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j))
         }                
     }
     return mobArray;
@@ -785,7 +785,7 @@ async function discoveryStep(attackRoll, attacker) {
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
-    var attackerInfo = `${attacker.Icon} ${attacker.Name}`;
+    var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll, attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
@@ -801,7 +801,7 @@ async function promptDc(dcInfo, roll, attacker) {
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    var attackerInfo = `${attacker.Icon} ${attacker.Name}`;
+    var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
