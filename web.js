@@ -220,7 +220,7 @@ function moveMob(mobTag, direction) {
 }
 
 function expandWeapon(mobTag) {
-    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var modRow = getNumModRows(mobTag);
     var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
     if (!modSelect) {
         document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
@@ -238,6 +238,10 @@ function expandWeapon(mobTag) {
     assignListenersToModRow(mobTag, modRow);                     
 }
 
+function getNumModRows(mobTag) {
+    return document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+}
+
 // Not created by user, used to change present weapons
 function assignWeaponMod(mobTag, weaponMod) {
     if (!document.getElementById(`${mobTag}-Weapon-Collapse`) && weaponMod) {
@@ -248,7 +252,7 @@ function assignWeaponMod(mobTag, weaponMod) {
         });  
     }
          
-    var modRow = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var modRow = getNumModRows(mobTag);
     var underDc = checkIfUnderDc(mobTag, modRow);
     var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
     
@@ -292,10 +296,15 @@ function checkIfUnderDc(mobTag, modRow) {
     return false;
 }
 
+// Updates DC grouping/ungrouping
 function updateWeaponModRows(value, mobTag, modRow) {
     // If it falls under a DC, mark it as so
     if (checkIfUnderDc(mobTag, modRow)) {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    }
+    else if (modRow + 1 == getNumModRows(mobTag)) {
+        // User created DC on the last available row. Create a new row to help them out
+        assignWeaponMod(mobTag, ["Condition", "Knock Prone"]);
     }
     else {
         // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
@@ -346,7 +355,7 @@ function changeMobWeapon (mobTag, weaponMods) {
     }
     
     // clean up existing rows
-    var numModRows = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    var numModRows = getNumModRows(mobTag);
     for (var i=0; i < numModRows; i++) {
         collapseRow(`${mobTag}-Weapon-Collapse`);
     }
@@ -701,6 +710,7 @@ function parseMobs(numBlocks) {
     return mobArray;
 }
 
+// Collects all weapon mods and returns them in an array
 function getWeaponSet(mobTag) {
     var toHit = document.getElementById(mobTag + "-ToHit").value;
     var weapon = document.getElementById(mobTag + "-Weapon").value;
