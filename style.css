@@ -21,7 +21,8 @@ button {
   border-collapse: collapse;
   background-color: #f9f9eb;
   margin-bottom: 5px;
-  box-shadow: 2px 2px 2px #666
+  box-shadow: 2px 2px 2px #666;
+  grid-column: 1;
 }
 
 .mobBlock td:nth-child(1) {
@@ -378,6 +379,9 @@ button {
 }
 
 #mobBlockArea {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr) auto;
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
   float:left;
   grid-row: 1;
   grid-column: 1;
