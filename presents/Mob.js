@@ -2,7 +2,7 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default") {
+    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", number=-1) {
     this.AC = 0;
     this.Health = 0;
     this.Str = 0;
@@ -18,6 +18,7 @@ export default class Mob {
     this.Name = name;
     this.Icon = icon;        
     this.MobName = mobname;
+    this.Number = number;
         
     this.rollClass = new DamageRoll();
     this.Vantage = vantage;
