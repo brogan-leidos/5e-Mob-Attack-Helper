@@ -456,11 +456,12 @@ async function launchAttack() {
     var numCrits = 0;       
     var numBlocks = blockArray.length;              
     
+    document.getElementById("infoAreaDiv").style.display = "none";
     if (numBlocks == 0){
         throwError("There are no mobs available to attack with!");
         document.getElementById("infoAreaDiv").style.display = "inline-block";
         return;
-    }              
+    }    
     
     var mobArray = parseMobs(numBlocks);
     
