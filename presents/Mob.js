@@ -35,14 +35,20 @@ export default class Mob {
         this.rollClass.attacker = this;
         
         //Math.floor(Math.random() * 10); //int 0 - 9
-        var attackRoll = Math.floor(Math.random() * 20 + 1);
-        var attackRoll2 = Math.floor(Math.random() * 20 + 1);
+        this.rollClass.attackRoll1 = Math.floor(Math.random() * 20 + 1);
+        this.rollClass.attackRoll2 = Math.floor(Math.random() * 20 + 1);
+        var attackRoll = null;
         
         if (this.Vantage >= 1) {
-            attackRoll = Math.max(attackRoll, attackRoll2);
+            attackRoll = Math.max(this.rollClass.attackRoll1, this.rollClass.attackRoll2);
+            this.rollClass.vantage = this.Vantage;
         }
         else if (this.Vantage <= -1) {
-            attackRoll = Math.min(attackRoll, attackRoll2);
+            attackRoll = Math.min(this.rollClass.attackRoll1, this.rollClass.attackRoll2);
+            this.rollClass.vantage = this.Vantage;
+        }
+        else {
+            attackRoll = this.rollClass.attackRoll1;
         }
 
         if (attackRoll == 1) {
