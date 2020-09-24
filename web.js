@@ -297,7 +297,7 @@ function collapseRow(id) {
     var mobTag = id.split("-")[0];
     if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
         document.getElementById(id).remove();
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline";
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline-block";
     }
 
 }
