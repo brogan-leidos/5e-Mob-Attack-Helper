@@ -208,7 +208,7 @@ function moveMob(mobTag, direction) {
     
     var dir = direction == "Up" ? -1 : 1;
 
-    var holdBlock = document.getElementById(holdTag);    
+    var holdBlock = document.getElementById(blockArray[selectedIndex]);    
     var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
     holdBlock.style.gridRow = selectedIndex + 1 + dir;
     swapBlock.style.gridRow = selectedIndex + 1;
