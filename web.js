@@ -244,7 +244,7 @@ function assignWeaponMod(mobTag, weaponMod) {
         document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";     
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(e.target.id);
+            collapseRow(`${mobTag}-Weapon-Collapse`);
         });  
     }
          
