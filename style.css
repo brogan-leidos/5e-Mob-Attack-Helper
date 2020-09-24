@@ -95,7 +95,7 @@ body {
   color: green;
   transition-duration: 0.2s;
   font-size: 12px;
-  padding: 1px 0px 0px 0px;
+  padding: 0px;
   width: auto;
   vertical-align: top;
   cursor: pointer;
