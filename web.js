@@ -1,7 +1,7 @@
 import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
-import { discoveryTemplate } from './templates/Discovery-Template.js'
+import { discoveryTemplate, dcTemplate } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit } from './presents/index.js'
@@ -291,7 +291,7 @@ function collapseRow(id) {
     var prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;    
     prevTr.remove();
     prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
-    var mobTag = e.target.id.split("-")[0];
+    var mobTag = id.split("-")[0];
     if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
         document.getElementById(id).remove();
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline";
@@ -749,7 +749,7 @@ async function promptDc(roll) {
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("Saving Throw (Before modifiers)", roll, option1, option2));           
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw (Before modifiers)", roll, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
