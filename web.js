@@ -186,7 +186,7 @@ function expandWeapon(mobTag, event) {
     if (!modSelect) {
         document.getElementById(event.target.id).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(e);
+            collapseRow(e.target.id);
         });  
     }
     var underDc = checkIfUnderDc(mobTag, modRow);
@@ -204,7 +204,7 @@ function assignWeaponMod(mobTag, weaponMod) {
         document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton fa fa-minus-square-o" id="${mobTag}-Weapon-Collapse"></span>`);
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";     
         document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(e);
+            collapseRow(e.target.id);
         });  
     }
          
@@ -286,13 +286,14 @@ function updateWeaponModRows(value, mobTag, modRow) {
     }
 }
 
-function collapseRow(e) {
-    var prevTr = document.getElementById(e.target.id).parentElement.parentElement.previousElementSibling;
+// Expects ID of collapse button
+function collapseRow(id) {
+    var prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;    
     prevTr.remove();
-    prevTr = document.getElementById(e.target.id).parentElement.parentElement.previousElementSibling;
+    prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
     var mobTag = e.target.id.split("-")[0];
     if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
-        document.getElementById(e.target.id).remove();
+        document.getElementById(id).remove();
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline";
     }
 
@@ -303,7 +304,13 @@ function changeMobWeapon (mobTag, weaponMods) {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
     }
-         
+    
+    // clean up existing rows
+    var numModRows = document.getElementById(mobTag).firstElementChild.firstElementChild.children.length - 7;
+    for (var i=0; i < numModRows; i++) {
+        collapseRow(document.getElementById(mobTag + "-Weapon-Collapse"));
+    }
+    
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
