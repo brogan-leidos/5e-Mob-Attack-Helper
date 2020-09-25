@@ -604,7 +604,7 @@ async function launchAttack() {
             }
          
             // Everything past here is assumed to take part on a hit
-            
+                        
             if (allowParalyzeCrit && !attackRollClass.crit) {
                 mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
                 rollResult = mobArray[block][i].dealCrit();
@@ -614,7 +614,7 @@ async function launchAttack() {
             }
             
             var mobDcInfo = mobArray[block][i].checkIfHasDc();
-            if (mobDcInfo != false) {
+            if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
                 var dcType = mobDcInfo[1];
                 var savingThrow = null;
                 var roll = Math.floor(Math.random() * 20 + 1);
@@ -627,7 +627,32 @@ async function launchAttack() {
                 if (ailments["Paralyze"] && (dcType == "Dex" || dcType == "Str")) { // Auto fails str and dex saves
                     autoFailSave = true;
                 }
-                
+                     
+                if (usingSavingThrowMods) {
+                    var savingMod = null;
+                    if (dcType == "Str") {
+                        savingMod = document.getElementById("targetStrSave").value;
+                    }
+                    else if (dcType == "Dex") {
+                        savingMod = document.getElementById("targetDexSave").value;
+                    }
+                    else if (dcType == "Con") {
+                        savingMod = document.getElementById("targetConSave").value;
+                    }
+                    else if (dcType == "Int") {
+                        savingMod = document.getElementById("targetIntSave").value;
+                    }
+                    else if (dcType == "Wis") {
+                        savingMod = document.getElementById("targetWisSave").value;
+                    }
+                    else if (dcType == "Chr") {
+                        savingMod = document.getElementById("targetChrSave").value;
+                    }
+                                       
+                    savingThrow = (roll + savingMod) >= mobDcInfo[0];                    
+                }
+                     
+                // DC Prompt Logic
                 if (!dcSaves[dcType]) {
                     dcSaves[dcType] = {"dcLowestSave": -1, "dcHighestFail": -1};
                 }
@@ -635,10 +660,10 @@ async function launchAttack() {
                 var dcHighestFail = dcSaves[dcType]["dcHighestFail"];
                      
                      
-                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave) {                    
+                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) {                    
                     savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, attackRollClass.attacker);
                 }
-                else if (roll >= dcLowestSave) {
+                else if (roll >= dcLowestSave && !usingSavingThrowMods) {
                     savingThrow = true;
                 }
                 else if (roll <= dcHighestFail || autoFailSave) {
