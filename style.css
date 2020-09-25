@@ -9,7 +9,8 @@ button {
 
 .header {
   padding: 5px 10px;
-  background-color: #99ccff;
+/*   background-color: #99ccff; */
+  background-color: #64a3e3;
   color: #f2f2f2;
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: 2px 2px 2px #666;
@@ -162,7 +163,8 @@ button {
 /* Add mob text*/
 .addMobArea .title {
   color: #f2f2f2;
-  background-color: #b5cce3;
+/*   background-color: #b5cce3; */
+  background-color: #97b3cf;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
@@ -175,7 +177,8 @@ button {
 /* How to info */
 .addMobArea .guideArea {
   color: #f2f2f2;
-  background-color: #b5cce3;
+/*   background-color: #b5cce3; */
+  background-color: #97b3cf;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: left;
@@ -186,7 +189,8 @@ button {
 
 /* Add mob area */
 .addMobArea div div {
-  background-color: #90b3d5;
+/*   background-color: #90b3d5; */
+  background-color: #65819c;
   text-align: left;
   vertical-align: top;
 }
@@ -379,12 +383,13 @@ button {
   font-size: larger;
   border-bottom: #b3d1f0 solid thin;
   padding: 3px;
-  background-color: #99ccff;
+  background-color: #64a3e3;
 }
 
 #hitsOverview {
   font-size: smaller;
-  background-color: #90b3d5;
+/*   background-color: #90b3d5; */
+  background-color: #65819c;
   padding: 3px;
 }
 
