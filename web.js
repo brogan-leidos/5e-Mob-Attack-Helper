@@ -47,7 +47,7 @@ export default () => {
         displayHelp();
     });
          
-    document.getElementById('advancedOptionsButton').addEventListener('click', () => {        
+    document.getElementById('setSavingThrowsButton').addEventListener('click', () => {        
         toggleAdvancedOptions();
     }); 
          
@@ -79,9 +79,9 @@ function displayHelp() {
 
 function toggleAdvancedOptions() {
     usingSavingThrowMods = !usingSavingThrowMods;
-    var advancedDiv = document.getElementById("advancedOptionsTab");
-    advancedDiv.style.display = advancedDiv.style.display == "table" ? "none" : "table";
-    var buttonIcon = document.getElementById("advancedOptionsButton").firstElementChild;
+    var modTable = document.getElementById("savingThrowModTable");
+    modTable.style.display = modTable.style.display == "table" ? "none" : "table";
+    var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
         buttonIcon.classList = "fa fa-angle-double-up";    
     }
