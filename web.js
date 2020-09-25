@@ -81,6 +81,14 @@ function toggleAdvancedOptions() {
     usingSavingThrowMods = !usingSavingThrowMods;
     var advancedDiv = document.getElementById("advancedOptionsTab");
     advancedDiv.style.display = advancedDiv.style.display == "table" ? "none" : "table";
+    var buttonIcon = document.getElementById("advancedOptionsButton").firstElementChild;
+    if (buttonIcon.classList.indexOf("fa-angle-double-down") != -1) {
+        buttonIcon.classList = "fa fa-angle-double-up";    
+    }
+    else {
+        buttonIcon.classList = "fa fa-angle-double-down";
+    }
+    
 }
 
 function toggleMob(mobTag) {
