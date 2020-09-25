@@ -429,7 +429,7 @@ background-color: #90b3d5;
 }
 
 .optionsDivider button {
-  background-color: lightgrey;
+  background-color: #ddd;
   border: thin solid black;
   border-radius: 2px;
   cursor: pointer;
@@ -455,7 +455,6 @@ background-color: #90b3d5;
 
 .optionsDivider .advancedOptions #setSavingThrowsButton {
   margin-top: 3px;
-  background-color: whitesmoke;
 }
 
 .optionsDivider .advancedOptions .optionsSavingThrows {
