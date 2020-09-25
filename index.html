@@ -67,6 +67,44 @@
 				<button class="addMobButton" value="Imp">Imp</button>
 			</div>
 		</div>
+		<div class="title" style="grid-row: 1;grid-column: 4;width: 70px;border-left: 5px solid #b5cce3;">
+			Target<br>Info
+		</div>
+		<div class="optionsDivider">
+			<button id="advancedOptionsButton" style="float: left;height: 100%;display: none;">Additional Options <i class="fa fa-angle-double-down"></i></button>  
+			<div id="advancedOptionsTab" class="advancedOptions" style="">
+				<div>
+					<label for="targetAc">Target AC:</label>
+				    <input id="targetAc" value="0" type="number">
+				</div>
+			    <div><button id="setSavingThrowsButton">Saving Throws <i class="fa fa-angle-double-down"></i></button></div>
+				<table class="optionsSavingThrows">
+				  <tbody>
+					 <tr>
+						<td colspan="4">Saving Throw Modifiers</td>
+					 </tr>
+					 <tr>           
+					   <td><label for="targetStrSave">Str:</label></td>           
+					   <td><input id="targetStrSave" value="0" type="number"></td>                   
+					   <td><label for="targetIntSave">Int:</label></td> 
+					   <td><input id="targetIntSave" value="0" type="number"></td>
+					 </tr>
+					 <tr>
+					   <td><label for="targetDexSave">Dex:</label></td> 
+					   <td><input id="targetDexSave" value="0" type="number"></td>
+					   <td><label for="targetWisSave">Wis:</label></td> 
+					   <td><input id="targetWisSave" value="0" type="number"></td>
+					</tr>
+					<tr>
+					  <td><label for="targetConSave">Con:</label></td> 
+					  <td><input id="targetConSave" value="0" type="number"></td>
+					  <td><label for="targetChrSave">Chr:</label></td> 
+					  <td><input id="targetChrSave" value="0" type="number"></td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
 		<div class="mobile-hide guideArea" style="grid-row: 1; grid-column: 4">
 			<b><u>How to use:</u></b> <br>
 			1. Set the target's AC in the first input box (Use a number <= 0 if unsure of the AC) <br>
