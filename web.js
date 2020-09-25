@@ -649,7 +649,7 @@ async function launchAttack() {
                         savingMod = document.getElementById("targetChrSave").value;
                     }
                                        
-                    savingThrow = (roll + savingMod) >= mobDcInfo[0];                    
+                    savingThrow = (roll + +savingMod) >= mobDcInfo[0];                    
                 }
                      
                 // DC Prompt Logic
