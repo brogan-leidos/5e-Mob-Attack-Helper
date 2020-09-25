@@ -821,6 +821,7 @@ async function discoveryStep(attackRoll, attacker) {
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
+    attackRoll = `🎲${attackRoll} + ?`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll, attackerInfo, option1, option2));           
 
@@ -837,6 +838,7 @@ async function promptDc(dcInfo, roll, attacker) {
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
+    roll = `🎲${roll} + ?`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2));           
 
