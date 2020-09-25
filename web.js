@@ -82,7 +82,7 @@ function toggleAdvancedOptions() {
     var advancedDiv = document.getElementById("advancedOptionsTab");
     advancedDiv.style.display = advancedDiv.style.display == "table" ? "none" : "table";
     var buttonIcon = document.getElementById("advancedOptionsButton").firstElementChild;
-    if (buttonIcon.classList.value.indcludes("fa-angle-double-down")) {
+    if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
         buttonIcon.classList = "fa fa-angle-double-up";    
     }
     else {
