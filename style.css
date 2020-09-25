@@ -444,7 +444,7 @@ background-color: #90b3d5;
   background-color: #65819c;
   /*! box-shadow: 2px 2px 2px #666; */
   padding: 10px;
-  border: thin solid black;
+  /*! border: thin solid black; */
   display: table;
   margin-left: 5px;
 }
