@@ -480,6 +480,12 @@ background-color: #90b3d5;
   background-color: #b5cce3;
 }
 
+#targetInfoTitle {
+  grid-row: 1;
+  grid-column: 4;  
+  border-left: 5px solid #b5cce3;
+}
+
 .mobile-hide {
   display: inline;
 }
