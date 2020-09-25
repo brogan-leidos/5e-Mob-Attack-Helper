@@ -15,6 +15,8 @@ var mobBlockDcColor = "lightgrey";
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
 
+var usingSavingThrowMods = false;
+
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit()];
@@ -43,7 +45,13 @@ export default () => {
     // infoButton
     document.getElementById('infoButton').addEventListener('click', () => {        
         displayHelp();
-    });   
+    });
+         
+    document.getElementById('advancedOptionsButton').addEventListener('click', () => {        
+        toggleAdvancedOptions();
+    }); 
+         
+         
 };
 
 
@@ -67,6 +75,12 @@ function displayHelp() {
 1. Set the target's AC in the first input box (Use a number <= 0 if unsure of the AC)
 2. Create a "Mob" using one of the buttons in the Add Mobs section
 3. Click the Launch Attack button, causing all active mobs to attack the target AC!`);
+}
+
+function toggleAdvancedOptions() {
+    usingSavingThrowMods = !usingSavingThrowMods;
+    var advancedDiv = document.getElementById("advancedOptionsTab");
+    advancedDiv.style.display = advancedDiv.style.display == "table" ? "none" : "table";
 }
 
 function toggleMob(mobTag) {
