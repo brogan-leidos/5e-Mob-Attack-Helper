@@ -185,8 +185,9 @@ button {
   font-weight: bold;
   text-align: left;
   vertical-align: top;
+  grid-row:1;
+  grid-column: 6;
   
-  /*! width: 100%; */
 }
 
 /* Add mob area */
