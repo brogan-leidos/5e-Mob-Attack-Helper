@@ -15,6 +15,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: 2px 2px 2px #666;
   text-align: left;
+  border-bottom: 5px solid #b5cce3;
 }
 
 .mobBlock {
@@ -157,7 +158,7 @@ button {
 }
 
 .addMobArea .addMobGrid {
-  grid-template-columns: 70px 300px auto 400px;
+  grid-template-columns: 70px 300px auto 70px auto 400px;
 }
 
 /* Add mob text*/
@@ -172,6 +173,7 @@ button {
   grid-row: 1;
   grid-column: 1;
   padding: 100% 0px 0px 0px;
+  position:  relative;
 }
 
 /* How to info */
@@ -189,7 +191,7 @@ button {
 
 /* Add mob area */
 .addMobArea div div {
-/*   background-color: #90b3d5; */
+background-color: #90b3d5;
   background-color: #65819c;
   text-align: left;
   vertical-align: top;
@@ -417,8 +419,10 @@ button {
 
 .optionsDivider {
   background-color: #dfe6ec;
-  box-shadow: 2px 2px 2px #666;
-  padding: 10px;
+  /*! box-shadow: 2px 2px 2px #666; */
+  padding: 5px;
+  grid-row: 1;
+  grid-column: 5;
 }
 
 .optionsDivider button {
@@ -434,11 +438,12 @@ button {
 }
 
 .optionsDivider .advancedOptions {
-  background-color: lightgrey;
-  box-shadow: 2px 2px 2px #666;
+  background-color: #65819c;
+  /*! box-shadow: 2px 2px 2px #666; */
   padding: 10px;
   border: thin solid black;
   display: table;
+  margin-left: 5px;
 }
 
 .optionsDivider .advancedOptions input {
@@ -453,10 +458,13 @@ button {
 .optionsDivider .advancedOptions .optionsSavingThrows {
   border-collapse: collapse;
   margin-top: 2px;
+  background-color: #b5cce3;
+  border: solid black 1px;
 }
 
 .optionsDivider .advancedOptions .optionsSavingThrows td {
   padding: 2px;
+  background-color: #97b3cf;
 }
 
 .optionsDivider .advancedOptions .optionsSavingThrows tr:nth-child(1) {
@@ -467,6 +475,7 @@ button {
   vertical-align: middle;
   border-top: solid thin black;
   border-bottom: solid thin black;
+  background-color: #b5cce3;
 }
 
 .mobile-hide {
