@@ -517,6 +517,20 @@ background-color: #90b3d5;
     padding-left: 5px
   }
 
+  .addMobArea .targetInfoTitle {
+   grid-row: 4;
+   grid-column: 1;
+   padding-left: 5px;
+  }
+  
+  .addMobArea #advancedOptionsTab {
+   grid-row: 5;
+   grid-column: 1;
+   padding-left: 5px;
+  }
+  
+  
+  
   .addMobArea .addMobCol2 {
    grid-row: 3;
    grid-column: 1;
