@@ -495,9 +495,6 @@ background-color: #90b3d5;
 }
 
 @media screen and (max-width: 660px) {
-  body {
-    background-color: whitesmoke;
-  }
   
   button {
     font-size: 15px;
