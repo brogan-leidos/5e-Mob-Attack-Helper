@@ -578,7 +578,7 @@ async function launchAttack() {
                   continue;
               } 
               if (attackRoll < minAc || minAc == -1) {
-                  var response = await discoveryStep(attackRoll, attackRollClass.attacker);
+                  var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
                   if (response) {
                       rollResult = mobArray[block][i].dealDamage();
                       minAc = attackRoll;
@@ -863,14 +863,15 @@ function displayBreakdown(totalDamageBreakdown) {
     return ret;
 }
 
-async function discoveryStep(attackRoll, attacker) {
+async function discoveryStep(attackRoll, toHit, attacker) {
   // spawn the block and wait for user input
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
-    attackRoll = `🎲${attackRoll} + ?`;
+    var rollInfo = `🎲${attackRoll-toHit} + toHit`;
+    attackRoll = `${attackRoll}`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", attackRoll, attackerInfo, option1, option2));           
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("To Hit", rollInfo, attackRoll ,attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
