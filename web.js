@@ -868,7 +868,7 @@ async function discoveryStep(attackRoll, toHit, attacker) {
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
-    var rollInfo = `🎲${attackRoll-toHit} + toHit`;
+    var rollInfo = `🎲${attackRoll-toHit} + ${toHit}`;
     attackRoll = `${attackRoll}`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("To Hit", rollInfo, attackRoll ,attackerInfo, option1, option2));           
