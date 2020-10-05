@@ -370,10 +370,19 @@ function collapseRow(id) {
     prevTr.remove();
     prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
     var mobTag = id.split("-")[0];
+    
+    // If we just deleted the only child of a DC, clena up the DC header too
+    if (prevTr.children[1].firstElementChild.value == "DC") {
+        prevTr.remove()
+        prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
+    }
+    
     if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
         document.getElementById(id).remove();
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline-block";
     }
+    
+            
 
 }
 
