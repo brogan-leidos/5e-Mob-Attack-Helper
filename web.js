@@ -82,9 +82,9 @@ function displayHelp() {
 function toggleAdvancedOptions() {
     usingSavingThrowMods = !usingSavingThrowMods;
     var modTable = document.getElementById("savingThrowModTable");
-    modTable.style.display = modTable.style.display == "table" ? "none" : "table";
+    modTable.style.display = modTable.style.display == "table"  ? "none" : "table";
     var savingThrowTag = document.getElementById("savingThrowTag");
-    savingThrowTag.style.display = savingThrowTag.style.display == "inline-block" ?  "none" : "inline-block";
+    savingThrowTag.style.display = (savingThrowTag.style.display == "inline-block" || savingThrowTag.style.display == "") ?  "none" : "inline-block";
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
         buttonIcon.classList = "fa fa-angle-double-up";    
