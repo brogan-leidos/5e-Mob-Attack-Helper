@@ -32,7 +32,7 @@ export default () => {
         });
     }      
     
-    discoveryCheck(document.getElementById('targetAc').value);
+    discoveryCheck(document.getElementById('targetAc'));
          
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
