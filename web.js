@@ -692,7 +692,7 @@ async function launchAttack() {
                         if (failureResults[fail][0] == "Condition") {
                             if (!ailments[failureResults[fail][1]]) {
                                 ailments[failureResults[fail][1]] = true;
-                                rollResult.message += `Inflicted condition: ${failureResults[fail][1]}`;
+                                rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
                             }
                         }
                         else if (failureResults[fail][0] == "Roll Class") {
