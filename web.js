@@ -431,7 +431,7 @@ function toggleDetails(event, rollArray) {
     var mobTag = event.target.id.split("-")[0];
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
-        var detailAppend = `<div id=${mobTag}-Details><table><tbody><tr><td>`;                                  
+        var detailAppend = `<div id=${mobTag}-Details><table><tbody><tr>`;                                  
         for (var i=0; i < rollArray.length; i++) {
             var mobBlockRolls = [];
             if (rollArray[i][0].attacker.MobName == mobTag) {
@@ -469,14 +469,14 @@ function toggleDetails(event, rollArray) {
                         superConditionColor = "color:#a6b500";
                     }
                     
-                    detailAppend += `<span id="${mobTag}-Detail" style="margin-left:15px; ${superConditionColor}">`;
+                    detailAppend += `<span style="margin-left:15px; ${superConditionColor}">`;
                     var diceRollsDisplay = "";
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage == 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}]</span></td>`;
+                        diceRollsDisplay = `<span style="color:${vantageColor}">[${rollsOrder[0]}]</span> <span style="color:lightgrey">[${rollsOrder[1]}]</span>`;
                     }
                     else {
-                        diceRollsDisplay = `<span>[${rollClass.attackRoll1}]</span></td>`;
+                        diceRollsDisplay = `<span>[${rollClass.attackRoll1}]</span>`;
                     }
                     
                     var damageTotalsDisplay = "";
@@ -492,13 +492,13 @@ function toggleDetails(event, rollArray) {
                         damageTotalsDisplay = "Miss";
                     }
                     
-                    detailAppend += `<td>${diceRollsDisplay} ${damageTotalsDisplay}</td>`;
-                    detailAppend += `</tr></tbody></table></span><br>`;
+                    detailAppend += `<td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td>`;
+                    detailAppend += `</span>`;
                     
                 }
             }
         }   
-        detailAppend += "</div>";
+        detailAppend += "</tr></tbody></table></div>";
         var tag = mobTag + "-Result";
         document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
          
