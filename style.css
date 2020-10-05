@@ -505,7 +505,7 @@ background-color: #90b3d5;
   } 
   
   .mobile-display {
-    display: inline-block;
+    display: block;
   }
 
   .addMobArea {
