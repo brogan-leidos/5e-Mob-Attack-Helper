@@ -489,10 +489,12 @@ function toggleDetails(event, rollArray) {
                         }                        
                     }
                     else if (rollClass.missed && rollClass.crit) {
-                        damageTotalsDisplay = "Crit Miss";
+                        damageTotalsDisplay = "-";
+                        rollClass.message += "Crit Miss!";
                     }
                     else {
-                        damageTotalsDisplay = "Miss";
+                        damageTotalsDisplay = "-";
+                        rollClass.message += "Miss"
                     }
                     
                     var message = "";
