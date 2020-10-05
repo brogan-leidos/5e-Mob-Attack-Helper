@@ -591,6 +591,14 @@ background-color: #90b3d5;
   .addMobArea .title {
     padding: 5px 0px 5px 0px;
   }
+  
+  .mobBlock label {
+    font-size: 15px;    
+  }
+  
+  .mobBlock input {
+    width: 95%
+  }
 
 }
 
