@@ -157,7 +157,7 @@ button {
 }
 
 .addMobArea .addMobGrid {
-  grid-template-columns: 70px 300px auto 70px auto 400px;
+  grid-template-columns: 70px 300px auto 70px auto 570px;
 }
 
 /* Add mob text*/
@@ -180,6 +180,7 @@ button {
   background-color: #97b3cf;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  font-size: 15px;
   text-align: left;
   vertical-align: top;
   grid-row:1;
