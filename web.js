@@ -73,10 +73,13 @@ function deleteMob(mobTag) {
 }
 
 function displayHelp() {
-    alert(`How to use:
-1. Set the target's AC in the first input box (Use a number <= 0 if unsure of the AC)
-2. Create a "Mob" using one of the buttons in the Add Mobs section
-3. Click the Launch Attack button, causing all active mobs to attack the target AC!`);
+    alert(`How to Use:
+1. Set the target's AC in the first input box (Leave it at 0 if unsure of the AC)
+2. Create a "Mob" of creatures using one of the buttons in the Add Mobs section. This represents a group of similar creatures.
+3. Modify the Mob stats to your liking, take note that when using multiple mobs, they will attack in order from top to bottom.
+4. Click the Launch Attack button, causing all active mobs to attack the target!
+
+4.5 Depending on how much info you provided under Target Info, the tool might prompt you to confirm if an attack hit the target or if the target succeeded on a saving throw. Work with your DM to determine the correct answers.`);
 }
 
 function toggleAdvancedOptions() {
