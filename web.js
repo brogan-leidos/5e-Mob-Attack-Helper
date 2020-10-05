@@ -493,12 +493,12 @@ function toggleDetails(event, rollArray) {
                     }
                     
                     detailAppend += `<tr style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td></tr>`;
-                    detailAppend += `</span>`;
+//                     detailAppend += `</span>`;
                     
                 }
             }
         }   
-        detailAppend += "</tr></table></div>";
+        detailAppend += "</table></div>";
         var tag = mobTag + "-Result";
         document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
          
