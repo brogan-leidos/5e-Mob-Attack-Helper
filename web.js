@@ -31,7 +31,9 @@ export default () => {
            createPresent(e.target.value); 
         });
     }      
-             
+    
+    discoveryCheck(document.getElementById('targetAc').value);
+         
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
         discoveryCheck(newAc);        
     });
