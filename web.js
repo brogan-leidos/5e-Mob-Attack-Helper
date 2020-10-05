@@ -431,7 +431,7 @@ function toggleDetails(event, rollArray) {
     var mobTag = event.target.id.split("-")[0];
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
-        var detailAppend = `<div id=${mobTag}-Details><table>`;                                  
+        var detailAppend = `<div id=${mobTag}-Details><table style="margin-left: 15px">`;                                  
         for (var i=0; i < rollArray.length; i++) {
             var mobBlockRolls = [];
             if (rollArray[i][0].attacker.MobName == mobTag) {
@@ -465,11 +465,13 @@ function toggleDetails(event, rollArray) {
                     else if (rollClass.crit && rollClass.missed) {
                         superConditionColor = "color:#b00000"                      
                     }
+                    else if (!rollClass.crit && rollClass.missed) {
+                        superConditionColor = "color:#914014"                      
+                    }
                     else if (rollClass.autoCrit) {
                         superConditionColor = "color:#a6b500";
                     }
                     
-//                     detailAppend += `<span style="margin-left:15px; ${superConditionColor}">`;
                     var diceRollsDisplay = "";
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage == 1 ? "#004713" : "#470200";
@@ -493,7 +495,6 @@ function toggleDetails(event, rollArray) {
                     }
                     
                     detailAppend += `<tr style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td></tr>`;
-//                     detailAppend += `</span>`;
                     
                 }
             }
