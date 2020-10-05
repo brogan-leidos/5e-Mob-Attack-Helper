@@ -102,6 +102,7 @@ export default class Mob {
             }
         }
         this.rollClass.crit = true;
+        this.rollClass.message += `Crit! `;
         return this.rollClass;
     }
   
