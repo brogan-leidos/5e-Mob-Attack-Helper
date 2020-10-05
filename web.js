@@ -431,7 +431,7 @@ function toggleDetails(event, rollArray) {
     var mobTag = event.target.id.split("-")[0];
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
-        var detailAppend = `<div id=${mobTag}-Details><table style="margin-left: 15px; border-collapse: collapse">`;
+        var detailAppend = `<div id=${mobTag}-Details><table class="detailTable" style="margin-left: 15px; border-collapse: collapse">`;
         detailAppend += `<tr class="detailHeader"><td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
         for (var i=0; i < rollArray.length; i++) {
             var mobBlockRolls = [];
