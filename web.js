@@ -499,7 +499,7 @@ function toggleDetails(event, rollArray) {
                         message = rollClass.message;
                     }
                     
-                    detailAppend += `<tr style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
+                    detailAppend += `<tr class="attackDetail" style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
                     
                 }
             }
