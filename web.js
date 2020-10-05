@@ -451,10 +451,10 @@ function toggleDetails(event, rollArray) {
                     var rollsOrder = [];
                     var superConditionColor = "";
 
-                    if (rollClass.vantage == 1) {
+                    if (rollClass.vantage >= 1) {
                         rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
-                    else if (rollClass.vantage == -1) {
+                    else if (rollClass.vantage <= -1) {
                         rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
                     }
                     
