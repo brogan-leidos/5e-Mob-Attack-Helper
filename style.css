@@ -484,6 +484,20 @@ background-color: #90b3d5;
   border-left: 5px solid #b5cce3;
 }
 
+.detailHeader {
+  text-align: center;
+  font-size: 12px;
+  border-bottom: solid thin grey;
+}
+
+.detailHeader td {
+  padding: 0px 5px 0px 5px;
+}
+
+.attackDetail {
+  text-align: center;
+}
+
 .mobile-hide {
   display: block;
 }
