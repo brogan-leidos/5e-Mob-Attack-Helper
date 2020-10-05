@@ -71,8 +71,8 @@ export function mobBlock() {
     </tr>
     <tr>
       <td><button id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down mobMoveButton" title="Move Down"></button></td>
-      <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" /> <label for="advantage"> Advantage</label></td>
-      <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" /> <label for="disadvantage"> Disadvantage</label></td>
+      <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" style="width: auto" /> <label for="advantage"> Advantage</label></td>
+      <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" style="width: auto" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
   </tbody>
 </table>
