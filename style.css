@@ -9,7 +9,6 @@ button {
 
 .header {
   padding: 5px 10px;
-/*   background-color: #99ccff; */
   background-color: #64a3e3;
   color: #f2f2f2;
   font-family: Arial, Helvetica, sans-serif;
@@ -164,7 +163,6 @@ button {
 /* Add mob text*/
 .addMobArea .title {
   color: #f2f2f2;
-/*   background-color: #b5cce3; */
   background-color: #97b3cf;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -179,7 +177,6 @@ button {
 /* How to info */
 .addMobArea .guideArea {
   color: #f2f2f2;
-/*   background-color: #b5cce3; */
   background-color: #97b3cf;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -531,7 +528,6 @@ background-color: #90b3d5;
    grid-column: 1;
    padding-left: 5px;
    border: none;
-   /* box-shadow: 0px 0px 0px black; */
   }
   
   .addMobArea .optionsDivider {
