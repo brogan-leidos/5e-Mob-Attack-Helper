@@ -32,10 +32,10 @@ export default () => {
         });
     }      
     
-    discoveryCheck(document.getElementById('targetAc'));
+    discoveryCheck(document.getElementById('targetAc').value);
          
     document.getElementById('targetAc').addEventListener('change', (newAc) => {
-        discoveryCheck(newAc);        
+        discoveryCheck(newAc.target.value);        
     });
     document.getElementById('goButton').addEventListener('click', () => {        
         launchAttack();
@@ -59,7 +59,7 @@ export default () => {
 
 // Checks if the target ac is below zero, if so enable discovery mode
 function discoveryCheck(newAc) {
-    if (newAc.target.value <= 0) {
+    if (newAc <= 0) {
         document.getElementById('discoveryTag').style.display = "inline-block";
     }
     else {
