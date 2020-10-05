@@ -585,6 +585,7 @@ background-color: #90b3d5;
   .header {
     text-align: center;
     margin-bottom: 10px;
+    border: none;
   }
   
   .addMobArea .title {
