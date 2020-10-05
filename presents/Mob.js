@@ -66,8 +66,8 @@ export default class Mob {
     
     // Make a strike using equip weapon
     dealDamage() {       
-        var damageTotal = 0;        
         for (var i=0; i < this.EquipWeapon.length; i++) {
+            var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
                 var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
                 for(var j=0; j < weaponBreakdown["numDice"]; j++) {
@@ -85,9 +85,9 @@ export default class Mob {
     }
         
     // Crit using equip weapon!
-     dealCrit() {
-        var damageTotal = 0;        
+     dealCrit() {               
         for (var i=0; i < this.EquipWeapon.length; i++) {
+            var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
                 var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
                 for(var j=0; j < weaponBreakdown["numDice"]*2; j++) {
