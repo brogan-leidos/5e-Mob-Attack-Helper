@@ -494,7 +494,12 @@ function toggleDetails(event, rollArray) {
                         damageTotalsDisplay = "Miss";
                     }
                     
-                    detailAppend += `<tr style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td></tr>`;
+                    var message = "";
+                    if (rollClass.message != "") {
+                        message = rollClass.message;
+                    }
+                    
+                    detailAppend += `<tr style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
                     
                 }
             }
@@ -685,6 +690,7 @@ async function launchAttack() {
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (failureResults[fail][0] == "Condition") {
                             ailments[failureResults[fail][1]] = true;
+                            rollResult.message = `Inflicted condition: ${failureResults[fail][1]}`;
                         }
                         else if (failureResults[fail][0] == "Roll Class") {
                             rollResult = failureResults[fail][1];
