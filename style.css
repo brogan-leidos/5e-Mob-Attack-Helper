@@ -387,6 +387,7 @@ background-color: #90b3d5;
   border-bottom: #97b3cf solid thin;
   padding: 3px;
   background-color: #64a3e3;
+  text-decoration: underline dotted #ffffff5e;
 }
 
 #hitsOverview {
@@ -618,6 +619,10 @@ background-color: #90b3d5;
   
   .mobBlock input {
     width: 95%
+  }
+  
+  #totalDamageTitle {
+    text-decoration: none;
   }
 
 }
