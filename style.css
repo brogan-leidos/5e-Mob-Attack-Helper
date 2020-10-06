@@ -192,14 +192,14 @@ button {
 
 /* Add mob area */
 .addMobArea div div {
-background-color: #90b3d5;
+  background-color: #90b3d5;
   background-color: #65819c;
   text-align: left;
   vertical-align: top;
 }
 
 /* Categories to add mobs */
-.addMobArea div div div:nth-child(odd) {
+.addMobArea .addHeader {
   padding-top: 3px;
   font-size: 12px;
   color: #f2f2f2;
