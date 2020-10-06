@@ -909,6 +909,12 @@ async function discoveryStep(attackRoll, toHit, attacker) {
     document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
     });
+    document.getElementById(`acInfoButton`).addEventListener("click", (e) => {
+      alert(`
+This prompt appeared because the Target AC was set to 0 or lower.
+Work with your DM to determine if the creature hit the target.
+During the same attack, the  tool will automatically determine if attacks hit or miss based on your previous input.`);
+    });
   });
 }
 
@@ -925,6 +931,12 @@ async function promptDc(dcInfo, roll, attacker) {
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", () => {
       resolve(false);
+    });
+    document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
+      alert(`
+This prompt appeared because the tool does not know what the targets saving throw modifiers are.
+The number displayed is a roll on a d20, ask your DM if that number combined with the targets modifiers is enough to save against the DC.
+During the same attack, the tool will automatically determine future saves of the same kind based on your previous input.`);
     });
   });
 }
