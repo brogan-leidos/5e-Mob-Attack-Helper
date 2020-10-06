@@ -69,7 +69,12 @@ function discoveryCheck(newAc) {
 
 function deleteMob(mobTag) {
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
-    document.getElementById(mobTag).remove();    
+    document.getElementById(mobTag).remove();
+    
+    for (var i=0; i < blockArray.length; i++) {
+        document.getElementById(blockArray[i]).style.gridRow = i+1;
+    }
+    
 }
 
 function displayHelp() {
