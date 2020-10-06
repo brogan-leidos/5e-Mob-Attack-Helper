@@ -45,7 +45,7 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
         <td colspan=2 style="border-bottom: thin solid black">
           ${title}
           <span>
-            <i id="dcInfoButton" class="fa fa-question-circle" style="cursor:pointer; vertical-align:middle; position:absolute; margin-left:38px; margin-top:1px;"></i>
+            <i id="dcInfoButton" class="fa fa-question-circle" style="cursor:pointer; vertical-align:middle; position:absolute; margin-left:41px; margin-top:1px;"></i>
           </span>
         </td>
       </tr>
