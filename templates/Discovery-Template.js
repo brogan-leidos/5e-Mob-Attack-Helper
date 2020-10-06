@@ -1,10 +1,18 @@
-export function discoveryTemplate(title, roll, source, option1="op1", option2="op2") {  
+export function discoveryTemplate(title, dc, roll, source, option1="op1", option2="op2") {  
   
  return `
-  <table class="discoveryBlock">
+  <table class="discoveryBlock dcBlock">
     <tbody>
       <tr>
-        <td colspan=2 style="border-bottom: thin solid black">${title}</td>
+        <td colspan=2 style="border-bottom: thin solid black">
+          ${title}
+          <span>
+            <i id="acInfoButton" class="fa fa-question-circle" style="cursor:pointer; vertical-align:middle; position:absolute; margin-left:38px; margin-top:1px;"></i>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2 style="border-bottom: thin solid black">${dc}</td>
       </tr>
       <tr>
         <td colspan=2>
@@ -34,7 +42,12 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
   <table class="discoveryBlock dcBlock">
     <tbody>
       <tr>
-        <td colspan=2 style="border-bottom: thin solid black">${title}</td>
+        <td colspan=2 style="border-bottom: thin solid black">
+          ${title}
+          <span>
+            <i id="dcInfoButton" class="fa fa-question-circle" style="cursor:pointer; vertical-align:middle; position:absolute; margin-left:38px; margin-top:1px;"></i>
+          </span>
+        </td>
       </tr>
       <tr>
         <td colspan=2 style="border-bottom: thin solid black">${dc}</td>
