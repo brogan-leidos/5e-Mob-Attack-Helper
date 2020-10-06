@@ -4,8 +4,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 ToDo:
   1. Allow options to Disallow/Always crit target
-  2. Add an "Advanced options" menu, should be able to set Target AC, target stat Mods (for Saving Throws), and crits and the like there.
-    -- Should look reasonable  
+  2. Hoverable damage information under the attack details
   3. Revise weapon parsing to allow multiple kinds of dice and modifiers in a single input box
   Far Future: Save a JSON of current configuration
 
