@@ -254,6 +254,12 @@ background-color: #90b3d5;
   border: thin black solid;
   padding: 5px;
   margin-bottom: 5px;
+  transition-duration: 0.2s;
+}
+
+#goButton-mobile:active {
+  color: white;
+  background-color: #666;
 }
 
 .mobHeader {
@@ -408,9 +414,6 @@ background-color: #90b3d5;
   display: grid;
   grid-template-columns: auto minmax(min-content, 1fr) auto;
   grid-template-rows: auto minmax(min-content, 1fr) auto;
-  float:left;
-  grid-row: 1;
-  grid-column: 1;
 }
 
 .mobArea {
