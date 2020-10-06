@@ -808,7 +808,7 @@ function parseMobs(numBlocks) {
         var name = document.getElementById(blockArray[i].concat("-Name")).value;
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
-        var tohit = document.getElementById(blockArray[i].concat("-ToHit")).value;
+        var tohit = +document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = getWeaponSet(blockArray[i]);    
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
