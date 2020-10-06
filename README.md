@@ -9,7 +9,7 @@ ToDo:
   Far Future: Save a JSON of current configuration
 
 Known issues:
-  - It's a bit ugly, and I'm a bit terrible at CSS
+  - ~It's a bit ugly, and I'm a bit terrible at CSS~ It's looking a bit better and I'm a little better at CSS!
   - (+/-) split problem in weapon parse. Low priority
 
 
