@@ -556,6 +556,9 @@ async function launchAttack() {
     }
     var dcSaves = {};   
     var ailments = {};
+         
+    var existingAilments = document.getElementById(`targetCondition`).value;
+    ailments[existingAilments] = true;
     
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
