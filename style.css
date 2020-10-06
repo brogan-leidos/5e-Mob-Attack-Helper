@@ -610,6 +610,7 @@ background-color: #90b3d5;
     text-align: center;
     margin-bottom: 10px;
     border: none;
+    box-shadow: 0px 0px 0px;
   }
   
   .addMobArea .title {
