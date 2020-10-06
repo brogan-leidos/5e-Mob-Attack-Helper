@@ -901,7 +901,7 @@ async function discoveryStep(attackRoll, toHit, attacker) {
     var rollInfo = `🎲${attackRoll-toHit} + ${toHit}`;
     attackRoll = `${attackRoll}`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("To Hit", rollInfo, attackRoll ,attackerInfo, option1, option2));           
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', discoveryTemplate("To Hit", rollInfo, attackRoll ,attackerInfo, option1, option2));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
