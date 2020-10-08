@@ -148,7 +148,6 @@ export default class Mob {
 //     }
     
     parseWeapon(weaponString, isCrit=false) {
-        var totalDamage = 0;
         var parseResult = {};        
         var damageType = "Unknown";
         var multiplier = isCrit ? 2 : 1;
@@ -190,9 +189,8 @@ export default class Mob {
             
             weaponString = `${weaponString.slice(blockBeginIndex)} ${rollResult} ${weaponString.slice(blockEndIndex)}`;            
         }
-        totalDamage = eval(weaponString)
         
-        parseResult["totalDamage"] = totalDamage;
+        parseResult["totalDamage"] = eval(weaponString);
         parseResult["damageType"] = damageType;
         
         return parseResult;
