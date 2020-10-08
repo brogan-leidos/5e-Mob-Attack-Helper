@@ -153,7 +153,7 @@ export default class Mob {
         var multiplier = isCrit ? 2 : 1;
         
         // Find the damage type first
-        var typeIndex = weaponString.lastIndexOf(/[\d, ' ']/);
+        var typeIndex = weaponString.lastIndexOf(str.match(/[d,' ']/).pop());
         damageType = weaponString.slice(typeIndex);
                
         var index = 0;
@@ -166,7 +166,7 @@ export default class Mob {
             }
             index = dIndex;
             var blockBeginIndex = weaponString.lastIndexOf(/[+,-,' ',?$]/, dIndex);
-            var blockEndIndex = weaponString.indexOf(/[+,-,' ',?$]/, dIndex);
+            var blockEndIndex = weaponString.search(/[+,-,' ',?$]/, dIndex); //str.lastIndexOf(str.match(<your_regex_here>).pop());
             
             var numDice = weaponString.slice(blockBeginIndex + 1, dIndex)
             var damageDie = weaponString.slice(dIndex + 1, blockEndIndex)
