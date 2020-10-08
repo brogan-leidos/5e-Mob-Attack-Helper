@@ -154,7 +154,7 @@ export default class Mob {
         
         // Find the damage type first
         var typeIndex = weaponString.lastIndexOf(weaponString.match(/[\d,' ']/g).pop());
-        damageType = weaponString.slice(typeIndex);
+        damageType = weaponString.slice(typeIndex+1);
                
         var index = 0;
         // 1d6 + 2 slashing
@@ -165,8 +165,8 @@ export default class Mob {
                 break;
             }
             index = dIndex;
-            var blockBeginIndex = weaponString.lastIndexOf(/[+,-,' ',?$]/, dIndex);
-            var blockEndIndex = weaponString.search(/[+,-,' ',?$]/, dIndex); //str.lastIndexOf(str.match(<your_regex_here>).pop());
+            var blockBeginIndex = weaponString.lastIndexOf(weaponString.match(/[+,-,' ',?$]/g).pop(), dIndex);  
+            var blockEndIndex = weaponString.search(/[+,-,' ',?$]/, dIndex);
             
             var numDice = weaponString.slice(blockBeginIndex + 1, dIndex)
             var damageDie = weaponString.slice(dIndex + 1, blockEndIndex)
