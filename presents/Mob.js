@@ -115,38 +115,6 @@ export default class Mob {
         return this.rollClass;
     }
     
-    // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
-//     parseWeapon(weaponString) {
-//     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
-//         var dSplitIndex = weaponString.indexOf("d");
-//         if (dSplitIndex == -1) {
-//             return false;
-//         }
-//         var numDice = parseInt(weaponString.substr(0, dSplitIndex).trim());
-//         var splitWeapon = weaponString.substr(dSplitIndex + 1);
-
-//         splitWeapon = splitWeapon.split("+");
-//         var flipBit = 1;
-//         if (splitWeapon.length == 1) { // no result found for +, try -
-//             splitWeapon = splitWeapon[0].split("-");       
-//             if (splitWeapon.length == 1) {
-//                 return false;
-//             }
-//             flipBit = -1;
-//         }   
-//         var damageDie = parseInt(splitWeapon[0].trim());
-//         splitWeapon = this.combineEnds(splitWeapon);
-
-//         splitWeapon = splitWeapon.trim().split(" ");
-//         var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
-
-//         if (splitWeapon.length > 1) {
-//             var damageType = splitWeapon[1].trim();
-//         }
-    
-//         return {"numDice": numDice, "damageDie":damageDie, "bonusDmg":bonusDmg, "damageType":damageType};     
-//     }
-    
     parseWeapon(weaponString, isCrit=false) {
         var parseResult = {};        
         var damageType = "Unknown";
@@ -157,8 +125,6 @@ export default class Mob {
         damageType = weaponString.slice(typeIndex+1);
                
         var index = 0;
-        // 1d6 + 2 slashing
-        // 1d6 + 4d4 + 3 - 2 poison
         while(true) {           
             var dIndex = weaponString.indexOf('d', index);
             if (dIndex == -1) {
