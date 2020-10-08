@@ -168,6 +168,13 @@ export default class Mob {
             var blockBeginIndex = weaponString.lastIndexOf(weaponString.match(/[+,-,' ',?$]/g).pop(), dIndex);  
             var blockEndIndex = weaponString.search(/[+,-,' ',?$]/, dIndex);
             
+            if (blockBeginIndex == -1) {
+                blockBeginIndex = 0;
+            }
+            if (blockEndIndex == -1) {
+                blockEndIndex = weaponString.length;
+            }
+            
             var numDice = weaponString.slice(blockBeginIndex + 1, dIndex)
             var damageDie = weaponString.slice(dIndex + 1, blockEndIndex)
             
