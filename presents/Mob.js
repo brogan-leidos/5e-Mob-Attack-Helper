@@ -153,7 +153,7 @@ export default class Mob {
         var multiplier = isCrit ? 2 : 1;
         
         // Find the damage type first
-        var typeIndex = weaponString.lastIndexOf(str.match(/[d,' ']/).pop());
+        var typeIndex = weaponString.lastIndexOf(weaponString.match(/[d,' ']/).pop());
         damageType = weaponString.slice(typeIndex);
                
         var index = 0;
