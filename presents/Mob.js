@@ -168,8 +168,6 @@ export default class Mob {
         }
         
         var index = 0;
-        var previousDelimiterIndex = 0;
-        var previousDelimiter = 1;
         // 1d6 + 2 slashing
         // 1d6 + 4d4 + 3 - 2 poison
         while(true) {           
@@ -177,6 +175,7 @@ export default class Mob {
             if (dIndex == -1) {
                 break;
             }
+            index = dIndex;
             var blockBeginIndex = weaponString.lastIndexOf(/[+,-,' ',?$]/, dIndex);
             var blockEndIndex = weaponString.indexOf(/[+,-,' ',?$]/, dIndex);
             
