@@ -69,11 +69,8 @@ export default class Mob {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
-                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
-                for(var j=0; j < weaponBreakdown["numDice"]; j++) {
-                    damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
-                }
-                damageTotal += weaponBreakdown["bonusDmg"];
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);                
+                damageTotal += weaponBreakdown["totalDamage"];
                 if (damageTotal < 0) { damageTotal = 0; }
                 this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
             }
@@ -89,11 +86,8 @@ export default class Mob {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
-                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
-                for(var j=0; j < weaponBreakdown["numDice"]*2; j++) {
-                    damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
-                }
-                damageTotal += weaponBreakdown["bonusDmg"];
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1], true);
+                damageTotal += weaponBreakdown["totalDamage"];
                 if (damageTotal < 0) { damageTotal = 0; }
                 this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
             }
@@ -110,12 +104,9 @@ export default class Mob {
         this.rollClass.damageResults = [];
     }
     
+    // Used to quickly roll for DC damage
     rollDamageForWeapon(weaponBreakdown, halfDamage=false){
-        var damageTotal = 0;
-        for(var j=0; j < weaponBreakdown["numDice"]; j++) {
-            damageTotal += Math.floor(Math.random() * weaponBreakdown["damageDie"] + 1); // 1 - maxdmg
-        }
-        damageTotal += weaponBreakdown["bonusDmg"];
+        damageTotal = weaponBreakdown["totalDamage"];
         if (damageTotal < 0) { damageTotal = 0; }
         if (halfDamage) {
             damageTotal = Math.floor(damageTotal / 2);
@@ -125,35 +116,88 @@ export default class Mob {
     }
     
     // Parse the weapon string, turn it into a weapon object we can send to the mob attack method
-    parseWeapon(weaponString) {
-    // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
-        var dSplitIndex = weaponString.indexOf("d");
-        if (dSplitIndex == -1) {
-            return false;
-        }
-        var numDice = parseInt(weaponString.substr(0, dSplitIndex).trim());
-        var splitWeapon = weaponString.substr(dSplitIndex + 1);
+//     parseWeapon(weaponString) {
+//     // Create a weapon object out of the data. Sample data: 1d6 + 3 slashing
+//         var dSplitIndex = weaponString.indexOf("d");
+//         if (dSplitIndex == -1) {
+//             return false;
+//         }
+//         var numDice = parseInt(weaponString.substr(0, dSplitIndex).trim());
+//         var splitWeapon = weaponString.substr(dSplitIndex + 1);
 
-        splitWeapon = splitWeapon.split("+");
-        var flipBit = 1;
-        if (splitWeapon.length == 1) { // no result found for +, try -
-            splitWeapon = splitWeapon[0].split("-");       
-            if (splitWeapon.length == 1) {
-                return false;
-            }
-            flipBit = -1;
-        }   
-        var damageDie = parseInt(splitWeapon[0].trim());
-        splitWeapon = this.combineEnds(splitWeapon);
+//         splitWeapon = splitWeapon.split("+");
+//         var flipBit = 1;
+//         if (splitWeapon.length == 1) { // no result found for +, try -
+//             splitWeapon = splitWeapon[0].split("-");       
+//             if (splitWeapon.length == 1) {
+//                 return false;
+//             }
+//             flipBit = -1;
+//         }   
+//         var damageDie = parseInt(splitWeapon[0].trim());
+//         splitWeapon = this.combineEnds(splitWeapon);
 
-        splitWeapon = splitWeapon.trim().split(" ");
-        var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
+//         splitWeapon = splitWeapon.trim().split(" ");
+//         var bonusDmg = parseInt(splitWeapon[0].trim()) * flipBit;
 
-        if (splitWeapon.length > 1) {
-            var damageType = splitWeapon[1].trim();
-        }
+//         if (splitWeapon.length > 1) {
+//             var damageType = splitWeapon[1].trim();
+//         }
     
-        return {"numDice": numDice, "damageDie":damageDie, "bonusDmg":bonusDmg, "damageType":damageType};     
+//         return {"numDice": numDice, "damageDie":damageDie, "bonusDmg":bonusDmg, "damageType":damageType};     
+//     }
+    
+    parseWeapon(weaponString, isCrit=false) {
+        var totalDamage = 0;
+        var parseResult = {};        
+        var damageType = "Unknown";
+        var multiplier = isCrit ? 2 : 1;
+        
+        // Find the damage type first
+        var typeIndex = weaponString.length;
+        while(true) {
+            typeIndex--;
+            if (weaponString[typeIndex] == ' ' && weaponString[typeIndex-1].includes(/\d/)) {
+                damageType = weaponString.slice(typeIndex+1);
+                weaponString = weaponString.slice(0, typeIndex+1);
+                break;
+            }
+            else if(weaponString[typeIndex].includes(/[+,-,\d]/)) {
+                break;
+            }
+        }
+        
+        var index = 0;
+        var previousDelimiterIndex = 0;
+        var previousDelimiter = 1;
+        // 1d6 + 2 slashing
+        // 1d6 + 4d4 + 3 - 2 poison
+        while(true) {           
+            var dIndex = weaponString.indexOf('d', index);
+            if (dIndex == -1) {
+                break;
+            }
+            var blockBeginIndex = weaponString.lastIndexOf(/[+,-,' ',?$]/, dIndex);
+            var blockEndIndex = weaponString.indexOf(/[+,-,' ',?$]/, dIndex);
+            
+            var numDice = weaponString.slice(blockBeginIndex + 1, dIndex)
+            var damageDie = weaponString.slice(dIndex + 1, blockEndIndex)
+            
+            var rollResult = 0;
+            
+            for(var i=0; i < numDice*multiplier; i++) {
+                rollResult += Math.floor(Math.random() * damageDie + 1); // 1 - maxdmg
+            }
+            
+            weaponString = `${weaponString.slice(blockBeginIndex)} ${rollResult} ${weaponString.slice(blockEndIndex)}`;            
+        }
+        totalDamage = eval(weaponString)
+        
+        parseResult["totalDamage"] = totalDamage;
+        parseResult["damageType"] = damageType;
+        
+        return parseResult;
+        
     }
     
     combineEnds(stringArray) {
