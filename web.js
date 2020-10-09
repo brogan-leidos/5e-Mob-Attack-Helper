@@ -4,7 +4,7 @@ import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate, dcTemplate } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
-         Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch } from './presents/index.js'
+         Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar } from './presents/index.js'
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "grey";
@@ -19,7 +19,7 @@ var usingSavingThrowMods = false;
 
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
-                    new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch()];
+                    new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
