@@ -599,7 +599,7 @@ async function launchAttack() {
             var rollResult = "";
             var attackRollClass = mobArray[block][i].makeAttack();
             var attackRoll = attackRollClass.hitRoll;
-            if (attackRollClass.crit && !attackRollClass.missed) {
+            if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
                 rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
             }
@@ -640,7 +640,7 @@ async function launchAttack() {
          
             // Everything past here is assumed to take part on a hit
                         
-            if (allowParalyzeCrit && !attackRollClass.crit) {
+            if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
                 mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
                 rollResult = mobArray[block][i].dealCrit();
                 rollResult.crit = false;
@@ -776,7 +776,7 @@ async function launchAttack() {
             }
         }
         var blockNumHits = rollArray[block].filter(a => a.missed == false).length;
-        var numOfBlockCrits = rollArray[block].filter(a => (a.crit || a.autoCrit) && !a.missed).length;
+        var numOfBlockCrits = rollArray[block].filter(a => (a.crit || a.autoCrit) && !a.missed && !critImmune).length;
              
         totalHits += blockNumHits;
         infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
