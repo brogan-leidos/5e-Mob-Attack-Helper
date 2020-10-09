@@ -17,3 +17,5 @@ export { default as Berserk } from './Berserk.js'
 export { default as Imp } from './Imp.js'
 export { default as Quasit } from './Quasit.js'
 export { default as AbyssalWretch } from './AbyssalWretch.js'
+export { default as Boar } from './Boar.js'
+
