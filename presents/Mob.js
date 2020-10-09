@@ -150,7 +150,7 @@ export default class Mob {
             if (blockBeginIndex == -1) {
                 blockBeginIndex = 0;
             }
-            if (blockEndIndex == -1) {
+            if (blockEndIndex == weaponString.length - 1) {
                 blockEndIndex = weaponString.length;
             }
             
@@ -173,18 +173,7 @@ export default class Mob {
         
         return parseResult;
         
-    }
-    
-    combineEnds(stringArray) {
-        if (stringArray.length == 1) {
-            return;
-        }
-        var combined = "";
-        for (var i=1; i < stringArray.length; i++) {
-            combined += stringArray[i];
-        }
-        return combined;
-    }
+    }    
     
     checkIfHasDc() {
         for (var i=0; i < this.EquipWeapon.length; i++) {
