@@ -14,7 +14,7 @@ export default class GiantFrog extends Mob {
       new Weapon("Bite", [["ToHit", 6],  ["IsMelee", false], ["Weapon","1d4 + 4 piercing"], ["DC", 13, "Con"]]),
     ];
     
-    this.EquipWeapon = this.Weapons[1];
+    this.EquipWeapon = this.Weapons[0];
     
   }
   
