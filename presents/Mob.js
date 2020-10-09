@@ -152,7 +152,7 @@ export default class Mob {
                 rollResult += Math.floor(Math.random() * damageDie + 1); // 1 - maxdmg
             }
             
-            weaponString = `${weaponString.slice(blockBeginIndex)} ${rollResult} ${weaponString.slice(blockEndIndex)}`;            
+            weaponString = `${weaponString.slice(0,blockBeginIndex)} ${rollResult} ${weaponString.slice(blockEndIndex)}`;            
         }
         
         parseResult["totalDamage"] = eval(weaponString);
