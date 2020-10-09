@@ -3,8 +3,8 @@ If you're like me and find the DMG rules for mob combat underwhelming - this is 
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 == ToDo:
-  1. Allow options to Disallow crits (Adamantine)
-  2. Hoverable damage information under the attack details
+  1. Hoverable damage information under the attack details
+  2. Error checking for the mob inputs, especially the weapon boxs
   Far Future: Save a JSON of current configuration
 
 == Known issues:
