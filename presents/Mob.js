@@ -123,7 +123,8 @@ export default class Mob {
         // Find the damage type first
         var typeIndex = weaponString.lastIndexOf(weaponString.match(/[\d,' ']/g).pop());
         damageType = weaponString.slice(typeIndex+1);
-               
+        weaponString = weaponString.slice(0,typeIndex+1);
+        
         var index = 0;
         while(true) {           
             var dIndex = weaponString.indexOf('d', index);
