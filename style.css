@@ -157,7 +157,7 @@ button {
 }
 
 .addMobArea .addMobGrid {
-  grid-template-columns: 70px 300px auto 70px auto 570px;
+  grid-template-columns: 70px 15% auto 70px auto 30%;
 }
 
 /* Add mob text*/
