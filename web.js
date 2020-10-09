@@ -731,6 +731,10 @@ async function launchAttack() {
             }
                        
             rollArray[block].push(rollResult);
+            if (rollResult.error) {
+                  throwError(rollResult.message);
+                  return;
+            }
         }
     }
   
