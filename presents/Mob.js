@@ -106,7 +106,7 @@ export default class Mob {
     
     // Used to quickly roll for DC damage
     rollDamageForWeapon(weaponBreakdown, halfDamage=false){
-        damageTotal = weaponBreakdown["totalDamage"];
+        var damageTotal = weaponBreakdown["totalDamage"];
         if (damageTotal < 0) { damageTotal = 0; }
         if (halfDamage) {
             damageTotal = Math.floor(damageTotal / 2);
