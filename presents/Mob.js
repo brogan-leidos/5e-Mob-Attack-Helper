@@ -73,7 +73,7 @@ export default class Mob {
                 
                 if (weaponBreakdown["errorMessage"]) {
                     this.rollClass.error = true;
-                    this.rollClass.message = weaponBreakdown["errorMessage"]);
+                    this.rollClass.message = weaponBreakdown["errorMessage"];
                     return this.rollClass;
                 }
                 
@@ -197,7 +197,7 @@ export default class Mob {
                     var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
                     if (weaponBreakdown["errorMessage"]) {
                         this.rollClass.error = true;
-                        this.rollClass.message = weaponBreakdown["errorMessage"]);
+                        this.rollClass.message = weaponBreakdown["errorMessage"];
                     }
                     else {
                         this.rollClass = this.rollDamageForWeapon(weaponBreakdown);
@@ -224,7 +224,7 @@ export default class Mob {
                     var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
                     if (weaponBreakdown["errorMessage"]) {
                         this.rollClass.error = true;
-                        this.rollClass.message = weaponBreakdown["errorMessage"]);
+                        this.rollClass.message = weaponBreakdown["errorMessage"];
                     } 
                     else {
                         this.rollClass = this.rollDamageForWeapon(weaponBreakdown), true);
