@@ -227,7 +227,7 @@ export default class Mob {
                         this.rollClass.message = weaponBreakdown["errorMessage"];
                     } 
                     else {
-                        this.rollClass = this.rollDamageForWeapon(weaponBreakdown), true);
+                        this.rollClass = this.rollDamageForWeapon(weaponBreakdown, true);
                     }
                 }
             }
