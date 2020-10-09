@@ -551,6 +551,7 @@ async function launchAttack() {
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
+    var critImmune = document.getElementById('critImmune').checked;
     
     // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
     var discoveryModeFlag = false;
@@ -575,7 +576,6 @@ async function launchAttack() {
             var inMelee = document.getElementById(`${mobArray[block][i].MobName}-Range`).checked;
             var allowParalyzeCrit = false;
             if (ailments["Knock Prone"]) {
-                // if ranged gets disadvantage, else melee gets advantage               
                 if (inMelee) {
                     advantage = 1;                
                 } else {
