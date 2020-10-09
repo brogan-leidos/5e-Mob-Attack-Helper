@@ -120,6 +120,7 @@ export default class Mob {
         var damageType = "Unknown";
         var multiplier = isCrit ? 2 : 1;
         
+        try {
         // Find the damage type first
         var typeIndex = weaponString.lastIndexOf(weaponString.match(/\d/g).pop());
         damageType = weaponString.slice(typeIndex+1).trim();
@@ -172,6 +173,10 @@ export default class Mob {
         parseResult["damageType"] = damageType;
         
         return parseResult;
+        } 
+        catch (err) {
+            return {"errorMessage":`Something went wrong when parsing an input under Name: ${this.Name}` };
+        }
         
     }    
     
@@ -193,7 +198,9 @@ export default class Mob {
             }
             else if (afterDc) {
                 if (this.EquipWeapon[i][0].includes("Damage")) {
-                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]));
+                    var weaponBrekadown = this.parseWeapon(this.EquipWeapon[i][1]);
+                    
+                    this.rollClass = this.rollDamageForWeapon(weaponBrekadown);
                 }
                 else if (this.EquipWeapon[i][0] == "Condition") {
                     ret.push(["Condition", this.EquipWeapon[i][1]]);
