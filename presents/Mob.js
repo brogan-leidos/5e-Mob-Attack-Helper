@@ -137,7 +137,7 @@ export default class Mob {
             var blockBeginIndex = -1;
             while(true) {
                 backIndex--;
-                if (weaponString[backIndex].match(/[+,\-,' ']/) != -1) {
+                if (weaponString[backIndex].search(/[+,\-,' ']/) != -1) {
                     blockBeginIndex = backIndex;
                     break;
                 }
