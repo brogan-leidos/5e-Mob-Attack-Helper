@@ -2,15 +2,15 @@
 If you're like me and find the DMG rules for mob combat underwhelming - this is the tool for you!
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
-ToDo:
+== ToDo:
   1. Allow options to Disallow crits (Adamantine)
   2. Hoverable damage information under the attack details
-  3. Revise weapon parsing to allow multiple kinds of dice and modifiers in a single input box
   Far Future: Save a JSON of current configuration
 
-Known issues:
+== Known issues:
   - ~It's a bit ugly, and I'm a bit terrible at CSS~ It's looking a bit better and I'm a little better at CSS!
-  - (+/-) split problem in weapon parse. Low priority
+  - This implementation of the weapon parser uses eval(). It works for most everything, but maybe theres a problem here I'm missing?
+
 
 
 
