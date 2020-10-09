@@ -10,5 +10,6 @@ export default class DamageRoll {
         this.damageResults = []; // Expects: [[damage, type]]
         this.missed = false;
         this.message = "";
+        this.error = false;
     }
 }
