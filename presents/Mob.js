@@ -132,8 +132,9 @@ export default class Mob {
                 break;
             }
             index = dIndex;
+            var tempEndIndexSearch = weaponString.slice(dIndex);
             var blockBeginIndex = weaponString.lastIndexOf(weaponString.match(/[+,\-,' ']|^./g).pop(), dIndex);  
-            var blockEndIndex = weaponString.search(/[+,\-,' ']|.$/, dIndex);
+            var blockEndIndex = tempEndIndexSearch.search(/[+,\-,' ']|.$/) + dIndex;
             
             if (blockBeginIndex == -1) {
                 blockBeginIndex = 0;
