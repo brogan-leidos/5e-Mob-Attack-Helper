@@ -69,7 +69,14 @@ export default class Mob {
         for (var i=0; i < this.EquipWeapon.length; i++) {
             var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
-                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);                
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);  
+                
+                if (weaponBreakdown["errorMessage"]) {
+                    this.rollClass.error = true;
+                    this.rollClass.message = weaponBreakdown["errorMessage"]);
+                    return this.rollClass;
+                }
+                
                 damageTotal += weaponBreakdown["totalDamage"];
                 if (damageTotal < 0) { damageTotal = 0; }
                 this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
@@ -87,6 +94,13 @@ export default class Mob {
             var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
                 var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1], true);
+                
+                if (weaponBreakdown["errorMessage"]) {
+                    this.rollClass.error = true;
+                    this.rollClass.message = weaponBreakdown["errorMessage"]);
+                    return this.rollClass;
+                }
+                
                 damageTotal += weaponBreakdown["totalDamage"];
                 if (damageTotal < 0) { damageTotal = 0; }
                 this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
@@ -198,9 +212,14 @@ export default class Mob {
             }
             else if (afterDc) {
                 if (this.EquipWeapon[i][0].includes("Damage")) {
-                    var weaponBrekadown = this.parseWeapon(this.EquipWeapon[i][1]);
-                    
-                    this.rollClass = this.rollDamageForWeapon(weaponBrekadown);
+                    var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
+                    if (weaponBreakdown["errorMessage"]) {
+                        this.rollClass.error = true;
+                        this.rollClass.message = weaponBreakdown["errorMessage"]);
+                    }
+                    else {
+                        this.rollClass = this.rollDamageForWeapon(weaponBreakdown);
+                    }
                 }
                 else if (this.EquipWeapon[i][0] == "Condition") {
                     ret.push(["Condition", this.EquipWeapon[i][1]]);
@@ -220,7 +239,14 @@ export default class Mob {
             }
             else if (afterDc) {
                 if (this.EquipWeapon[i][0] == "Damage (1/2 on save)") {
-                    this.rollClass = this.rollDamageForWeapon(this.parseWeapon(this.EquipWeapon[i][1]), true);
+                    var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);
+                    if (weaponBreakdown["errorMessage"]) {
+                        this.rollClass.error = true;
+                        this.rollClass.message = weaponBreakdown["errorMessage"]);
+                    } 
+                    else {
+                        this.rollClass = this.rollDamageForWeapon(weaponBreakdown), true);
+                    }
                 }
             }
         }
