@@ -65,11 +65,11 @@ export default class Mob {
     }
     
     // Make a strike using equip weapon
-    dealDamage() {       
+    dealDamage(isCrit=false) {       
         for (var i=0; i < this.EquipWeapon.length; i++) {
             var damageTotal = 0; 
             if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
-                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1]);  
+                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1], isCrit);  
                 
                 if (weaponBreakdown["errorMessage"]) {
                     this.rollClass.error = true;
@@ -90,25 +90,7 @@ export default class Mob {
         
     // Crit using equip weapon!
      dealCrit() {               
-        for (var i=0; i < this.EquipWeapon.length; i++) {
-            var damageTotal = 0; 
-            if (this.EquipWeapon[i][0] == "Weapon" || this.EquipWeapon[i][0] == "Extra Damage") {
-                var weaponBreakdown = this.parseWeapon(this.EquipWeapon[i][1], true);
-                
-                if (weaponBreakdown["errorMessage"]) {
-                    this.rollClass.error = true;
-                    this.rollClass.message = weaponBreakdown["errorMessage"]);
-                    return this.rollClass;
-                }
-                
-                damageTotal += weaponBreakdown["totalDamage"];
-                if (damageTotal < 0) { damageTotal = 0; }
-                this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
-            }
-            else if (this.EquipWeapon[i][0] == "DC") {
-                break;
-            }
-        }
+        var ret = this.dealDamage(true)
         this.rollClass.crit = true;
         this.rollClass.message += `Crit! `;
         return this.rollClass;
