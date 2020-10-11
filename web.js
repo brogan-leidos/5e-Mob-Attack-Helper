@@ -441,7 +441,11 @@ function changeVantage(mobTag) {
 }
 
 function throwError(msg) {
-    document.getElementById("infoArea").innerHTML = msg;
+    var infoArea = document.getElementById("infoArea");
+    infoArea.innerHTML = msg;
+    infoArea.style.display = "inline-block";
+
+    discoveryArea = document.getElementById("discoveryArea").style.display = "none";
 }
 
 function toggleDetails(event, rollArray) {
@@ -842,6 +846,7 @@ function getWeaponSet(mobTag) {
     var errorCheck = checkIfValidWeapon(weapon);
     if (errorCheck) {
         throwError(errorCheck);
+        return;
     }
 
     var ret = [["ToHit", toHit], ["Weapon", weapon]];
