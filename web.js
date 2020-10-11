@@ -441,7 +441,7 @@ function changeVantage(mobTag) {
 }
 
 function throwError(msg) {
-    var infoArea = document.getElementById("infoArea");
+    var infoArea = document.getElementById("infoAreaDiv");
     infoArea.innerHTML = msg;
     infoArea.style.display = "inline-block";
 
@@ -553,6 +553,9 @@ async function launchAttack() {
     }    
     
     var mobArray = parseMobs(numBlocks);
+    if (!mobArray) {
+        return false;
+    }
     
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
@@ -829,6 +832,10 @@ function parseMobs(numBlocks) {
         
         var vantage = advantage + disadvantage;
         
+        if (!weapon) {
+            return false;
+        }
+
         mobArray.push(new Array());
         for(var j=0; j < number; j++) {
             mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j+1))
