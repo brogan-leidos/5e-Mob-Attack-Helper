@@ -865,7 +865,7 @@ function getWeaponSet(mobTag) {
             if (modSelect.value == "DC") {
                 ret.push([modSelect.value, mod.value, document.getElementById(`${mobTag}-${rowCount}-Mod-Dc`).value]);
             }
-            else if (modSelect.includes("Damage")) {
+            else if (modSelect.value.includes("Damage")) {
                 // Weapon error check
             }
             else {
