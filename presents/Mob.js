@@ -117,58 +117,58 @@ export default class Mob {
         var multiplier = isCrit ? 2 : 1;
         
         try {
-        // Find the damage type first
-        var typeIndex = weaponString.lastIndexOf(weaponString.match(/\d/g).pop());
-        damageType = weaponString.slice(typeIndex+1).trim();
-        weaponString = weaponString.slice(0,typeIndex+1);
-        
-        var index = 0;
-        while(true) {           
-            var dIndex = weaponString.indexOf('d', index);
-            if (dIndex == -1) {
-                break;
-            }
-            index = dIndex;
-            var tempEndIndexSearch = weaponString.slice(dIndex);
-            var backIndex = dIndex;
-            var blockBeginIndex = -1;
-            while(true) {
-                backIndex--;
-                if (backIndex == -1){
+            // Find the damage type first
+            var typeIndex = weaponString.lastIndexOf(weaponString.match(/\d/g).pop());
+            damageType = weaponString.slice(typeIndex+1).trim();
+            weaponString = weaponString.slice(0,typeIndex+1);
+            
+            var index = 0;
+            while(true) {           
+                var dIndex = weaponString.indexOf('d', index);
+                if (dIndex == -1) {
                     break;
                 }
-                if (weaponString[backIndex].search(/[+,\-,' ']/) != -1) {
-                    blockBeginIndex = backIndex;
-                    break;
-                }              
+                index = dIndex;
+                var tempEndIndexSearch = weaponString.slice(dIndex);
+                var backIndex = dIndex;
+                var blockBeginIndex = -1;
+                while(true) {
+                    backIndex--;
+                    if (backIndex == -1){
+                        break;
+                    }
+                    if (weaponString[backIndex].search(/[+,\-,' ']/) != -1) {
+                        blockBeginIndex = backIndex;
+                        break;
+                    }              
+                }
+                var blockEndIndex = tempEndIndexSearch.search(/[+,\-,' ']|.$/) + dIndex;
+                
+                if (blockBeginIndex == -1) {
+                    blockBeginIndex = 0;
+                }
+                if (blockEndIndex == weaponString.length - 1) {
+                    blockEndIndex = weaponString.length;
+                }
+                
+                var beginOffset = blockBeginIndex == 0 ? 0 : blockBeginIndex + 1;
+                
+                var numDice = +weaponString.slice(beginOffset, dIndex)
+                var damageDie = +weaponString.slice(dIndex + 1, blockEndIndex)
+                
+                var rollResult = 0;
+                
+                for(var i=0; i < numDice*multiplier; i++) {
+                    rollResult += Math.floor(Math.random() * damageDie + 1); // 1 - maxdmg
+                }
+                
+                weaponString = `${weaponString.slice(0,beginOffset)}${rollResult}${weaponString.slice(blockEndIndex)}`;            
             }
-            var blockEndIndex = tempEndIndexSearch.search(/[+,\-,' ']|.$/) + dIndex;
             
-            if (blockBeginIndex == -1) {
-                blockBeginIndex = 0;
-            }
-            if (blockEndIndex == weaponString.length - 1) {
-                blockEndIndex = weaponString.length;
-            }
+            parseResult["totalDamage"] = eval(weaponString);
+            parseResult["damageType"] = damageType;
             
-            var beginOffset = blockBeginIndex == 0 ? 0 : blockBeginIndex + 1;
-            
-            var numDice = +weaponString.slice(beginOffset, dIndex)
-            var damageDie = +weaponString.slice(dIndex + 1, blockEndIndex)
-            
-            var rollResult = 0;
-            
-            for(var i=0; i < numDice*multiplier; i++) {
-                rollResult += Math.floor(Math.random() * damageDie + 1); // 1 - maxdmg
-            }
-            
-            weaponString = `${weaponString.slice(0,beginOffset)}${rollResult}${weaponString.slice(blockEndIndex)}`;            
-        }
-        
-        parseResult["totalDamage"] = eval(weaponString);
-        parseResult["damageType"] = damageType;
-        
-        return parseResult;
+            return parseResult;
         } 
         catch (err) {
             return {"errorMessage":`Something went wrong when parsing an input under Name: ${this.Name}` };

@@ -818,7 +818,6 @@ function parseMobs(numBlocks) {
         var name = document.getElementById(blockArray[i].concat("-Name")).value;
         var icon = document.getElementById(blockArray[i].concat("-Icon"));
         icon = icon.options[icon.selectedIndex].innerHTML;
-        var tohit = +document.getElementById(blockArray[i].concat("-ToHit")).value;
         var weapon = getWeaponSet(blockArray[i]);    
         var number = document.getElementById(blockArray[i].concat("-Number")).value;        
         var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
@@ -838,6 +837,13 @@ function parseMobs(numBlocks) {
 function getWeaponSet(mobTag) {
     var toHit = document.getElementById(mobTag + "-ToHit").value;
     var weapon = document.getElementById(mobTag + "-Weapon").value;
+
+    //Run weapon error check
+    var errorCheck = checkIfValidWeapon(weapon);
+    if (errorCheck) {
+        throwError(errorCheck);
+    }
+
     var ret = [["ToHit", toHit], ["Weapon", weapon]];
     var rowCount = 0
     while(true) {
@@ -846,6 +852,9 @@ function getWeaponSet(mobTag) {
             var mod = document.getElementById(`${mobTag}-${rowCount}-Mod`);
             if (modSelect.value == "DC") {
                 ret.push([modSelect.value, mod.value, document.getElementById(`${mobTag}-${rowCount}-Mod-Dc`).value]);
+            }
+            else if (modSelect.includes("Damage")) {
+                // Weapon error check
             }
             else {
                 ret.push([modSelect.value, mod.value]);
@@ -857,6 +866,18 @@ function getWeaponSet(mobTag) {
         rowCount++;
     }
     return ret;
+}
+
+function checkIfValidWeapon(weaponString) {
+    var testMob = new Mob();
+
+    var errorResult = testMob.parseWeapon(weaponString);
+    if (errorResult["errorMessage"]) {
+        return errorResult["errorMessage"];
+    }
+    else {
+        return true;
+    }    
 }
 
 function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
