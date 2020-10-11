@@ -441,8 +441,9 @@ function changeVantage(mobTag) {
 }
 
 function throwError(msg) {
-    var infoArea = document.getElementById("infoAreaDiv");
-    infoArea.innerHTML = msg;
+    var infoArea = document.getElementById("infoArea");
+
+    infoArea.innerHTML = `<div id="totalDamageTitle">${msg}</div>`;
     infoArea.style.display = "inline-block";
 
     document.getElementById("discoveryArea").style.display = "none";
