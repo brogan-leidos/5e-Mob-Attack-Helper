@@ -445,7 +445,7 @@ function throwError(msg) {
     infoArea.innerHTML = msg;
     infoArea.style.display = "inline-block";
 
-    discoveryArea = document.getElementById("discoveryArea").style.display = "none";
+    document.getElementById("discoveryArea").style.display = "none";
 }
 
 function toggleDetails(event, rollArray) {
