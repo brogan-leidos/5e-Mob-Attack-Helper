@@ -843,7 +843,7 @@ function getWeaponSet(mobTag) {
     var weapon = document.getElementById(mobTag + "-Weapon").value;
 
     //Run weapon error check
-    var errorCheck = checkIfValidWeapon(weapon);
+    var errorCheck = checkIfValidWeapon(weapon, mobTag);
     if (errorCheck) {
         throwError(errorCheck);
         return;
@@ -873,12 +873,13 @@ function getWeaponSet(mobTag) {
     return ret;
 }
 
-function checkIfValidWeapon(weaponString) {
+function checkIfValidWeapon(weaponString, mobTag) {
     var testMob = new Mob();
 
     var errorResult = testMob.parseWeapon(weaponString);
     if (errorResult["errorMessage"]) {
-        return errorResult["errorMessage"];
+        var mobName = document.getElementById(`${mobTag}-Name`).value;
+        return `An error occurred when trying to parse the weapon input under Mob name: ${mobName}`;
     }
     else {
         return false;
