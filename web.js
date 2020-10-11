@@ -881,7 +881,7 @@ function checkIfValidWeapon(weaponString) {
         return errorResult["errorMessage"];
     }
     else {
-        return true;
+        return false;
     }    
 }
 
