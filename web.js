@@ -441,10 +441,13 @@ function changeVantage(mobTag) {
 }
 
 function throwError(msg) {
+    var infoAreaDiv = document.getElementById("infoAreaDiv");
     var infoArea = document.getElementById("infoArea");
 
+    
     infoArea.innerHTML = `<div id="totalDamageTitle">${msg}</div>`;
     infoArea.style.display = "inline-block";
+    infoAreaDiv.style.display = "inline-block";
 
     document.getElementById("discoveryArea").style.display = "none";
 }
