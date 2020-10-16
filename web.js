@@ -449,7 +449,7 @@ function throwError(msg) {
     infoArea.style.display = "inline-block";
     infoAreaDiv.style.display = "inline-block";
 
-    document.getElementById("discoveryArea").style.display = "none";
+    document.getElementById("discoveryArea").innerHTML = "";
 }
 
 function toggleDetails(event, rollArray) {
