@@ -445,7 +445,7 @@ function throwError(msg) {
     var infoArea = document.getElementById("infoArea");
 
     
-    infoArea.innerHTML = `<div id="totalDamageTitle">${msg}</div>`;
+    infoArea.innerHTML = `<div id="errorMessage">${msg}</div>`;
     infoArea.style.display = "inline-block";
     infoAreaDiv.style.display = "inline-block";
 
