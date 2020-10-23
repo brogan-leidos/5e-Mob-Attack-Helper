@@ -476,6 +476,7 @@ function toggleDetails(event, rollArray) {
                     //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
                     var rollsOrder = [];
                     var superConditionColor = "";
+                    var damageIcon = rollClass.attacker.EquipWeapon.isMelee == true ? "fa fa-gavel" : "fa fa-crosshairs";
 
                     if (rollClass.vantage >= 1) {
                         rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
@@ -511,7 +512,7 @@ function toggleDetails(event, rollArray) {
                     if (!rollClass.missed) {
                         for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
                             damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
-                                                      ⚔${rollClass.damageResults[dmg][0]}
+                                                      <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
                                                     </span>
                                                     <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
                                                       ${rollClass.rollBreakdown[dmg]}
