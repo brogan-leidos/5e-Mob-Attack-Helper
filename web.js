@@ -510,13 +510,15 @@ function toggleDetails(event, rollArray) {
                     var damageTotalsDisplay = "";
                     if (!rollClass.missed) {
                         for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
-                            damageTotalsDisplay += `<span class="damageRoll" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
+                            damageTotalsDisplay += `<div class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
                                                       ⚔${rollClass.damageResults[dmg][0]}
                                                     </span>
                                                     <div class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
                                                       ${rollClass.rollBreakdown[dmg]}
-                                                    </div>`;
-                        }                        
+                                                    </div></div>`;
+                                 
+                        }
+                            
                     }
                     else if (rollClass.missed && rollClass.crit) {
                         damageTotalsDisplay = "-";
