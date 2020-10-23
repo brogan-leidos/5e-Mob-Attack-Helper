@@ -476,7 +476,7 @@ function toggleDetails(event, rollArray) {
                     //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
                     var rollsOrder = [];
                     var superConditionColor = "";
-                    var damageIcon = rollClass.attacker.EquipWeapon.isMelee == true ? "fa fa-gavel" : "fa fa-crosshairs";
+                    var damageIcon = document.getElementById(mobTag + "-Range").checked == false ? "fa fa-gavel" : "fa fa-crosshairs";
 
                     if (rollClass.vantage >= 1) {
                         rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
