@@ -4,6 +4,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 == ToDo:  
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
+  2. Conditions outside of the mechanical ones (Other selection)
   Far Future: Save a JSON of current configuration
 
 == Known issues:
