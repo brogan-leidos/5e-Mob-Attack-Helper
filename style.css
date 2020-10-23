@@ -605,7 +605,7 @@ button {
   }
   
   #infoAreaDiv {
-    margin: 0px 0px 5px 0px;
+    margin: 0px 0px 20px 0px;
     float: none;
     display: none;
     grid-row: 2;
