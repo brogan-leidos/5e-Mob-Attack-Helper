@@ -109,6 +109,7 @@ export default class Mob {
             damageTotal = Math.floor(damageTotal / 2);
         }
         this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"], halfDamage]);
+        this.rollClass.rollBreakdown.push(weaponBreakdown["weaponString"]);
         return this.rollClass;
     }
     
