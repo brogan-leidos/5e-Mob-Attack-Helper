@@ -518,6 +518,18 @@ button {
   padding: 0px 3px 0px 3px;
 }
 
+.damageRoll {
+}
+
+.damageRollTip {
+  display: none;
+  position: absolute;
+  border: solid thin #b5cce3;
+  background-color: #65819c;
+  color: #fff;
+  padding: 2px;
+}
+
 .mobile-hide {
   display: block;
 }
