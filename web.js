@@ -513,7 +513,7 @@ function toggleDetails(event, rollArray) {
                             damageTotalsDisplay += `<span class="damageRoll" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
                                                       ⚔${rollClass.damageResults[dmg][0]}
                                                     </span>
-                                                    <div id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
+                                                    <div class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
                                                       ${rollClass.rollBreakdown[dmg]}
                                                     </div>`;
                         }                        
