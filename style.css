@@ -613,7 +613,6 @@ button {
   } 
   
   #discoveryArea {
-    margin: 0px 0px 5px 0px;
     float:none;
     grid-row: 1;
     grid-column: 1;
