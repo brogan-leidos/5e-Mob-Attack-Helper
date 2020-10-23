@@ -107,6 +107,7 @@ export default class Mob {
         if (damageTotal < 0) { damageTotal = 0; }
         if (halfDamage) {
             damageTotal = Math.floor(damageTotal / 2);
+            weaponBreakdown["weaponString"] = `${weaponBreakdown["weaponString"]} (1/2 on save)`;
         }
         this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"], halfDamage]);
         this.rollClass.rollBreakdown.push(weaponBreakdown["weaponString"]);
