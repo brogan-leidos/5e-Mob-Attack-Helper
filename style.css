@@ -529,6 +529,8 @@ button {
   background-color: #65819c;
   color: #fff;
   padding: 2px;
+  box-shadow: 2px 2px 2px #666;
+  border-radius: 5px;
 }
 
 .mobile-hide {
