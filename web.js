@@ -476,7 +476,7 @@ function toggleDetails(event, rollArray) {
                     //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
                     var rollsOrder = [];
                     var superConditionColor = "";
-                    var damageIcon = document.getElementById(mobTag + "-Range").checked == false ? "fa fa-gavel" : "fa fa-crosshairs";
+                    var damageIcon = rollClass.attacker.EquipWeapon[1][1] == true ? "fa fa-gavel" : "fa fa-crosshairs";
 
                     if (rollClass.vantage >= 1) {
                         rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
@@ -860,7 +860,8 @@ function parseMobs(numBlocks) {
 function getWeaponSet(mobTag) {
     var toHit = document.getElementById(mobTag + "-ToHit").value;
     var weapon = document.getElementById(mobTag + "-Weapon").value;
-
+    var isMelee = document.getElementById(mobTag + "-Range").checked;
+    
     //Run weapon error check
     var errorCheck = checkIfValidWeapon(weapon, mobTag);
     if (errorCheck) {
@@ -868,7 +869,7 @@ function getWeaponSet(mobTag) {
         return;
     }
 
-    var ret = [["ToHit", toHit], ["Weapon", weapon]];
+    var ret = [["ToHit", toHit],  ["IsMelee", isMelee], ["Weapon", weapon]];
     var rowCount = 0
     while(true) {
         var modSelect = document.getElementById(`${mobTag}-${rowCount}-Mod-Select`);
