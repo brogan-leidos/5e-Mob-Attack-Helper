@@ -159,11 +159,15 @@ export default class Mob {
                 var numDice = +weaponString.slice(beginOffset, dIndex)
                 var damageDie = +weaponString.slice(dIndex + 1, blockEndIndex)
                 
-                var rollResult = 0;
+                var rollResult = "(";
                 
                 for(var i=0; i < numDice*multiplier; i++) {
-                    rollResult += Math.floor(Math.random() * damageDie + 1); // 1 - maxdmg
+                    rollResult += Math.floor(Math.random() * damageDie + 1).toString(); // 1 - maxdmg
+                    if (i != 0 && i != numDice*multiplier-1) {
+                        rollResult += " + ";
+                    }
                 }
+                rollResult += ")";
                 
                 weaponString = `${weaponString.slice(0,beginOffset)}${rollResult}${weaponString.slice(blockEndIndex)}`;            
             }
