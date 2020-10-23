@@ -80,7 +80,7 @@ export default class Mob {
                 damageTotal += weaponBreakdown["totalDamage"];
                 if (damageTotal < 0) { damageTotal = 0; }
                 this.rollClass.damageResults.push([damageTotal, weaponBreakdown["damageType"]]);
-                this.rollClass.rollBrekadown.push(weaponBreakdown["weaponString"]);
+                this.rollClass.rollBreakdown.push(weaponBreakdown["weaponString"]);
             }
             else if (this.EquipWeapon[i][0] == "DC") {
                 break;
