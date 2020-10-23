@@ -161,11 +161,11 @@ export default class Mob {
                 
                 var rollResult = "(";
                 
-                for(var i=0; i < numDice*multiplier; i++) {
-                    rollResult += Math.floor(Math.random() * damageDie + 1).toString(); // 1 - maxdmg
-                    if (i != 0 && i != numDice*multiplier-1) {
+                for(var i=0; i < numDice*multiplier; i++) {                    
+                    if (i != 0) {
                         rollResult += " + ";
                     }
+                    rollResult += Math.floor(Math.random() * damageDie + 1).toString(); // 1 - maxdmg                    
                 }
                 rollResult += ")";
                 
