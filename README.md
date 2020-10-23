@@ -4,7 +4,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 == ToDo:
   1. Hoverable damage information under the attack details
-  2. Error checking for the mob inputs, especially the weapon boxs
+  2. A "Copy Mob button" - to quickly an easily create a variant on something you already made
   Far Future: Save a JSON of current configuration
 
 == Known issues:
