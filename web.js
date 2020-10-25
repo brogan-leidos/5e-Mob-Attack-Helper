@@ -211,7 +211,7 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
     });
-    document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
+//     document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
     });
