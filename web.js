@@ -500,12 +500,29 @@ function toggleDetails(event, rollArray) {
                     }
                     
                     var diceRollsDisplay = "";
+                    var bonusToHit = rollClass.attacker.EquipWeapon[0][1];
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<table style="width: 100%"><tr><td><span style="color:${vantageColor}">[${rollsOrder[0]}]</span></td><td><span style="color:lightgrey">[${rollsOrder[1]}]</span></td></tr></table>`;
+                        diceRollsDisplay = `<table style="width: 100%">
+                                                <tr>
+                                                    <td>
+                                                        <span style="color:${vantageColor}">
+                                                            [${rollsOrder[0] + bonusToHit}]
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="color:lightgrey">
+                                                            [${rollsOrder[1]  + bonusToHit}]
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                </table>`;
                     }
                     else {
-                        diceRollsDisplay = `<span>[${rollClass.attackRoll1}]</span>`;
+                        diceRollsDisplay = `<span><span class="hitRoll">[${rollClass.attackRoll1 + bonusToHit}]</span>
+                                                <span class="hitRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-HitRoll-Details">
+                                                      ${rollClass.attackRoll1} + ${bonusToHit}
+                                                </span></span>`;
                     }
                     
                     var damageTotalsDisplay = "";
