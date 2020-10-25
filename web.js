@@ -505,14 +505,20 @@ function toggleDetails(event, rollArray) {
                         var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
                         diceRollsDisplay = `<table style="width: 100%">
                                                 <tr>
-                                                    <td>
+                                                    <td class="hitRoll">
                                                         <span style="color:${vantageColor}">
-                                                            [${rollsOrder[0] + bonusToHit}]
+                                                            [${+rollsOrder[0] + bonusToHit}]
+                                                        </span>
+                                                        <span class="hitRollTip">
+                                                            ${rollsOrder[0]} + ${bonusToHit}
                                                         </span>
                                                     </td>
-                                                    <td>
+                                                    <td class="hitRoll">
                                                         <span style="color:lightgrey">
-                                                            [${rollsOrder[1]  + bonusToHit}]
+                                                            [${+rollsOrder[1]  + bonusToHit}]
+                                                        </span>
+                                                        <span class="hitRollTip">
+                                                            ${rollsOrder[1]} + ${bonusToHit}
                                                         </span>
                                                     </td>
                                                 </tr>
