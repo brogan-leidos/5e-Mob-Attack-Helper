@@ -5,7 +5,7 @@ import DamageRoll from './DamageRoll.js'
 export default class Berserk extends Mob {
   constructor() {
     super();
-    this.Name = "Berserk";
+    this.Name = "Berserker";
     this.Icon = "\"beard\""   
     
     this.DamageRoll = new DamageRoll();
