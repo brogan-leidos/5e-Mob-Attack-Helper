@@ -500,7 +500,7 @@ function toggleDetails(event, rollArray) {
                     }
                     
                     var diceRollsDisplay = "";
-                    var bonusToHit = rollClass.attacker.EquipWeapon[0][1];
+                    var bonusToHit = +rollClass.attacker.EquipWeapon[0][1];
                     if (rollsOrder.length > 0) {
                         var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
                         diceRollsDisplay = `<table style="width: 100%">
@@ -519,8 +519,8 @@ function toggleDetails(event, rollArray) {
                                                 </table>`;
                     }
                     else {
-                        diceRollsDisplay = `<span><span class="hitRoll">[${parseInt(rollClass.attackRoll1 + bonusToHit)}]</span>
-                                                <span class="hitRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-HitRoll-Details">
+                        diceRollsDisplay = `<span><span class="hitRoll">[${+rollClass.attackRoll1 + bonusToHit)}]</span>
+                                                <span class="hitRollTip">
                                                       ${rollClass.attackRoll1} + ${bonusToHit}
                                                 </span></span>`;
                     }
