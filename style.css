@@ -535,6 +535,23 @@ button {
   font-size: 12px;
 }
 
+.hitRoll:hover .hitRollTip {
+  display: inline-block;
+}
+
+.hitRollTip {
+  display: none;
+  position: absolute;
+  border: solid thin #b5cce3;
+  background-color: #65819c;
+  color: #fff;
+  padding: 2px;
+  box-shadow: 2px 2px 2px #666;
+  border-radius: 5px;
+  margin: 0px 0px 0px 1px;
+  font-size: 12px;
+}
+
 .mobile-hide {
   display: block;
 }
