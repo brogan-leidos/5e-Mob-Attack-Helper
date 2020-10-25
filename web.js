@@ -519,7 +519,7 @@ function toggleDetails(event, rollArray) {
                                                 </table>`;
                     }
                     else {
-                        diceRollsDisplay = `<span><span class="hitRoll">[${rollClass.attackRoll1 + bonusToHit}]</span>
+                        diceRollsDisplay = `<span><span class="hitRoll">[${parseInt(rollClass.attackRoll1 + bonusToHit)}]</span>
                                                 <span class="hitRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-HitRoll-Details">
                                                       ${rollClass.attackRoll1} + ${bonusToHit}
                                                 </span></span>`;
