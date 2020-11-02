@@ -158,7 +158,7 @@ export default class Mob {
                 var numDice = +weaponString.slice(beginOffset, dIndex)
                 var damageDie = +weaponString.slice(dIndex + 1, blockEndIndex)
                 
-                var rollResult = "🎲(";
+                var rollResult = "(";
                 
                 for(var i=0; i < numDice*multiplier; i++) {                    
                     if (i != 0) {
