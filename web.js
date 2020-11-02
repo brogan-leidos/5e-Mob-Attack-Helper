@@ -518,7 +518,7 @@ function toggleDetails(event, rollArray) {
                                                             [${+rollsOrder[1]  + bonusToHit}]
                                                         </span>
                                                         <span class="hitRollTip">
-                                                            ${rollsOrder[1]} + ${bonusToHit}
+                                                            🎲${rollsOrder[1]} + ${bonusToHit}
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -538,7 +538,7 @@ function toggleDetails(event, rollArray) {
                                                       <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
                                                     </span>
                                                     <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
-                                                      🎲${rollClass.rollBreakdown[dmg]}
+                                                      ${rollClass.rollBreakdown[dmg]}
                                                     </span></span>`;
                                  
                         }
