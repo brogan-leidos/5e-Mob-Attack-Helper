@@ -510,7 +510,7 @@ function toggleDetails(event, rollArray) {
                                                             [${+rollsOrder[0] + bonusToHit}]
                                                         </span>
                                                         <span class="hitRollTip">
-                                                            ${rollsOrder[0]} + ${bonusToHit}
+                                                            🎲${rollsOrder[0]} + ${bonusToHit}
                                                         </span>
                                                     </td>
                                                     <td class="hitRoll">
@@ -527,7 +527,7 @@ function toggleDetails(event, rollArray) {
                     else {
                         diceRollsDisplay = `<span class="hitRoll"><span>[${+rollClass.attackRoll1 + bonusToHit}]</span>
                                                 <span class="hitRollTip">
-                                                      ${rollClass.attackRoll1} + ${bonusToHit}
+                                                      🎲${rollClass.attackRoll1} + ${bonusToHit}
                                                 </span></span>`;
                     }
                     
