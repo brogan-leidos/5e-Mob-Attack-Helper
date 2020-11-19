@@ -446,11 +446,11 @@ function changeVantage(mobTag) {
 }
 
 function shiftMobBlockColors(mobTag, color) {
-    mobBlock = document.getElementById(mobTag).firstElementChild;
-    mobBlock.style.backgroundColor = color;
+    mobBlock = document.getElementById(mobTag);
+    mobBlock.firstElementChild.style.backgroundColor = color;
     
     for(var i=0; i < mobBlock.firstElementChild.childElementCount; i++) {
-        var scanColor = mobBlock.firstElementChild.children[i].style.backgroundColor;
+        var scanColor = mobBlock.firstElementChild.firstElementChild.children[i].style.backgroundColor;
         if (scanColor != "") {
             var red = color.substring(1,3).toString(10);
             var green = color.substring(3,5).toString(10);
@@ -460,7 +460,7 @@ function shiftMobBlockColors(mobTag, color) {
             green -= 50;
             blue -= 50;
             
-            mobBlock.firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+            mobBlock.firstElementChild.firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
         }
     }
     
