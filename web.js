@@ -430,8 +430,7 @@ function collapseRow(id) {
         document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline-block";
     }
     
-            
-
+    checkForExistingDc()              
 }
 
 function changeMobWeapon (mobTag, weaponMods) {
