@@ -10,7 +10,7 @@ var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
-var mobBlockDcColor = "lightgrey";
+var mobBlockDcColor = "#aeaea0";
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
@@ -118,7 +118,7 @@ function toggleMob(mobTag) {
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
        
     } else {
-        document.getElementById(mobTag).firstElementChild.style.backgroundColor = mobBlockDisableColor;
+        shiftMobBlockColors(mobTag, mobBlockDisableColor);
         toggle.classList = "fa fa-eye-slash";
         toggle.checked = false;
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "Disabled";
@@ -433,15 +433,12 @@ function changeVantage(mobTag) {
     }
          
     if (adv && !dis) {
-//      mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
         shiftMobBlockColors(mobTag, mobBlockAdvantageColor);
     }
     else if (!adv && dis) {
-//         mob.firstElementChild.style.backgroundColor = mobBlockDisadvantageColor;
         shiftMobBlockColors(mobTag, mobBlockDisadvantageColor);
     }
     else {
-//         mob.firstElementChild.style.backgroundColor = mobBlockDefaultColor;
         shiftMobBlockColors(mobTag, mobBlockDefaultColor);
     }
    
