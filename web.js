@@ -452,9 +452,9 @@ function shiftMobBlockColors(mobTag, color) {
     for(var i=0; i < mobBlock.firstElementChild.firstElementChild.childElementCount; i++) {
         var scanColor = mobBlock.firstElementChild.firstElementChild.children[i].style.backgroundColor;
         if (scanColor != "") {
-            var red = parseInt(color.substring(1,3), 10);
-            var green = parseInt(color.substring(3,5), 10);
-            var blue = parseInt(color.substring(5,7), 10);
+            var red = parseInt(color.substring(1,3), 16);
+            var green = parseInt(color.substring(3,5), 16);
+            var blue = parseInt(color.substring(5,7), 16);
             
             red -= 50;
             green -= 50;
