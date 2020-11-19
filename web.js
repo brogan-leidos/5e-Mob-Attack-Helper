@@ -401,7 +401,7 @@ function scanAllMobs() {
             if (!element) {
                 break;
             }
-            eles if (element.value == "DC") {
+            else if (element.value == "DC") {
                 return true;
             }           
             rowCounter++;
