@@ -397,13 +397,13 @@ function scanAllMobs() {
     for (var i=0; i < blockArray.length; i++) {
         var rowCounter = 0;
         while (true) {
-            var element = document.getElementById(`${blockArray[i]}-${rowCounter}-Mod-Select`).value
-            if (element == "DC") {
-                return true;
-            }
-            else if (!element) {
+            var element = document.getElementById(`${blockArray[i]}-${rowCounter}-Mod-Select`);
+            if (!element) {
                 break;
             }
+            eles if (element.value == "DC") {
+                return true;
+            }           
             rowCounter++;
         }
     }
