@@ -552,6 +552,15 @@ button {
   font-size: 12px;
 }
 
+.notification {
+  color: rgb(101, 129, 156);
+}
+
+.notification:hover {
+  color: #b5cce3;
+  cursor: help;
+}
+
 .mobile-hide {
   display: block;
 }
