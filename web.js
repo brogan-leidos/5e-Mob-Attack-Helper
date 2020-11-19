@@ -78,6 +78,7 @@ function deleteMob(mobTag) {
         document.getElementById(blockArray[i]).style.gridRow = i+1;
     }
     
+    checkForExistingDc();
 }
 
 function displayHelp() {
