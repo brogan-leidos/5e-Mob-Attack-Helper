@@ -571,11 +571,11 @@ function toggleDetails(event, rollArray) {
         var tag = mobTag + "-Result";
         document.getElementById(tag).insertAdjacentHTML('beforeend', detailAppend);
          
-        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-right";
+        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-down";
     }
     else {
         detailElement.remove();
-        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-down";
+        document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-right";
     }
 }
 
