@@ -830,7 +830,7 @@ async function launchAttack() {
         var numOfBlockCrits = rollArray[block].filter(a => (a.crit || a.autoCrit) && !a.missed && !critImmune).length;
              
         totalHits += blockNumHits;
-        infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-down"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
+        infoAppend += `<div class="mobHeader" id="${attacker.MobName}-Result"> <i id="${attacker.MobName}-Caret" class="fa fa-caret-right"></i> ${attacker.Icon} ${attacker.Name} : ${blockNumHits} hits`;
         if (numOfBlockCrits > 0) {
             infoAppend += ` (🌟 ${numOfBlockCrits} crits)`;
         }
