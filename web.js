@@ -446,7 +446,7 @@ function changeVantage(mobTag) {
 }
 
 function shiftMobBlockColors(mobTag, color) {
-    mobBlock = document.getElementById(mobTag);
+    var mobBlock = document.getElementById(mobTag);
     mobBlock.firstElementChild.style.backgroundColor = color;
     
     for(var i=0; i < mobBlock.firstElementChild.childElementCount; i++) {
