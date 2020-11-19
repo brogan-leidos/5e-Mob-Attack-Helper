@@ -62,9 +62,11 @@ export default () => {
 function discoveryCheck(newAc) {
     if (newAc <= 0) {
         document.getElementById('discoveryTag').style.display = "inline-block";
+        document.getElementById('hitRollNotification').style.display = "inline-block";
     }
     else {
         document.getElementById('discoveryTag').style.display = "none";
+        document.getElementById('hitRollNotification').style.display = "none";
     }
 }
 
@@ -94,6 +96,8 @@ function toggleAdvancedOptions() {
     modTable.style.display = modTable.style.display == "table"  ? "none" : "table";
     var savingThrowTag = document.getElementById("savingThrowTag");
     savingThrowTag.style.display = (savingThrowTag.style.display == "inline-block" || savingThrowTag.style.display == "") ?  "none" : "inline-block";
+    var savingThrowNotification = document.getElementById("savingThrowNotification");
+    savingThrowNotification.style.display = (savingThrowNotification.style.display == "inline-block" || savingThrowNotification.style.display == "") ?  "none" : "inline-block";
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
         buttonIcon.classList = "fa fa-angle-double-up";    
