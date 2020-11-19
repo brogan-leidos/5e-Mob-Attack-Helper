@@ -7,7 +7,7 @@ import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSm
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake } from './presents/index.js'
 
 var mobBlockDefaultColor = "#f9f9eb";
-var mobBlockDisableColor = "grey";
+var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
 var mobBlockDcColor = "lightgrey";
@@ -433,7 +433,8 @@ function changeVantage(mobTag) {
     }
          
     if (adv && !dis) {
-        mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
+//         mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
+        shiftMobBlockColors(mobTag, mobBlockAdvantageColor);
     }
     else if (!adv && dis) {
         mob.firstElementChild.style.backgroundColor = mobBlockDisadvantageColor;
@@ -442,6 +443,27 @@ function changeVantage(mobTag) {
         mob.firstElementChild.style.backgroundColor = mobBlockDefaultColor;
     }
    
+}
+
+function shiftMobBlockColors(mobTag, color) {
+    mobBlock = document.getElementById(mobTag).firstElementChild;
+    mobBlock.style.backgroundColor = color;
+    
+    for(var i=0; i < mobBlock.firstElementChild.childElementCount; i++) {
+        var scanColor = mobBlock.firstElementChild.children[i].style.backgroundColor;
+        if (scanColor != "") {
+            var red = color.substring(1,3).toString(10);
+            var green = color.substring(3,5).toString(10);
+            var blue = color.substring(5,7).toString(10);
+            
+            red -= 50;
+            green -= 50;
+            blue -= 50;
+            
+            mobBlock.firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+        }
+    }
+    
 }
 
 function throwError(msg) {
