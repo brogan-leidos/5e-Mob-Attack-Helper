@@ -94,10 +94,15 @@ function toggleAdvancedOptions() {
     usingSavingThrowMods = !usingSavingThrowMods;
     var modTable = document.getElementById("savingThrowModTable");
     modTable.style.display = modTable.style.display == "table"  ? "none" : "table";
-    var savingThrowTag = document.getElementById("savingThrowTag");
-    savingThrowTag.style.display = (savingThrowTag.style.display == "inline-block" || savingThrowTag.style.display == "") ?  "none" : "inline-block";
-    var savingThrowNotification = document.getElementById("savingThrowNotification");
-    savingThrowNotification.style.display = (savingThrowNotification.style.display == "inline-block" || savingThrowNotification.style.display == "") ?  "none" : "inline-block";
+    checkForExistingDc()
+    if (usingSavingThrowMods) {
+        document.getElementById("savingThrowTag").style.display = "none";
+        document.getElementById("savingThrowNotification").style.display = "none";
+    }
+//     var savingThrowTag = document.getElementById("savingThrowTag");
+//     savingThrowTag.style.display = (savingThrowTag.style.display == "inline-block" || savingThrowTag.style.display == "") ?  "none" : "inline-block";
+//     var savingThrowNotification = document.getElementById("savingThrowNotification");
+//     savingThrowNotification.style.display = (savingThrowNotification.style.display == "inline-block" || savingThrowNotification.style.display == "") ?  "none" : "inline-block";
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
         buttonIcon.classList = "fa fa-angle-double-up";    
@@ -371,7 +376,38 @@ function updateWeaponModRows(value, mobTag, modRow, automated=false) {
             }       
             else { break; }            
         }
+    }         
+    checkForExistingDc();
+}
+
+// Checks all mobs to see if any have use a DC. For the sake of visual notifications
+function checkForExistingDc() {
+    var result = scanAllMobs();
+    if (result) {
+        document.getElementById("savingThrowNotification").style.display = "inline-block";
+        document.getElementById("savingThrowTag").style.display = "inline-block";
     }
+    else {
+        document.getElementById("savingThrowNotification").style.display = "none";
+        document.getElementById("savingThrowTag").style.display = "none";    
+    }
+}
+
+function scanAllMobs() {
+    for (var i=0; i < blockArray.length; i++) {
+        var rowCounter = 0;
+        while (true) {
+            var element = document.getElementById(`${blockArray[i]}-${rowCounter}-Mod-Select`).value
+            if (element == "DC") {
+                return true;
+            }
+            else if (!element) {
+                break;
+            }
+            rowCounter++;
+        }
+    }
+    return false;
 }
 
 // Expects ID of collapse button
