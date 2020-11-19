@@ -433,14 +433,16 @@ function changeVantage(mobTag) {
     }
          
     if (adv && !dis) {
-//         mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
+//      mob.firstElementChild.style.backgroundColor = mobBlockAdvantageColor;
         shiftMobBlockColors(mobTag, mobBlockAdvantageColor);
     }
     else if (!adv && dis) {
-        mob.firstElementChild.style.backgroundColor = mobBlockDisadvantageColor;
+//         mob.firstElementChild.style.backgroundColor = mobBlockDisadvantageColor;
+        shiftMobBlockColors(mobTag, mobBlockDisadvantageColor);
     }
     else {
-        mob.firstElementChild.style.backgroundColor = mobBlockDefaultColor;
+//         mob.firstElementChild.style.backgroundColor = mobBlockDefaultColor;
+        shiftMobBlockColors(mobTag, mobBlockDefaultColor);
     }
    
 }
@@ -456,9 +458,9 @@ function shiftMobBlockColors(mobTag, color) {
             var green = parseInt(color.substring(3,5), 16);
             var blue = parseInt(color.substring(5,7), 16);
             
-            red -= 50;
-            green -= 50;
-            blue -= 50;
+            red = Math.max(red - 75, 0);
+            green = Math.max(green - 75, 0);
+            blue = Math.max(blue - 75, 0);
             
             mobBlock.firstElementChild.firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
         }
