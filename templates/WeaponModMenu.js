@@ -48,8 +48,14 @@ export function chooseModifierType(type, mobTag, modRow) {
       return `
       <select id="${mobTag}-${modRow}-Mod">
         <option>Knock Prone</option>
+        <option>Paralyze</option>        
         <option>Restrain</option>
-        <option>Paralyze</option>
+        <option>Blinded</option>
+        <option>Charmed</option>
+        <option>Deafened</option>
+        <option>Frightened</option>
+        <option>Grappled</option>
+        <option>Poisoned</option>
       </select>`;
     }
     else if (type.includes("Damage")) {
