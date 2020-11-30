@@ -805,7 +805,7 @@ async function launchAttack() {
                      
                      
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) {                    
-                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, attackRollClass.attacker);
+                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, mobDcInfo[0], attackRollClass.attacker);
                 }
                 else if (roll >= dcLowestSave && !usingSavingThrowMods) {
                     savingThrow = true;
@@ -1071,13 +1071,17 @@ During the same attack, the  tool will automatically determine if attacks hit or
   });
 }
 
-async function promptDc(dcInfo, roll, attacker) { 
+async function promptDc(dcInfo, roll, dc, attacker) { 
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
     roll = `🎲${roll} + ?`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2));           
+    var bias = dc > roll ? 2 : 1;
+    if (dc == roll) {
+        bias = 0
+    }
+    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2, bias));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
