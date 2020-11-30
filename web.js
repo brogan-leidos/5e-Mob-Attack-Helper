@@ -820,9 +820,11 @@ async function launchAttack() {
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (failureResults[fail][0] == "Condition") {
-                            if (!ailments[failureResults[fail][1]]) {
-                                ailments[failureResults[fail][1]] = true;
-                                rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                            if (failureResults[fail][1] == "Knock Prone" || failureResults[fail][1] == "Paralyze" || failureResults[fail][1] == "Restrain")   {
+                                if (!ailments[failureResults[fail][1]]) {
+                                    ailments[failureResults[fail][1]] = true;
+                                    rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                                }
                             }
                         }
                         else if (failureResults[fail][0] == "Roll Class") {
