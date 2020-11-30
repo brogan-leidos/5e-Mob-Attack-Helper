@@ -47,15 +47,19 @@ export function chooseModifierType(type, mobTag, modRow) {
     else if (type == "Condition") {
       return `
       <select id="${mobTag}-${modRow}-Mod">
-        <option>Knock Prone</option>
-        <option>Paralyze</option>        
-        <option>Restrain</option>
-        <option>Blinded</option>
-        <option>Charmed</option>
-        <option>Deafened</option>
-        <option>Frightened</option>
-        <option>Grappled</option>
-        <option>Poisoned</option>
+        <outgroup label="Common">
+          <option>Knock Prone</option>
+          <option>Paralyze</option>        
+          <option>Restrain</option>
+        </outgroup>
+        <outgroup label="Other">
+          <option>Blinded</option>
+          <option>Charmed</option>
+          <option>Deafened</option>
+          <option>Frightened</option>
+          <option>Grappled</option>
+          <option>Poisoned</option>
+        </outgroup>
       </select>`;
     }
     else if (type.includes("Damage")) {
