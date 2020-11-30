@@ -441,11 +441,16 @@ function changeMobWeapon (mobTag, weaponMods) {
     }
     
     // clean up existing rows
-    var numModRows = getNumModRows(mobTag);
-    for (var i=0; i < numModRows; i++) {
-        collapseRow(`${mobTag}-Weapon-Collapse`);
+    while(true) {
+        var numModRows = getNumModRows(mobTag);
+        if (numModRows == 0) {
+            break;
+        }
+        else {
+            collapseRow(`${mobTag}-Weapon-Collapse`);
+        }
     }
-    
+            
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
