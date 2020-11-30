@@ -1075,12 +1075,14 @@ async function promptDc(dcInfo, roll, dc, attacker) {
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    roll = `🎲${roll} + ?`;
-    var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
     var bias = dc > roll ? 2 : 1;
     if (dc == roll) {
-        bias = 0
+        bias = 0;
     }
+           
+    roll = `🎲${roll} + ?`;
+    var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
+    
     document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2, bias));           
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
