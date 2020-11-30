@@ -36,7 +36,16 @@ export function discoveryTemplate(title, dc, roll, source, option1="op1", option
 }
 
 
-export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2") {  
+export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2", bias=0) {  
+  
+  var opt1Bias = "";
+  var opt2Bias = "";
+  if (bias == 1) {
+    opt1Bias = "-Bias";
+  }
+  else if (bias == 2) {
+    opt2Bias = "-Bias";
+  }
   
  return `
   <table class="discoveryBlock dcBlock">
@@ -59,10 +68,10 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
       </tr>
       <tr>
         <td>
-          <button class="hitButton" id="hitButton-${option1}">${option1}</button>
+          <button class="hitButton${opt1Bias}" id="hitButton-${option1}">${option1}</button>
         </td>
         <td>
-          <button class="missButton" id="missButton-${option2}">${option2}</button>
+          <button class="missButton${opt2Bias}" id="missButton-${option2}">${option2}</button>
         </td>
       </tr>
       <tr>
