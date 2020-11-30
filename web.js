@@ -826,6 +826,10 @@ async function launchAttack() {
                                     rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
                                 }
                             }
+                            else {
+                                ailments[failureResults[fail][1]] = true;
+                                rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                            }
                         }
                         else if (failureResults[fail][0] == "Roll Class") {
                             rollResult = failureResults[fail][1];
