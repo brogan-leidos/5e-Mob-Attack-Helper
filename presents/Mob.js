@@ -98,6 +98,7 @@ export default class Mob {
   
     purgeDamageResults() {
         this.rollClass.damageResults = [];
+        this.rollClass.rollBreakdown = [];
     }
     
     // Used to quickly roll for DC damage
