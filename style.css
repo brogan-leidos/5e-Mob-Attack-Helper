@@ -342,7 +342,7 @@ button {
 }
 
 .discoveryBlock .hitButton.bias {
-  color: #7ebd81;
+  color: #9eb59f;
 }
 
 .discoveryBlock .missButton:hover {
@@ -374,7 +374,7 @@ button {
 }
 
 .discoveryBlock .missButton.bias {
-  color: #c78b8b;
+  color: #b59898;
 }
 
 .discoveryBlock td {
