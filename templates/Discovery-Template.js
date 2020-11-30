@@ -41,10 +41,10 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
   var opt1Bias = "";
   var opt2Bias = "";
   if (bias == 1) {
-    opt2Bias = "-bias";
+    opt2Bias = "bias";
   }
   else if (bias == 2) {
-    opt1Bias = "-bias";
+    opt1Bias = "bias";
   }
   
  return `
@@ -68,10 +68,10 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
       </tr>
       <tr>
         <td>
-          <button class="hitButton${opt1Bias}" id="hitButton-${option1}">${option1}</button>
+          <button class="hitButton ${opt1Bias}" id="hitButton-${option1}">${option1}</button>
         </td>
         <td>
-          <button class="missButton${opt2Bias}" id="missButton-${option2}">${option2}</button>
+          <button class="missButton ${opt2Bias}" id="missButton-${option2}">${option2}</button>
         </td>
       </tr>
       <tr>
