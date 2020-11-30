@@ -41,10 +41,10 @@ export function dcTemplate(title, dc, roll, source, option1="op1", option2="op2"
   var opt1Bias = "";
   var opt2Bias = "";
   if (bias == 1) {
-    opt1Bias = "-Bias";
+    opt2Bias = "-bias";
   }
   else if (bias == 2) {
-    opt2Bias = "-Bias";
+    opt1Bias = "-bias";
   }
   
  return `
