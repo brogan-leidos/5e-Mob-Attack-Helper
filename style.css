@@ -319,6 +319,10 @@ button {
   cursor: pointer;
 }
 
+.discoveryBlock .hitButton.bias:hover {
+  color: white;
+}
+
 .discoveryBlock .hitButton:active {
   transition-duration: 0s;
   background-color: #adedaf;
@@ -345,6 +349,10 @@ button {
   background-color: #ff1a1a;
   color: white;
   cursor: pointer;
+}
+
+.discoveryBlock .missButton.bias:hover {
+  color: white;
 }
 
 .discoveryBlock .missButton:active {
