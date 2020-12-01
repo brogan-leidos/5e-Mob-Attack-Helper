@@ -425,6 +425,11 @@ button {
   padding: 3px;
 }
 
+#ailmentsOverview {
+  font-size: 10px;
+  background-color: #65819c;
+}
+
 #discoveryArea {
   float: left;
   grid-row: 1;
