@@ -43,8 +43,8 @@ export function mobBlock() {
     </tr>
     <tr style="display:none">
       <td></td>
-      <td colspan="2" style="">
-        <button id="FILLER-BLOCK-Maximize" style="background-color: rgb(174, 174, 160);font-size: 9px;display: block;text-align: center;height: 7px;"></button>
+      <td colspan="2">
+        <button id="FILLER-BLOCK-Maximize" title="Maximize" style="background-color: rgb(174, 174, 160);font-size: 9px;display: block;text-align: center;height: 7px;"></button>
       </td>
     </tr>
     <tr>
