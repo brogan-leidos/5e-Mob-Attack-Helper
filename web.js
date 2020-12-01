@@ -112,9 +112,9 @@ function toggleAdvancedOptions() {
 
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled").firstElementChild;
-    var enabled = document.getElementById(mobTag + "-Enabled").checked;
-    if (!enabled) {
-        toggle.checked = true;
+    var enabled = document.getElementById(mobTag + "-Enabled");
+    if (!enabled.checked) {
+        enabled.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa fa-eye";
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
@@ -122,7 +122,7 @@ function toggleMob(mobTag) {
     } else {
         shiftMobBlockColors(mobTag, mobBlockDisableColor);
         toggle.classList = "fa fa-eye-slash";
-        toggle.checked = false;
+        enabled.checked = false;
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "Disabled";
     }
 }
