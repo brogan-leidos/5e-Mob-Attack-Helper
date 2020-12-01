@@ -110,6 +110,20 @@ function toggleAdvancedOptions() {
     
 }
 
+function minimizeMob(mobTag) {
+    var mobMin = document.getElementById(mobTag + "-Minimize");
+    var mobBlock = document.getElementById(mobTag);
+    var rows = mobBlock.children[1].firstElementChild.childElementCount;               
+    for(var i=2; i < rows; i++) {
+        if (!mobMin.checked) {
+            mobBlock.children[1].firstElementChild.children[i].style.display = "none";
+        }
+        else {
+            mobBlock.children[1].firstElementChild.children[i].style.display = "table-row";
+        }
+    }
+}
+
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled").firstElementChild;
     var enabled = document.getElementById(mobTag + "-Enabled");
@@ -206,7 +220,12 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Enabled").checked = true;
     document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
         toggleMob(mobTag);
-    });    
+    });
+    
+    document.getElementById(mobTag + "-Minimize").checked = true;
+    document.getElementById(mobTag + "-Minimize").addEventListener('click', () => {        
+        minimizeMob(mobTag);
+    }); 
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
@@ -217,7 +236,6 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
     });
-//     document.getElementById(mobTag + "-Range").checked = true; //True = Melee (w/i 5ft), False = Ranged
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
     });
