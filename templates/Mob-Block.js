@@ -18,16 +18,18 @@ export function mobBlock() {
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
         <option value="beard">🧔</option>
+        <option value="wizard">🧙‍</option>
+        <option value="robot">🤖</option> 
         <option value="zombie">🧟</option>
         <option value="skull">💀</option>
         <option value="shade">👤</option>
         <option value="dragon">🐉</option>
         <option value="dino">🦕</option>
+        <option value="unicorn">🦄</option>
         <option value="devil">😈</option>
         <option value="ogre">👹</option>
         <option value="alien">👽</option>
-        <option value="alienmonster">👾</option>
-        <option value="unicorn">🦄</option>
+        <option value="alienmonster">👾</option>        
         <option value="wolf">🐺</option>
         <option value="cat">🐱</option>
         <option value="bird">🦅</option>
@@ -36,8 +38,7 @@ export function mobBlock() {
         <option value="frog">🐸</option>
         <option value="snake">🐍</option>
         <option value="dolphin">🐬</option>
-        <option value="plant">🌲</option>
-        <option value="robot">🤖</option>
+        <option value="plant">🌲</option>      
       </select></td>
     </tr>
     <tr>
