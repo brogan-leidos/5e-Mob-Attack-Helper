@@ -113,15 +113,17 @@ function toggleAdvancedOptions() {
 function minimizeMob(mobTag) {
     var mobMin = document.getElementById(mobTag + "-Minimize");
     var mobBlock = document.getElementById(mobTag);
-    var rows = mobBlock.children[1].firstElementChild.childElementCount;               
+    var rows = mobBlock.children[1].firstElementChild.childElementCount; 
+    
     for(var i=2; i < rows; i++) {
-        if (!mobMin.checked) {
-            mobBlock.children[1].firstElementChild.children[i].style.display = "none";
+        if (mobMin.checked) {
+            mobBlock.children[1].firstElementChild.children[i].style.display = "none";           
         }
         else {
             mobBlock.children[1].firstElementChild.children[i].style.display = "table-row";
         }
     }
+    mobMin.checked = !mobMin.checked;
 }
 
 function toggleMob(mobTag) {
