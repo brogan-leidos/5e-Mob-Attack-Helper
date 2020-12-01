@@ -319,7 +319,7 @@ function expandWeapon(mobTag) {
 }
 
 function getNumModRows(mobTag) {
-    return document.getElementById(mobTag).children[1].firstElementChild.children.length - 7;
+    return document.getElementById(mobTag).children[1].firstElementChild.children.length - 8;
 }
 
 // Not created by user, used to change present weapons
