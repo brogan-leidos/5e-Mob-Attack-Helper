@@ -112,7 +112,7 @@ function toggleAdvancedOptions() {
 
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled").firstElementChild;
-    var enabled = toggle.checked;
+    var enabled = document.getElementById(mobTag + "-Enabled").checked;
     if (!enabled) {
         toggle.checked = true;
         changeVantage(mobTag); 
