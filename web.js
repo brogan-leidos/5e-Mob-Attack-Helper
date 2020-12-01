@@ -124,13 +124,19 @@ function minimizeMob(mobTag) {
         mobMin.firstElementChild.style.fontSize = "8px"
     }
          
-    for(var i=2; i < rows-2; i++) {
+    for(var i=3; i < rows-2; i++) {
         if (mobMin.checked) {
             mobBlock.children[1].firstElementChild.children[i].style.display = "none";           
         }
         else {
             mobBlock.children[1].firstElementChild.children[i].style.display = "table-row";
         }
+    }
+    if (mobMin.checked) {
+         document.getElementById(mobTag + "-Maximize").style.display = "table-row";
+    }
+    else {
+        document.getElementById(mobTag + "-Maximize").style.display = "none";
     }
     mobMin.checked = !mobMin.checked;
 }
@@ -236,7 +242,11 @@ function createPresent(presentName) {
     document.getElementById(mobTag + "-Minimize").checked = true;
     document.getElementById(mobTag + "-Minimize").addEventListener('click', () => {        
         minimizeMob(mobTag);
-    }); 
+    });
+    
+    document.getElementById(mobTag + "-Maximize").addEventListener('click', () => {        
+        minimizeMob(mobTag);
+    });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
