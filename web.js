@@ -115,7 +115,7 @@ function toggleAdvancedOptions() {
 }
 
 function toggleMob(mobTag) {
-    var toggle = document.getElementById(mobTag + "-Enabled");
+    var toggle = document.getElementById(mobTag + "-Enabled").firstElementChild;
     var enabled = toggle.checked;
     if (!enabled) {
         toggle.checked = true;
