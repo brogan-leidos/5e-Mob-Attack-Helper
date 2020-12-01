@@ -115,6 +115,15 @@ function minimizeMob(mobTag) {
     var mobBlock = document.getElementById(mobTag);
     var rows = mobBlock.children[1].firstElementChild.childElementCount; 
     
+    if (mobMin.checked) {
+        mobMin.firstElementChild.classList = "fa fa-window-maximize"
+        mobMin.firstElementChild.style.fontsize = "11px"
+    }
+    else {
+        mobMin.firstElementChild.classList = "fa fa-window-minimize"
+        mobMin.firstElementChild.style.fontsize = "8px"
+    }
+         
     for(var i=2; i < rows; i++) {
         if (mobMin.checked) {
             mobBlock.children[1].firstElementChild.children[i].style.display = "none";           
