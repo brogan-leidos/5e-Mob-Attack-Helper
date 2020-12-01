@@ -2,8 +2,8 @@ export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
 <div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
-  <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob" class="fa fa-eye" /></span>
-  <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob" class="fa fa-window-minimize" /></span>
+  <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
+  <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>
 </div>
 <table class="mobBlock">
   <tbody>
