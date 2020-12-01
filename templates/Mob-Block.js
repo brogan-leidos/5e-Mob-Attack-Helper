@@ -1,17 +1,19 @@
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
+<div class="mobBlockMenu">
+  <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
+  <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob" class="fa fa-eye" /></span>
+  <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob" class="fa fa-window-minimize" /></span>
+</div>
 <table class="mobBlock">
   <tbody>
     <tr>
-      <td><button class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">
-        &times;
-      </button></td>
+      <td><span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span></td>
       <td style="">Name:</td>
       <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
-      <td style="text-align: center">
-        <button id="FILLER-BLOCK-Enabled" title="Enable/Disable mob" class="fa fa-eye" /></td>
+      <td style="text-align: center">        
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
         <option value="smile">😀</option>
@@ -39,8 +41,7 @@ export function mobBlock() {
       </select></td>
     </tr>
     <tr>
-      <td>
-        <span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span>
+      <td>        
       </td>
       <td>Bonus to Hit:</td>
       <td><input id="FILLER-BLOCK-ToHit" type="number" value="FILLER-TOHIT" /></td>
