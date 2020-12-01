@@ -82,6 +82,7 @@ button {
   color:red;
   grid-row: 1;
   grid-column: 1;
+  padding: 0px 8px;
 }
 
 .mobBlockMenu .mobCloseButton:hover {
@@ -117,7 +118,7 @@ button {
   font-size: 8px;
   grid-row: 1;
   grid-column: 3;
-  padding: 4px 5px;
+  padding: 4px 9px;
   vertical-align: bottom;
 }
 
