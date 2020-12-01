@@ -61,7 +61,7 @@ button {
 }
 
 .mobBlockMenu {
-  display: inline-block;
+  display: inline-grid;
   border-right: thin solid black;
   border-top: thin solid black;
   border-left: thin solid black;
