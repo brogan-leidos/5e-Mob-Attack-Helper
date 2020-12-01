@@ -1023,10 +1023,12 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     var ailmentKeys = Object.keys(ailments);
     if (ailmentKeys.length > 0) {
         header += `<div id="ailmentsOverview">Inflicted With: `;
-        for(var i=0; i > ailmentKeys.length; i++) {
-            header += `${ailmentKeys[i]}`;
-            if (i < ailmentKeys.length - 1) {
-                header += `, `;
+        for(var i=0; i < ailmentKeys.length; i++) {
+            if (ailmentKeys[i] != "None") {
+                header += `${ailmentKeys[i]}`;
+                if (i < ailmentKeys.length - 1) {
+                    header += `, `;
+                }
             }
         }
         header += `</div>`;
