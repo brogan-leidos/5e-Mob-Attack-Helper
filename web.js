@@ -124,7 +124,7 @@ function minimizeMob(mobTag) {
         mobMin.firstElementChild.style.fontSize = "8px"
     }
          
-    for(var i=2; i < rows; i++) {
+    for(var i=2; i < rows-2; i++) {
         if (mobMin.checked) {
             mobBlock.children[1].firstElementChild.children[i].style.display = "none";           
         }
