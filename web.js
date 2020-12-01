@@ -514,7 +514,7 @@ function shiftMobBlockColors(mobTag, color) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.children[1].style.backgroundColor = color;
     
-    for(var i=0; i < mobBlock.firstElementChild.firstElementChild.childElementCount; i++) {
+    for(var i=0; i < mobBlock.children[1].firstElementChild.childElementCount; i++) {
         var scanColor = mobBlock.children[1].firstElementChild.children[i].style.backgroundColor;
         if (scanColor != "") {
             var red = parseInt(color.substring(1,3), 16);
