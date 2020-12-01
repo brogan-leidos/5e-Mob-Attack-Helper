@@ -915,7 +915,7 @@ async function launchAttack() {
         infoAppend += "</div>";        
     }    
          
-    generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray); 
+    generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray, ailments); 
     
 }
 
@@ -1005,7 +1005,7 @@ function checkIfValidWeapon(weaponString, mobTag) {
     }    
 }
 
-function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray) {
+function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray, ailments) {
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "inline-block";
          
@@ -1019,7 +1019,19 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     if (numCrits > 0) {
         header += `<b style="color:gold">${numCrits} crits! </b><br>`;
     }
-    header += "</div></div>";
+    header += "</div>";
+    var ailmentKeys = Object.keys(ailments);
+    if (ailmentKeys.length > 0) {
+        header += `<div id="ailmentsOverview">Inflicted With: `;
+        for(var i=0; i > ailmentKeys.length; i++) {
+            header += `${ailmentKeys[i]}`;
+            if (i < ailmentKeys.length - 1) {
+                header += `, `;
+            }
+        }
+        header += `</div>`;
+    }
+    header += "</div>";
     infoAppend = header + infoAppend;
     infoArea.innerHTML = infoAppend;
     
