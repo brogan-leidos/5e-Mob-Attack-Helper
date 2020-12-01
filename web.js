@@ -1120,7 +1120,7 @@ async function promptDc(dcInfo, roll, dc, attacker) {
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
-    var bias = dc >= roll ? 2 : 1;
+    var bias = dc > roll ? 2 : 1;
            
     roll = `🎲${roll} + ?`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
