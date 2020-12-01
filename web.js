@@ -807,7 +807,7 @@ async function launchAttack() {
                 if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) {                    
                     savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, mobDcInfo[0], attackRollClass.attacker);
                 }
-                else if (roll >= dcLowestSave && !usingSavingThrowMods) {
+                else if (roll >= dcLowestSave && !usingSavingThrowMods && !autoFailSave) {
                     savingThrow = true;
                 }
                 else if (roll <= dcHighestFail || autoFailSave) {
