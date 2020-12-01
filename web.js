@@ -117,11 +117,11 @@ function minimizeMob(mobTag) {
     
     if (mobMin.checked) {
         mobMin.firstElementChild.classList = "fa fa-window-maximize"
-        mobMin.firstElementChild.style.fontsize = "11px"
+        mobMin.firstElementChild.style.fontSize = "11px"
     }
     else {
         mobMin.firstElementChild.classList = "fa fa-window-minimize"
-        mobMin.firstElementChild.style.fontsize = "8px"
+        mobMin.firstElementChild.style.fontSize = "8px"
     }
          
     for(var i=2; i < rows; i++) {
