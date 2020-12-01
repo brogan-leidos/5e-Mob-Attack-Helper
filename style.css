@@ -99,7 +99,7 @@ button {
 .mobBlockMenu .mobEnableButton {
   color:grey;
   grid-row: 1;
-  grid-column: 2;
+  grid-column: 3;
 }
 
 .mobBlockMenu .mobEnableButton:hover {
@@ -117,7 +117,7 @@ button {
   color:black;  
   font-size: 8px;
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 2;
   padding: 4px 9px;
   vertical-align: bottom;
 }
