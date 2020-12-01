@@ -1010,7 +1010,7 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     document.getElementById("infoAreaDiv").style.display = "inline-block";
          
     var header = `<div id="resultOverview">`;
-    header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage delt`;
+    header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
     if (totalDamage > 0) {
          header += `<br><span class="mobile-display" style="font-size:smaller">(${displayBreakdown(totalDamageBreakdown)})</span>`;
     }
@@ -1022,7 +1022,7 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     header += "</div>";
     var ailmentKeys = Object.keys(ailments);
     if (ailmentKeys.length > 1) {
-        header += `<div id="ailmentsOverview">Inflicted With: `;
+        header += `<div id="ailmentsOverview">Inflicted target with: `;
         for(var i=0; i < ailmentKeys.length; i++) {
             if (ailmentKeys[i] != "None") {
                 header += `${ailmentKeys[i]}`;
