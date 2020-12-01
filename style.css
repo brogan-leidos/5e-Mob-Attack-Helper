@@ -108,7 +108,7 @@ button {
   cursor: pointer;
 }
 
-.mobBlockMenu .mobMinimizeButton:active {
+.mobBlockMenu .mobEnableButton:active {
   transition-duration: 0s;
   background-color: lightgrey;
 }
@@ -128,7 +128,7 @@ button {
   cursor: pointer;
 }
 
-.mobBlockMenu .mobEnableButton:active {
+.mobBlockMenu .mobMinimizeButton:active {
   transition-duration: 0s;
   background-color: lightgrey;
 }
