@@ -117,7 +117,7 @@ function minimizeMob(mobTag) {
     
     if (mobMin.checked) {
         mobMin.firstElementChild.classList = "fa fa-window-maximize"
-        mobMin.firstElementChild.style.fontSize = "11px"
+        mobMin.firstElementChild.style.fontSize = "10px"
     }
     else {
         mobMin.firstElementChild.classList = "fa fa-window-minimize"
