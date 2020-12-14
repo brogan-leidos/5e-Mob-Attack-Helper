@@ -4,7 +4,8 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 == ToDo:  
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
-  2. Conditions outside of the mechanical ones (Other selection)
+  2. Make it clear that some conditions stack, and others dont
+  2.5 Convenience DC checks for non stacking conditions
   3. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
   Far Future: Save a JSON of current configuration
 
