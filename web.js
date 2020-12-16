@@ -363,7 +363,7 @@ function modifyRow(value, mobTag, modRow, automated=false) {
     } else {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
-    updateWeaponModRows(value, mobTag, modRow, automated);
+    updateModDcGrouping(value, mobTag, modRow, automated);
 }
 
 function checkIfUnderDc(mobTag, modRow) {
@@ -377,7 +377,7 @@ function checkIfUnderDc(mobTag, modRow) {
 }
 
 // Updates DC grouping/ungrouping
-function updateWeaponModRows(value, mobTag, modRow, automated=false) {
+function updateModDcGrouping(value, mobTag, modRow, automated=false) {
     // If it falls under a DC, mark it as so
     if (checkIfUnderDc(mobTag, modRow)) {
         document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
