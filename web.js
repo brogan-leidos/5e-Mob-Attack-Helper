@@ -144,6 +144,18 @@ function minimizeMob(mobTag) {
     mobMin.checked = !mobMin.checked;
 }
 
+function cloneMob(mobTag) {        
+    var newMobTag = "Mob" + mobIncrement.toString();
+    blockArray.push(mobTag);
+    mobIncrement++;
+    
+    var mobHtml = document.getElementById(mobTag).innerHTML.replace(mobTag, newMobTag);    
+    mobBlockArea.insertAdjacentHTML('beforeend', mobHtml);
+    
+    assignEventsToBlock(newMobTag)
+    
+}
+
 function toggleMob(mobTag) {
     var toggle = document.getElementById(mobTag + "-Enabled").firstElementChild;
     var enabled = document.getElementById(mobTag + "-Enabled");
@@ -231,6 +243,12 @@ function createPresent(presentName) {
         });
     }
     
+    assignEventsToBlock(mobTag) 
+         
+    return; 
+}
+
+function assignEventsToBlock(mobTag) {
     document.getElementById(mobTag).style.gridRow = blockArray.length;
          
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
@@ -249,6 +267,10 @@ function createPresent(presentName) {
     
     document.getElementById(mobTag + "-Maximize").addEventListener('click', () => {        
         minimizeMob(mobTag);
+    });
+         
+    document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
+        cloneMob(mobTag);
     });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
@@ -269,9 +291,7 @@ function createPresent(presentName) {
     });
     document.getElementById(mobTag + "-Move-Down").addEventListener('click', (e) => {
         moveMob(mobTag, "Down");
-    }); 
-         
-    return; 
+    });
 }
 
 function moveMob(mobTag, direction) {
