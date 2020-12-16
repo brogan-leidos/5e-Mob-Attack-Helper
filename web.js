@@ -1130,6 +1130,7 @@ function displayBreakdown(totalDamageBreakdown) {
 async function discoveryStep(attackRoll, toHit, attacker) {
   // spawn the block and wait for user input
   document.getElementById("hitRollNotification").style.color = "white";
+  document.getElementById("hitRollNotificationMobile").style.color = "white";
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
@@ -1141,10 +1142,12 @@ async function discoveryStep(attackRoll, toHit, attacker) {
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
       document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
+      document.getElementById("hitRollNotificationMobile").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
       document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
+      document.getElementById("hitRollNotificationMobile").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`acInfoButton`).addEventListener("click", (e) => {
       alert(`
@@ -1155,7 +1158,9 @@ During the same attack, the  tool will automatically determine if attacks hit or
   });
 }
 
-async function promptDc(dcInfo, roll, dc, attacker) { 
+async function promptDc(dcInfo, roll, dc, attacker) {
+  document.getElementById("savingThrowNotification").style.color = "white";
+  document.getElementById("savingThrowNotificationMobile").style.color = "white";
   return new Promise((resolve, reject) => {  
     var option1 = "Success";
     var option2 = "Failure";
@@ -1168,9 +1173,13 @@ async function promptDc(dcInfo, roll, dc, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
+      document.getElementById("savingThrowNotification").style.color = "rgb(101, 129, 156)";
+      document.getElementById("savingThrowNotificationMobile").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", () => {
       resolve(false);
+      document.getElementById("savingThrowNotification").style.color = "rgb(101, 129, 156)";
+      document.getElementById("savingThrowNotificationMobile").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
       alert(`
