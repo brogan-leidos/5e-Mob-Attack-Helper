@@ -707,6 +707,11 @@ async function launchAttack() {
     var numBlocks = blockArray.length;              
     
     document.getElementById("infoAreaDiv").style.display = "none";
+    document.getElementById("hitRollNotification").style.color = "";
+    document.getElementById("hitRollNotificationMobile").style.color = "";
+    document.getElementById("savingThrowNotification").style.color = "";
+    document.getElementById("savingThrowNotificationMobile").style.color = "";             
+         
     if (numBlocks == 0){
         throwError("There are no mobs available to attack with!");
         document.getElementById("infoAreaDiv").style.display = "inline-block";
