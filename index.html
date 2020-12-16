@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" href="./favicon.ico">
 </head>
-	
+
 <body>
 <div class="header">
 <h2> Mobby - A DnD 5e Mob Attack Helper</h2> <span class="mobile-display"><span id="infoButton" class="fa fa-info-circle"></span></span>
@@ -135,6 +135,15 @@
 			3. Modify the Mob stats to your liking, take note that when using multiple mobs, they will attack in order from top to bottom.<br>
 			4. Click the Launch Attack button, causing all active mobs to attack the target!<br>
 			<span style="font-size:12px">4.5 Depending on how much info you provided under Target Info, the tool might prompt you to confirm if an attack hit the target or if the target succeeded on a saving throw. Work with your DM to determine the correct answers.</span>
+		</div>
+		<div class="mobile-display mobileNotificationArea">
+			<div>Will Prompt For:</div>
+			<span class="notification" id="hitRollNotificationMobile" title="When the AC is set to lower than 1, the tool will ask if the roll hits or not." style="vertical-align: text-bottom;">
+				<i class="fa fa-commenting"></i> Hit Rolls
+			</span>
+			<span class="notification" id="savingThrowNotificationMobile" title="The tool does not know what the target's saving throw modifiers are. The tool will roll for the target and ask you if it succeeds its saves." style="vertical-align: text-bottom;display:none">
+				<i class="fa fa-commenting"></i> Saving Throws
+			</span>
 		</div>
 	</div>
 	
