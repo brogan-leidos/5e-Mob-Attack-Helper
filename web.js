@@ -1141,13 +1141,13 @@ async function discoveryStep(attackRoll, toHit, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
-      document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
-      document.getElementById("hitRollNotificationMobile").style.color = "rgb(101, 129, 156)";
+      document.getElementById("hitRollNotification").style.color = "";
+      document.getElementById("hitRollNotificationMobile").style.color = "";
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
-      document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
-      document.getElementById("hitRollNotificationMobile").style.color = "rgb(101, 129, 156)";
+      document.getElementById("hitRollNotification").style.color = "";
+      document.getElementById("hitRollNotificationMobile").style.color = "";
     });
     document.getElementById(`acInfoButton`).addEventListener("click", (e) => {
       alert(`
@@ -1173,13 +1173,13 @@ async function promptDc(dcInfo, roll, dc, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
-      document.getElementById("savingThrowNotification").style.color = "rgb(101, 129, 156)";
-      document.getElementById("savingThrowNotificationMobile").style.color = "rgb(101, 129, 156)";
+      document.getElementById("savingThrowNotification").style.color = "";
+      document.getElementById("savingThrowNotificationMobile").style.color = "";
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", () => {
       resolve(false);
-      document.getElementById("savingThrowNotification").style.color = "rgb(101, 129, 156)";
-      document.getElementById("savingThrowNotificationMobile").style.color = "rgb(101, 129, 156)";
+      document.getElementById("savingThrowNotification").style.color = "";
+      document.getElementById("savingThrowNotificationMobile").style.color = "";
     });
     document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
       alert(`
