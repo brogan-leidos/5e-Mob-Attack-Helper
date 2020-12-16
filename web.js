@@ -63,10 +63,12 @@ function discoveryCheck(newAc) {
     if (newAc <= 0) {
         document.getElementById('discoveryTag').style.display = "inline-block";
         document.getElementById('hitRollNotification').style.display = "inline-block";
+        document.getElementById('hitRollNotificationMobile').style.display = "inline-block";
     }
     else {
         document.getElementById('discoveryTag').style.display = "none";
         document.getElementById('hitRollNotification').style.display = "none";
+        document.getElementById('hitRollNotificationMobile').style.display = "none";
     }
 }
 
@@ -99,6 +101,7 @@ function toggleAdvancedOptions() {
     if (usingSavingThrowMods) {
         document.getElementById("savingThrowTag").style.display = "none";
         document.getElementById("savingThrowNotification").style.display = "none";
+        document.getElementById("savingThrowNotificationMobile").style.display = "none";
     }
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
@@ -421,10 +424,12 @@ function checkForExistingDc() {
     var result = scanAllMobs();
     if (result) {
         document.getElementById("savingThrowNotification").style.display = "inline-block";
+        document.getElementById("savingThrowNotificationMobile").style.display = "inline-block";
         document.getElementById("savingThrowTag").style.display = "inline-block";
     }
     else {
         document.getElementById("savingThrowNotification").style.display = "none";
+        document.getElementById("savingThrowNotificationMobile").style.display = "none";
         document.getElementById("savingThrowTag").style.display = "none";    
     }
 }
