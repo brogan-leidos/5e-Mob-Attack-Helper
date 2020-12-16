@@ -1129,6 +1129,7 @@ function displayBreakdown(totalDamageBreakdown) {
 
 async function discoveryStep(attackRoll, toHit, attacker) {
   // spawn the block and wait for user input
+  document.getElementById("hitRollNotification").style.color = "white";
   return new Promise((resolve, reject) => {    
     var option1 = "Hit!";
     var option2 = "Miss";
@@ -1139,9 +1140,11 @@ async function discoveryStep(attackRoll, toHit, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
+      document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
+      document.getElementById("hitRollNotification").style.color = "rgb(101, 129, 156)";
     });
     document.getElementById(`acInfoButton`).addEventListener("click", (e) => {
       alert(`
