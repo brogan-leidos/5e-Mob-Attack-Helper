@@ -60,7 +60,7 @@ export function chooseModifierType(type, mobTag, modRow) {
           <option>Grappled</option>
           <option>Poisoned</option>
         </optgroup>
-      </select><i class="fa fa-list stacktag" title="Prone, Restrain, and Paralyze do not typically stack. Multiple checks will not be made for them." id="${mobTag}-${modRow}-StackTag"></i>`;
+      </select>`;
     }
     else if (type.includes("Damage")) {
       return `<input id="${mobTag}-${modRow}-Mod" value="1d6 + 2 slashing" />`; 
