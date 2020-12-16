@@ -783,6 +783,7 @@ async function launchAttack() {
             }
          
             // Everything past here is assumed to take part on a hit
+            // =============== DC LOGIC ==================
                         
             if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
                 mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
