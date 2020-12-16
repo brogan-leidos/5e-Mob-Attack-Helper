@@ -707,10 +707,7 @@ async function launchAttack() {
     var numBlocks = blockArray.length;              
     
     document.getElementById("infoAreaDiv").style.display = "none";
-    document.getElementById("hitRollNotification").style.color = "";
-    document.getElementById("hitRollNotificationMobile").style.color = "";
-    document.getElementById("savingThrowNotification").style.color = "";
-    document.getElementById("savingThrowNotificationMobile").style.color = "";             
+    resetPromptNotificationHighlighting();
          
     if (numBlocks == 0){
         throwError("There are no mobs available to attack with!");
@@ -1146,13 +1143,11 @@ async function discoveryStep(attackRoll, toHit, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", (e) => {      
       resolve(true);
-      document.getElementById("hitRollNotification").style.color = "";
-      document.getElementById("hitRollNotificationMobile").style.color = "";
+      resetPromptNotificationHighlighting();
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", (e) => {
       resolve(false);
-      document.getElementById("hitRollNotification").style.color = "";
-      document.getElementById("hitRollNotificationMobile").style.color = "";
+      resetPromptNotificationHighlighting();
     });
     document.getElementById(`acInfoButton`).addEventListener("click", (e) => {
       alert(`
@@ -1178,13 +1173,11 @@ async function promptDc(dcInfo, roll, dc, attacker) {
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
-      document.getElementById("savingThrowNotification").style.color = "";
-      document.getElementById("savingThrowNotificationMobile").style.color = "";
+      resetPromptNotificationHighlighting();
     });
     document.getElementById(`missButton-${option2}`).addEventListener("click", () => {
       resolve(false);
-      document.getElementById("savingThrowNotification").style.color = "";
-      document.getElementById("savingThrowNotificationMobile").style.color = "";
+      resetPromptNotificationHighlighting();
     });
     document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
       alert(`
@@ -1195,3 +1188,9 @@ During the same attack, the tool will automatically determine future saves of th
   });
 }
 
+function resetPromptNotificationHighlighting() {
+    document.getElementById("hitRollNotification").style.color = "";
+    document.getElementById("hitRollNotificationMobile").style.color = "";
+    document.getElementById("savingThrowNotification").style.color = "";
+    document.getElementById("savingThrowNotificationMobile").style.color = "";  
+}
