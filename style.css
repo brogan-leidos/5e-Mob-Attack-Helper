@@ -663,6 +663,10 @@ button {
   cursor: help;
 }
 
+.notificationArrow {
+  color: rgb(101, 129, 156);
+}
+
 .mobile-hide {
   display: block;
 }
