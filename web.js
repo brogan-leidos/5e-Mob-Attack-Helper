@@ -1191,12 +1191,12 @@ During the same attack, the tool will automatically determine future saves of th
 function resetPromptNotificationHighlighting() {
     var hitRollNotes = document.getElementsByClassName("hitRollNotification");
     for (var x of hitRollNotes) {
-        document.getElementById(x).style.color = "";
+        x.style.color = "";
     }
     
     var savingThrowNotes = document.getElementsByClassName("savingThrowNotification");
     for (var x of savingThrowNotes) {
-        document.getElementById(x).style.color = "";
+        x.style.color = "";
     }
 //     document.getElementsByClassName("savingThrowNotification") 
 //     document.getElementById("hitRollNotification").style.color = "";
