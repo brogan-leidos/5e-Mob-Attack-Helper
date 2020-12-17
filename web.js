@@ -1189,8 +1189,18 @@ During the same attack, the tool will automatically determine future saves of th
 }
 
 function resetPromptNotificationHighlighting() {
-    document.getElementById("hitRollNotification").style.color = "";
-    document.getElementById("hitRollNotificationMobile").style.color = "";
-    document.getElementById("savingThrowNotification").style.color = "";
-    document.getElementById("savingThrowNotificationMobile").style.color = "";  
+    var hitRollNotes = document.getElementsByClassName("hitRollNotification");
+    for (x of hitRollNotes) {
+        document.getElementById(x).style.color = "";
+    }
+    
+    var savingThrowNotes = document.getElementsByClassName("savingThrowNotification");
+    for (x of savingThrowNotes) {
+        document.getElementById(x).style.color = "";
+    }
+//     document.getElementsByClassName("savingThrowNotification") 
+//     document.getElementById("hitRollNotification").style.color = "";
+//     document.getElementById("hitRollNotificationMobile").style.color = "";
+//     document.getElementById("savingThrowNotification").style.color = "";
+//     document.getElementById("savingThrowNotificationMobile").style.color = "";  
 }
