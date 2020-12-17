@@ -61,11 +61,11 @@ export default () => {
 // Checks if the target ac is below zero, if so enable discovery mode
 function discoveryCheck(newAc) {
     if (newAc <= 0) {
-        document.getElementById('discoveryTag').style.display = "inline-block";
+//         document.getElementById('discoveryTag').style.display = "inline-block";
         document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "inline-block");
     }
     else {
-        document.getElementById('discoveryTag').style.display = "none";
+//         document.getElementById('discoveryTag').style.display = "none";
         document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "none");
     }
 }
@@ -97,7 +97,7 @@ function toggleAdvancedOptions() {
     modTable.style.display = modTable.style.display == "table"  ? "none" : "table";
     checkForExistingDc()
     if (usingSavingThrowMods) {
-        document.getElementById("savingThrowTag").style.display = "none";
+//         document.getElementById("savingThrowTag").style.display = "none";
         document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "none");
     }
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
