@@ -62,13 +62,11 @@ export default () => {
 function discoveryCheck(newAc) {
     if (newAc <= 0) {
         document.getElementById('discoveryTag').style.display = "inline-block";
-        document.getElementById('hitRollNotification').style.display = "inline-block";
-        document.getElementById('hitRollNotificationMobile').style.display = "inline-block";
+        document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "inline-block");
     }
     else {
         document.getElementById('discoveryTag').style.display = "none";
-        document.getElementById('hitRollNotification').style.display = "none";
-        document.getElementById('hitRollNotificationMobile').style.display = "none";
+        document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "none");
     }
 }
 
@@ -100,8 +98,7 @@ function toggleAdvancedOptions() {
     checkForExistingDc()
     if (usingSavingThrowMods) {
         document.getElementById("savingThrowTag").style.display = "none";
-        document.getElementById("savingThrowNotification").style.display = "none";
-        document.getElementById("savingThrowNotificationMobile").style.display = "none";
+        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "none");
     }
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
@@ -443,14 +440,12 @@ function updateModDcGrouping(value, mobTag, modRow, automated=false) {
 function checkForExistingDc() {
     var result = scanAllMobs();
     if (result) {
-        document.getElementById("savingThrowNotification").style.display = "inline-block";
-        document.getElementById("savingThrowNotificationMobile").style.display = "inline-block";
-        document.getElementById("savingThrowTag").style.display = "inline-block";
+        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "inline-block");
+//         document.getElementById("savingThrowTag").style.display = "inline-block";
     }
     else {
-        document.getElementById("savingThrowNotification").style.display = "none";
-        document.getElementById("savingThrowNotificationMobile").style.display = "none";
-        document.getElementById("savingThrowTag").style.display = "none";    
+        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "none");
+//         document.getElementById("savingThrowTag").style.display = "none";    
     }
 }
 
@@ -1191,16 +1186,15 @@ During the same attack, the tool will automatically determine future saves of th
 function resetPromptNotificationHighlighting() {
     var hitRollNotes = document.getElementsByClassName("hitRollNotification");
     for (var x of hitRollNotes) {
-        x.style.color = "";
+        if (x.className.includes("notification")) {
+            x.style.color = "";
+        }
     }
     
     var savingThrowNotes = document.getElementsByClassName("savingThrowNotification");
     for (var x of savingThrowNotes) {
-        x.style.color = "";
+        if (x.className.includes("notification")) {        
+            x.style.color = "";
+        }
     }
-//     document.getElementsByClassName("savingThrowNotification") 
-//     document.getElementById("hitRollNotification").style.color = "";
-//     document.getElementById("hitRollNotificationMobile").style.color = "";
-//     document.getElementById("savingThrowNotification").style.color = "";
-//     document.getElementById("savingThrowNotificationMobile").style.color = "";  
 }
