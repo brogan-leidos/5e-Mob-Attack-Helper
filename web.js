@@ -62,11 +62,11 @@ export default () => {
 function discoveryCheck(newAc) {
     if (newAc <= 0) {
 //         document.getElementById('discoveryTag').style.display = "inline-block";
-        document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "inline-block");
+        [...document.getElementsByClassName('hitRollNotification')].forEach(a => a.style.display = "inline-block");
     }
     else {
 //         document.getElementById('discoveryTag').style.display = "none";
-        document.getElementsByClassName('hitRollNotification').forEach(a => a.style.display = "none");
+        [...document.getElementsByClassName('hitRollNotification')].forEach(a => a.style.display = "none");
     }
 }
 
@@ -98,7 +98,7 @@ function toggleAdvancedOptions() {
     checkForExistingDc()
     if (usingSavingThrowMods) {
 //         document.getElementById("savingThrowTag").style.display = "none";
-        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "none");
+        [...document.getElementsByClassName("savingThrowNotification")].forEach(a => a.style.display = "none");
     }
     var buttonIcon = document.getElementById("setSavingThrowsButton").firstElementChild;
     if (buttonIcon.classList.value.includes("fa-angle-double-down")) {
@@ -440,11 +440,11 @@ function updateModDcGrouping(value, mobTag, modRow, automated=false) {
 function checkForExistingDc() {
     var result = scanAllMobs();
     if (result) {
-        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "inline-block");
+        [...document.getElementsByClassName("savingThrowNotification")].forEach(a => a.style.display = "inline-block");
 //         document.getElementById("savingThrowTag").style.display = "inline-block";
     }
     else {
-        document.getElementsByClassName("savingThrowNotification").forEach(a => a.style.display = "none");
+        [...document.getElementsByClassName("savingThrowNotification")].forEach(a => a.style.display = "none");
 //         document.getElementById("savingThrowTag").style.display = "none";    
     }
 }
