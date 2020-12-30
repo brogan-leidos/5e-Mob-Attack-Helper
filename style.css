@@ -70,6 +70,7 @@ button {
   border-left: thin solid black;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  width: 20px;
 }
 
 .mobBlockMenu span {
@@ -77,18 +78,17 @@ button {
 }
 
 .mobBlockMenu span {
-  padding: 0px 5px;
   background-color: white;
   transition-duration: 0.2s;
-  font-size: 18px;
-  border-radius: 2px;
+  font-size: 20px;
 }
 
 .mobBlockMenu .mobCloseButton {
   color:red;
   grid-row: 1;
   grid-column: 1;
-  padding: 0px 8px;
+  border-top-left-radius: 4px;
+  font-size: 18px;
 }
 
 .mobBlockMenu .mobCloseButton:hover {
@@ -123,8 +123,8 @@ button {
   font-size: 8px;
   grid-row: 1;
   grid-column: 2;
-  padding: 5px 9px;
   vertical-align: bottom;
+  padding: 4px 0px 6px 0px;
 }
 
 .mobBlockMenu .mobMinimizeButton:hover {
@@ -143,8 +143,8 @@ button {
   font-size: 11px;
   grid-row: 1;
   grid-column: 3;
-  padding: 5px 9px;
-  vertical-align: bottom;
+  padding: 4px 0px 3px 0px;
+  border-bottom-left-radius: 4px;
 }
 
 .mobBlockMenu .mobCloneButton:hover {
