@@ -14,7 +14,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-        <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
+        <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></button>
       </td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
@@ -80,12 +80,12 @@ export function mobBlock() {
       </td>
     </tr>
     <tr>
-      <td><span class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up"></i></span></td>
+      <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up"></i></button></td>
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
     </tr>
     <tr>
-      <td><span class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down"></i></span></td>
+      <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down"></i></button></td>
       <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" style="width: auto" /> <label for="advantage"> Advantage</label></td>
       <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" style="width: auto" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
