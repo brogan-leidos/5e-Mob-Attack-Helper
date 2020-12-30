@@ -1,13 +1,9 @@
-//  <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
-
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
 <div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>
-  <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
-  <span class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up"></i></span>
-  <span class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down"></i></span>
+  <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span> 
 </div>
 <table class="mobBlock">
   <tbody>
@@ -18,7 +14,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-
+        <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
       </td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
@@ -84,12 +80,12 @@ export function mobBlock() {
       </td>
     </tr>
     <tr>
-      <td></td>
+      <td><span class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up"></i></span></td>
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
     </tr>
     <tr>
-      <td></td>
+      <td><span class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down"></i></span></td>
       <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" style="width: auto" /> <label for="advantage"> Advantage</label></td>
       <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" style="width: auto" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
