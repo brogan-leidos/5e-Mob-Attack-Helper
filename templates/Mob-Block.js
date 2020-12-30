@@ -1,10 +1,11 @@
+//  <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
+
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
 <div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>
   <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
-//   <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
   <span class="mobMoveUpButton" id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up mobMoveButton" title="Move Up"></span>
   <span class="mobMoveDownButton" id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down mobMoveButton" title="Move Down"></span>
 </div>
@@ -17,7 +18,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-//         <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></button>
+
       </td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
