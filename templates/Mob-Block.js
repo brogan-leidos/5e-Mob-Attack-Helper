@@ -6,8 +6,8 @@ export function mobBlock() {
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>
   <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
-  <span id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up mobMoveButton" title="Move Up"></span>
-  <span id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down mobMoveButton" title="Move Down"></span>
+  <span class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up"></i></span>
+  <span class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down"></i></span>
 </div>
 <table class="mobBlock">
   <tbody>
