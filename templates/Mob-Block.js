@@ -3,7 +3,10 @@ export function mobBlock() {
 <div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>
-  <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
+  <span class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></span>
+//   <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
+  <span class="mobMoveUpButton" id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up mobMoveButton" title="Move Up"></span>
+  <span class="mobMoveDownButton" id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down mobMoveButton" title="Move Down"></span>
 </div>
 <table class="mobBlock">
   <tbody>
@@ -14,7 +17,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-        <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></button>
+//         <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye"></i></button>
       </td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons">
@@ -80,12 +83,12 @@ export function mobBlock() {
       </td>
     </tr>
     <tr>
-      <td><button id="FILLER-BLOCK-Move-Up" class="fa fa-angle-double-up mobMoveButton" title="Move Up"></button></td>
+      <td></td>
       <td>Number:</td>
       <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
     </tr>
     <tr>
-      <td><button id="FILLER-BLOCK-Move-Down" class="fa fa-angle-double-down mobMoveButton" title="Move Down"></button></td>
+      <td></td>
       <td><input id="FILLER-BLOCK-Adv" name="advantage" type="checkbox" style="width: auto" /> <label for="advantage"> Advantage</label></td>
       <td><input id="FILLER-BLOCK-Dis" name="disadvantage" type="checkbox" style="width: auto" /> <label for="disadvantage"> Disadvantage</label></td>
     </tr>
