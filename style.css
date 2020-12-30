@@ -61,13 +61,15 @@ button {
 }
 
 .mobBlockMenu {
-  display: inline-grid;
-  border-right: thin solid black;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  float: left;
   border-top: thin solid black;
+  border-bottom: thin solid black;
   border-left: thin solid black;
   border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background-color: white;
+  border-bottom-left-radius: 4px;
 }
 
 .mobBlockMenu span {
