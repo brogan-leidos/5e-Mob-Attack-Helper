@@ -73,6 +73,10 @@ button {
 }
 
 .mobBlockMenu span {
+  text-align: center;
+}
+
+.mobBlockMenu span {
   padding: 0px 5px;
   background-color: white;
   transition-duration: 0.2s;
