@@ -52,7 +52,13 @@ export default () => {
          
     document.getElementById('setSavingThrowsButton').addEventListener('click', () => {        
         toggleAdvancedOptions();
-    }); 
+    });
+
+    document.getElementById('dmSavesInfo').addEventListener('click', () => {        
+        alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
+    });
+
+
          
          
 };
