@@ -2,7 +2,7 @@
 
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
-<div class="mobBlockMenu">
+<div class="mobBlockControls">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>  
 </div>
