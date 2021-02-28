@@ -84,11 +84,12 @@ button {
 }
 
 .mobBlockMenu .mobCloseButton {
-  color:red;
+  color: red;
   grid-row: 1;
   grid-column: 1;
   border-top-left-radius: 4px;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .mobBlockMenu .mobCloseButton:hover {
