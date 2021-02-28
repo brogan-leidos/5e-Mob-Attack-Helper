@@ -718,6 +718,7 @@ async function launchAttack() {
     // Having spawned our army, let them all launch attacks. Record the attack if it lands
     var targetAc = document.getElementById('targetAc').value;
     var critImmune = document.getElementById('critImmune').checked;
+    var dmSaves = document.getElementById('dmSaves').checked;
     
     // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
     var discoveryModeFlag = false;
@@ -862,8 +863,8 @@ async function launchAttack() {
                 var dcHighestFail = dcSaves[dcType]["dcHighestFail"];
                      
                      
-                if ((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) {                    
-                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, mobDcInfo[0], attackRollClass.attacker);
+                if (((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) || dmSaves) {                    
+                    savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, mobDcInfo[0], attackRollClass.attacker, dmSaves);
                 }
                 else if (roll >= dcLowestSave && !usingSavingThrowMods && !autoFailSave) {
                     savingThrow = true;
@@ -1153,7 +1154,7 @@ During the same attack, the  tool will automatically determine if attacks hit or
   });
 }
 
-async function promptDc(dcInfo, roll, dc, attacker) {
+async function promptDc(dcInfo, roll, dc, attacker, dmSaves) {
   document.getElementById("savingThrowNotification").style.color = "white";
   document.getElementById("savingThrowNotificationMobile").style.color = "white";
   return new Promise((resolve, reject) => {  
@@ -1163,8 +1164,11 @@ async function promptDc(dcInfo, roll, dc, attacker) {
            
     roll = `🎲${roll} + ?`;
     var attackerInfo = `${attacker.Icon} ${attacker.Name} #${attacker.Number}`;
-    
-    document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2, bias));           
+    if (!dmSaves) {
+        document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplate("Saving Throw", dcInfo, roll, attackerInfo, option1, option2, bias, dmSaves));
+    } else {
+        document.getElementById("discoveryArea").insertAdjacentHTML('beforeend', dcTemplateDmSaves("Saving Throw", dcInfo, attackerInfo, option1, option2));
+    }
 
     document.getElementById(`hitButton-${option1}`).addEventListener("click", () => {
       resolve(true);
@@ -1174,12 +1178,21 @@ async function promptDc(dcInfo, roll, dc, attacker) {
       resolve(false);
       resetPromptNotificationHighlighting();
     });
-    document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
-      alert(`
-This prompt appeared because the tool does not know what the targets saving throw modifiers are.
-The number displayed is a roll on a d20, ask your DM if that number combined with the targets modifiers is enough to save against the DC.
-During the same attack, the tool will automatically determine future saves of the same kind based on your previous input.`);
-    });
+    if (!dmSaves) {
+        document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
+        alert(`
+    This prompt appeared because the tool does not know what the targets saving throw modifiers are.
+    The number displayed is a roll on a d20, ask your DM if that number combined with the targets modifiers is enough to save against the DC.
+    During the same attack, the tool will automatically determine future saves of the same kind based on your previous input.`);
+        });
+    } else {
+        document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
+            alert(`
+        This prompt appeared because the tool does not know what the targets saving throw modifiers are.
+        Ask your DM if the target saved or failed their saving throw, and click the corresponding button here.`);
+            });
+    }
+
   });
 }
 
