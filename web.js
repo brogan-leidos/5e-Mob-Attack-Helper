@@ -263,9 +263,9 @@ function assignEventsToBlock(mobTag) {
         minimizeMob(mobTag);
     });
          
-    document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
-        cloneMob(mobTag);
-    });
+    // document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
+    //     cloneMob(mobTag);
+    // });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
