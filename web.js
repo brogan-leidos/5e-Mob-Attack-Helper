@@ -3,7 +3,7 @@ import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
-import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
+import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake } from './presents/index.js'
 
 var mobBlockDefaultColor = "#f9f9eb";
@@ -1185,8 +1185,8 @@ async function promptDc(dcInfo, roll, dc, attacker, dmSaves) {
     } else {
         document.getElementById(`dcInfoButton`).addEventListener("click", (e) => {
             alert(`
-        This prompt appeared because the tool does not know what the targets saving throw modifiers are.
-        Ask your DM if the target saved or failed their saving throw, and click the corresponding button here.`);
+This prompt appeared because the tool does not know what the targets saving throw modifiers are.
+Ask your DM if the target saved or failed their saving throw, and click the corresponding button here.`);
             });
     }
 

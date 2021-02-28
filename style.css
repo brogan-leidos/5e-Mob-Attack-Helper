@@ -402,6 +402,10 @@ button {
   background-color: #7491b0;
 }
 
+.dcBlock tr:nth-last-child(1) {
+  background-color: #7491b0
+}
+
 .discoveryBlock .hitButton:hover {
   background-color: #34c239;
   color: white;
