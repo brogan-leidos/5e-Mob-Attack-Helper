@@ -1,7 +1,7 @@
 import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
-import { discoveryTemplate, dcTemplate } from './templates/Discovery-Template.js'
+import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Weapon, DamageRoll, Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake } from './presents/index.js'
