@@ -7,7 +7,7 @@ export function mobBlock() {
 </div>
 <table class="mobBlock">
   <tbody>
-    <tr>
+    <tr class="mobBlockMenu">
       <td><span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span></td>
       <td style="">Name:</td>
       <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
