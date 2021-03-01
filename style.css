@@ -689,6 +689,10 @@ button {
   display: none;
 }
 
+.mobile-display-inline {
+  display: none;
+}
+
 @media screen and (max-width: 660px) {
   
   button {
@@ -701,6 +705,10 @@ button {
   
   .mobile-display {
     display: block;
+  }
+
+  .mobile-display-inline {
+    display: inline-block;
   }
 
   .mobArea {
