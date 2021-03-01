@@ -444,11 +444,9 @@ function checkForExistingDc() {
     var result = scanAllMobs();
     if (result) {
         [...document.getElementsByClassName("savingThrowNotification")].forEach(a => a.style.display = "inline-block");
-//         document.getElementById("savingThrowTag").style.display = "inline-block";
     }
     else {
         [...document.getElementsByClassName("savingThrowNotification")].forEach(a => a.style.display = "none");
-//         document.getElementById("savingThrowTag").style.display = "none";    
     }
 }
 
@@ -476,7 +474,7 @@ function collapseRow(id) {
     prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
     var mobTag = id.split("-")[0];
     
-    // If we just deleted the only child of a DC, clena up the DC header too
+    // If we just deleted the only child of a DC, clean up the DC header too
     if (prevTr.children[1].firstElementChild) {
         if (prevTr.children[1].firstElementChild.value == "DC") {
             prevTr.remove()

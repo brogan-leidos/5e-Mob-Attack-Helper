@@ -2,13 +2,13 @@
 
 export function mobBlock() {
   return `<div id="FILLER-BLOCK" >
-<div class="mobBlockControls">
+<div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>  
 </div>
 <table class="mobBlock">
   <tbody>
-    <tr class="mobBlockMenu">
+    <tr>
       <td><span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span></td>
       <td style="">Name:</td>
       <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
