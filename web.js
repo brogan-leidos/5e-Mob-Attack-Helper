@@ -1068,6 +1068,7 @@ function checkIfValidWeapon(weaponString, mobTag) {
 function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray, ailments) {
     // Activate the info box
     document.getElementById("infoAreaDiv").style.display = "inline-block";
+    document.getElementById("resultsNotification").style.color = "white";
          
     var header = `<div id="resultOverview">`;
     header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
@@ -1198,6 +1199,8 @@ Ask your DM if the target saved or failed their saving throw, and click the corr
 }
 
 function resetPromptNotificationHighlighting() {
+    document.getElementById("resultsNotification").style.color = "";
+
     var hitRollNotes = document.getElementsByClassName("hitRollNotification");
     for (var x of hitRollNotes) {
         if (x.className.includes("notification")) {
