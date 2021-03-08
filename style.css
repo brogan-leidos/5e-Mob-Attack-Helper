@@ -727,6 +727,10 @@ button {
 
 @media screen and (max-width: 660px) {
   
+  body {
+    margin: 0;
+  }
+  
   .page-container {
     position: relative;
     min-height: 180vh;
@@ -895,7 +899,7 @@ button {
     background-color: white;
     flex-direction: row;
     border-top: thin solid black;
-    border-bottom: thin solid transparent;
+    border-bottom: none;
     border-left: thin solid black;
     border-right: thin solid black;
     border-top-left-radius: 4px;
@@ -907,7 +911,7 @@ button {
   }
 
   .mobBlockMenu span {
-    width: 50%; 
+    width: 100%; 
   }
 
   .mobBlockMenu span:nth-child(1) {
@@ -915,7 +919,8 @@ button {
   }
 
   .mobBlockMenu span:nth-last-child(1) {
-    border-top-right-radius: 4px; 
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
   }
 }
 
