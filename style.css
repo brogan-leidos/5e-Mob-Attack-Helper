@@ -721,17 +721,32 @@ button {
     box-shadow: 0px 0px 0px #666;
   }
 
+  .addMobArea .addHeader {
+    text-align: center;
+/*     border-bottom: solid thin white;
+    border-top: solid thin white; */
+    vertical-align: center;
+    text-decoration: none;
+    margin-bottom: 3px;
+    background-color: rgba(255, 255, 255, 0.2)
+
+  }
+  
+  .addMobArea  button {
+    margin-left: 5px;
+    text-align: center;
+  }
+  
   .addMobArea .addMobCol {
     grid-row: 2;
     grid-column: 1;
-    padding-left: 5px
+    padding-left: 0px;
   }
 
   .addMobArea .addMobCol2 {
    grid-row: 3;
    grid-column: 1;
-   padding-left: 5px;
-   /* box-shadow: 2px 2px 2px #666; */
+   padding-left: 0px;
   }
 
   .addMobArea #targetInfoTitle {
