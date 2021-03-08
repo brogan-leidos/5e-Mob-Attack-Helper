@@ -354,6 +354,7 @@ button {
   padding: 5px;
   margin-bottom: 5px;
   transition-duration: 0.2s;
+  font-size: 16px;
 }
 
 #goButton-mobile:active {
