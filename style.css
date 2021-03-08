@@ -1,5 +1,6 @@
 body {
   background-color: #f0f0f0;
+  font-family: Candara, Italic,  sans-serif;
 }
 
 button {
@@ -11,7 +12,7 @@ button {
   padding: 5px 10px;
   background-color: #64a3e3;
   color: #f2f2f2;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Candara, Italic,  sans-serif;
   box-shadow: 2px 2px 2px #666;
   text-align: left;
   border-bottom: 5px solid #b5cce3;
@@ -71,6 +72,7 @@ button {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   width: 20px;
+  font-family: initial;
 }
 
 .mobBlockMenu span {
@@ -247,21 +249,19 @@ button {
 .addMobArea .title {
   color: #f2f2f2;
   background-color: #97b3cf;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
   grid-row: 1;
   grid-column: 1;
-  padding: 100% 0px 0px 0px;
-  position:  relative;
+  display: flex;
 }
 
 /* How to info */
 .addMobArea .guideArea {
-  color: #f2f2f2;
+  color: rgba(240, 240, 240);
   background-color: #97b3cf;
-  font-family: Arial, Helvetica, sans-serif;
+  /*! font-family: Arial, Helvetica, sans-serif; */
   font-weight: bold;
   font-size: 15px;
   text-align: left;
@@ -809,7 +809,8 @@ button {
   }
   
   .mobBlock input {
-    width: 95%
+    width: 95%;
+    /*! vertical-align: middle; */
   }
   
   #totalDamageTitle {
@@ -829,6 +830,7 @@ button {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     width: 38px;
+    font-family: initial;
   }
 
   .mobBlockMenu span {
