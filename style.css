@@ -758,6 +758,7 @@ button {
   
   .addMobArea {
     box-shadow: 0px 0px 0px #666;
+    margin: 5px; 0px;
   }
 
   .addMobArea .title {
