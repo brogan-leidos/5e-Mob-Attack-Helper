@@ -777,7 +777,7 @@ button {
     border-radius: 0px;
     margin: 0px;
     box-shadow: 0px 0px 0px #666;
-    border: solid thin rgba(0, 0, 0, 0.2);
+    border: solid thin rgba(0, 0, 0, 0.1);
     width: 100%;
     padding: 2px 0px;
   }
@@ -792,9 +792,8 @@ button {
   
   .addMobArea .addHeader {
     text-align: center;
-    vertical-align: center;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2)
+    background-color: rgba(255, 255, 255, 0.2);
   }
   
   .addMobArea  button {
