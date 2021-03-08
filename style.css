@@ -729,7 +729,7 @@ button {
   
   .page-container {
     position: relative;
-    min-height: 150vh;
+    min-height: 180vh;
   }
   
   .mobile-hide {
@@ -756,12 +756,14 @@ button {
 
   .addMobArea .title {
     padding: 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    
   }
   
   .addMobArea .mobButtons {
     display: flex;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
   }
   
   .addMobArea .mobButtons button {
@@ -770,19 +772,15 @@ button {
     box-shadow: 0px 0px 0px #666;
     border: solid thin rgba(0, 0, 0, 0.2);
     width: 100%;
-    padding: 0px;
+    padding: 2px 0px;
   }
   
   .addMobArea .mobButtons button:nth-child(1) {
-    border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-/*     margin-left: 2px; */
   }
   
   .addMobArea .mobButtons button:nth-last-child(1) {
-    border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-/*     margin-right: 2px; */
   }
   
   .addMobArea .addHeader {
@@ -790,7 +788,6 @@ button {
     vertical-align: center;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.2)
-
   }
   
   .addMobArea  button {
@@ -808,6 +805,10 @@ button {
    grid-row: 3;
    grid-column: 1;
    padding-left: 0px;
+  }
+  
+  .addMobArea .addMobCol2 .mobButtons:nth-last-child(1) {
+    margin-bottom: 0px;    
   }
 
   .addMobArea #targetInfoTitle {
