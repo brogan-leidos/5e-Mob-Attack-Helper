@@ -92,7 +92,7 @@ function displayHelp() {
 3. Click the Launch Attack button, causing all active mobs to attack the target!
 
 4. Depending on how much info you provided under Target Info, the tool might prompt you to confirm if an attack hit the target or if the target succeeded on a saving throw. Work with your DM to determine the correct answers. 
-`
+`);
 }
 
 function toggleAdvancedOptions() {
