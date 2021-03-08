@@ -251,11 +251,14 @@ button {
   background-color: #97b3cf;
   font-weight: bold;
   text-align: center;
-  vertical-align: middle;
   grid-row: 1;
   grid-column: 1;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 /* How to info */
 .addMobArea .guideArea {
@@ -811,10 +814,6 @@ button {
     margin-bottom: 10px;
     border: none;
     box-shadow: 0px 0px 0px;
-  }
-  
-  .addMobArea .title {
-    padding: 5px 0px 5px 0px;
   }
   
   .mobBlock label {
