@@ -292,16 +292,16 @@ button {
 /* How to info */
 .addMobArea .guideArea {
   color: rgba(240, 240, 240);
-  background-color: #97b3cf;
+  /*! background-color: #97b3cf; */
   /*! font-family: Arial, Helvetica, sans-serif; */
-  font-weight: bold;
+  /*! font-weight: bold; */
   font-size: 15px;
   text-align: left;
   vertical-align: top;
   grid-row:1;
   grid-column: 6;
   border-left: 5px solid #b5cce3;
-  padding: 3px; 
+  /*! padding: 3px; */ 
 }
 
 .addMobArea .mobileNotificationArea {
