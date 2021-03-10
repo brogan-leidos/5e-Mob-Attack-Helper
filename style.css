@@ -292,16 +292,12 @@ button {
 /* How to info */
 .addMobArea .guideArea {
   color: rgba(240, 240, 240);
-  /*! background-color: #97b3cf; */
-  /*! font-family: Arial, Helvetica, sans-serif; */
-  /*! font-weight: bold; */
   font-size: 15px;
   text-align: left;
   vertical-align: top;
   grid-row:1;
   grid-column: 6;
   border-left: 5px solid #b5cce3;
-  /*! padding: 3px; */ 
 }
 
 .addMobArea .mobileNotificationArea {
@@ -342,6 +338,7 @@ button {
   border: 1px solid #ddd;
   transition-duration: 0.4s;
   margin-bottom: 4px;
+  font-family: Candara, Italic, sans-serif;
 }
 
 .addMobArea button:hover {
@@ -412,7 +409,6 @@ button {
   font-weight: bold;
   color: white;
   border-collapse: collapse;
-  /*! font-family: Calibri Light; */
 }
 
 .discoveryBlock tr:nth-child(1) td {
@@ -556,7 +552,6 @@ button {
 
 #hitsOverview {
   font-size: smaller;
-/*   background-color: #90b3d5; */
   background-color: #65819c;
   padding: 3px;
 }
@@ -587,7 +582,6 @@ button {
 
 .optionsDivider {
   background-color: #dfe6ec;
-  /*! box-shadow: 2px 2px 2px #666; */
   padding: 5px;
   grid-row: 1;
   grid-column: 5;
@@ -607,9 +601,7 @@ button {
 
 .optionsDivider .advancedOptions {
   background-color: #65819c;
-  /*! box-shadow: 2px 2px 2px #666; */
   padding: 10px;
-  /*! border: thin solid black; */
   display: table;
   margin-left: 5px;
 }
@@ -905,7 +897,6 @@ button {
   
   .mobBlock input {
     width: 95%;
-    /*! vertical-align: middle; */
   }
   
   #totalDamageTitle {
