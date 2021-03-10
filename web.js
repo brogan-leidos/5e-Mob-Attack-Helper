@@ -1071,10 +1071,14 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     document.getElementById("resultsNotification").style.color = "white";
          
     var header = `<div id="resultOverview">`;
-    header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
     if (totalDamage > 0) {
-         header += `<br><span class="mobile-display" style="font-size:smaller">(${displayBreakdown(totalDamageBreakdown)})</span>`;
+        header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
+        header += `<br><span class="mobile-display" style="font-size:smaller">(${displayBreakdown(totalDamageBreakdown)})</span>`;
     }
+    else {
+        header += `<div id="totalDamageTitle">All attacks missed!`;
+    }
+
     header += "</div>";
     header += `<div id="hitsOverview">${totalHits} attacks landed <br>`;
     if (numCrits > 0) {
