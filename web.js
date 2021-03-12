@@ -1227,6 +1227,7 @@ function randomizeAttackButton() {
     sentence += getRandomValueFromArray(actionWords());
     sentence += " The ";
     sentence += getRandomValueFromArray(badGuyNames());
+    sentence += "!"
     console.log(sentence);
          
     document.getElementById("goButton").innerText = sentence;
