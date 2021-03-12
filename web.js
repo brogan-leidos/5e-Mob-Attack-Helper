@@ -1230,6 +1230,7 @@ function randomizeAttackButton() {
     console.log(sentance);
          
     document.getElementById("goButton").innerText = sentance;
+    document.getElementById("goButton-mobile").innerText = sentance;
 }
 
 function getRandomValueFromArray(array) {
