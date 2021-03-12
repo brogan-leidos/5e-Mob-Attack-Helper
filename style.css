@@ -844,6 +844,7 @@ button {
   #infoArea {
     background-color: white;
     margin-bottom: 10px;
+    min-width: 308px;
   }
   
   #infoAreaDiv {
