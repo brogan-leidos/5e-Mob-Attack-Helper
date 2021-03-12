@@ -203,7 +203,6 @@ export function actionWords() {
 		"fire on",
 		"takedown",
 		"surge over",
-		"leap",
 		"dive",
 		"spring",
 		"bust",
