@@ -1236,21 +1236,22 @@ function getRandomValueFromArray(array) {
     var length = array.length;
     var randomInt = Math.floor(Math.random() * Math.floor(length));
     var word = array[randomInt];
-    return capitalizePhrase(word);
+    return word;
+//     return capitalizePhrase(word);
 }
 
-function capitalizePhrase(phrase) {
-    var index = 0;
-    var phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);   
-    while (true) {
-        var indexOf = phrase.indexOf(" ", index);
-        if (indexOf != -1) {
-            phrase = phrase.charAt(indexOf + 1).toUpperCase() + phrase.slice(indexOf + 2); 
-            index = indexOf;
-        }
-        else {
-            break;
-        }
-    }
-    return phrase;
+// function capitalizePhrase(phrase) {
+//     var index = 0;
+//     var phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);   
+//     while (true) {
+//         var indexOf = phrase.indexOf(" ", index);
+//         if (indexOf != -1) {
+//             phrase = phrase.charAt(indexOf + 1).toUpperCase() + phrase.slice(indexOf + 2); 
+//             index = indexOf;
+//         }
+//         else {
+//             break;
+//         }
+//     }
+//     return phrase;
 }
