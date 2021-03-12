@@ -1,5 +1,20 @@
 
 
+export function standalonePhrases() {
+	return [
+		"Launch Attack!",
+		"Begin Assault!",
+		"Roll To Hit!",
+		"Roll Attack!",
+		"Hope For 20s!",
+		"Send The Swarm!",
+		"Unleash The Mob!",
+		"Cause A Ruckus!",
+		"Run Them Down!",
+		"Begin The Blitz!",
+	]
+}
+
 export function badGuyNames() {
 	return [
 		"nogoodnik",
