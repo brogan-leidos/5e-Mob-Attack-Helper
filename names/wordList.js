@@ -278,7 +278,7 @@ export function actionWords() {
 		"lurch at",
 		"drive at",
 		"burst",
-		"swing",
+		"swing at",
 		"make for",
 		"secure",
 		"conquer",
