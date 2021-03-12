@@ -162,7 +162,7 @@ export function actionWords() {
 		"smash",
 		"advance on",
 		"openfire on",
-		"tearin to",
+		"tear into",
 		"launch an attack on",
 		"launch an assault on",
 		"launch a raid on",
