@@ -5,7 +5,7 @@ import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Di
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake } from './presents/index.js'
-import { actionWords, badGuyNames } from './names/wordList.js';
+import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
@@ -1223,13 +1223,19 @@ function resetPromptNotificationHighlighting() {
 }
 
 function randomizeAttackButton() {
+    var generateDecision = Math.floor(Math.random() * Math.floor(4));                  
     var sentence = "";
-    sentence += getRandomValueFromArray(actionWords());
-    sentence += " The ";
-    sentence += getRandomValueFromArray(badGuyNames());
-    sentence += "!"
-    console.log(sentence);
-         
+    
+    if (generateDecision == 0) {
+        sentence = getRandomValueFromArray(standalonePhrases());
+    }
+    else {        
+        sentence += getRandomValueFromArray(actionWords());
+        sentence += " The ";
+        sentence += getRandomValueFromArray(badGuyNames());
+        sentence += "!"
+        console.log(sentence);
+    }
     document.getElementById("goButton").innerText = sentence;
     document.getElementById("goButton-mobile").innerText = sentence;
 }
