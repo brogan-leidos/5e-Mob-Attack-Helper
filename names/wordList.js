@@ -229,7 +229,7 @@ export function actionWords() {
 		"spring",
 		"bust",
 		"spring on",
-		"lungeat",
+		"lunge at",
 		"surge",
 		"dash",
 		"go for",
