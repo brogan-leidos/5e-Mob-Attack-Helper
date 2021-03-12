@@ -18,6 +18,12 @@ export function standalonePhrases() {
 		"To Battle!",
 		"Vanquish The Evil!",
 		"Banish The Shadows!",
+		"Cross Your Fingers!",
+		"Create Some Mayhem!",
+		"Fire All Batteries!",
+		"Strength In Numbers!",
+		"Exploit Action Economy!",
+		"Make Them Pay!",
 		
 		
 	]
