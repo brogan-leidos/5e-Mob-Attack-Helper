@@ -1,6 +1,6 @@
 
 
-function badGuyNames() {
+export function badGuyNames() {
 	return [
 		"nogoodnik",
 		"loser",
@@ -125,7 +125,7 @@ function badGuyNames() {
 }
 
 
-function actionWords() {
+export function actionWords() {
 	return [
 		"strike",
 		"attack",
