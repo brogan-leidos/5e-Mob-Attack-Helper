@@ -1225,5 +1225,13 @@ function resetPromptNotificationHighlighting() {
 }
 
 function randomizeAttackButton() {
+    var sentance = "";
+    sentance += getRandomValueFromArray(actionNames());
+    sentance += " The ";
+    sentance += getRandomValueFromArray(baddyNames());
+}
 
+function getRandomValueFromArray(array) {
+    var length = array.length;
+    
 }
