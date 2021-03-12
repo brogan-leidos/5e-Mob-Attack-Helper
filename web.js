@@ -1223,14 +1223,14 @@ function resetPromptNotificationHighlighting() {
 }
 
 function randomizeAttackButton() {
-    var sentance = "";
-    sentance += getRandomValueFromArray(actionWords());
-    sentance += " The ";
-    sentance += getRandomValueFromArray(badGuyNames());
-    console.log(sentance);
+    var sentence = "";
+    sentence += getRandomValueFromArray(actionWords());
+    sentence += " The ";
+    sentence += getRandomValueFromArray(badGuyNames());
+    console.log(sentence);
          
-    document.getElementById("goButton").innerText = sentance;
-    document.getElementById("goButton-mobile").innerText = sentance;
+    document.getElementById("goButton").innerText = sentence;
+    document.getElementById("goButton-mobile").innerText = sentence;
 }
 
 function getRandomValueFromArray(array) {
