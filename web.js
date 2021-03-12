@@ -1243,7 +1243,7 @@ function capitalizePhrase(phrase) {
     var index = 0;
     var phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);   
     while (true) {
-        var indexOf = word.indexOf(" ", index);
+        var indexOf = phrase.indexOf(" ", index);
         if (indexOf != -1) {
             phrase = phrase.charAt(indexOf + 1).toUpperCase() + phrase.slice(indexOf + 2); 
             index = indexOf;
