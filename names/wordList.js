@@ -7,11 +7,19 @@ export function standalonePhrases() {
 		"Roll To Hit!",
 		"Roll Attack!",
 		"Hope For 20s!",
-		"Send The Swarm!",
+		"Send Out The Swarm!",
 		"Unleash The Mob!",
 		"Cause A Ruckus!",
 		"Run Them Down!",
 		"Begin The Blitz!",
+		"Farm Some XP!",
+		"Off With Their Heads!",
+		"Collect Their Gold!",
+		"To Battle!",
+		"Vanquish The Evil!",
+		"Banish The Shadows!",
+		
+		
 	]
 }
 
@@ -26,7 +34,6 @@ export function badGuyNames() {
 		"evildoer",
 		"criminal",
 		"rascal",
-		"evil-doer",
 		"rogue",
 		"baddy",
 		"villain",
@@ -108,9 +115,9 @@ export function badGuyNames() {
 		"sleazeball",
 		"blackhat",
 		"scuzzball",
-		"nastyperson",
-		"mischief-maker",
-		"evilperson",
+		"nasty person",
+		"mischief maker",
+		"evil person",
 		"despicable person",
 		"trespasser",
 		"swindler",
