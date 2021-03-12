@@ -1228,9 +1228,11 @@ function randomizeAttackButton() {
     sentance += getRandomValueFromArray(actionWords());
     sentance += " The ";
     sentance += getRandomValueFromArray(badGuyNames());
+    console.log(sentance);
 }
 
 function getRandomValueFromArray(array) {
     var length = array.length;
-    
+    var randomInt = Math.floor(Math.random() * Math.floor(length));
+    return array[randomInt];   
 }
