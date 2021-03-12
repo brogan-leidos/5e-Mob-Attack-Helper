@@ -6,6 +6,9 @@ import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake } from './presents/index.js'
 
+import {names} as actionNames from './names/actions.js';
+import {names} as baddyNames from './names/badguynames.js';
+
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
@@ -704,6 +707,7 @@ async function launchAttack() {
     
     document.getElementById("infoAreaDiv").style.display = "none";
     resetPromptNotificationHighlighting();
+    randomizeAttackButton();
          
     if (numBlocks == 0){
         throwError("There are no mobs available to attack with!");
@@ -1218,4 +1222,8 @@ function resetPromptNotificationHighlighting() {
             x.style.color = "";
         }
     }
+}
+
+function randomizeAttackButton() {
+
 }
