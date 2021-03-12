@@ -1254,4 +1254,4 @@ function getRandomValueFromArray(array) {
 //         }
 //     }
 //     return phrase;
-}
+// }
