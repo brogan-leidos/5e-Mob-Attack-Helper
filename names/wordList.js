@@ -19,7 +19,7 @@ export function badGuyNames() {
 		"crook",
 		"knave",
 		"lawbreaker",
-		"badegg",
+		"bad egg",
 		"offender",
 		"malefactor",
 		"malfeasant",
