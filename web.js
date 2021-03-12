@@ -1225,13 +1225,15 @@ function resetPromptNotificationHighlighting() {
 function randomizeAttackButton() {
     var sentance = "";
     sentance += getRandomValueFromArray(actionWords());
-    sentance += " The ";
+    sentance += " THE ";
     sentance += getRandomValueFromArray(badGuyNames());
     console.log(sentance);
+         
+    document.getElementById("goButton").innerText = sentance;
 }
 
 function getRandomValueFromArray(array) {
     var length = array.length;
     var randomInt = Math.floor(Math.random() * Math.floor(length));
-    return array[randomInt];   
+    return array[randomInt].toUpperCase();
 }
