@@ -121,6 +121,7 @@ export function badGuyNames() {
 		"buzzard",
 		"worm",
 		"violator",
+		"demon",		
 	];
 }
 
@@ -152,8 +153,7 @@ export function actionWords() {
 		"fall on",
 		"jump on",
 		"set on",
-		"fallup on",
-		"layin to",
+		"lay waste to",
 		"turn on",
 		"deal a blow to",
 		"go in on",
