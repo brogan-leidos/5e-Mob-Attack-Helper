@@ -17,7 +17,6 @@ function words() {
     beset,
     raid,
     sic,
-    sick,
     afflict,
     bushwhack,
     devastate,
