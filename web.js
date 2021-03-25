@@ -1073,7 +1073,13 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     document.getElementById("resultsNotification").style.color = "white";
          
     var header = `<div id="resultOverview">`;
-    if (totalDamage > 0) {
+    header += `<div class="infoCloseButton" id="infoCloseButton">&times</div>`
+    document.getElementById("infoCloseButton").addEventListener('click', (event) => {
+                event.parent.display = "none";
+    }); 
+             
+    
+    if (totalDamage > 0) {        
         header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
         header += `<br><span class="mobile-display" style="font-size:smaller">(${displayBreakdown(totalDamageBreakdown)})</span>`;
     }
