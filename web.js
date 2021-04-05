@@ -1073,11 +1073,7 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     document.getElementById("resultsNotification").style.color = "white";
          
     var header = `<div id="resultOverview">`;
-    header += `<div class="infoCloseButton" id="infoCloseButton">&times</div>`
-    document.getElementById("infoCloseButton").addEventListener('click', (event) => {
-                event.parent.display = "none";
-    }); 
-             
+    header += `<div class="infoCloseButton" id="infoCloseButton">&times</div>`              
     
     if (totalDamage > 0) {        
         header += `<div id="totalDamageTitle" title="${displayBreakdown(totalDamageBreakdown)}" style="cursor:help">${totalDamage} total damage dealt`;
@@ -1122,6 +1118,10 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
         catch(err) {
         }             
     }        
+    // And dont forget the close button event!
+    document.getElementById("infoCloseButton").addEventListener('click', (event) => {
+        event.parent.display = "none";
+    });
 }
 
 function displayBreakdown(totalDamageBreakdown) {
