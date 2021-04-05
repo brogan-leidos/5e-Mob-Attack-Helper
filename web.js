@@ -1120,7 +1120,7 @@ function generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalD
     }        
     // And dont forget the close button event!
     document.getElementById("infoCloseButton").addEventListener('click', (event) => {
-        event.parent.display = "none";
+        event.currentTarget.parentElement.parentElement.display = "none";
     });
 }
 
