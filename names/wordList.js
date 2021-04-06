@@ -24,6 +24,8 @@ export function standalonePhrases() {
 		"Strength In Numbers!",
 		"Exploit Action Economy!",
 		"Make Them Pay!",
+		"AHHHHHHHHHHH!",
+		
 		
 		
 	]
@@ -262,7 +264,6 @@ export function actionWords() {
 		"bomb",
 		"weigh into",
 		"sail into",
-		"set ion",
 		"make a foray on",
 		"make a sortie on",
 		"surge into",
