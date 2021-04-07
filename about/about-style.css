@@ -13,15 +13,6 @@ button {
   box-shadow: 0px 0px 2px #666;
 }
 
-.page-container {
-  position: relative;
-  min-height: 105vh;
-}
-
-.content-wrap {
-  padding-bottom: 4.5rem; 
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -75,6 +66,7 @@ button {
 
 form {
   text-align: center;
+  margin-top: 5px;
 }
 
 .mobile-hide {
@@ -95,9 +87,12 @@ form {
     margin: 0;
   }
   
-  .page-container {
-    position: relative;
-    min-height: 180vh;
+  .header-category {
+    margin-top: 10px;
+  }
+  
+  .category {
+    width: auto;
   }
   
   .mobile-hide {
@@ -112,193 +107,5 @@ form {
     display: inline-block;
   }
 
-  .mobArea {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto minmax(min-content, 1fr) auto;
-  }
-  
-  .addMobArea {
-    box-shadow: 0px 0px 0px #666;
-    margin: 5px; 0px;
-  }
-
-  .addMobArea .title {
-    padding: 5px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    
-    font-size: 19px;
-    font-weight: normal;
-  }
-  
-  .addMobArea .mobButtons {
-    display: flex;
-    margin-bottom: 8px;
-  }
-  
-  .addMobArea .mobButtons button {
-    border-radius: 0px;
-    margin: 0px;
-    box-shadow: 0px 0px 0px #666;
-    border: solid thin rgba(0, 0, 0, 0.1);
-    width: 100%;
-    padding: 2px 0px;
-    font-family: Candara, Italic, sans-serif;
-  }
-  
-  .addMobArea .mobButtons button:nth-child(1) {
-    border-bottom-left-radius: 6px;
-  }
-  
-  .addMobArea .mobButtons button:nth-last-child(1) {
-    border-bottom-right-radius: 6px;
-  }
-  
-  .addMobArea .addHeader {
-    text-align: center;
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    font-weight: normal;
-  }
-  
-  .addMobArea  button {
-    margin-left: 5px;
-    text-align: center;
-  }
-  
-  .addMobArea .addMobCol {
-    grid-row: 2;
-    grid-column: 1;
-    padding-left: 0px;
-  }
-
-  .addMobArea .addMobCol2 {
-   grid-row: 3;
-   grid-column: 1;
-   padding-left: 0px;
-   border-bottom-left-radius: 6px;
-   border-bottom-right-radius: 6px;
-  }
-  
-  .addMobArea .addMobCol2 .mobButtons:nth-last-child(1) {
-    margin-bottom: 0px;    
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-  }
-
-  .addMobArea #targetInfoTitle {
-   margin-top: 10px;
-   grid-row: 4;
-   grid-column: 1;
-   padding-left: 5px;
-   border: none;
-  }
-  
-  .addMobArea .optionsDivider {
-   grid-row: 5;  
-   grid-column: 1;
-   padding-left: 5px;
-   margin-bottom: 10px;
-   border-bottom-left-radius: 6px;
-   border-bottom-right-radius: 6px;
-  }
-  
-  .discoveryBlock {
-    margin: 0px auto 5px auto;
-  }
-  
-  #infoArea {
-    background-color: white;
-    margin-bottom: 10px;
-    min-width: 308px;
-  }
-  
-  #infoAreaDiv {
-    float: none;
-    display: none;
-    grid-row: 2;
-    grid-column: 1;
-    margin: 0px 6px;
-  } 
-  
-  #discoveryArea {
-    float:none;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  #mobBlockArea {
-    float:left;
-    grid-row: 3;
-    grid-column: 1;
-    margin: auto;
-  }
-  
-  .mobBlock {
-    width: 100%;
-  }
-  
-  .mobBlock tr:nth-child(1) td:nth-child(1) {
-    width: 0px;    
-  }
-  
-  .addMobArea .addMobGrid {
-    grid-template-columns: auto;
-  }
-  
-  .addMobArea .addHeader {
-    font-size: 15px;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 10px;
-    border: none;
-    box-shadow: 0px 0px 0px;
-  }
-  
-  .mobBlock label {
-    font-size: 11px;
-    font-family: Arial, Helvetica, sans-serif;
-    vertical-align: text-top;
-  }
-  
-  .mobBlock input {
-    width: 95%;
-  }
-  
-  #totalDamageTitle {
-    text-decoration: none;
-  }
-
-  .mobBlockMenu {
-    display: flex;
-    background-color: white;
-    flex-direction: row;
-    border-top: thin solid black;
-    border-bottom: none;
-    border-left: thin solid black;
-    border-right: thin solid black;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    width: 38px;
-    font-family: initial;
-  }
-
-  .mobBlockMenu span {
-    width: 100%; 
-  }
-
-  .mobBlockMenu span:nth-child(1) {
-    border-top-left-radius: 4px;
-  }
-
-  .mobBlockMenu span:nth-last-child(1) {
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 0px;
-  }
 }
 
