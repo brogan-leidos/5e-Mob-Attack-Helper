@@ -159,6 +159,8 @@ export function badGuyNames() {
 
 export function actionWords() {
 	return [
+		"exile",
+		"vanquish",
 		"bludgeon",
 		"pierce",
 		"slash",
