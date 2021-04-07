@@ -221,7 +221,6 @@ export function actionWords() {
 		"mug",
 		"march in to",
 		"overwhelm",
-		"infiltrate",
 		"bombard",
 		"penetrate",
 		"have at",
