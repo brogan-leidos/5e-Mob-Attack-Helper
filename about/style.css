@@ -1,0 +1,952 @@
+@font-face {
+  font-family: Candara;
+  src: url(Candara.ttf);
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: Candara;
+}
+
+button {
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px #666;
+}
+
+.page-container {
+  position: relative;
+  min-height: 105vh;
+}
+
+.content-wrap {
+  padding-bottom: 4.5rem; 
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  border-top: thin solid rgba(0, 0, 0, 0.2);
+  padding-top: 0.5rem;
+}
+
+.footer .divider {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  margin-right: 3px;
+  margin-left: 3px;
+  vertical-align: middle;
+  border-left: 1px solid black;
+}
+
+.header {
+  padding: 5px 10px;
+  background-color: #64a3e3;
+  color: #f2f2f2;
+  font-family: Candara, Italic,  sans-serif;
+  box-shadow: 2px 2px 2px #666;
+  text-align: left;
+  border-bottom: 5px solid #b5cce3;
+}
+
+.mobBlock {
+  border: thin solid #000;
+  border-collapse: collapse;
+  background-color: #f9f9eb;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 2px #666;
+  grid-column: 1;
+}
+
+.mobBlock td:nth-child(1) {
+  border-right: thin solid #000;
+  background-color: white;
+  text-align: center;
+  width: 36px;
+}
+
+.mobBlock .weaponSelect {
+  width: 30px;
+}
+
+.mobBlock button {
+  background-color: white;
+  color:grey;
+  border: none;
+  transition-duration: 0.2s;
+  font-size: 20px;
+  vertical-align: top;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px;
+  width: 100%;
+}
+
+.mobBlock button:hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlock button:active {
+  transition-duration: 0s;
+  background-color: lightgrey;
+}
+
+.mobBlockMenu {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  float: left;
+  border-top: thin solid black;
+  border-bottom: thin solid black;
+  border-left: thin solid black;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  width: 20px;
+  font-family: initial;
+}
+
+.mobBlockMenu span {
+  text-align: center;
+}
+
+.mobBlockMenu span {
+  background-color: white;
+  transition-duration: 0.2s;
+  font-size: 20px;
+}
+
+.mobBlockMenu span:nth-last-child(1) {
+  border-bottom-left-radius: 4px;
+}
+
+.mobBlockMenu span:nth-child(1) {
+  border-top-left-radius: 4px;
+}
+
+.mobBlockMenu .mobCloseButton {
+  color: red;
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mobBlockMenu .mobCloseButton:hover {
+  background-color: #ff1a1a;
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlockMenu .mobCloseButton:active {
+  transition-duration: 0s;
+  background-color: #ffcccc;
+}
+
+.mobEnableButton {
+  color: grey;
+  width: 100%;
+}
+
+.mobEnableButton:hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.mobEnableButton:active {
+  transition-duration: 0s;
+  background-color: lightgrey;
+}
+
+.mobBlockMenu .mobMinimizeButton {
+  color:black;  
+  font-size: 8px;
+  grid-row: 1;
+  grid-column: 2;
+  vertical-align: bottom;
+  padding: 4px 0px 6px 0px;
+}
+
+.mobBlockMenu .mobMinimizeButton:hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlockMenu .mobMinimizeButton:active {
+  transition-duration: 0s;
+  background-color: lightgrey;
+}
+
+.mobBlockMenu .mobCloneButton {
+  color:black;  
+  font-size: 11px;
+  grid-row: 1;
+  grid-column: 3;
+  padding: 4px 0px 3px 0px;
+  border-bottom-left-radius: 4px;
+}
+
+.mobBlockMenu .mobCloneButton:hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlockMenu .mobCloneButton:active {
+  transition-duration: 0s;
+  background-color: lightgrey;
+}
+
+.mobBlock .weaponExpandButton:hover {
+  background-color: transparent;
+  color: lightskyblue;
+}
+
+.mobBlock .weaponExpandButton {
+  background-color: transparent;
+  color: green;
+  transition-duration: 0.2s;
+  font-size: 12px;
+  padding: 0px;
+  width: auto;
+  vertical-align: top;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mobBlock .weaponCollapseButton:hover {
+  background-color: transparent;
+  color: lightskyblue;
+}
+
+.mobBlock .weaponCollapseButton {
+  background-color: transparent;
+  color: red;
+  transition-duration: 0.2s;
+  font-size: 12px;
+  padding: 0px;
+  width: auto;
+  margin-right: 5px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.mobBlock .rangeToggleButton {
+  color: lightgrey;
+  font-size: 10px;
+  vertical-align: top;
+  padding: 0px; 
+  text-align: center;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.mobBlock .weaponModSelect {
+  width: 93px;
+}
+
+.mobBlock .disableLabel {
+  font-size: 10px;
+  color: grey;
+  vertical-align: top;
+}
+
+#goButton {
+  color: red;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.addMobArea .addMobCol {
+  grid-row: 1;
+  grid-column: 2;
+  padding-left: 5px;
+}
+
+.addMobArea .addMobCol2 {
+  grid-row: 1;
+  grid-column: 3;
+  padding-left: 5px;
+}
+
+.addMobArea .addMobGrid {
+  grid-template-columns: 70px 15% auto 70px auto 30%;
+}
+
+/* Add mob text*/
+.addMobArea .title {
+  color: #f2f2f2;
+  background-color: #97b3cf;
+  font-weight: bold;
+  text-align: center;
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+
+
+/* How to info */
+.addMobArea .guideArea {
+  color: rgba(240, 240, 240);
+  font-size: 15px;
+  text-align: left;
+  vertical-align: top;
+  grid-row:1;
+  grid-column: 6;
+  border-left: 5px solid #b5cce3;
+}
+
+.addMobArea .mobileNotificationArea {
+  color: #f2f2f2;
+  background-color: #97b3cf;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.addMobArea .mobileNotificationArea span {
+  padding: 3px;
+}
+
+/* Add mob area */
+.addMobArea div div {
+  background-color: #90b3d5;
+  background-color: #65819c;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Categories to add mobs */
+.addMobArea .addHeader {
+  padding-top: 3px;
+  font-size: 12px;
+  color: #f2f2f2;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.addMobArea button {  
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  transition-duration: 0.4s;
+  margin-bottom: 4px;
+  font-family: Candara, Italic, sans-serif;
+}
+
+.addMobArea button:hover {
+  background-color: #fff;
+  border: thin solid black;
+  cursor: pointer;
+}
+
+.addMobArea button:active {
+  transition-duration: 0s;
+  background-color: #ccc;
+}
+
+.addMobArea {
+  box-shadow: 2px 2px 2px #666;
+}
+
+.launchArea {
+  background-color: #97b3cf; 
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 2px #666;
+}
+
+.launchArea button {
+  box-shadow: 0px 0px 0px aliceblue;
+}
+
+.attackDivMobile {
+  background-color: transparent;
+  padding: 1px;
+}
+
+#goButton-mobile {
+  width: 100%;
+  border-radius: 3px;
+  color: red;
+  background-color: #ddd;
+  border: thin black solid;
+  padding: 5px;
+  margin-bottom: 5px;
+  transition-duration: 0.2s;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+#goButton-mobile:active {
+  color: white;
+  background-color: #666;
+}
+
+.mobHeader {
+  padding: 0px 3px 0px 3px;
+  margin: 3px;
+}
+
+.mobHeader:hover {
+  background-color: #e3e3e3;
+  cursor: pointer;
+}
+
+.discoveryBlock {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  border: thin solid black;  
+  box-shadow: 2px 2px 2px #666;
+  background-color: #97b3cf;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  border-collapse: collapse;
+}
+
+.discoveryBlock tr:nth-child(1) td {
+  font-size: 12px;
+  padding: 1px 3px 1px 3px;
+  background-color: #65819c;
+}
+
+.discoveryBlock tr:nth-child(4) td {
+  font-size: 9px;
+  padding: 1px 3px 1px 3px;
+  background-color: #65819c;
+}
+
+.dcBlock tr:nth-child(2) td {
+  font-size: 10px;
+  padding: 1px 3px 1px 3px;
+  background-color: #7491b0;
+}
+
+.dcBlock tr:nth-child(4) td {
+  padding: 3px;
+  background-color: transparent;
+}
+
+.dcBlock tr:nth-child(5) td {
+  font-size: 9px;
+  padding: 1px 3px 1px 3px;
+  background-color: #7491b0;
+}
+
+.dcBlock tr:nth-last-child(1) {
+  background-color: #7491b0
+}
+
+.discoveryBlock .hitButton:hover {
+  background-color: #34c239;
+  color: white;
+  cursor: pointer;
+}
+
+.discoveryBlock .hitButton.bias:hover {
+  color: white;
+}
+
+.discoveryBlock .hitButton:active {
+  transition-duration: 0s;
+  background-color: #adedaf;
+}
+
+.discoveryBlock .hitButton {
+  background-color: white;
+  color: #34c239;
+  border: thin solid;
+  transition-duration: 0.2s;
+  font-size: 18px;
+  vertical-align: top;
+  border-radius: 2px;
+  width: 100%;
+  box-shadow: 0px 0px 0px;
+  padding: 2px 16px 2px 16px;
+}
+
+.discoveryBlock .hitButton.bias {
+  color: #98b599;
+}
+
+.discoveryBlock .missButton:hover {
+  background-color: #ff1a1a;
+  color: white;
+  cursor: pointer;
+}
+
+.discoveryBlock .missButton.bias:hover {
+  color: white;
+}
+
+.discoveryBlock .missButton:active {
+  transition-duration: 0s;
+  background-color: #ffcccc;
+}
+
+.discoveryBlock .missButton {
+  background-color: white;
+  color:red;
+  border: thin solid;
+  transition-duration: 0.2s;
+  font-size: 18px;
+  vertical-align: top;
+  border-radius: 2px;
+  width: 100%;
+  box-shadow: 0px 0px 0px;
+  padding: 2px 10px 2px 10px;
+}
+
+.discoveryBlock .missButton.bias {
+  color: #b59898;
+}
+
+.discoveryBlock td {
+  padding: 3px;
+  text-align: center;
+}
+
+#infoArea {
+  box-shadow: 2px 2px 2px #666;
+  border: solid thin black;
+  background-color: white;
+  font-family: Calibri Light;
+  min-width: 250px;
+}
+
+#infoAreaDiv {
+  margin: 0px 0px 5px 15px;
+  grid-row: 1;
+  grid-column: 2;
+  display: none;
+}
+
+.infoCloseButton {
+  position: absolute;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+#resultOverview {
+  color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-bottom: double black;
+  text-align: center;
+}
+
+#totalDamageTitle {
+  font-size: larger;
+  border-bottom: #97b3cf solid thin;
+  padding: 3px;
+  background-color: #64a3e3;
+  text-decoration: underline dotted #ffffff5e;
+}
+
+#errorMessage {
+  font-size: larger;
+  padding: 3px;
+  background-color: #ddd;
+  color: red
+}
+
+#hitsOverview {
+  font-size: smaller;
+  background-color: #65819c;
+  padding: 3px;
+}
+
+#ailmentsOverview {
+  font-size: 10px;
+  background-color: #65819c;
+}
+
+#discoveryArea {
+  float: left;
+  grid-row: 1;
+  grid-column-start: 3 ;
+  grid-column-end: 4;
+}
+
+#mobBlockArea {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr) auto;
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+}
+
+.mobArea {
+  display: inline-grid;
+  grid-template-columns: auto minmax(min-content, 1fr) auto;
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+}
+
+.optionsDivider {
+  background-color: #dfe6ec;
+  padding: 5px;
+  grid-row: 1;
+  grid-column: 5;
+}
+
+.optionsDivider button {
+  background-color: #ddd;
+  border: thin solid black;
+  border-radius: 2px;
+  cursor: pointer;
+  transition-duration: 0.15s;
+}
+
+.optionsDivider button:hover {
+  background-color: whitesmoke;
+}
+
+.optionsDivider .advancedOptions {
+  background-color: #65819c;
+  padding: 10px;
+  display: table;
+  margin-left: 5px;
+}
+
+.optionsDivider .advancedOptions input {
+  width: 35px;
+}
+
+.optionsDivider .advancedOptions #setSavingThrowsButton {
+  margin-top: 3px;
+}
+
+.optionsDivider .advancedOptions .optionsSavingThrows {
+  border-collapse: collapse;
+  margin-top: 2px;
+  background-color: #b5cce3;
+  border: solid black 1px;
+}
+
+.optionsDivider .advancedOptions .optionsSavingThrows td {
+  padding: 2px;
+  background-color: #97b3cf;
+}
+
+.optionsDivider .advancedOptions .optionsSavingThrows tr:nth-child(1) {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  padding: 1px;
+  vertical-align: middle;
+  border-top: solid thin black;
+  border-bottom: solid thin black;
+  background-color: #b5cce3;
+}
+
+#targetInfoTitle {
+  grid-row: 1;
+  grid-column: 4;  
+  border-left: 5px solid #b5cce3;
+}
+
+.detailTable {
+  margin-top: 5px;
+}
+
+.detailHeader {
+  text-align: center;
+  font-size: 12px;
+  border-bottom: solid thin grey;
+  border-top: solid thin grey;
+}
+
+.detailHeader td {
+  padding: 0px 20px 0px 20px;
+}
+
+.attackDetail {
+  text-align: center;
+}
+
+.attackDetail td {
+  padding: 0px 3px 0px 3px;
+}
+
+.damageRoll:hover .damageRollTip {
+  display: inline-block;
+}
+
+.damageRollTip {
+  display: none;
+  position: absolute;
+  border: solid thin #b5cce3;
+  background-color: #65819c;
+  color: #fff;
+  padding: 2px;
+  box-shadow: 2px 2px 2px #666;
+  border-radius: 5px;
+  margin: 0px 0px 0px 1px;
+  font-size: 12px;
+}
+
+.hitRoll:hover .hitRollTip {
+  display: inline-block;
+}
+
+.hitRollTip {
+  display: none;
+  position: absolute;
+  border: solid thin #b5cce3;
+  background-color: #65819c;
+  color: #fff;
+  padding: 2px;
+  box-shadow: 2px 2px 2px #666;
+  border-radius: 5px;
+  margin: 0px 0px 0px 1px;
+  font-size: 12px;
+}
+
+.notification {
+  color: rgb(101, 129, 156);
+}
+
+.notification:hover {
+  color: #b5cce3;
+  cursor: help;
+}
+
+.mobile-hide {
+  display: block;
+}
+
+.mobile-display {
+  display: none;
+}
+
+.mobile-display-inline {
+  display: none;
+}
+
+@media screen and (max-width: 660px) {
+  
+  body {
+    margin: 0;
+  }
+  
+  .page-container {
+    position: relative;
+    min-height: 180vh;
+  }
+  
+  .mobile-hide {
+    display: none;
+  } 
+  
+  .mobile-display {
+    display: block;
+  }
+
+  .mobile-display-inline {
+    display: inline-block;
+  }
+
+  .mobArea {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto minmax(min-content, 1fr) auto;
+  }
+  
+  .addMobArea {
+    box-shadow: 0px 0px 0px #666;
+    margin: 5px; 0px;
+  }
+
+  .addMobArea .title {
+    padding: 5px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    
+    font-size: 19px;
+    font-weight: normal;
+  }
+  
+  .addMobArea .mobButtons {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .addMobArea .mobButtons button {
+    border-radius: 0px;
+    margin: 0px;
+    box-shadow: 0px 0px 0px #666;
+    border: solid thin rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 2px 0px;
+    font-family: Candara, Italic, sans-serif;
+  }
+  
+  .addMobArea .mobButtons button:nth-child(1) {
+    border-bottom-left-radius: 6px;
+  }
+  
+  .addMobArea .mobButtons button:nth-last-child(1) {
+    border-bottom-right-radius: 6px;
+  }
+  
+  .addMobArea .addHeader {
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: normal;
+  }
+  
+  .addMobArea  button {
+    margin-left: 5px;
+    text-align: center;
+  }
+  
+  .addMobArea .addMobCol {
+    grid-row: 2;
+    grid-column: 1;
+    padding-left: 0px;
+  }
+
+  .addMobArea .addMobCol2 {
+   grid-row: 3;
+   grid-column: 1;
+   padding-left: 0px;
+   border-bottom-left-radius: 6px;
+   border-bottom-right-radius: 6px;
+  }
+  
+  .addMobArea .addMobCol2 .mobButtons:nth-last-child(1) {
+    margin-bottom: 0px;    
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  .addMobArea #targetInfoTitle {
+   margin-top: 10px;
+   grid-row: 4;
+   grid-column: 1;
+   padding-left: 5px;
+   border: none;
+  }
+  
+  .addMobArea .optionsDivider {
+   grid-row: 5;  
+   grid-column: 1;
+   padding-left: 5px;
+   margin-bottom: 10px;
+   border-bottom-left-radius: 6px;
+   border-bottom-right-radius: 6px;
+  }
+  
+  .discoveryBlock {
+    margin: 0px auto 5px auto;
+  }
+  
+  #infoArea {
+    background-color: white;
+    margin-bottom: 10px;
+    min-width: 308px;
+  }
+  
+  #infoAreaDiv {
+    float: none;
+    display: none;
+    grid-row: 2;
+    grid-column: 1;
+    margin: 0px 6px;
+  } 
+  
+  #discoveryArea {
+    float:none;
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  #mobBlockArea {
+    float:left;
+    grid-row: 3;
+    grid-column: 1;
+    margin: auto;
+  }
+  
+  .mobBlock {
+    width: 100%;
+  }
+  
+  .mobBlock tr:nth-child(1) td:nth-child(1) {
+    width: 0px;    
+  }
+  
+  .addMobArea .addMobGrid {
+    grid-template-columns: auto;
+  }
+  
+  .addMobArea .addHeader {
+    font-size: 15px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 0px 0px 0px;
+  }
+  
+  .mobBlock label {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: text-top;
+  }
+  
+  .mobBlock input {
+    width: 95%;
+  }
+  
+  #totalDamageTitle {
+    text-decoration: none;
+  }
+
+  .mobBlockMenu {
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    border-top: thin solid black;
+    border-bottom: none;
+    border-left: thin solid black;
+    border-right: thin solid black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 38px;
+    font-family: initial;
+  }
+
+  .mobBlockMenu span {
+    width: 100%; 
+  }
+
+  .mobBlockMenu span:nth-child(1) {
+    border-top-left-radius: 4px;
+  }
+
+  .mobBlockMenu span:nth-last-child(1) {
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+  }
+}
+
