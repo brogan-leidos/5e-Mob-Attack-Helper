@@ -52,7 +52,6 @@ button {
 }
 
 .header-category {
-  margin-top: 5px;
   padding: 5px 10px;
   background-color: #64a3e3;
   color: #f2f2f2;
@@ -61,10 +60,22 @@ button {
   text-align: left;
   border-bottom: 5px solid #b5cce3;
   font-size: 24px;
+  text-align: center;
 }
 
+.category {
+  border: 10px solid #97b3cf;
+  background-color: #b5cce3;
+  color: black;
+  padding: 10px;
+  width: 96%;
+  margin: auto;
+  box-shadow: 2px 2px 2px #666;
+}
 
-
+form {
+  text-align: center;
+}
 
 .optionsDivider {
   background-color: #dfe6ec;
