@@ -4,8 +4,8 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 == ToDo:
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
-  2. Make it clear that some conditions stack, and others dont
-  3. Convenience DC checks for non stacking conditions. If all we do if paralyze, dont ask for the 
+  2. Make it clear that some conditions stack, and others dont (Maybe a "should this stack" check button)
+  3. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone
   4. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
   Far Future: Save a JSON of current configuration
 
@@ -17,8 +17,11 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
 
 
 
-Link to the application:
+Link to the application page:
 https://brogan-leidos.github.io/5e-Mob-Attack-Helper/
+
+Link to the live website:
+https://www.mobby5e.io
 
 
 Note: If you're brave enough to venture into the source code, you have my condolences. This was my first ever shot at a JS project, and I can now say with certainty that it is a bit of a MESS. You have been warned - god speed brave adventurer (-_-)7
