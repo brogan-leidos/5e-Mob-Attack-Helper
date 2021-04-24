@@ -3,6 +3,9 @@ If you're like me and find the DMG rules for mob combat underwhelming - this is 
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 == ToDo:
+  0. A Custom Counter kind of effect for weapons (To track strength drain or other misc effects)
+  
+  
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
   2. Make it clear that some conditions stack, and others dont (Maybe a "should this stack" check button)
   3. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone
