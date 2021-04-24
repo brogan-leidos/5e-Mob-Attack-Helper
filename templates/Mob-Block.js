@@ -28,6 +28,7 @@ export function mobBlock() {
         <option value="shade">👤</option>
         <option value="dragon">🐉</option>
         <option value="dino">🦕</option>
+        <option value="rex">🦖</option>
         <option value="unicorn">🦄</option>
         <option value="devil">😈</option>
         <option value="ogre">👹</option>

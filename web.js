@@ -21,7 +21,7 @@ var usingSavingThrowMods = false;
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
-                    new GiantSnake(), new GiantOwl()];
+                    new GiantSnake(), new GiantOwl(), new Velociraptor()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
