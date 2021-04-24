@@ -14,7 +14,7 @@ export default class GiantOwl extends Mob {
       new Weapon("Talons", [["ToHit", 3],  ["IsMelee", true], ["Weapon","2d6 + 1 slashing"]]),
     ];
     
-    this.EquipWeapon = this.Weapons[1];
+    this.EquipWeapon = this.Weapons[0];
     
   }
   
