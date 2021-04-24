@@ -5,7 +5,7 @@ import DamageRoll from './DamageRoll.js'
 export default class GiantOwl extends Mob {
   constructor() {
     super();
-    this.Name = "Giant Owl";
+    this.Name = "GiantOwl";
     this.Icon = "\"owl\""
     
     this.DamageRoll = new DamageRoll();
