@@ -5,7 +5,7 @@ import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Di
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
-         Bandit } from './presents/index.js'
+         Bandit, Kobold, HobGoblin, BugBear } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 var mobBlockDefaultColor = "#f9f9eb";
@@ -22,7 +22,8 @@ var usingSavingThrowMods = false;
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
-                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit()];
+                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new HobGoblin(),
+                    new BugBear()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');

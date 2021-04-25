@@ -6,7 +6,7 @@ export default class Goblin extends Mob {
   constructor() {
     super();
     this.Name = "Goblin";
-    this.Icon = "\"ogre\""
+    this.Icon = "\"goblin\""
     
     this.DamageRoll = new DamageRoll();
     

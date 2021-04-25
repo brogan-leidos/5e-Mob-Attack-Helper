@@ -32,6 +32,7 @@ export function mobBlock() {
         <option value="unicorn">🦄</option>
         <option value="devil">😈</option>
         <option value="ogre">👹</option>
+        <option value="goblin">👺</option>
         <option value="alien">👽</option>
         <option value="alienmonster">👾</option>        
         <option value="wolf">🐺</option>
