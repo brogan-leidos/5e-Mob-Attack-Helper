@@ -14,6 +14,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
   Far Future: Save a JSON of current configuration
 
 == Known issues:
+  - Deleting a mob while a hit prompt is up and there are multiple attacks from that mob will cause things to break
   - Damage tooltips are a little wonkey when the number is large. Look into CSS positioning fixes!
   - ~It's a bit ugly, and I'm a bit terrible at CSS~ It's looking a bit better and I'm a little better at CSS!
   - This implementation of the weapon parser uses eval(). It works for most everything, but maybe theres a problem here I'm missing?
