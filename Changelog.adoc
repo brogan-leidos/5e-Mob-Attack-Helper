@@ -9,6 +9,10 @@
   - Goblin
   - Orc
   - Bandit
+  - Hobgoblin
+  - Kobold
+  - Bugbear
+* Organized creature types by CR
 
 === Ver 1.0.0
 * Initial release
