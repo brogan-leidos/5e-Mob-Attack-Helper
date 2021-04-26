@@ -262,7 +262,7 @@ function generateMobBlockHTML(mobTag, presentName) {
 
 function assignVariants(mobTag, newMobVariants) {
     var mobTable = document.getElementById(mobTag).children[1].firstElementChild;
-    var appendBlock = "<tr><td>";
+    var appendBlock = "<tr><td></td><td>";
     for (var i=0; i < newMobVariants.length; i++) {
         appendBlock += `<button class="creatureVariantButton" id="${mobTag}-ChangeVariant-${i}" value="${newMobVariants[i]}">${newMobVariants[i]}</button>`;
     }
