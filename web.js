@@ -217,7 +217,7 @@ function createPresent(presentName) {
         var newMob = filtered[0];
         changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
         if (newMob.Variants) {
-            assignVariants(mobTab, newMob.Variants)
+            assignVariants(mobTag, newMob.Variants)
         }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
             changeMobWeapon(mobTag, e.target.value);        
@@ -260,8 +260,8 @@ function generateMobBlockHTML(mobTag, presentName) {
      }
 }
 
-function assignVariants(mobTab, newMobVariants) {
-    var mobBlock = document.getElementById(mobTab);
+function assignVariants(mobTag, newMobVariants) {
+    var mobBlock = document.getElementById(mogTab);
     var appendBlock = "<tr><td>";
     for (var i=0; i < newMobVariants.length; i++) {
         appendBlock += `<button class="creatureVariantButton" id="${mobTag}-${ChangeVariant}-${i}" value="${newMobVariants}">${newMobVariants[i]}</button>`;
