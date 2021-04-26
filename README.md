@@ -3,8 +3,9 @@ If you're like me and find the DMG rules for mob combat underwhelming - this is 
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 == ToDo:
-  0. A Custom Counter kind of effect for weapons (To track strength drain or other misc effects)
-  
+  - A Custom Counter kind of effect for weapons (To track strength drain or other misc effects)
+  - A toggle for the dynamic launch attack button text
+  - Make it clear when the first attack crits or misses
   
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
   2. Make it clear that some conditions stack, and others dont (Maybe a "should this stack" check button)
@@ -13,6 +14,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
   Far Future: Save a JSON of current configuration
 
 == Known issues:
+  - Deleting a mob while a hit prompt is up and there are multiple attacks from that mob will cause things to break
   - Damage tooltips are a little wonkey when the number is large. Look into CSS positioning fixes!
   - ~It's a bit ugly, and I'm a bit terrible at CSS~ It's looking a bit better and I'm a little better at CSS!
   - This implementation of the weapon parser uses eval(). It works for most everything, but maybe theres a problem here I'm missing?
