@@ -224,9 +224,8 @@ function createPresent(presentName) {
         });
     }
     
-    assignEventsToBlock(mobTag) 
+    assignEventsToBlock(mobTag);
          
-    return; 
 }
 
 function generateMobBlockHTML(presentName) {
