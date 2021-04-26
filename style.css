@@ -277,7 +277,7 @@ button {
 }
 
 .addMobArea .addMobGrid {
-  grid-template-columns: 70px 15% auto 70px auto 30%;
+  grid-template-columns: 70px 20% auto 70px auto 30%;
 }
 
 /* Add mob text*/
@@ -768,7 +768,7 @@ button {
   
   .addMobArea {
     box-shadow: 0px 0px 0px #666;
-    margin: 5px; 0px;
+    margin: 5px;
   }
 
   .addMobArea .title {
