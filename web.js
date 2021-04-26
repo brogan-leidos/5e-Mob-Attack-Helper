@@ -209,7 +209,7 @@ function createPresent(presentName) {
    blockArray.push(mobTag);
    mobIncrement++;
     
-   var mobBlockHTML = generateMobBlockHTML(presentName,);
+   var mobBlockHTML = generateMobBlockHTML(mobTag, presentName);
    mobBlockArea.insertAdjacentHTML('beforeend', mobBlockHTML);
 
    var filtered = mobReference.filter(a => a.Name == presentName);
@@ -279,7 +279,7 @@ function assignVariants(mobTab, newMobVariants) {
 }
 
 function changeMobVariant(mobTag, presentName) {
-    var html = generateMobBlockHTML(presentName, mobTag);
+    var html = generateMobBlockHTML(mobTag, presentName);
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
     assignEventsToBlock(mobTag) 
