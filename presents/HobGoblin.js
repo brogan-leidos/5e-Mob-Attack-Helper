@@ -2,10 +2,10 @@ import Mob from './Mob.js'
 import Weapon from './Weapon.js'
 import DamageRoll from './DamageRoll.js'
 
-export default class HobGoblin extends Mob {
+export default class Hobgoblin extends Mob {
   constructor() {
     super();
-    this.Name = "HobGoblin";
+    this.Name = "Hobgoblin";
     this.Icon = "\"goblin\""
     
     this.DamageRoll = new DamageRoll();

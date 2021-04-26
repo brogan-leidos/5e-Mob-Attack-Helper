@@ -5,7 +5,7 @@ import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Di
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
-         Bandit, Kobold, HobGoblin, Bugbear } from './presents/index.js'
+         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 var mobBlockDefaultColor = "#f9f9eb";
@@ -22,8 +22,8 @@ var usingSavingThrowMods = false;
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
-                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new HobGoblin(),
-                    new Bugbear()];
+                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new WingedKobold(), 
+                    new Hobgoblin(), new Bugbear()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -209,38 +209,16 @@ function createPresent(presentName) {
    blockArray.push(mobTag);
    mobIncrement++;
     
-   var newMob;
-   var appendBlock = mobBlock();
-    
+   var mobBlockHTML = generateMobBlockHTML(presentName);
+   mobBlockArea.insertAdjacentHTML('beforeend', mobBlockHTML);
+
    var filtered = mobReference.filter(a => a.Name == presentName);
-   if (filtered.length == 0) {  // Generic
-       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
-       appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
-       
-       appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
-       appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
-       
-       mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
-       
-       document.getElementById(mobTag + "-Weapon-Select").remove();       
-    }
-    else {
-        newMob = filtered[0];
-
-        var additionalOptions = weaponsToHtml(newMob.Weapons);
-        appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
-        var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
-        appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
-
-        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
-        appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
-        appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
- 
-        appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
-
-        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
-        
+   if (filtered.length != 0) {
+        var newMob = filtered[0];
         changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        if (newMob.Variants) {}
+            assignVariants(mobTab, newMob.Variants)
+        }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
             changeMobWeapon(mobTag, e.target.value);        
         });
@@ -249,6 +227,62 @@ function createPresent(presentName) {
     assignEventsToBlock(mobTag) 
          
     return; 
+}
+
+function generateMobBlockHTML(presentName) {
+    var appendBlock = mobBlock();
+    var filtered = mobReference.filter(a => a.Name == presentName);
+    if (filtered.length == 0) {  // Generic
+        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
+        appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
+        
+        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
+        appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
+
+        // No weapons to add so remove it here
+        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select.*<\/select>/gs, "")
+        return appendBlock;
+     }
+     else {
+         newMob = filtered[0];
+ 
+         var additionalOptions = weaponsToHtml(newMob.Weapons);
+         appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
+         appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
+ 
+         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
+         appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
+         appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
+  
+         appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
+ 
+        return appendBlock;
+     }
+}
+
+function assignVariants(mobTab, newMobVariants) {
+    var mobBlock = document.getElementById(mobTab);
+    var appendBlock = "<tr><td>";
+    for (var i=0; i < newMobVariants.length; i++) {
+        appendBlock += `<button class="creatureVariantButton" id="${mobTag}-${ChangeVariant}-${i}" value="${newMobVariants}">${newMobVariants[i]}</button>`;
+    }
+    appendBlock += "</td></tr>";
+
+    mobBlock.insertAdjacentElement('beforeend', appendBlock)
+
+    for (var i=0; i < newMobVariants.length; i++) {
+        var element = document.getElementById(`${mobTag}-${ChangeVariant}-${i}`);
+        element.addEventListener('click', (e) => {
+            changeMobVariant(e.target.value)
+        });
+}
+
+function changeMobVariant(mobTab, presentName) {
+    var html = generateMobBlockHTML(presentName);
+    var mobBlock = document.getElementById(mobTag);
+    mobBlock.innerHTML = html;
+    assignEventsToBlock(mobTag) 
 }
 
 function assignEventsToBlock(mobTag) {
