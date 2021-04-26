@@ -209,7 +209,7 @@ function createPresent(presentName) {
    blockArray.push(mobTag);
    mobIncrement++;
     
-   var mobBlockHTML = generateMobBlockHTML(presentName);
+   var mobBlockHTML = generateMobBlockHTML(presentName,);
    mobBlockArea.insertAdjacentHTML('beforeend', mobBlockHTML);
 
    var filtered = mobReference.filter(a => a.Name == presentName);
@@ -228,7 +228,7 @@ function createPresent(presentName) {
          
 }
 
-function generateMobBlockHTML(presentName) {
+function generateMobBlockHTML(mobTag, presentName) {
     var appendBlock = mobBlock();
     var filtered = mobReference.filter(a => a.Name == presentName);
     if (filtered.length == 0) {  // Generic
@@ -278,8 +278,8 @@ function assignVariants(mobTab, newMobVariants) {
     }
 }
 
-function changeMobVariant(mobTab, presentName) {
-    var html = generateMobBlockHTML(presentName);
+function changeMobVariant(mobTag, presentName) {
+    var html = generateMobBlockHTML(presentName, mobTag);
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
     assignEventsToBlock(mobTag) 
