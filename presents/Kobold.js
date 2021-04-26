@@ -18,7 +18,7 @@ export default class Kobold extends Mob {
       
       this.EquipWeapon = this.Weapons[0];
 
-      this.Variants = ["Kobold", "WingedKobold"]
+      this.Variants = ["Kobold", "Winged Kobold"]
   }
   
 }
