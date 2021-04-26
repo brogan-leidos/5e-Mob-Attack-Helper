@@ -268,13 +268,14 @@ function assignVariants(mobTab, newMobVariants) {
     }
     appendBlock += "</td></tr>";
 
-    mobBlock.insertAdjacentElement('beforeend', appendBlock)
+    mobBlock.insertAdjacentElement('beforeend', appendBlock);
 
     for (var i=0; i < newMobVariants.length; i++) {
         var element = document.getElementById(`${mobTag}-${ChangeVariant}-${i}`);
         element.addEventListener('click', (e) => {
             changeMobVariant(e.target.value)
         });
+    }
 }
 
 function changeMobVariant(mobTab, presentName) {
