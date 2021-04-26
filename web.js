@@ -261,14 +261,14 @@ function generateMobBlockHTML(mobTag, presentName) {
 }
 
 function assignVariants(mobTag, newMobVariants) {
-    var mobBlock = document.getElementById(mobTag);
+    var mobTable = document.getElementById(mobTag).firstElementChild;
     var appendBlock = "<tr><td>";
     for (var i=0; i < newMobVariants.length; i++) {
         appendBlock += `<button class="creatureVariantButton" id="${mobTag}-ChangeVariant-${i}" value="${newMobVariants[i]}">${newMobVariants[i]}</button>`;
     }
     appendBlock += "</td></tr>";
 
-    mobBlock.insertAdjacentHTML('beforeend', appendBlock);
+    mobTable.insertAdjacentHTML('beforeend', appendBlock);
 
     for (var i=0; i < newMobVariants.length; i++) {
         var element = document.getElementById(`${mobTag}-ChangeVariant-${i}`);
