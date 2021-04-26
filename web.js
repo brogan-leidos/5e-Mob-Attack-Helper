@@ -271,7 +271,7 @@ function assignVariants(mobTag, newMobVariants) {
     mobBlock.insertAdjacentHTML('beforeend', appendBlock);
 
     for (var i=0; i < newMobVariants.length; i++) {
-        var element = document.getElementById(`${mobTag}-${ChangeVariant}-${i}`);
+        var element = document.getElementById(`${mobTag}-ChangeVariant-${i}`);
         element.addEventListener('click', (e) => {
             changeMobVariant(mobTag, e.target.value)
         });
