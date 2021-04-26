@@ -268,7 +268,7 @@ function assignVariants(mobTag, newMobVariants) {
     }
     appendBlock += "</td></tr>";
 
-    mobTable.insertAdjacentHTML('beforeend', appendBlock);
+    mobTable.insertAdjacentHTML('afterend', appendBlock);
 
     for (var i=0; i < newMobVariants.length; i++) {
         var element = document.getElementById(`${mobTag}-ChangeVariant-${i}`);
