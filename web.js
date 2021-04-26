@@ -273,7 +273,7 @@ function assignVariants(mobTab, newMobVariants) {
     for (var i=0; i < newMobVariants.length; i++) {
         var element = document.getElementById(`${mobTag}-${ChangeVariant}-${i}`);
         element.addEventListener('click', (e) => {
-            changeMobVariant(e.target.value)
+            changeMobVariant(mobTag, e.target.value)
         });
     }
 }
