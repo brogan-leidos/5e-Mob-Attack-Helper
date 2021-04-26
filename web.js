@@ -216,7 +216,7 @@ function createPresent(presentName) {
    if (filtered.length != 0) {
         var newMob = filtered[0];
         changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
-        if (newMob.Variants) {}
+        if (newMob.Variants) {
             assignVariants(mobTab, newMob.Variants)
         }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
