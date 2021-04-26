@@ -282,6 +282,17 @@ function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
+
+    var filtered = mobReference.filter(a => a.Name == presentName);
+    var newMob = filtered[0];
+    changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+    if (newMob.Variants) {
+        assignVariants(mobTag, newMob.Variants)
+    }
+    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value);        
+    });
+
     assignEventsToBlock(mobTag) 
 }
 
