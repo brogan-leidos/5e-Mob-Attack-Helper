@@ -2,6 +2,12 @@
 
 == Current Version: 1.0.1
 
+=== Ver 1.0.2
+* Added creature variants:
+  - Kobold/Winged Kobold
+  - Wolf/Dire Wolf
+  - Elk/Giant Elk
+
 === Ver 1.0.1
 * Added Mobs:
   - Velociraptor

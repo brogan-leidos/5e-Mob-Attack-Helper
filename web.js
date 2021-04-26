@@ -243,7 +243,7 @@ function generateMobBlockHTML(presentName) {
         return appendBlock;
      }
      else {
-         newMob = filtered[0];
+         var newMob = filtered[0];
  
          var additionalOptions = weaponsToHtml(newMob.Weapons);
          appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
