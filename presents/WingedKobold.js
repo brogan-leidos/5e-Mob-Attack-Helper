@@ -5,7 +5,7 @@ import DamageRoll from './DamageRoll.js'
 export default class WingedKobold extends Mob {
   constructor() {
     super();
-      this.Name = "WingedKobold";
+      this.Name = "Winged Kobold";
       this.DisplayName = "Winged Kobold";
       this.Icon = "\"dragon\""
       
@@ -18,7 +18,7 @@ export default class WingedKobold extends Mob {
       
       this.EquipWeapon = this.Weapons[0];
 
-      this.Variants = ["Kobold", "WingedKobold"]
+      this.Variants = ["Kobold", "Winged Kobold"]
   }
   
 }
