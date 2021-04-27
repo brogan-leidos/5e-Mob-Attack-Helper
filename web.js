@@ -283,7 +283,7 @@ function changeMobVariant(mobTag, presentName) {
     // Gotta strip away the DIV container so we dont duplicate it
     var divStripRegex = new RegExp(`[^<div id="${mobTag}" >].*[^<\/div>$]`, "gs");
     var match = html.match(divStripRegex);
-    html = match[1];
+    html = match[0];
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
 
