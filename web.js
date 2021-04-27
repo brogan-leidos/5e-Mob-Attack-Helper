@@ -5,7 +5,8 @@ import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Di
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
-         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear } from './presents/index.js'
+         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake 
+         } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 var mobBlockDefaultColor = "#f9f9eb";
@@ -23,7 +24,7 @@ var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(),
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
                     new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new WingedKobold(), 
-                    new Hobgoblin(), new Bugbear()];
+                    new Hobgoblin(), new Bugbear(), new DireWolf(), new GiantElk(), new GiantBoar(), new ConstrictSnake(), new PoisonSnake(), new FlyingSnake()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');

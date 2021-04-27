@@ -18,6 +18,7 @@ export default class Elk extends Mob {
     
     this.EquipWeapon = this.Weapons[1];
     
+    this.Variants = ["Elk", "Giant Elk"];
   }
   
 }

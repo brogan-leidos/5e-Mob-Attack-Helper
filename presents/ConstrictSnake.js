@@ -2,16 +2,17 @@ import Mob from './Mob.js'
 import Weapon from './Weapon.js'
 import DamageRoll from './DamageRoll.js'
 
-export default class GiantSnake extends Mob {
+export default class ConstrictSnake extends Mob {
   constructor() {
     super();
-    this.Name = "Giant Poisonous Snake";
+    this.Name = "Constrictor Snake";
     this.Icon = "\"snake\""
     
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Bite", [["ToHit", 6],  ["IsMelee", false], ["Weapon","1d4 + 4 piercing"], ["DC", 11, "Con"], ["Damage (1/2 on save)", "3d6 + 0 poison"]]),
+      new Weapon("Bite", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d6 + 2 piercing"]]),
+      new Weapon("Constrict", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d8 + 2 bludgeoning"], ["Condition", "Grappled"], ["Condition", "Restrained"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
