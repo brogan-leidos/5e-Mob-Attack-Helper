@@ -274,7 +274,7 @@ function assignVariants(mobTag, newMobVariants) {
 
     // Add new menu option
     var variantButton = `<span class="mobVariantsButton" id="${mobTag}-VariantToggle" title="Show/Hide variants of this creature type"><i class="fa fa-users"></i></span>`
-    document.getElementById(`${mobTag}`).firstElementChild.insertAdjacentElement('beforeend', variantButton);
+    document.getElementById(`${mobTag}`).firstElementChild.insertAdjacentHTML('beforeend', variantButton);
 
     document.getElementById(`${mobTag}-VariantsToggle`).addEventListener('click', (e) => {
         toggleVariantsMenu(mobTag);
