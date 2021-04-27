@@ -298,11 +298,13 @@ function changeMobVariant(mobTag, presentName) {
         changeMobWeapon(mobTag, e.target.value);        
     });
 
-    assignEventsToBlock(mobTag) 
+    assignEventsToBlock(mobTag, false) 
 }
 
-function assignEventsToBlock(mobTag) {
-    document.getElementById(mobTag).style.gridRow = blockArray.length;
+function assignEventsToBlock(mobTag, changeRow=true) {
+    if (changeRow) {
+        document.getElementById(mobTag).style.gridRow = blockArray.length;
+    }
          
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);

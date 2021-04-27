@@ -71,6 +71,10 @@ button {
   border-bottom: 5px solid #b5cce3;
 }
 
+.overheadMobBlock {
+  margin-bottom: 7px;
+}
+
 .mobBlock {
   border: thin solid #000;
   border-collapse: collapse;
@@ -278,11 +282,12 @@ button {
 
 div.creatureVariantMenu {
   display: flex;
-  margin-left: 21px;
+  width: 319px;;
+  margin-left: 21px;  
 }
 
 button.creatureVariantButton {
-  font-size: 12px;
+  font-size: 10px;
   width: 100%;
   background-color: #fff;
   color: #666;
@@ -1010,5 +1015,9 @@ button.creatureVariantButton:nth-last-child(1) {
   .mobBlockMenu span:nth-last-child(1) {
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0px;
+  }
+
+  div.creatureVariantMenu {    
+    width: 350px;;     
   }
 }
