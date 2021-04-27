@@ -11,7 +11,7 @@ export default class GiantSnake extends Mob {
     this.DamageRoll = new DamageRoll();
     
     this.Weapons = [
-      new Weapon("Bite", [["ToHit", 6],  ["IsMelee", false], ["Weapon","1d4 + 4 piercing"], ["DC", 11, "Con"], ["Damage (1/2 on save)", "3d6 + 0 poison"]]),
+      new Weapon("Bite", [["ToHit", 6],  ["IsMelee", false], ["Weapon","1d4 + 4 piercing"], ["DC", 11, "Con"], ["Damage (1/2 on save)", "3d6 poison"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];

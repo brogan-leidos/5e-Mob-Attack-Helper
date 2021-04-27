@@ -282,7 +282,7 @@ button {
 
 div.creatureVariantMenu {
   display: flex;
-  width: 319px;;
+  max-width: 319px;;
   margin-left: 21px;  
 }
 
@@ -1018,6 +1018,6 @@ button.creatureVariantButton:nth-last-child(1) {
   }
 
   div.creatureVariantMenu {    
-    width: 350px;;     
+    max-width: 350px;;     
   }
 }
