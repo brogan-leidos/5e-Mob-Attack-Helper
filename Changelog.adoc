@@ -7,6 +7,8 @@
   - Kobold/Winged Kobold
   - Wolf/Dire Wolf
   - Elk/Giant Elk
+  - Boar/GiantBoar
+  - Psn Snake/GP Snake/Flying Snake/Constrictor Snake
 
 === Ver 1.0.1
 * Added Mobs:
