@@ -5,8 +5,8 @@ import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Di
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
-         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake 
-         } from './presents/index.js'
+         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
+         GiantElk } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 var mobBlockDefaultColor = "#f9f9eb";
