@@ -263,7 +263,7 @@ function generateMobBlockHTML(mobTag, presentName) {
 
 function assignVariants(mobTag, newMobVariants) {
     var mobTable = document.getElementById(mobTag).children[1];
-    var appendBlock = `<div class="creatureVariantMenu" style="display: flex">`;
+    var appendBlock = `<div class="creatureVariantMenu" id="${mobTag}-VariantsMenu" style="display: flex">`;
     var small = newMobVariants.length > 3 ? "small" : "";
     for (var i=0; i < newMobVariants.length; i++) {
         appendBlock += `<button class="creatureVariantButton ${small}" id="${mobTag}-ChangeVariant-${i}" value="${newMobVariants[i]}">${newMobVariants[i]}</button>`;
@@ -272,11 +272,30 @@ function assignVariants(mobTag, newMobVariants) {
 
     mobTable.insertAdjacentHTML('afterend', appendBlock);
 
+    // Add new menu option
+    var variantButton = `<span class="mobVariantsButton" id="${mobTag}-VariantToggle" title="Show/Hide variants of this creature type"><i class="fa fa-users"></i></span>`
+    document.getElementById(`${mobTag}`).firstElementChild.insertAdjacentElement('beforeend', variantButton);
+
+    document.getElementById(`${mobTag}-VariantsToggle`).addEventListener('click', (e) => {
+        toggleVariantsMenu(mobTag);
+    });
+
+
     for (var i=0; i < newMobVariants.length; i++) {
         var element = document.getElementById(`${mobTag}-ChangeVariant-${i}`);
         element.addEventListener('click', (e) => {
             changeMobVariant(mobTag, e.target.value)
         });
+    }
+}
+
+function toggleVariantsMenu(mobTag) {
+    var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
+    if (menuElement.style.display != "none") {
+        menuElement.style.display = "none";
+    }
+    else {
+        menuElement.style.display = "inline-block";
     }
 }
 
