@@ -273,7 +273,7 @@ function assignVariants(mobTag, newMobVariants) {
     mobTable.insertAdjacentHTML('afterend', appendBlock);
 
     // Add new menu option
-    var variantButton = `<span class="mobVariantsButton" id="${mobTag}-VariantToggle" title="Show/Hide variants of this creature type"><i class="fa fa-users"></i></span>`
+    var variantButton = `<span class="mobVariantsButton" id="${mobTag}-VariantsToggle" title="Show/Hide variants of this creature type"><i class="fa fa-users"></i></span>`
     document.getElementById(`${mobTag}`).firstElementChild.insertAdjacentHTML('beforeend', variantButton);
 
     document.getElementById(`${mobTag}-VariantsToggle`).addEventListener('click', (e) => {
