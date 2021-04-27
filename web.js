@@ -263,7 +263,7 @@ function generateMobBlockHTML(mobTag, presentName) {
 
 function assignVariants(mobTag, newMobVariants) {
     var mobTable = document.getElementById(mobTag).children[1];
-    var appendBlock = `<div class="creatureVariantMenu" style="display: flex"><td colspan="2">`;
+    var appendBlock = `<div class="creatureVariantMenu" style="display: flex">`;
     for (var i=0; i < newMobVariants.length; i++) {
         appendBlock += `<button class="creatureVariantButton" id="${mobTag}-ChangeVariant-${i}" value="${newMobVariants[i]}">${newMobVariants[i]}</button>`;
     }
@@ -282,7 +282,7 @@ function assignVariants(mobTag, newMobVariants) {
 function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
     // Gotta strip away the DIV container so we dont duplicate it
-    var divStripRegex = new RegExp(`[^<div id="${mobTag}" >].*[^<\/div>$]`, "gs");
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">].*[^<\/div>$]`, "gs");
     var match = html.match(divStripRegex);
     html = match[0];
     var mobBlock = document.getElementById(mobTag);
