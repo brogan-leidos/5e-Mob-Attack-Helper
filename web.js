@@ -295,7 +295,7 @@ function toggleVariantsMenu(mobTag) {
         menuElement.style.display = "none";
     }
     else {
-        menuElement.style.display = "inline-block";
+        menuElement.style.display = "flex";
     }
 }
 
