@@ -6,6 +6,7 @@ This tools intention is to allow all aspiring druids, necromancers, and warlords
   - A Custom Counter kind of effect for weapons (To track strength drain or other misc effects)
   - A toggle for the dynamic launch attack button text
   - Make it clear when the first attack crits or misses
+  - Color shemes so people can use multiple tabs
   
   1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
   2. Make it clear that some conditions stack, and others dont (Maybe a "should this stack" check button)
