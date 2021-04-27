@@ -256,6 +256,11 @@ button {
   vertical-align: top;
 }
 
+button.creatureVariantButton {
+  font-size: 12px;
+  width: 100%;
+}
+
 #goButton {
   color: red;
   margin-left: 10px;
