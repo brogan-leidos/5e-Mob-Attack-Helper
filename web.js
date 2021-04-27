@@ -281,7 +281,7 @@ function assignVariants(mobTag, newMobVariants) {
 function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
     // Gotta strip away the DIV container so we dont duplicate it
-    var divStripRegex = new RegExp(`<div id=${mobTag} >(.*)<\/div>$`, "gs");
+    var divStripRegex = new RegExp(`<div id="${mobTag}" >(.*)<\/div>$`, "gs");
     var match = html.match(divStripRegex);
     html = match[1];
     var mobBlock = document.getElementById(mobTag);
