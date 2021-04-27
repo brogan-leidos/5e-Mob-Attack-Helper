@@ -55,7 +55,7 @@ button {
   border: thin solid #000;
   border-collapse: collapse;
   background-color: #f9f9eb;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   box-shadow: 2px 2px 2px #666;
   grid-column: 1;
 }
@@ -256,9 +256,39 @@ button {
   vertical-align: top;
 }
 
+div.creatureVariantMenu {
+  display: flex;
+  margin-left: 21px;
+}
+
 button.creatureVariantButton {
   font-size: 12px;
   width: 100%;
+  background-color: #fff;
+  color: #666;
+  border-radius: 0px;
+  border: thin solid black;
+  border-bottom: thin solid black;
+  border-left: thin solid rgba(100, 100, 100, .6);
+  border-right: thin solid rgba(100, 100, 100, .6);
+  border-top: none;
+  box-shadow: 2px 2px 2px #666;
+}
+
+button.creatureVariantButton:hover {
+  color: black;
+  background-color: grey;
+  cursor: pointer;
+}
+
+button.creatureVariantButton:nth-child(1) {
+  border-bottom-left-radius: 5px;
+  border-left: thin solid black;
+}
+
+button.creatureVariantButton:nth-last-child(1) {
+  border-bottom-right-radius: 5px;
+  border-right: thin solid black;
 }
 
 #goButton {
@@ -919,6 +949,10 @@ button.creatureVariantButton {
   
   .mobBlock input {
     width: 95%;
+  }
+
+  div.creatureVariantMenu {
+    margin-left: 0px;
   }
   
   #totalDamageTitle {
