@@ -15,6 +15,8 @@ export default class FlyingSnake extends Mob {
     ];
     
     this.EquipWeapon = this.Weapons[0];
+
+    this.Variants = ["Poisonous Snake", "Giant Poisonous Snake", "Constrictor Snake", "Flying Snake"];
     
   }
   
