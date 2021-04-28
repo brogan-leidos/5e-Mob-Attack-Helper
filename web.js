@@ -1,6 +1,6 @@
 import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
-import { weaponsToHtml } from './templates/utils.js'
+import { weaponsToHtml, CreatureNotes } from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
@@ -8,6 +8,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
+
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
@@ -829,6 +830,7 @@ async function launchAttack() {
         for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
             var newCreature = mobArray[block][i];
+            var creatureNotes = new CreatureNotes();
 
             var advantage = 0;
             var disadvantage = 0;
@@ -907,6 +909,7 @@ async function launchAttack() {
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
                         ailments[nonDcConditions[cond]] = true;
+                        creatureNotes.addInfliction(nonDcConditions[cond])
                         rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
                 }
@@ -992,11 +995,13 @@ async function launchAttack() {
                             if (conditionName == "Knock Prone") { // Prone cant stack so don't track it more than once
                                 if (!ailments[conditionName]) {
                                     ailments[conditionName] = true;
+                                    creatureNotes.addInfliction(conditionName);
                                     rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
                                 ailments[conditionName] = true;
+                                creatureNotes.addInfliction(conditionName);
                                 rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
@@ -1014,7 +1019,7 @@ async function launchAttack() {
             }
                        
             rollArray[block].push(rollResult);
-            if (rollResult.error) {
+            if (rollResult.error) {                  
                   throwError(rollResult.message);
                   return;
             }
@@ -1088,6 +1093,7 @@ async function launchAttack() {
     
 }
 
+// Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
 function parseMobs(numBlocks) {
     var mobArray = []; // 2d arrays: Block type, attacks of that block    
 
