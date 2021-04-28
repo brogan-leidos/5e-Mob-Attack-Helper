@@ -125,10 +125,12 @@ function minimizeMob(mobTag) {
     if (mobMin.checked) {
         mobMin.firstElementChild.classList = "fa fa-window-maximize"
         mobMin.firstElementChild.style.fontSize = "10px"
+        toggleVariantsMenu(mobTag, "maximize")
     }
     else {
         mobMin.firstElementChild.classList = "fa fa-window-minimize"
         mobMin.firstElementChild.style.fontSize = "8px"
+        toggleVariantsMenu(mobTag, "minimize")
     }
          
     for(var i=3; i < rows-2; i++) {
@@ -289,13 +291,24 @@ function assignVariants(mobTag, newMobVariants) {
     }
 }
 
-function toggleVariantsMenu(mobTag) {
+function toggleVariantsMenu(mobTag, source="user") {
     var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
-    if (menuElement.style.display != "none") {
-        menuElement.style.display = "none";
+    
+    if (source == "minimize") {
+        menuElement.hidden = true;
     }
-    else {
-        menuElement.style.display = "flex";
+    else if (source == "maximize" && !menuElement.userHidden) {
+        menuElement.hidden = false;
+    }
+    else if (source == "user") {
+        if (menuElement.hidden == false) {
+            menuElement.hidden = true;
+            menuElement.userHidden = true;
+        }
+        else if (menuElement.hidden == true) {
+            menuElement.hidden = false;
+            menuElement.userHidden = false;
+        }
     }
 }
 
