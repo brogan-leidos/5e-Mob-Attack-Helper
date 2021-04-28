@@ -868,6 +868,7 @@ async function launchAttack() {
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
                 rollResult = newCreature.dealCrit();
                 numCrits = numCrits + 1;
+                hitTarget = true;
             }
             else if (attackRollClass.crit && attackRollClass.missed) { // A crit flag + a miss flag = a critical miss
                 rollArray[block].push(newCreature.miss());
