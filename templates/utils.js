@@ -49,3 +49,5 @@ export default class CreatureNotes {
 
   
 }
+
+export { default as CreatureNotes }
