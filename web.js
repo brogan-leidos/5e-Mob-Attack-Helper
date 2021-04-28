@@ -294,10 +294,10 @@ function assignVariants(mobTag, newMobVariants) {
 function toggleVariantsMenu(mobTag, source="user") {
     var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
     
-    if (source == "minimize") {
+    if (source == "maximize") {
         menuElement.style.display = "none";
     }
-    else if (source == "maximize" && !menuElement.userHidden) {
+    else if (source == "minimize" && !menuElement.userHidden) {
         menuElement.style.display = "flex";
     }
     else if (source == "user") {
