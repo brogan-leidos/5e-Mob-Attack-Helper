@@ -913,8 +913,10 @@ async function launchAttack() {
                 var nonDcConditions = newCreature.getNonDcConditions();
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
-                        ailments[nonDcConditions[cond]] = true;
-                        creatureNotes.addInfliction(nonDcConditions[cond]);
+                        if (!(nonDcConditions[cond] == "Knock Prone" && ailments[nonDcConditions[cond]])) {                        
+                            ailments[nonDcConditions[cond]] = true;
+                            creatureNotes.addInfliction(nonDcConditions[cond]);
+                        }
                         // rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
                 }
