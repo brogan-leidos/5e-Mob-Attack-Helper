@@ -985,20 +985,23 @@ async function launchAttack() {
                     }
                     var failureResults = newCreature.failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
-                        if (failureResults[fail][0] == "Condition") {
-                            if (failureResults[fail][1] == "Knock Prone") { // Prone cant stack so don't track it more than once
-                                if (!ailments[failureResults[fail][1]]) {
-                                    ailments[failureResults[fail][1]] = true;
-                                    rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                        var effectType= failureResults[fail][0];
+                        var conditionName = failureResults[fail][1];
+                        if (effectType == "Condition") {
+                            
+                            if (conditionName == "Knock Prone") { // Prone cant stack so don't track it more than once
+                                if (!ailments[conditionName]) {
+                                    ailments[conditionName] = true;
+                                    rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
-                                ailments[failureResults[fail][1]] = true;
-                                rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                                ailments[conditionName] = true;
+                                rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
-                        else if (failureResults[fail][0] == "Roll Class") {
-                            rollResult = failureResults[fail][1];
+                        else if (effectType == "Roll Class") {
+                            rollResult = conditionName;
                         }
                     }
                 }

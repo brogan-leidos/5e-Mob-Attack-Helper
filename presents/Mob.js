@@ -197,11 +197,9 @@ export default class Mob {
         var afterDc = false;
         var ret = [];
         for (var i=0; i < this.EquipWeapon.length; i++) {                        
-            if (!afterDc) {                
-                if (this.EquipWeapon[i][0] == "Condition") {
-                    ret.push(this.EquipWeapon[i][1]);
-                }
-            }
+            if (this.EquipWeapon[i][0] == "Condition") {
+                ret.push(this.EquipWeapon[i][1]);
+            }            
             else if (this.EquipWeapon[i][0] == "DC") {
                 break;
             }
