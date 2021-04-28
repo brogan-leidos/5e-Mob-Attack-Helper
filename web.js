@@ -295,18 +295,18 @@ function toggleVariantsMenu(mobTag, source="user") {
     var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
     
     if (source == "minimize") {
-        menuElement.hidden = true;
+        menuElement.style.display = "none";
     }
     else if (source == "maximize" && !menuElement.userHidden) {
-        menuElement.hidden = false;
+        menuElement.style.display = "flex";
     }
     else if (source == "user") {
-        if (menuElement.hidden == false) {
-            menuElement.hidden = true;
+        if (menuElement.style.display == "flex") {
+            menuElement.style.display = "none";
             menuElement.userHidden = true;
         }
-        else if (menuElement.hidden == true) {
-            menuElement.hidden = false;
+        else if (menuElement.style.display == "none") {
+            menuElement.style.display = "flex";
             menuElement.userHidden = false;
         }
     }
