@@ -805,7 +805,7 @@ async function launchAttack() {
         return false;
     }
     
-    // Having spawned our army, let them all launch attacks. Record the attack if it lands
+    // Gather user set variables
     var targetAc = document.getElementById('targetAc').value;
     var critImmune = document.getElementById('critImmune').checked;
     var dmSaves = document.getElementById('dmSaves').checked;
@@ -823,9 +823,10 @@ async function launchAttack() {
     var existingAilments = document.getElementById(`targetCondition`).value;
     ailments[existingAilments] = true;
     
+    // Create a unit for every creature in each mob
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
-        for (var i=0; i < mobArray[block].length; i++) {
+        for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
             
             var advantage = 0;
@@ -854,13 +855,14 @@ async function launchAttack() {
             mobArray[block][i].Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
                  
             var rollResult = "";
+            var hitTarget = false;
             var attackRollClass = mobArray[block][i].makeAttack();
             var attackRoll = attackRollClass.hitRoll;
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
                 rollResult = mobArray[block][i].dealCrit();
                 numCrits = numCrits + 1;
             }
-            else if (attackRollClass.crit && attackRollClass.missed) {
+            else if (attackRollClass.crit && attackRollClass.missed) { // A crit flag + a miss flag = a critical miss
                 rollArray[block].push(mobArray[block][i].miss());
                 continue;
             }
@@ -869,10 +871,11 @@ async function launchAttack() {
                   rollArray[block].push(mobArray[block][i].miss());
                   continue;
               } 
-              if (attackRoll < minAc || minAc == -1) {
+              if (attackRoll < minAc || minAc == -1) { // If we're unsure if it hit or not, or its our first time here, prompt
                   var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
                   if (response) {
                       rollResult = mobArray[block][i].dealDamage();
+                      hitTarget = true;
                       minAc = attackRoll;
                   }
                   else {
@@ -885,16 +888,29 @@ async function launchAttack() {
               }
               else {
                   rollResult = mobArray[block][i].dealDamage();
+                  hitTarget = true;
               }                
             }
             else if (attackRoll >= targetAc) {                
                 rollResult = mobArray[block][i].dealDamage();
+                hitTarget = true;
             }
             else { //Assuming this is a miss
                 rollArray[block].push(mobArray[block][i].miss());
                 continue;
             }
          
+            // On a hit, apply non-DC conditions if we have any
+            if (hitTarget) {
+                nonDcConditions = mobArray[block][i].getNonDcConditions();
+                if (nonDcConditions.length > 0) {
+                    for (var i=0; i < nonDcConditions.length; i++) {                        
+                        ailments[nonDcConditions[i]] = true;
+                        rollResult.message += `Inflicted: ${nonDcConditions[i]}`;
+                    }
+                }
+            }
+
             // Everything past here is assumed to take part on a hit
             // =============== DC LOGIC ==================
                         
@@ -969,7 +985,7 @@ async function launchAttack() {
                     var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (failureResults[fail][0] == "Condition") {
-                            if (failureResults[fail][1] == "Knock Prone" || failureResults[fail][1] == "Paralyze") { // Prone/Paralyze cant stack so don't track them more than once
+                            if (failureResults[fail][1] == "Knock Prone") { // Prone cant stack so don't track it more than once
                                 if (!ailments[failureResults[fail][1]]) {
                                     ailments[failureResults[fail][1]] = true;
                                     rollResult.message += `Inflicted: ${failureResults[fail][1]}`;

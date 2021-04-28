@@ -193,6 +193,22 @@ export default class Mob {
         return false;
     }
     
+    getNonDcConditions() {
+        var afterDc = false;
+        var ret = [];
+        for (var i=0; i < this.EquipWeapon.length; i++) {                        
+            if (!afterDc) {                
+                if (this.EquipWeapon[i][0] == "Condition") {
+                    ret.push(this.EquipWeapon[i][1]);
+                }
+            }
+            else if (this.EquipWeapon[i][0] == "DC") {
+                break;
+            }
+        }
+        return ret;
+    }
+
     failDc() {
         var afterDc = false;
         var ret = [];
@@ -222,7 +238,6 @@ export default class Mob {
     
     succeedDc() {
         var afterDc = false;
-        var ret = [];
         for (var i=0; i < this.EquipWeapon.length; i++) {
             if (this.EquipWeapon[i][0] == "DC") {
                 afterDc = true;
