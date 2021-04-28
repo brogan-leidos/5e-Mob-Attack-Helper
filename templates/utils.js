@@ -37,7 +37,7 @@ export default class CreatureNotes {
         return "";
       }
 
-      ret =  `Inflicted: `;
+      var ret =  `Inflicted: `;
       for (var i=0; i < this.inflictions.length; i++){
         ret += this.inflictions[i];
         ret += ", ";
