@@ -902,7 +902,7 @@ async function launchAttack() {
          
             // On a hit, apply non-DC conditions if we have any
             if (hitTarget) {
-                nonDcConditions = mobArray[block][i].getNonDcConditions();
+                var nonDcConditions = mobArray[block][i].getNonDcConditions();
                 if (nonDcConditions.length > 0) {
                     for (var i=0; i < nonDcConditions.length; i++) {                        
                         ailments[nonDcConditions[i]] = true;
