@@ -10,6 +10,8 @@
   - Boar/GiantBoar
   - Psn Snake/GP Snake/Flying Snake/Constrictor Snake
 
+* Conditions outside of a DC block were not applying correctly. Now they are.
+
 === Ver 1.0.1
 * Added Mobs:
   - Velociraptor
