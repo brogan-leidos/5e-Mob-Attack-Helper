@@ -6,7 +6,6 @@ export default class Kobold extends Mob {
   constructor() {
     super();
       this.Name = "Kobold";
-      this.DisplayName = this.Name;
       this.Icon = "\"dragon\""
       
       this.DamageRoll = new DamageRoll();

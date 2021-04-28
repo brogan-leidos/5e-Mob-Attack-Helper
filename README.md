@@ -3,16 +3,22 @@ If you're like me and find the DMG rules for mob combat underwhelming - this is 
 This tools intention is to allow all aspiring druids, necromancers, and warlords to fulfill their wildest mass combat dreams; without the hassle of hearing your friends groan as you request to shoot a goblin with 40 skeletons at once.
 
 == ToDo:
+Ideas in no particular order:
   - A Custom Counter kind of effect for weapons (To track strength drain or other misc effects)
   - A toggle for the dynamic launch attack button text
   - Make it clear when the first attack crits or misses
-  - Color shemes so people can use multiple tabs
+  - Color schemes so people can use multiple tabs
+  - A way to stagger the flow of an assault, but this will likely come in much later when we do grouping
+  - Resistances...? Fuck. Think of a way to not have a huge freaking sheet of checkboxes or have fickle user input be what determines their resistances..
   
+  + Update the damage total output AS the run is ongoing. Something to look into!
+
+Actual Priorities:
   1. Extra attack support for guys like the Velociraptor and maybe the panther idk
-  1. A "Copy Mob button" - to quickly an easily create a variant on something you already made
-  2. Make it clear that some conditions stack, and others dont (Maybe a "should this stack" check button)
-  3. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone
-  4. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
+  2. A "Copy Mob button" - to quickly an easily create a variant on something you already made
+  3. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone 🤷‍♀️
+  4. A pathfinder text change for some conditions? Not really sure how it works, sorry its low priority earlier edition folks 🙏
+  5. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
   Far Future: Save a JSON of current configuration
 
 == Known issues:

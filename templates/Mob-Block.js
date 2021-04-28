@@ -31,20 +31,21 @@ export function mobBlock() {
         <option value="rex">🦖</option>
         <option value="unicorn">🦄</option>
         <option value="devil">😈</option>
-        <option value="ogre">👹</option>
+        <option value="ogre">👹</option>spider
         <option value="goblin">👺</option>
         <option value="alien">👽</option>
         <option value="alienmonster">👾</option>        
         <option value="wolf">🐺</option>
         <option value="cat">🐱</option>
         <option value="bird">🦅</option>
+        <option value="owl">🦉</option>
         <option value="elk">🦌</option>
         <option value="bear">🐻</option>
         <option value="boar">🐗</option>
+        <option value="spider">🕷</option>
         <option value="frog">🐸</option>
         <option value="snake">🐍</option>
         <option value="dolphin">🐬</option>
-        <option value="owl">🦉</option>
         <option value="plant">🌲</option>      
       </select></td>
     </tr>

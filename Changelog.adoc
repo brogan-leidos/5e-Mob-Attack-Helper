@@ -1,6 +1,8 @@
 = Change Log
 
-== Current Version: 1.0.1
+== Current Version: 1.0.2
+
+=== Ver 1.0.3
 
 === Ver 1.0.2
 * Added creature variants:
@@ -11,6 +13,7 @@
   - Psn Snake/GP Snake/Flying Snake/Constrictor Snake
 
 * Conditions outside of a DC block were not applying correctly. Now they are.
+* Cleaned up how the notes look when inflicting multiple conditions at once (LOOKING AT YOU CONSTRICTOR SNAKE)
 
 === Ver 1.0.1
 * Added Mobs:
