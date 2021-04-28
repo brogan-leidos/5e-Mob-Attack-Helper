@@ -194,7 +194,6 @@ export default class Mob {
     }
     
     getNonDcConditions() {
-        var afterDc = false;
         var ret = [];
         for (var i=0; i < this.EquipWeapon.length; i++) {                        
             if (this.EquipWeapon[i][0] == "Condition") {
