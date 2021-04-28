@@ -904,9 +904,9 @@ async function launchAttack() {
             if (hitTarget) {
                 var nonDcConditions = mobArray[block][i].getNonDcConditions();
                 if (nonDcConditions.length > 0) {
-                    for (var i=0; i < nonDcConditions.length; i++) {                        
-                        ailments[nonDcConditions[i]] = true;
-                        rollResult.message += `Inflicted: ${nonDcConditions[i]}`;
+                    for (var cond=0; i < nonDcConditions.length; i++) {                        
+                        ailments[nonDcConditions[cond]] = true;
+                        rollResult.message += `Inflicted: ${nonDcConditions[cond]}`;
                     }
                 }
             }
