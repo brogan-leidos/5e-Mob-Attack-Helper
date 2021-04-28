@@ -1,6 +1,7 @@
 import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
-import { weaponsToHtml, CreatureNotes } from './templates/utils.js'
+import { weaponsToHtml } from './templates/utils.js'
+import CreatureNotes from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
@@ -297,7 +298,7 @@ function toggleVariantsMenu(mobTag, source="user") {
     if (!menuElement) {
         return;
     }
-    
+
     if (source == "maximize") {
         menuElement.style.display = "none";
     }
