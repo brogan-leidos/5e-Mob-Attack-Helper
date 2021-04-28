@@ -907,7 +907,7 @@ async function launchAttack() {
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
                         ailments[nonDcConditions[cond]] = true;
-                        rollResult.message += `Inflicted: ${nonDcConditions[cond]}`;
+                        rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
                 }
             }
