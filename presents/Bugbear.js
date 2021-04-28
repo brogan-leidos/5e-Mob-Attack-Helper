@@ -6,7 +6,7 @@ export default class Bugbear extends Mob {
   constructor() {
     super();
     this.Name = "Bugbear";
-    this.Icon = "\"goblin\""
+    this.Icon = "\"bear\""
     
     this.DamageRoll = new DamageRoll();
     

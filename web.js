@@ -1,12 +1,15 @@
 import Mob from './presents/Mob.js'
 import { mobBlock } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
+import CreatureNotes from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
 import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
-         Bandit, Kobold, HobGoblin, Bugbear } from './presents/index.js'
+         Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
+         GiantElk } from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
+
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
@@ -22,8 +25,8 @@ var usingSavingThrowMods = false;
 var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(), 
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
-                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new HobGoblin(),
-                    new Bugbear()];
+                    new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new WingedKobold(), 
+                    new Hobgoblin(), new Bugbear(), new DireWolf(), new GiantElk(), new GiantBoar(), new ConstrictSnake(), new PoisonSnake(), new FlyingSnake()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -124,10 +127,12 @@ function minimizeMob(mobTag) {
     if (mobMin.checked) {
         mobMin.firstElementChild.classList = "fa fa-window-maximize"
         mobMin.firstElementChild.style.fontSize = "10px"
+        toggleVariantsMenu(mobTag, "maximize")
     }
     else {
         mobMin.firstElementChild.classList = "fa fa-window-minimize"
         mobMin.firstElementChild.style.fontSize = "8px"
+        toggleVariantsMenu(mobTag, "minimize")
     }
          
     for(var i=3; i < rows-2; i++) {
@@ -209,50 +214,135 @@ function createPresent(presentName) {
    blockArray.push(mobTag);
    mobIncrement++;
     
-   var newMob;
-   var appendBlock = mobBlock();
-    
+   var mobBlockHTML = generateMobBlockHTML(mobTag, presentName);
+   mobBlockArea.insertAdjacentHTML('beforeend', mobBlockHTML);
+
    var filtered = mobReference.filter(a => a.Name == presentName);
-   if (filtered.length == 0) {  // Generic
-       appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
-       appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
-       
-       appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
-       appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
-       
-       mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
-       
-       document.getElementById(mobTag + "-Weapon-Select").remove();       
-    }
-    else {
-        newMob = filtered[0];
-
-        var additionalOptions = weaponsToHtml(newMob.Weapons);
-        appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
-        var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
-        appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
-
-        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
-        appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
-        appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
- 
-        appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
-
-        mobBlockArea.insertAdjacentHTML('beforeend', appendBlock);
-        
+   if (filtered.length != 0) {
+        var newMob = filtered[0];
         changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        if (newMob.Variants) {
+            assignVariants(mobTag, newMob.Variants)
+        }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
             changeMobWeapon(mobTag, e.target.value);        
         });
     }
     
-    assignEventsToBlock(mobTag) 
+    assignEventsToBlock(mobTag);
          
-    return; 
 }
 
-function assignEventsToBlock(mobTag) {
-    document.getElementById(mobTag).style.gridRow = blockArray.length;
+function generateMobBlockHTML(mobTag, presentName) {
+    var appendBlock = mobBlock();
+    var filtered = mobReference.filter(a => a.Name == presentName);
+    if (filtered.length == 0) {  // Generic
+        appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
+        appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
+        
+        appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
+        appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
+
+        // No weapons to add so remove it here
+        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select.*<\/select>/gs, "")
+        return appendBlock;
+     }
+     else {
+         var newMob = filtered[0];
+ 
+         var additionalOptions = weaponsToHtml(newMob.Weapons);
+         appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
+         appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
+ 
+         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);    
+         appendBlock = appendBlock.replace("FILLER-NAME", newMob.Name);
+         appendBlock = appendBlock.replace(newMob.Icon, newMob.Icon.concat(" selected"));
+  
+         appendBlock = appendBlock.replace("FILLER-TOHIT", newMob.EquipWeapon.BonusToHit);    
+ 
+        return appendBlock;
+     }
+}
+
+function assignVariants(mobTag, newMobVariants) {
+    var mobTable = document.getElementById(mobTag).children[1];
+    var appendBlock = `<div class="creatureVariantMenu" id="${mobTag}-VariantsMenu" style="display: flex">`;
+    var small = newMobVariants.length > 3 ? "small" : "";
+    for (var i=0; i < newMobVariants.length; i++) {
+        appendBlock += `<button class="creatureVariantButton ${small}" id="${mobTag}-ChangeVariant-${i}" value="${newMobVariants[i]}">${newMobVariants[i]}</button>`;
+    }
+    appendBlock += "</div>";
+
+    mobTable.insertAdjacentHTML('afterend', appendBlock);
+
+    // Add new menu option
+    var variantButton = `<span class="mobVariantsButton" id="${mobTag}-VariantsToggle" title="Show/Hide variants of this creature type"><i class="fa fa-users"></i></span>`
+    document.getElementById(`${mobTag}`).firstElementChild.insertAdjacentHTML('beforeend', variantButton);
+
+    document.getElementById(`${mobTag}-VariantsToggle`).addEventListener('click', (e) => {
+        toggleVariantsMenu(mobTag);
+    });
+
+
+    for (var i=0; i < newMobVariants.length; i++) {
+        var element = document.getElementById(`${mobTag}-ChangeVariant-${i}`);
+        element.addEventListener('click', (e) => {
+            changeMobVariant(mobTag, e.target.value)
+        });
+    }
+}
+
+function toggleVariantsMenu(mobTag, source="user") {
+    var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
+    if (!menuElement) {
+        return;
+    }
+
+    if (source == "maximize") {
+        menuElement.style.display = "none";
+    }
+    else if (source == "minimize" && !menuElement.userHidden) {
+        menuElement.style.display = "flex";
+    }
+    else if (source == "user") {
+        if (menuElement.style.display == "flex") {
+            menuElement.style.display = "none";
+            menuElement.userHidden = true;
+        }
+        else if (menuElement.style.display == "none") {
+            menuElement.style.display = "flex";
+            menuElement.userHidden = false;
+        }
+    }
+}
+
+function changeMobVariant(mobTag, presentName) {
+    var html = generateMobBlockHTML(mobTag, presentName);
+    // Gotta strip away the DIV container so we dont duplicate it
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">].*[^<\/div>$]`, "gs");
+    var match = html.match(divStripRegex);
+    html = match[0];
+    var mobBlock = document.getElementById(mobTag);
+    mobBlock.innerHTML = html;
+
+    var filtered = mobReference.filter(a => a.Name == presentName);
+    var newMob = filtered[0];
+    changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+    if (newMob.Variants) {
+        assignVariants(mobTag, newMob.Variants)
+    }
+    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value);        
+    });
+
+    assignEventsToBlock(mobTag, false) 
+}
+
+function assignEventsToBlock(mobTag, changeRow=true) {
+    if (changeRow) {
+        document.getElementById(mobTag).style.gridRow = blockArray.length;
+    }
          
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);
@@ -720,7 +810,7 @@ async function launchAttack() {
         return false;
     }
     
-    // Having spawned our army, let them all launch attacks. Record the attack if it lands
+    // Gather user set variables
     var targetAc = document.getElementById('targetAc').value;
     var critImmune = document.getElementById('critImmune').checked;
     var dmSaves = document.getElementById('dmSaves').checked;
@@ -738,14 +828,17 @@ async function launchAttack() {
     var existingAilments = document.getElementById(`targetCondition`).value;
     ailments[existingAilments] = true;
     
+    // Create a unit for every creature in each mob
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
-        for (var i=0; i < mobArray[block].length; i++) {
+        for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
-            
+            var newCreature = mobArray[block][i];
+            var creatureNotes = new CreatureNotes();
+
             var advantage = 0;
             var disadvantage = 0;
-            var inMelee = document.getElementById(`${mobArray[block][i].MobName}-Range`).checked;
+            var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
             var allowParalyzeCrit = false;
             if (ailments["Knock Prone"]) {
                 if (inMelee) {
@@ -766,62 +859,81 @@ async function launchAttack() {
                  }
             }
             
-            mobArray[block][i].Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
+            newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
                  
             var rollResult = "";
-            var attackRollClass = mobArray[block][i].makeAttack();
+            var hitTarget = false;
+            var attackRollClass = newCreature.makeAttack();
             var attackRoll = attackRollClass.hitRoll;
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
-                rollResult = mobArray[block][i].dealCrit();
+                rollResult = newCreature.dealCrit();
                 numCrits = numCrits + 1;
+                hitTarget = true;
             }
-            else if (attackRollClass.crit && attackRollClass.missed) {
-                rollArray[block].push(mobArray[block][i].miss());
+            else if (attackRollClass.crit && attackRollClass.missed) { // A crit flag + a miss flag = a critical miss
+                rollArray[block].push(newCreature.miss());
                 continue;
             }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
               if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
-                  rollArray[block].push(mobArray[block][i].miss());
+                  rollArray[block].push(newCreature.miss());
                   continue;
               } 
-              if (attackRoll < minAc || minAc == -1) {
+              if (attackRoll < minAc || minAc == -1) { // If we're unsure if it hit or not, or its our first time here, prompt
                   var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
                   if (response) {
-                      rollResult = mobArray[block][i].dealDamage();
+                      rollResult = newCreature.dealDamage();
+                      hitTarget = true;
                       minAc = attackRoll;
                   }
                   else {
                       if (attackRoll > lowerCap) {
-                          rollArray[block].push(mobArray[block][i].miss());
+                          rollArray[block].push(newCreature.miss());
                           lowerCap = attackRoll;
                           continue;
                       }
                   }
               }
               else {
-                  rollResult = mobArray[block][i].dealDamage();
+                  rollResult = newCreature.dealDamage();
+                  hitTarget = true;
               }                
             }
             else if (attackRoll >= targetAc) {                
-                rollResult = mobArray[block][i].dealDamage();
+                rollResult = newCreature.dealDamage();
+                hitTarget = true;
             }
             else { //Assuming this is a miss
-                rollArray[block].push(mobArray[block][i].miss());
+                rollArray[block].push(newCreature.miss());
                 continue;
             }
          
+            // On a hit, apply non-DC conditions if we have any
+            if (hitTarget) {
+                var nonDcConditions = newCreature.getNonDcConditions();
+                if (nonDcConditions.length > 0) {
+                    for (var cond=0; cond < nonDcConditions.length; cond++) {                        
+                        if (!(nonDcConditions[cond] == "Knock Prone" && ailments[nonDcConditions[cond]])) {                        
+                            ailments[nonDcConditions[cond]] = true;
+                            creatureNotes.addInfliction(nonDcConditions[cond]);
+                        }
+                        // rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
+                    }
+                }
+            }
+
             // Everything past here is assumed to take part on a hit
             // =============== DC LOGIC ==================
                         
             if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
-                mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
-                rollResult = mobArray[block][i].dealCrit();
+                newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
+                rollResult = newCreature.dealCrit();
                 rollResult.crit = false;
                 rollResult.autoCrit = true;
                 numCrits = numCrits + 1;
             }
             
-            var mobDcInfo = mobArray[block][i].checkIfHasDc();
+            var mobDcInfo = newCreature.checkIfHasDc();
             if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
                 var dcType = mobDcInfo[1];
                 var savingThrow = null;
@@ -881,22 +993,27 @@ async function launchAttack() {
                     if (roll > dcHighestFail || dcHighestFail == -1) {
                         dcSaves[dcType]["dcHighestFail"] = roll;
                     }
-                    var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
+                    var failureResults = newCreature.failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
-                        if (failureResults[fail][0] == "Condition") {
-                            if (failureResults[fail][1] == "Knock Prone" || failureResults[fail][1] == "Paralyze") { // Prone/Paralyze cant stack so don't track them more than once
-                                if (!ailments[failureResults[fail][1]]) {
-                                    ailments[failureResults[fail][1]] = true;
-                                    rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                        var effectType= failureResults[fail][0];
+                        var conditionName = failureResults[fail][1];
+                        if (effectType == "Condition") {
+                            
+                            if (conditionName == "Knock Prone") { // Prone cant stack so don't track it more than once
+                                if (!ailments[conditionName]) {
+                                    ailments[conditionName] = true;
+                                    creatureNotes.addInfliction(conditionName);
+                                    // rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
-                                ailments[failureResults[fail][1]] = true;
-                                rollResult.message += `Inflicted: ${failureResults[fail][1]}`;
+                                ailments[conditionName] = true;
+                                creatureNotes.addInfliction(conditionName);
+                                // rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
-                        else if (failureResults[fail][0] == "Roll Class") {
-                            rollResult = failureResults[fail][1];
+                        else if (effectType == "Roll Class") {
+                            rollResult = conditionName;
                         }
                     }
                 }
@@ -904,12 +1021,14 @@ async function launchAttack() {
                     if (roll < dcLowestSave || dcLowestSave == -1) {
                         dcSaves[dcType]["dcLowestSave"] = roll;
                     }
-                    rollResult = mobArray[block][i].succeedDc();                         
+                    rollResult = newCreature.succeedDc();                         
                 }
             }
+
+            rollResult.message += creatureNotes.printInflictions();
                        
             rollArray[block].push(rollResult);
-            if (rollResult.error) {
+            if (rollResult.error) {                  
                   throwError(rollResult.message);
                   return;
             }
@@ -983,6 +1102,7 @@ async function launchAttack() {
     
 }
 
+// Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
 function parseMobs(numBlocks) {
     var mobArray = []; // 2d arrays: Block type, attacks of that block    
 

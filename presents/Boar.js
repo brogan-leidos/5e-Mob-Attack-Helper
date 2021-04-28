@@ -17,6 +17,8 @@ export default class Boar extends Mob {
     
     this.EquipWeapon = this.Weapons[1];
     
+    this.Variants = ["Boar", "Giant Boar"];
+
   }
   
 }

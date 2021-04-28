@@ -13,6 +13,26 @@ button {
   box-shadow: 0px 0px 2px #666;
 }
 
+.addMobArea button.addMobButton {
+  background: rgb(221,221,221);
+  background: linear-gradient(180deg, rgba(221,221,221,1) 50%, rgba(153,153,153,1) 100%);
+  border: thin solid #999;
+}
+
+.addMobArea button.addMobButton:active {
+  background: linear-gradient(180deg,  rgba(153,153,153,1) 100%, rgba(221,221,221,1) 50%);
+}
+
+.addMobArea button.addMobButton.variant {
+  background: rgb(221,221,221);
+  background: linear-gradient(180deg, rgba(255,255,210,1) 30%, rgba(221,221,221,1) 50%, rgba(153,153,153,1) 100%);
+}
+
+.addMobArea button.addMobButton.variant:active {
+  background: linear-gradient(180deg,  rgba(153,153,153,1) 100%, rgba(221,221,221,1) 50%);
+}
+
+
 .page-container {
   position: relative;
   min-height: 105vh;
@@ -51,11 +71,15 @@ button {
   border-bottom: 5px solid #b5cce3;
 }
 
+.overheadMobBlock {
+  margin-bottom: 7px;
+}
+
 .mobBlock {
   border: thin solid #000;
   border-collapse: collapse;
   background-color: #f9f9eb;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   box-shadow: 2px 2px 2px #666;
   grid-column: 1;
 }
@@ -104,7 +128,7 @@ button {
   border-left: thin solid black;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  width: 20px;
+  min-width: 20px;
   font-family: initial;
 }
 
@@ -141,6 +165,25 @@ button {
 }
 
 .mobBlockMenu .mobCloseButton:active {
+  transition-duration: 0s;
+  background-color: #ffcccc;
+}
+
+.mobBlockMenu .mobVariantsButton {
+  color: #666;
+  grid-row: 3;
+  grid-column: 1;
+  font-size: 13px;
+  padding: 2px 0px;
+}
+
+.mobBlockMenu .mobVariantsButton:hover {
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlockMenu .mobVariantsButton:active {
   transition-duration: 0s;
   background-color: #ffcccc;
 }
@@ -256,6 +299,50 @@ button {
   vertical-align: top;
 }
 
+div.creatureVariantMenu {
+  display: flex;
+  max-width: 319px;;
+  margin-left: 21px;  
+}
+
+button.creatureVariantButton {
+  font-size: 10px;
+  width: 100%;
+  background-color: #fff;
+  color: #666;
+  border-radius: 0px;
+  border: thin solid black;
+  border-bottom: thin solid black;
+  border-left: thin solid rgba(100, 100, 100, .6);
+  border-right: thin solid rgba(100, 100, 100, .6);
+  border-top: none;
+  box-shadow: 2px 2px 2px #666;
+}
+
+button.creatureVariantButton.small {
+  font-size: 8px;
+}
+
+button.creatureVariantButton:hover {
+  color: black;
+  background-color: grey;
+  cursor: pointer;
+}
+
+button.creatureVariantButton:active {
+  background-color: #666;
+}
+
+button.creatureVariantButton:nth-child(1) {
+  border-bottom-left-radius: 5px;
+  border-left: thin solid black;
+}
+
+button.creatureVariantButton:nth-last-child(1) {
+  border-bottom-right-radius: 5px;
+  border-right: thin solid black;
+}
+
 #goButton {
   color: red;
   margin-left: 10px;
@@ -340,7 +427,7 @@ button {
 }
 
 
-.addMobArea button {  
+.addMobArea button {
   background-color: #ddd;
   border: 1px solid #ddd;
   transition-duration: 0.4s;
@@ -790,6 +877,7 @@ button {
     margin: 0px;
     box-shadow: 0px 0px 0px #666;
     border: solid thin rgba(0, 0, 0, 0.1);
+    border-bottom: solid thin #999;
     width: 100%;
     padding: 2px 0px;
     font-family: Candara, Italic, sans-serif;
@@ -802,7 +890,7 @@ button {
   .addMobArea .mobButtons button:nth-last-child(1) {
     border-bottom-right-radius: 6px;
   }
-  
+
   .addMobArea .addHeader {
     text-align: center;
     text-decoration: none;
@@ -915,9 +1003,25 @@ button {
   .mobBlock input {
     width: 95%;
   }
+
+  div.creatureVariantMenu {
+    margin-left: 0px;
+  }
   
   #totalDamageTitle {
     text-decoration: none;
+  }
+
+  .mobBlockMenu .mobMinimizeButton {
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .mobBlockMenu .mobVariantsButton {
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 
   .mobBlockMenu {
@@ -932,12 +1036,13 @@ button {
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    width: 38px;
-    font-family: initial;
+    min-width: 38px;
   }
 
   .mobBlockMenu span {
-    width: 100%; 
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 
   .mobBlockMenu span:nth-child(1) {
@@ -947,5 +1052,10 @@ button {
   .mobBlockMenu span:nth-last-child(1) {
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0px;
+  }
+
+  div.creatureVariantMenu {    
+    max-width:  -webkit-fill-available;
+    width: 100%;     
   }
 }
