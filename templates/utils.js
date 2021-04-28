@@ -45,9 +45,5 @@ export default class CreatureNotes {
     addCrit() {
       this.output += "Crit!"
     }
-
-
-  
+ 
 }
-
-export { default as CreatureNotes }
