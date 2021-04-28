@@ -33,6 +33,10 @@ export default class CreatureNotes {
     }
 
     printInflictions() {
+      if (this.inflictions.length == 0) {
+        return "";
+      }
+
       ret =  `Inflicted: `;
       for (var i=0; i < this.inflictions.length; i++){
         ret += this.inflictions[i];

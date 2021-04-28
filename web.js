@@ -914,7 +914,7 @@ async function launchAttack() {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
                         ailments[nonDcConditions[cond]] = true;
                         creatureNotes.addInfliction(nonDcConditions[cond]);
-                        rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
+                        // rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
                 }
             }
@@ -1000,13 +1000,13 @@ async function launchAttack() {
                                 if (!ailments[conditionName]) {
                                     ailments[conditionName] = true;
                                     creatureNotes.addInfliction(conditionName);
-                                    rollResult.message += `Inflicted: ${conditionName}`;
+                                    // rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
                                 ailments[conditionName] = true;
                                 creatureNotes.addInfliction(conditionName);
-                                rollResult.message += `Inflicted: ${conditionName}`;
+                                // rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
                         else if (effectType == "Roll Class") {
@@ -1021,6 +1021,8 @@ async function launchAttack() {
                     rollResult = newCreature.succeedDc();                         
                 }
             }
+
+            rollResult.message += creatureNotes.printInflictions();
                        
             rollArray[block].push(rollResult);
             if (rollResult.error) {                  
