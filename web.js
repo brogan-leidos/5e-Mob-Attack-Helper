@@ -294,6 +294,9 @@ function assignVariants(mobTag, newMobVariants) {
 
 function toggleVariantsMenu(mobTag, source="user") {
     var menuElement = document.getElementById(`${mobTag}-VariantsMenu`);
+    if (!menuElement) {
+        return;
+    }
     
     if (source == "maximize") {
         menuElement.style.display = "none";
@@ -909,7 +912,7 @@ async function launchAttack() {
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
                         ailments[nonDcConditions[cond]] = true;
-                        creatureNotes.addInfliction(nonDcConditions[cond])
+                        creatureNotes.addInfliction(nonDcConditions[cond]);
                         rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
                 }
