@@ -828,10 +828,11 @@ async function launchAttack() {
         rollArray[block] = new Array();
         for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
-            
+            var newCreature = mobArray[block][i];
+
             var advantage = 0;
             var disadvantage = 0;
-            var inMelee = document.getElementById(`${mobArray[block][i].MobName}-Range`).checked;
+            var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
             var allowParalyzeCrit = false;
             if (ailments["Knock Prone"]) {
                 if (inMelee) {
@@ -852,59 +853,59 @@ async function launchAttack() {
                  }
             }
             
-            mobArray[block][i].Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
+            newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
                  
             var rollResult = "";
             var hitTarget = false;
-            var attackRollClass = mobArray[block][i].makeAttack();
+            var attackRollClass = newCreature.makeAttack();
             var attackRoll = attackRollClass.hitRoll;
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
-                rollResult = mobArray[block][i].dealCrit();
+                rollResult = newCreature.dealCrit();
                 numCrits = numCrits + 1;
             }
             else if (attackRollClass.crit && attackRollClass.missed) { // A crit flag + a miss flag = a critical miss
-                rollArray[block].push(mobArray[block][i].miss());
+                rollArray[block].push(newCreature.miss());
                 continue;
             }
             else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
               if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
-                  rollArray[block].push(mobArray[block][i].miss());
+                  rollArray[block].push(newCreature.miss());
                   continue;
               } 
               if (attackRoll < minAc || minAc == -1) { // If we're unsure if it hit or not, or its our first time here, prompt
                   var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
                   if (response) {
-                      rollResult = mobArray[block][i].dealDamage();
+                      rollResult = newCreature.dealDamage();
                       hitTarget = true;
                       minAc = attackRoll;
                   }
                   else {
                       if (attackRoll > lowerCap) {
-                          rollArray[block].push(mobArray[block][i].miss());
+                          rollArray[block].push(newCreature.miss());
                           lowerCap = attackRoll;
                           continue;
                       }
                   }
               }
               else {
-                  rollResult = mobArray[block][i].dealDamage();
+                  rollResult = newCreature.dealDamage();
                   hitTarget = true;
               }                
             }
             else if (attackRoll >= targetAc) {                
-                rollResult = mobArray[block][i].dealDamage();
+                rollResult = newCreature.dealDamage();
                 hitTarget = true;
             }
             else { //Assuming this is a miss
-                rollArray[block].push(mobArray[block][i].miss());
+                rollArray[block].push(newCreature.miss());
                 continue;
             }
          
             // On a hit, apply non-DC conditions if we have any
             if (hitTarget) {
-                var nonDcConditions = mobArray[block][i].getNonDcConditions();
+                var nonDcConditions = newCreature.getNonDcConditions();
                 if (nonDcConditions.length > 0) {
-                    for (var cond=0; i < nonDcConditions.length; i++) {                        
+                    for (var cond=0; cond < nonDcConditions.length; cond++) {                        
                         ailments[nonDcConditions[cond]] = true;
                         rollResult.message += `Inflicted: ${nonDcConditions[cond]}`;
                     }
@@ -915,14 +916,14 @@ async function launchAttack() {
             // =============== DC LOGIC ==================
                         
             if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
-                mobArray[block][i].purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
-                rollResult = mobArray[block][i].dealCrit();
+                newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
+                rollResult = newCreature.dealCrit();
                 rollResult.crit = false;
                 rollResult.autoCrit = true;
                 numCrits = numCrits + 1;
             }
             
-            var mobDcInfo = mobArray[block][i].checkIfHasDc();
+            var mobDcInfo = newCreature.checkIfHasDc();
             if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
                 var dcType = mobDcInfo[1];
                 var savingThrow = null;
@@ -982,7 +983,7 @@ async function launchAttack() {
                     if (roll > dcHighestFail || dcHighestFail == -1) {
                         dcSaves[dcType]["dcHighestFail"] = roll;
                     }
-                    var failureResults = mobArray[block][i].failDc(); // Changes to make after a dc fail
+                    var failureResults = newCreature.failDc(); // Changes to make after a dc fail
                     for (var fail=0; fail < failureResults.length; fail++) {
                         if (failureResults[fail][0] == "Condition") {
                             if (failureResults[fail][1] == "Knock Prone") { // Prone cant stack so don't track it more than once
@@ -1005,7 +1006,7 @@ async function launchAttack() {
                     if (roll < dcLowestSave || dcLowestSave == -1) {
                         dcSaves[dcType]["dcLowestSave"] = roll;
                     }
-                    rollResult = mobArray[block][i].succeedDc();                         
+                    rollResult = newCreature.succeedDc();                         
                 }
             }
                        
