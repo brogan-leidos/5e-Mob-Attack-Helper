@@ -12,7 +12,7 @@ export default class ConstrictSnake extends Mob {
     
     this.Weapons = [
       new Weapon("Bite", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d6 + 2 piercing"]]),
-      new Weapon("Constrict", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d8 + 2 bludgeoning"], ["Condition", "Grappled"], ["Condition", "Restrained"]]),
+      new Weapon("Constrict", [["ToHit", 4],  ["IsMelee", true], ["Weapon","1d8 + 2 bludgeoning"], ["Condition", "Grappled"], ["Condition", "Restrain"]]),
     ];
     
     this.EquipWeapon = this.Weapons[0];
