@@ -89,7 +89,7 @@ export default class Mob {
     }
         
     // Crit using equip weapon!
-     dealCrit() {               
+    dealCrit() {               
         var ret = this.dealDamage(true)
         this.rollClass.crit = true;
         this.rollClass.message += `Crit! `;

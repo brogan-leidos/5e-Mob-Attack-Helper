@@ -24,8 +24,10 @@ export function weaponsToHtml(weapons) {
 
 export default class CreatureNotes {
   constructor() {
-    this.output = "";
     this.inflictions = [];
+    this.crit = false;
+    this.miss = false;
+    this.other = {};
 
   }
     addInfliction(infliction) {
@@ -47,7 +49,40 @@ export default class CreatureNotes {
     }
 
     addCrit() {
-      this.output += "Crit!"
+      this.crit = true;
+    }
+
+    addMiss() {
+      this.miss = true;
+    }
+
+    addOther(name, value) {
+      if (!this.other[name]) {
+        this.other[name] = 0;
+      }
+      this.other[name] += value;
+    }
+
+    printOther() {
+      var output = "";
+      var keys = this.other.keys();
+      for (var i=0; i < keys.length; i++) {
+        output += `${keys[i]}: ${this.other[keys[i]]},`
+      }
+      output = output.substr(0, output.length - 1);
+      return output;
+    }
+
+    printOutput() {
+      var critOut = "";
+      if (this.crit && !this.miss) {
+        critOut = "Crit!";
+      }
+      else if (this.crit && this.miss) {
+        critOut = "Crit Miss!";
+      }
+
+      return `${critOut} ${this.printInflictions()} ${this.printOther()}`;
     }
  
 }

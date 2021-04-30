@@ -829,43 +829,30 @@ async function launchAttack() {
     var existingAilments = document.getElementById(`targetCondition`).value;
     ailments[existingAilments] = true;
     
-    // Create a unit for every creature in each mob
+    // Go through the array of mob objects we created in parseMobs()
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
-        for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
+        for (var i=0; i < mobArray[block].length; i++) {                                    
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
             var newCreature = mobArray[block][i];
             var creatureNotes = new CreatureNotes();
 
-            var advantage = 0;
-            var disadvantage = 0;
-            var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
-            var allowParalyzeCrit = false;
-            if (ailments["Knock Prone"]) {
-                if (inMelee) {
-                    advantage = 1;                
-                } else {
-                    disadvantage = -1;                    
-                }
-            }
-            if (ailments["Restrain"]) {
-                // advantage, disadv on dex saves
-                advantage = 1;
-            }
-             if (ailments["Paralyze"]) {
-                // advantage, auto fails str/dex saves
-                 advantage = 1;
-                 if (inMelee) {
-                    allowParalyzeCrit = true;
-                 }
-            }
-            
-            newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
-                 
+            // Pass this functions any global variables it needs
+            // performCreatureAttack(newCreature, creatureNotes, ailments);
+
+            var vantageResult = determineCreatureVantage(newCreature, ailments);
+            newCreature = vantageResult[0];
+            var allowParalyzeCrit = vantageResult[1]; 
+
             var rollResult = "";
             var hitTarget = false;
             var attackRollClass = newCreature.makeAttack();
+            
+            // Determine if attack hits or not
+            // rollResult = determineAttack(attackRollClass); // Returns {"crit":true/false, "miss":true/false, "rollResult":string, }
+            
             var attackRoll = attackRollClass.hitRoll;
+            
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
                 rollResult = newCreature.dealCrit();
                 numCrits = numCrits + 1;
@@ -909,8 +896,16 @@ async function launchAttack() {
                 continue;
             }
          
-            // On a hit, apply non-DC conditions if we have any
+            // On a hit, assign an autocrit if the target is already paralyzed, and assign it any automatic on hit conditions
             if (hitTarget) {
+                if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
+                    newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
+                    rollResult = newCreature.dealCrit();
+                    rollResult.crit = false;
+                    rollResult.autoCrit = true;
+                    numCrits = numCrits + 1;
+                }
+
                 var nonDcConditions = newCreature.getNonDcConditions();
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
@@ -918,21 +913,12 @@ async function launchAttack() {
                             ailments[nonDcConditions[cond]] = true;
                             creatureNotes.addInfliction(nonDcConditions[cond]);
                         }
-                        // rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
-                }
+                }                
             }
 
             // Everything past here is assumed to take part on a hit
-            // =============== DC LOGIC ==================
-                        
-            if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
-                newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
-                rollResult = newCreature.dealCrit();
-                rollResult.crit = false;
-                rollResult.autoCrit = true;
-                numCrits = numCrits + 1;
-            }
+            // =============== DC LOGIC ==================                                    
             
             var mobDcInfo = newCreature.checkIfHasDc();
             if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
@@ -1004,13 +990,11 @@ async function launchAttack() {
                                 if (!ailments[conditionName]) {
                                     ailments[conditionName] = true;
                                     creatureNotes.addInfliction(conditionName);
-                                    // rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
                                 ailments[conditionName] = true;
                                 creatureNotes.addInfliction(conditionName);
-                                // rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
                         else if (effectType == "Roll Class") {
@@ -1044,7 +1028,7 @@ async function launchAttack() {
     var totalDamage = 0;
     var totalDamageBreakdown = {};
     var totalHits = 0;
-    var infoAppend = "";    
+    var infoAppend = "";
     
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
@@ -1052,7 +1036,6 @@ async function launchAttack() {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }        
         var attacker = rollArray[block][0].attacker;
-        var blockTotalDamage = 0;
         var blockDamageBreakdown = {};
         
         // Go through each unit in the block and tally up that damage
@@ -1065,14 +1048,13 @@ async function launchAttack() {
                 var wepDamage = rollArray[block][i].damageResults[weps][0];
                 var damageType = rollArray[block][i].damageResults[weps][1];
                 totalDamage += wepDamage;
-                blockTotalDamage += wepDamage;
                 
-                if (!totalDamageBreakdown[damageType]) { 
+                if (!totalDamageBreakdown[damageType]) {
                     totalDamageBreakdown[damageType] = 0;
                 }
                 totalDamageBreakdown[damageType] += wepDamage;
                 
-                if (!blockDamageBreakdown[damageType]) { 
+                if (!blockDamageBreakdown[damageType]) {
                     blockDamageBreakdown[damageType] = 0;
                 }
                 blockDamageBreakdown[damageType] += wepDamage;
@@ -1103,7 +1085,225 @@ async function launchAttack() {
     
 }
 
+async function performCreatureAttack(newCreature, creatureNotes, ailments) {
+    var returnResults = "";
+    
+    var vantageResult = determineCreatureVantage(newCreature, ailments);  
+    newCreature = vantageResult[0];
+    var allowParalyzeCrit = vantageResult[1];                               
+
+    var rollResult = "";
+    var hitTarget = false;
+    var attackRollClass = newCreature.makeAttack();
+    
+    // Determine if attack hits or not
+    rollResult = determineAttack(attackRollClass); // Returns {"crit":true/false, "miss":true/false, "rollResult":string, }
+    
+    var attackRoll = attackRollClass.hitRoll;
+    
+    if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
+        rollResult = newCreature.dealCrit();
+        numCrits = numCrits + 1;
+        hitTarget = true;
+        creatureNotes.addCrit();
+    }
+    else if (attackRollClass.crit && attackRollClass.missed) { // A crit flag + a miss flag = a critical miss
+        rollArray[block].push(newCreature.miss());
+        continue;
+    }
+    else if (discoveryModeFlag) { // Discovery mode intercepts the natural flow of things here             
+      if (attackRoll <= lowerCap) { // Auto assign miss to anything lower than a declared miss
+          rollArray[block].push(newCreature.miss());
+          continue;
+      } 
+      if (attackRoll < minAc || minAc == -1) { // If we're unsure if it hit or not, or its our first time here, prompt
+          var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
+          if (response) {
+              rollResult = newCreature.dealDamage();
+              hitTarget = true;
+              minAc = attackRoll;
+          }
+          else {
+              if (attackRoll > lowerCap) {
+                  rollArray[block].push(newCreature.miss());
+                  lowerCap = attackRoll;
+                  continue;
+              }
+          }
+      }
+      else {
+          rollResult = newCreature.dealDamage();
+          hitTarget = true;
+      }                
+    }
+    else if (attackRoll >= targetAc) {                
+        rollResult = newCreature.dealDamage();
+        hitTarget = true;
+    }
+    else { //Assuming this is a miss
+        rollArray[block].push(newCreature.miss());
+        continue;
+    }
+ 
+    // On a hit, apply non-DC conditions if we have any
+    if (hitTarget) {
+        var nonDcConditions = newCreature.getNonDcConditions();
+        if (nonDcConditions.length > 0) {
+            for (var cond=0; cond < nonDcConditions.length; cond++) {                        
+                if (!(nonDcConditions[cond] == "Knock Prone" && ailments[nonDcConditions[cond]])) {                        
+                    ailments[nonDcConditions[cond]] = true;
+                    creatureNotes.addInfliction(nonDcConditions[cond]);
+                }
+            }
+        }
+    }
+
+    // Everything past here is assumed to take part on a hit
+    // =============== DC LOGIC ==================
+                
+    if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
+        newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
+        rollResult = newCreature.dealCrit();
+        rollResult.crit = false;
+        rollResult.autoCrit = true;
+        numCrits = numCrits + 1;
+    }
+    
+    var mobDcInfo = newCreature.checkIfHasDc();
+    if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
+        var dcType = mobDcInfo[1];
+        var savingThrow = null;
+        var roll = Math.floor(Math.random() * 20 + 1);
+        var autoFailSave = false;
+        
+        if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadv to dex saves
+            var roll2 = Math.floor(Math.random() * 20 + 1);
+            roll = Math.min(roll, roll2);
+        }
+        if (ailments["Paralyze"] && (dcType == "Dex" || dcType == "Str")) { // Auto fails str and dex saves
+            autoFailSave = true;
+        }
+                
+        if (usingSavingThrowMods) {
+            var savingMod = null;
+            if (dcType == "Str") {
+                savingMod = document.getElementById("targetStrSave").value;
+            }
+            else if (dcType == "Dex") {
+                savingMod = document.getElementById("targetDexSave").value;
+            }
+            else if (dcType == "Con") {
+                savingMod = document.getElementById("targetConSave").value;
+            }
+            else if (dcType == "Int") {
+                savingMod = document.getElementById("targetIntSave").value;
+            }
+            else if (dcType == "Wis") {
+                savingMod = document.getElementById("targetWisSave").value;
+            }
+            else if (dcType == "Chr") {
+                savingMod = document.getElementById("targetChrSave").value;
+            }
+                                
+            savingThrow = (roll + +savingMod) >= mobDcInfo[0];                    
+        }
+                
+        // DC Prompt Logic
+        if (!dcSaves[dcType]) {
+            dcSaves[dcType] = {"dcLowestSave": -1, "dcHighestFail": -1};
+        }
+        var dcLowestSave = dcSaves[dcType]["dcLowestSave"];
+        var dcHighestFail = dcSaves[dcType]["dcHighestFail"];
+                
+                
+        if (((roll < dcLowestSave || dcLowestSave == -1) && (roll > dcHighestFail) && !autoFailSave && !usingSavingThrowMods) || dmSaves) {                    
+            savingThrow = await promptDc(`DC: ${mobDcInfo[0]} ${dcType}`, roll, mobDcInfo[0], attackRollClass.attacker, dmSaves);
+        }
+        else if (roll >= dcLowestSave && !usingSavingThrowMods && !autoFailSave) {
+            savingThrow = true;
+        }
+        else if (roll <= dcHighestFail || autoFailSave) {
+            savingThrow = false;
+        }
+        if (!savingThrow) {
+            if (roll > dcHighestFail || dcHighestFail == -1) {
+                dcSaves[dcType]["dcHighestFail"] = roll;
+            }
+            var failureResults = newCreature.failDc(); // Changes to make after a dc fail
+            for (var fail=0; fail < failureResults.length; fail++) {
+                var effectType= failureResults[fail][0];
+                var conditionName = failureResults[fail][1];
+                if (effectType == "Condition") {
+                    
+                    if (conditionName == "Knock Prone") { // Prone cant stack so don't track it more than once
+                        if (!ailments[conditionName]) {
+                            ailments[conditionName] = true;
+                            creatureNotes.addInfliction(conditionName);
+                        }
+                    }
+                    else {
+                        ailments[conditionName] = true;
+                        creatureNotes.addInfliction(conditionName);
+                    }
+                }
+                else if (effectType == "Roll Class") {
+                    rollResult = conditionName;
+                }
+            }
+        }
+        else {
+            if (roll < dcLowestSave || dcLowestSave == -1) {
+                dcSaves[dcType]["dcLowestSave"] = roll;
+            }
+            rollResult = newCreature.succeedDc();                         
+        }
+    }
+
+    rollResult.message += creatureNotes.printInflictions();
+                
+    rollArray[block].push(rollResult);
+    if (rollResult.error) {                  
+            throwError(rollResult.message);
+            return;
+    }
+
+}
+
+function determineCreatureVantage(newCreature, ailments, inMelee) {
+    var advantage = 0;
+    var disadvantage = 0;
+    var allowParalyzeCrit = false;
+    var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
+
+    if (ailments["Knock Prone"]) {
+        if (inMelee) {
+            advantage = 1;
+        } else {
+            disadvantage = -1;                    
+        }
+    }
+    if (ailments["Restrain"]) {
+        // advantage, disadv on dex saves
+        advantage = 1;
+    }
+     if (ailments["Paralyze"]) {
+        // advantage, auto fails str/dex saves
+         advantage = 1;
+         if (inMelee) {
+            allowParalyzeCrit = true;
+         }
+    }
+    
+    newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]   
+    return [newCreature, allowParalyzeCrit];
+}
+
+function determineAttack(attackRollClass) {
+
+}
+
 // Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
+// Returns an array [[]] filled with Mob objects
 function parseMobs(numBlocks) {
     var mobArray = []; // 2d arrays: Block type, attacks of that block    
 
