@@ -605,8 +605,8 @@ function addExtraAttack(mobTag, element) {
 
     var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="${toHitValue}"></td></tr>`;
     var htmlWeaponInsert = `<tr><td>filler</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
-    element.parentElement.parentElement.insertAdjacentHTML('afterend', htmlToHitInsert);
-    element.parentElement.parentElement.insertAdjacentHTML('afterend', htmlWeaponInsert);
+    element.parentElement.parentElement.parentElement.insertAdjacentHTML('afterend', htmlToHitInsert);
+    element.parentElement.parentElement.parentElement.insertAdjacentHTML('afterend', htmlWeaponInsert);
 
 }
 
