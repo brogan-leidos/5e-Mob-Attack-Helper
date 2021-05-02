@@ -376,6 +376,9 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
     });
+    document.getElementById(mobTag + "-ExtraAttack").addEventListener('click', (e) => {
+        addExtraAttack(mobTag, e.target);        
+    });
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
         toggleRange(mobTag);
     });
@@ -582,6 +585,42 @@ function collapseRow(id) {
     }
     
     checkForExistingDc()              
+}
+
+function addExtraAttack(mobTag, element) {
+    // Make a new row on the mob block for the extra attack
+    // Get standard weapon for this mob
+    var weaponNum = findNumberOfWeaponsInBlock(mobTag);
+    var toHitValue = "";
+    var wepValue = "";
+
+    if (weaponNum == 1) {
+        toHitValue = document.getElementById(`${mobTag}-ToHit`).value;
+        wepValue = document.getElementById(`${mobTag}-Weapon`).value;
+    }
+    else {
+        toHitValue = document.getElementById(`${mobTag}-ToHit-${weaponNum}`).value;
+        wepValue = document.getElementById(`${mobTag}-Weapon-${weaponNum}`).value;
+    }
+
+    var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="${toHitValue}"></td></tr>`;
+    var htmlWeaponInsert = `<tr><td>filler</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
+    element.parentElement.parentElement.insertAdjacentHTML('afterend', htmlToHitInsert);
+    element.parentElement.parentElement.insertAdjacentHTML('afterend', htmlWeaponInsert);
+
+}
+
+// Returns the number of weapon rows on the mob block
+function findNumberOfWeaponsInBlock(mobTag) {
+    var count = 2;
+    while (true) {
+        if (document.getElementById(`${mobTag}-Weapon-${count}`)) {
+            count++;
+            continue;
+        }
+        break;
+    }
+    return count - 1;
 }
 
 function changeMobWeapon (mobTag, weaponMods) {
@@ -1337,10 +1376,15 @@ function parseMobs(numBlocks) {
 }
 
 // Collects all weapon mods and returns them in an array
-function getWeaponSet(mobTag) {
-    var toHit = document.getElementById(mobTag + "-ToHit").value;
-    var weapon = document.getElementById(mobTag + "-Weapon").value;
-    var isMelee = document.getElementById(mobTag + "-Range").checked;
+function getWeaponSet(mobTag, weaponCount) {
+    var weaponNum = ""
+    if (weaponCount) {
+        weaponNum = `-${weaponCount}`;
+    }
+
+    var toHit = document.getElementById(mobTag + `-ToHit${weaponNum}`).value;
+    var weapon = document.getElementById(mobTag + `-Weapon${weaponNum}`).value;
+    var isMelee = document.getElementById(mobTag + `-Range${weaponNum}`).checked;
     
     //Run weapon error check
     var errorCheck = checkIfValidWeapon(weapon, mobTag);

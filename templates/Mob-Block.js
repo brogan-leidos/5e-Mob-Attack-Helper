@@ -83,6 +83,10 @@ export function mobBlock() {
           <i class="fa fa-plus-square-o"></i>
           <span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Additional Effects</span>
         </span>
+        <span class="extraAttackButton" id="FILLER-BLOCK-ExtraAttack">
+          <i class="fa fa-plus-circle"></i>
+          <span id="FILLER-BLOCK-ExtraAttack-Tip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Extra Attack</span>
+        </span>
       </td>
     </tr>
     <tr>
