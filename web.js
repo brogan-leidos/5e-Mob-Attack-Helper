@@ -249,7 +249,7 @@ function generateMobBlockHTML(mobTag, presentName) {
         appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
 
         // No weapons to add so remove it here
-        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select.*<\/select>/gs, "")
+        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "")
         return appendBlock;
      }
      else {
