@@ -1,4 +1,4 @@
-import Mob from './presents/Mob.js' 
+import Mob from './presents/Mob.js'
 import { mobBlock, weaponMenu } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import CreatureNotes from './templates/utils.js'
