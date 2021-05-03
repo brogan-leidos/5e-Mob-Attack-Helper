@@ -87,22 +87,25 @@ export function mobBlock() {
 </div>`
 }
 
-export function weaponMenu(mobTag="FILLER-BLOCK") {
+export function weaponMenu(mobTag="FILLER-BLOCK", weaponNum="") {
+  if (weaponNum != "") {
+    weaponNum = `-${weaponNum}`;
+  }
   return `<tr>
   <td></td>
-  <td id="${mobTag}-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
-      <span id="${mobTag}-Melee" style="color:black">Melee</span>
+  <td id="${mobTag}-Range${weaponNum}" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
+      <span id="${mobTag}-Melee${weaponNum}" style="color:black">Melee</span>
         / 
-      <span id="${mobTag}-Ranged">Ranged</span>       
+      <span id="${mobTag}-Ranged${weaponNum}">Ranged</span>       
   </td>
   <td style="display:flex">
-    <span class="weaponExpandButton" id="${mobTag}-Weapon-Expand">
+    <span class="weaponExpandButton" id="${mobTag}-Weapon-Expand${weaponNum}">
       <i class="fa fa-plus-square-o"></i>
-      <span id="FILLER-BLOCK-Weapon-Expand-Tip" class="menuTip">Additional Effects</span>
+      <span id="${mobTag}-Weapon-Expand-Tip${weaponNum}" class="menuTip">Additional Effects</span>
     </span>
-    <span class="extraAttackButton" id="FILLER-BLOCK-ExtraAttack">
+    <span class="extraAttackButton" id="${mobTag}-ExtraAttack${weaponNum}">
       <i class="fa fa-plus-circle"></i>
-      <span id="FILLER-BLOCK-ExtraAttack-Tip" class="menuTip">Extra Attack</span>
+      <span id="${mobTag}-ExtraAttack-Tip${weaponNum}" class="menuTip">Extra Attack</span>
     </span>
   </td>
 </tr>`

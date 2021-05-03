@@ -423,76 +423,76 @@ function moveMob(mobTag, direction) {
            
 }
 
-function expandWeapon(mobTag, element=null) {
-    var modRow = getNumModRows(mobTag);
-    var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
-    if (!modSelect) {
-        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";  
-        document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
+function expandWeapon(mobTag, weaponNum="") {
+    if (weaponNum != "") {
+        weaponNum = `-${weaponNum}`;
+    }
+
+    var modRow = getNumModRows(mobTag); // Returns 0 if none
+    var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select${weaponNum}`);
+    if (!modSelect) { // If its the first additional effect, add some new buttons
+        document.getElementById(`${mobTag}-Weapon-Expand${weaponNum}`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip${weaponNum}`).style.display = "none";
+        document.getElementById(`${mobTag}-ExtraAttack-Tip${weaponNum}`).style.display = "none";  
+        document.getElementById(`${mobTag}-Weapon-Collapse${weaponNum}`).addEventListener('click', (e) => {
             collapseRow(e.target.parentElement.id);
         });  
     }
-    var underDc = checkIfUnderDc(mobTag, modRow);
-    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;    
+    var underDc = checkIfUnderDc(mobTag, modRow, weaponNum);
+    var newRow = modifierRow(underDc, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand${weaponNum}`).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
-    modifyRow("Extra Damage", mobTag, modRow);
-    assignListenersToModRow(mobTag, modRow);                     
+    modifyRow("Extra Damage", mobTag, modRow, false, weaponNum);
+    assignListenersToModRow(mobTag, modRow, weaponNum);
+    
+    return modRow;
 }
 
-function getNumModRows(mobTag) {
-    return document.getElementById(mobTag).children[1].firstElementChild.children.length - 8;
-}
-
-// Not created by user, used to change present weapons
-function assignWeaponMod(mobTag, weaponMod) {
-    if (!document.getElementById(`${mobTag}-Weapon-Collapse`) && weaponMod) {
-        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";     
-        document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(`${mobTag}-Weapon-Collapse`);
-        });  
+function getNumModRows(mobTag, weaponNum="") {
+    var count = 0;
+    while (true) {
+        if (document.getElementById(`${mobTag}-${count}-Mod-Select${weaponNum}`)) {
+            count++;
+            continue;
+        }
+        break;
     }
-         
-    var modRow = getNumModRows(mobTag);
-    var underDc = checkIfUnderDc(mobTag, modRow);
-    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-    
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
-    parentRow.insertAdjacentHTML('beforebegin', newRow);
-    
-    modifyRow(weaponMod[0], mobTag, modRow, true);
-    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).value = weaponMod[0];
-    document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
+    return count;
+}
+
+// Used to force the options of a weapon mod row to change
+// Weapon mod is [<type string>, <select2 string>, <DC attribute if applicable>]
+function forceOption(mobTag, modRow, weaponNum, weaponMod) {
+    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).value = weaponMod[0];
+    document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
     if (weaponMod[2]) {
-        document.getElementById(`${mobTag}-${modRow}-Mod-Dc`).value = weaponMod[2];
+        document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
     }
-    assignListenersToModRow(mobTag, modRow); 
+    assignListenersToModRow(mobTag, modRow, weaponNum); 
 }
 
-function assignListenersToModRow(mobTag, modRow) {
-    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+function assignListenersToModRow(mobTag, modRow, weaponNum="") {
+    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`);
     modSelect.addEventListener('change', (e) => {
-        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0], false, weaponNum);
     });  
 }
 
-function modifyRow(value, mobTag, modRow, automated=false) {    
-    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
+function modifyRow(value, mobTag, modRow, automated=false, weaponNum="") {
+    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`);    
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow, weaponNum);
     if (value == "DC") {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     } else {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = "transparent"
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
     updateModDcGrouping(value, mobTag, modRow, automated);
 }
 
-function checkIfUnderDc(mobTag, modRow) {
+function checkIfUnderDc(mobTag, modRow, weaponNum="") {
     for (var i = modRow-1; i >= 0; i--) {
-        var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
+        var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select${weaponNum}`);
         if (selectSeek.value == "DC") {
             return true;          
         }
@@ -501,36 +501,37 @@ function checkIfUnderDc(mobTag, modRow) {
 }
 
 // Updates DC grouping/ungrouping
-function updateModDcGrouping(value, mobTag, modRow, automated=false) {
+function updateModDcGrouping(value, mobTag, modRow, automated=false, weaponNum="") {
     // If it falls under a DC, mark it as so
-    if (checkIfUnderDc(mobTag, modRow)) {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    if (checkIfUnderDc(mobTag, modRow, weaponNum)) {
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
-    else if (((+modRow + 1) == getNumModRows(mobTag)) && (value == "DC") && !automated) {
+    else if (((+modRow + 1) == getNumModRows(mobTag, weaponNum) && (value == "DC") && !automated) {
         // User created DC on the last available row. Create a new row to help them out
-        assignWeaponMod(mobTag, ["Condition", "Knock Prone"]);
+        var modRow = expandWeapon(mobTag, weaponNum);
+        forceOption(mobTag, modRow, weaponNum, ["Condition", "Knock Prone"]);
     }
     else {
         // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
         while(true) {
             modRow++;
-            var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+            var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`);
             if (seekMod) {
                 if (seekMod.innerHTML.includes("DC") && value == "DC") { // Not marked as under DC, but under focus row which is DC
                      // fix the selection
                     var rowReplace = seekMod.parentElement.parentElement;
-                    rowReplace.innerHTML = modifierRow(true).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    modifyRow("Damage (1/2 on save)", mobTag, modRow);
-                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
-                    assignListenersToModRow(mobTag, modRow);
+                    rowReplace.innerHTML = modifierRow(true, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    modifyRow("Damage (1/2 on save)", mobTag, modRow, false, weaponNum=weaponNum);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+                    assignListenersToModRow(mobTag, modRow, weaponNum);
                 }
                 else if (!seekMod.innerHTML.includes("DC") && value != "DC") { // Marked as under DC, but under focus row which is not DC
                     // Fix row
                     var rowReplace = seekMod.parentElement.parentElement;
-                    rowReplace.innerHTML = modifierRow(false).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    modifyRow("Extra Damage", mobTag, modRow);
-                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = "transparent";
-                    assignListenersToModRow(mobTag, modRow);
+                    rowReplace.innerHTML = modifierRow(false, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    modifyRow("Extra Damage", mobTag, modRow, false, weaponNum=weaponNum);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).parentElement.parentElement.style.backgroundColor = "transparent";
+                    assignListenersToModRow(mobTag, modRow, weaponNum);
                 }               
                 else { break; }
             }       
@@ -613,7 +614,7 @@ function addExtraAttack(mobTag, element) {
     var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="${toHitValue}"></td></tr>`;
     var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = element.parentElement.parentElement.parentElement;
-    menuRow.insertAdjacentHTML('afterend', weaponMenu());
+    menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
 
@@ -622,7 +623,7 @@ function addExtraAttack(mobTag, element) {
 
 function assignEventsToNewWeapon(mobTag, weaponNum) {
     document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).addEventListener('click', (e) => {
-        expandWeapon(mobTag, e.target);        
+        expandWeapon(mobTag, weaponNum);        
     });
     document.getElementById(`${mobTag}-ExtraAttack-${weaponNum}`).addEventListener('click', (e) => {
         addExtraAttack(mobTag, e.target);        
@@ -678,7 +679,8 @@ function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
     setRange(mobTag, isMelee, weaponNum)   
     
     for (var i=3; i < weaponMods.length; i++) {
-        assignWeaponMod(mobTag, weaponMods[i]);        
+        expandWeapon(mobTag, weaponNum.substr(1))
+        forceOption(mobTag, i-3, weaponNum, weaponMods[i]);        
     }                     
 }
 
