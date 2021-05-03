@@ -607,7 +607,7 @@ function addExtraAttack(mobTag, element) {
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
     
-    var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[0].value;
+    var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
     changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
 
     assignEventsToNewWeapon(mobTag, weaponNum);
