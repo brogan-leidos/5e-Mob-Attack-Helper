@@ -469,6 +469,7 @@ function forceOption(mobTag, modRow, weaponNum, weaponMod) {
     if (weaponMod[2]) {
         document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
     }
+    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum);
     assignListenersToModRow(mobTag, modRow, weaponNum); 
 }
 
