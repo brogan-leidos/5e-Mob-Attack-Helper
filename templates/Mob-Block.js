@@ -71,24 +71,7 @@ export function mobBlock() {
       <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Recommended format is XdX +/- X" /></td>
     </tr>
-    <tr>
-      <td></td>
-      <td id="FILLER-BLOCK-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
-          <span id="FILLER-BLOCK-Melee" style="color:black">Melee</span>
-            / 
-          <span id="FILLER-BLOCK-Ranged">Ranged</span>       
-      </td>
-      <td style="display:flex">
-        <span class="weaponExpandButton" id="FILLER-BLOCK-Weapon-Expand">
-          <i class="fa fa-plus-square-o"></i>
-          <span id="FILLER-BLOCK-Weapon-Expand-Tip" class="menuTip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Additional Effects</span>
-        </span>
-        <span class="extraAttackButton" id="FILLER-BLOCK-ExtraAttack">
-          <i class="fa fa-plus-circle"></i>
-          <span id="FILLER-BLOCK-ExtraAttack-Tip" class="menuTip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Extra Attack</span>
-        </span>
-      </td>
-    </tr>
+    ${weaponMenu()}
     <tr>
       <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up" style="display:block"></i></button></td>
       <td>Number:</td>
@@ -104,3 +87,23 @@ export function mobBlock() {
 </div>`
 }
 
+export function weaponMenu(mobTag="FILLER-BLOCK") {
+  return `<tr>
+  <td></td>
+  <td id="${mobTag}-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
+      <span id="${mobTag}-Melee" style="color:black">Melee</span>
+        / 
+      <span id="${mobTag}-Ranged">Ranged</span>       
+  </td>
+  <td style="display:flex">
+    <span class="weaponExpandButton" id="${mobTag}-Weapon-Expand">
+      <i class="fa fa-plus-square-o"></i>
+      <span id="FILLER-BLOCK-Weapon-Expand-Tip" class="menuTip">Additional Effects</span>
+    </span>
+    <span class="extraAttackButton" id="FILLER-BLOCK-ExtraAttack">
+      <i class="fa fa-plus-circle"></i>
+      <span id="FILLER-BLOCK-ExtraAttack-Tip" class="menuTip">Extra Attack</span>
+    </span>
+  </td>
+</tr>`
+}

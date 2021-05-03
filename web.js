@@ -1,5 +1,5 @@
 import Mob from './presents/Mob.js'
-import { mobBlock } from './templates/Mob-Block.js'
+import { mobBlock, weaponMenu } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import CreatureNotes from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
@@ -182,17 +182,18 @@ function toggleMob(mobTag) {
     }
 }
 
-function toggleRange(mobTag) {    
-    var isMelee = document.getElementById(mobTag + "-Range").checked;
+function toggleRange(mobTag, element) {    
+    var isMelee = element.checked;
+    // var isMelee = document.getElementById(mobTag + "-Range").checked;
     if (isMelee) {
-        document.getElementById(mobTag + "-Ranged").style.color = "black";
-        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Range").checked = false;
+        element.children[1].style.color = "black"; // Ranged
+        element.children[0].style.color = "lightgrey"; // Melee
+        element.checked = false;
     }
     else {
-        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Melee").style.color = "black";
-        document.getElementById(mobTag + "-Range").checked = true;
+        element.children[1].style.color = "lightgrey";
+        element.children[0].style.color = "black";
+        element.checked = true;
     }
 }
 
@@ -380,7 +381,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         addExtraAttack(mobTag, e.target);        
     });
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
-        toggleRange(mobTag);
+        toggleRange(mobTag, e.target);
     });
          
     document.getElementById(mobTag + "-Move-Up").addEventListener('click', (e) => {
@@ -419,7 +420,7 @@ function moveMob(mobTag, direction) {
            
 }
 
-function expandWeapon(mobTag) {
+function expandWeapon(mobTag, element=null) {
     var modRow = getNumModRows(mobTag);
     var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
     if (!modSelect) {
@@ -547,6 +548,7 @@ function checkForExistingDc() {
     }
 }
 
+// Looks for DC on any mobs
 function scanAllMobs() {
     for (var i=0; i < blockArray.length; i++) {
         var rowCounter = 0;
@@ -590,9 +592,11 @@ function collapseRow(id) {
 function addExtraAttack(mobTag, element) {
     // Make a new row on the mob block for the extra attack
     // Get standard weapon for this mob
-    var weaponNum = findNumberOfWeaponsInBlock(mobTag);
+    var weaponNum = findNumberOfWeaponsInBlock(mobTag) + 1;
     var toHitValue = "";
     var wepValue = "";
+    var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).innerHTML;
+    weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`)
 
     if (weaponNum == 1) {
         toHitValue = document.getElementById(`${mobTag}-ToHit`).value;
@@ -604,9 +608,29 @@ function addExtraAttack(mobTag, element) {
     }
 
     var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="${toHitValue}"></td></tr>`;
-    var htmlWeaponInsert = `<tr><td>filler</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
-    element.parentElement.parentElement.parentElement.insertAdjacentHTML('afterend', htmlWeaponInsert);
-    element.parentElement.parentElement.parentElement.insertAdjacentHTML('afterend', htmlToHitInsert);
+    var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
+    var menuRow = element.parentElement.parentElement.parentElement;
+    menuRow.insertAdjacentHTML('afterend', weaponMenu());
+    menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
+    menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
+
+    assignEventsToNewWeapon(mobTag, weaponNum);
+}
+
+function assignEventsToNewWeapon(mobTag, weaponNum) {
+    document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).addEventListener('click', (e) => {
+        expandWeapon(mobTag, e.target);        
+    });
+    document.getElementById(`${mobTag}-ExtraAttack-${weaponNum}`).addEventListener('click', (e) => {
+        addExtraAttack(mobTag, e.target);        
+    });
+    document.getElementById(`${mobTag}-Range-${weaponNum}`).addEventListener('click', (e) => {
+        toggleRange(mobTag, e.target);
+    });
+
+    document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value);        
+    });
 }
 
 // Returns the number of weapon rows on the mob block

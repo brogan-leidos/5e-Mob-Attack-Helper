@@ -288,6 +288,22 @@ button {
   margin-right: 5px;
   vertical-align: top;
   cursor: pointer;
+  margin-left: 5px;
+}
+
+
+.mobBlock .extraAttackButton:hover {
+  color: green
+}
+
+.menuTip {
+    font-size: 10px;
+    margin-left: 1px;
+    color: black;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 1px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .mobBlock .rangeToggleButton {
