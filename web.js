@@ -182,10 +182,9 @@ function toggleMob(mobTag) {
     }
 }
 
-function toggleRange(mobTag, element) {   
+function toggleRange(element) {   
     var rangeElement = element.parentElement;
     var isMelee = rangeElement.checked;
-    // var isMelee = document.getElementById(mobTag + "-Range").checked;
     if (isMelee) {
         rangeElement.children[1].style.color = "black"; // Ranged
         rangeElement.children[0].style.color = "lightgrey"; // Melee
@@ -198,16 +197,19 @@ function toggleRange(mobTag, element) {
     }
 }
 
-function setRange(mobTag, isMelee) {
+function setRange(mobTag, isMelee, weaponNum="") {
+    if (weaponNum != "") {
+        weaponNum = `-${weaponNum}`;
+    }
     if (!isMelee) {
-        document.getElementById(mobTag + "-Ranged").style.color = "black";
-        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Range").checked = false;
+        document.getElementById(`${mobTag}-Ranged${weaponNum}`).style.color = "black";
+        document.getElementById(`${mobTag}-Melee${weaponNum}`).style.color = "lightgrey";
+        document.getElementById(`${mobTag}-Range${weaponNum}`).checked = false;
     }
     else {
-        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Melee").style.color = "black";
-        document.getElementById(mobTag + "-Range").checked = true;
+        document.getElementById(`${mobTag}-Ranged${weaponNum}`).style.color = "lightgrey";
+        document.getElementById(`${mobTag}-Melee${weaponNum}`).style.color = "black";
+        document.getElementById(`${mobTag}-Range${weaponNum}`).checked = true;
     }
 }
 
@@ -382,7 +384,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         addExtraAttack(mobTag, e.target);        
     });
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
-        toggleRange(mobTag, e.target);
+        toggleRange(e.target);
     });
          
     document.getElementById(mobTag + "-Move-Up").addEventListener('click', (e) => {
@@ -626,11 +628,11 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
         addExtraAttack(mobTag, e.target);        
     });
     document.getElementById(`${mobTag}-Range-${weaponNum}`).addEventListener('click', (e) => {
-        toggleRange(mobTag, e.target);
+        toggleRange(e.target);
     });
 
     document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value);        
+        changeMobWeapon(mobTag, e.target.value, weaponNum);        
     });
 }
 
@@ -647,10 +649,14 @@ function findNumberOfWeaponsInBlock(mobTag) {
     return count - 1;
 }
 
-function changeMobWeapon (mobTag, weaponMods) {
+function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
     if (typeof weaponMods == "string") {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
+    }
+
+    if (weaponNum != "") {
+        weaponNum = `-${weaponNum}`;
     }
     
     // clean up existing rows
@@ -660,16 +666,16 @@ function changeMobWeapon (mobTag, weaponMods) {
             break;
         }
         else {
-            collapseRow(`${mobTag}-Weapon-Collapse`);
+            collapseRow(`${mobTag}-Weapon-Collapse${weaponNum}`);
         }
     }
             
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
-    document.getElementById(mobTag + "-ToHit").value = toHit;
-    document.getElementById(mobTag + "-Weapon").value = weapon;    
-    setRange(mobTag, isMelee)   
+    document.getElementById(`${mobTag}-ToHit${weaponNum}`).value = toHit;
+    document.getElementById(`${mobTag}-Weapon${weaponNum}`).value = weapon;    
+    setRange(mobTag, isMelee, weaponNum)   
     
     for (var i=3; i < weaponMods.length; i++) {
         assignWeaponMod(mobTag, weaponMods[i]);        
