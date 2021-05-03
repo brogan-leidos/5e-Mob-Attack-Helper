@@ -325,7 +325,7 @@ function toggleVariantsMenu(mobTag, source="user") {
 function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
     // Gotta strip away the DIV container so we dont duplicate it
-    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">].*[^<\/div>$]`, "gs");
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">](?:.|\n)*[^<\/div>$]`, "g");
     var match = html.match(divStripRegex);
     html = match[0];
     var mobBlock = document.getElementById(mobTag);
