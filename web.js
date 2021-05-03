@@ -465,9 +465,9 @@ function getNumModRows(mobTag, weaponNum="") {
 // Weapon mod is [<type string>, <select2 string>, <DC attribute if applicable>]
 function forceOption(mobTag, modRow, weaponNum, weaponMod) {
     document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).value = weaponMod[0];
-    document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
     modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum);
     
+    document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
     if (weaponMod[2]) {
         document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
     }
