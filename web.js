@@ -596,8 +596,6 @@ function collapseRow(id, weaponNum="") {
 }
 
 function addExtraAttack(mobTag, element) {
-    // Make a new row on the mob block for the extra attack
-    // Get standard weapon for this mob
     var weaponNum = findNumberOfWeaponsInBlock(mobTag);
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
