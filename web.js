@@ -509,7 +509,7 @@ function updateModDcGrouping(value, mobTag, modRow, automated=false, weaponNum="
     }
     else if ((+modRow + 1) == getNumModRows(mobTag, weaponNum) && (value == "DC") && !automated) {
         // User created DC on the last available row. Create a new row to help them out
-        var modRow = expandWeapon(mobTag, weaponNum);
+        var modRow = expandWeapon(mobTag, weaponNum.substr(1));
         forceOption(mobTag, modRow, weaponNum, ["Condition", "Knock Prone"]);
     }
     else {
