@@ -506,7 +506,7 @@ function updateModDcGrouping(value, mobTag, modRow, automated=false, weaponNum="
     if (checkIfUnderDc(mobTag, modRow, weaponNum)) {
         document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
-    else if (((+modRow + 1) == getNumModRows(mobTag, weaponNum) && (value == "DC") && !automated) {
+    else if ((+modRow + 1) == getNumModRows(mobTag, weaponNum) && (value == "DC") && !automated) {
         // User created DC on the last available row. Create a new row to help them out
         var modRow = expandWeapon(mobTag, weaponNum);
         forceOption(mobTag, modRow, weaponNum, ["Condition", "Knock Prone"]);
