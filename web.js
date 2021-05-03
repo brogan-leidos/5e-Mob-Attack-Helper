@@ -600,8 +600,12 @@ function addExtraAttack(mobTag, element) {
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
 
-    var htmlToHitInsert = `<tr><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
-    var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
+    var style = `style=""`;
+    if (weaponNum % 2 == 1) {
+        style = `style="background-color: rgba(100, 100, 100, .5)"`;
+    }
+    var htmlToHitInsert = `<tr ${style}><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
+    var htmlWeaponInsert = `<tr ${style}><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = element.parentElement.parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
