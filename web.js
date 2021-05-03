@@ -432,7 +432,7 @@ function expandWeapon(mobTag, weaponNum="") {
         document.getElementById(`${mobTag}-Weapon-Expand-Tip${weaponNum}`).style.display = "none";
         document.getElementById(`${mobTag}-ExtraAttack-Tip${weaponNum}`).style.display = "none";  
         document.getElementById(`${mobTag}-Weapon-Collapse${weaponNum}`).addEventListener('click', (e) => {
-            collapseRow(e.target.parentElement.id);
+            collapseRow(e.target.parentElement.id, weaponNum);
         });  
     }
     var underDc = checkIfUnderDc(mobTag, modRow, weaponNum);
@@ -572,7 +572,7 @@ function scanAllMobs() {
 }
 
 // Expects ID of collapse button
-function collapseRow(id) {
+function collapseRow(id, weaponNum="") {
     var prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;    
     prevTr.remove();
     prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
@@ -586,9 +586,10 @@ function collapseRow(id) {
         } 
     }
     
-    if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
+    if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon${weaponNum}`) {
         document.getElementById(id).remove();
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline-block";
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip${weaponNum}`).style.display = "inline-block";
+        document.getElementById(`${mobTag}-ExtraAttack-Tip${weaponNum}`).style.display = "inline-block";
     }
     
     checkForExistingDc()              
@@ -668,7 +669,7 @@ function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
             break;
         }
         else {
-            collapseRow(`${mobTag}-Weapon-Collapse${weaponNum}`);
+            collapseRow(`${mobTag}-Weapon-Collapse${weaponNum}`, weaponNum);
         }
     }
             
