@@ -242,14 +242,14 @@ function generateMobBlockHTML(mobTag, presentName) {
     var appendBlock = mobBlock();
     var filtered = mobReference.filter(a => a.Name == presentName);
     if (filtered.length == 0) {  // Generic
+        // No weapons to add so remove it here
+        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "");
         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
         appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
         
         appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
         appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
-
-        // No weapons to add so remove it here
-        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "")
+        
         return appendBlock;
      }
      else {
