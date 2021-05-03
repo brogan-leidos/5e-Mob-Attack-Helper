@@ -466,10 +466,12 @@ function getNumModRows(mobTag, weaponNum="") {
 function forceOption(mobTag, modRow, weaponNum, weaponMod) {
     document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).value = weaponMod[0];
     document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
+    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum);
+    
     if (weaponMod[2]) {
         document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
     }
-    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum);
+
     assignListenersToModRow(mobTag, modRow, weaponNum); 
 }
 
