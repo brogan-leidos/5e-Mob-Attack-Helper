@@ -198,9 +198,6 @@ function toggleRange(element) {
 }
 
 function setRange(mobTag, isMelee, weaponNum="") {
-    if (weaponNum != "") {
-        weaponNum = `-${weaponNum}`;
-    }
     if (!isMelee) {
         document.getElementById(`${mobTag}-Ranged${weaponNum}`).style.color = "black";
         document.getElementById(`${mobTag}-Melee${weaponNum}`).style.color = "lightgrey";
