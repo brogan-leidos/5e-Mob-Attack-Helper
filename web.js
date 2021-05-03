@@ -488,7 +488,7 @@ function modifyRow(value, mobTag, modRow, automated=false, weaponNum="") {
     } else {
         document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
-    updateModDcGrouping(value, mobTag, modRow, automated);
+    updateModDcGrouping(value, mobTag, modRow, automated, weaponNum);
 }
 
 function checkIfUnderDc(mobTag, modRow, weaponNum="") {
