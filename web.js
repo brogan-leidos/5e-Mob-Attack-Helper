@@ -425,7 +425,7 @@ function expandWeapon(mobTag, weaponNum="") {
         weaponNum = `-${weaponNum}`;
     }
 
-    var modRow = getNumModRows(mobTag); // Returns 0 if none
+    var modRow = getNumModRows(mobTag, weaponNum); // Returns 0 if none
     var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select${weaponNum}`);
     if (!modSelect) { // If its the first additional effect, add some new buttons
         document.getElementById(`${mobTag}-Weapon-Expand${weaponNum}`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse${weaponNum}"><i class="fa fa-minus-square-o"></i></span>`);
