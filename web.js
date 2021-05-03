@@ -183,7 +183,7 @@ function toggleMob(mobTag) {
 }
 
 function toggleRange(mobTag, element) {   
-    rangeElement = element.parentElement;
+    var rangeElement = element.parentElement;
     var isMelee = rangeElement.checked;
     // var isMelee = document.getElementById(mobTag + "-Range").checked;
     if (isMelee) {
