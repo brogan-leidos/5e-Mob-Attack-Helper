@@ -666,7 +666,7 @@ function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
     
     // clean up existing rows
     while(true) {
-        var numModRows = getNumModRows(mobTag);
+        var numModRows = getNumModRows(mobTag, weaponNum);
         if (numModRows == 0) {
             break;
         }
