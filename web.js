@@ -600,7 +600,7 @@ function addExtraAttack(mobTag, element) {
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
 
-    var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
+    var htmlToHitInsert = `<tr><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
     var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = element.parentElement.parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
