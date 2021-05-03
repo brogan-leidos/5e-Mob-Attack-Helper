@@ -599,22 +599,11 @@ function addExtraAttack(mobTag, element) {
     // Make a new row on the mob block for the extra attack
     // Get standard weapon for this mob
     var weaponNum = findNumberOfWeaponsInBlock(mobTag);
-    var toHitValue = "";
-    var wepValue = "";
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
 
-    if (weaponNum == 1) {
-        toHitValue = document.getElementById(`${mobTag}-ToHit`).value;
-        wepValue = document.getElementById(`${mobTag}-Weapon`).value;
-    }
-    else {
-        toHitValue = document.getElementById(`${mobTag}-ToHit-${weaponNum}`).value;
-        wepValue = document.getElementById(`${mobTag}-Weapon-${weaponNum}`).value;
-    }
-
-    var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="${toHitValue}"></td></tr>`;
-    var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="${wepValue}" title="Recommended format is XdX +/- X"></td></tr>`;
+    var htmlToHitInsert = `<tr><td></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
+    var htmlWeaponInsert = `<tr><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = element.parentElement.parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
