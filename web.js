@@ -465,8 +465,8 @@ function getNumModRows(mobTag, weaponNum="") {
 // Weapon mod is [<type string>, <select2 string>, <DC attribute if applicable>]
 function forceOption(mobTag, modRow, weaponNum, weaponMod) {
     document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).value = weaponMod[0];
-    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum);
-    
+    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum); // Assigns the options for the second cell
+
     document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
     if (weaponMod[2]) {
         document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
@@ -482,6 +482,7 @@ function assignListenersToModRow(mobTag, modRow, weaponNum="") {
     });  
 }
 
+// Based on what kind of row this is, assigns options for the second (and maybe 3rd) cell in the row
 function modifyRow(value, mobTag, modRow, automated=false, weaponNum="") {
     var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`);    
     targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow, weaponNum);
