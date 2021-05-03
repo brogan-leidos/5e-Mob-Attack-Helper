@@ -604,7 +604,7 @@ function addExtraAttack(mobTag, element) {
     var toHitValue = "";
     var wepValue = "";
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
-    weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`)
+    weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
 
     if (weaponNum == 1) {
         toHitValue = document.getElementById(`${mobTag}-ToHit`).value;
