@@ -641,7 +641,7 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
 
 // Returns the number of weapon rows on the mob block
 function findNumberOfWeaponsInBlock(mobTag) {
-    var count = 2;
+    var count = 1;
     while (true) {
         if (document.getElementById(`${mobTag}-Weapon-${count}`)) {
             count++;
@@ -649,7 +649,7 @@ function findNumberOfWeaponsInBlock(mobTag) {
         }
         break;
     }
-    return count - 1;
+    return count;
 }
 
 function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
