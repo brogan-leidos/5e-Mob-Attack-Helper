@@ -182,18 +182,19 @@ function toggleMob(mobTag) {
     }
 }
 
-function toggleRange(mobTag, element) {    
-    var isMelee = element.checked;
+function toggleRange(mobTag, element) {   
+    rangeElement = element.parentElement;
+    var isMelee = rangeElement.checked;
     // var isMelee = document.getElementById(mobTag + "-Range").checked;
     if (isMelee) {
-        element.children[1].style.color = "black"; // Ranged
-        element.children[0].style.color = "lightgrey"; // Melee
-        element.checked = false;
+        rangeElement.children[1].style.color = "black"; // Ranged
+        rangeElement.children[0].style.color = "lightgrey"; // Melee
+        rangeElement.checked = false;
     }
     else {
-        element.children[1].style.color = "lightgrey";
-        element.children[0].style.color = "black";
-        element.checked = true;
+        rangeElement.children[1].style.color = "lightgrey";
+        rangeElement.children[0].style.color = "black";
+        rangeElement.checked = true;
     }
 }
 
