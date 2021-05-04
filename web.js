@@ -754,10 +754,16 @@ function toggleDetails(event, rollArray) {
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
         var detailAppend = `<div id="${mobTag}-Details" style="cursor:auto"><table class="detailTable" style="margin-left: 15px; border-collapse: collapse">`;
-        detailAppend += `<tr class="detailHeader"><td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
+        detailAppend += `<tr class="detailHeader">`;
         for (var i=0; i < rollArray.length; i++) {
+            var selectedCreature = rollArray[i][0].attacker;
+            if (selectedCreature.Multiattack) {
+                detailAppend += `<td>Creature</td>`;
+            }
+            detailAppend += `<td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
+
             var mobBlockRolls = [];
-            if (rollArray[i][0].attacker.MobName == mobTag) {
+            if (selectedCreature.MobName == mobTag) {
                 mobBlockRolls = rollArray[i];
             }
             else {
@@ -768,96 +774,63 @@ function toggleDetails(event, rollArray) {
             mobBlockRolls.sort(function(a, b) {return a.attacker.Number - b.attacker.Number});
             
             for (var j=0; j < mobBlockRolls.length; j++) {
-                var rollClass = mobBlockRolls[j];
-                if (rollClass.attacker.MobName == mobTag) {
-                    //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
-                    var rollsOrder = [];
-                    var superConditionColor = "";
-                    var damageIcon = rollClass.attacker.EquipWeapon[1][1] == true ? "fa fa-gavel" : "fa fa-crosshairs";
+                var rollClass = mobBlockRolls[j];                
+                var superConditionColor = "";
+                var damageIcon = rollClass.attacker.EquipWeapon[1][1] == true ? "fa fa-gavel" : "fa fa-crosshairs";
 
-                    if (rollClass.vantage >= 1) {
-                        rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
-                    }
-                    else if (rollClass.vantage <= -1) {
-                        rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
-                    }
-                    
-                    var superConditionColor = "";
-                    if (rollClass.crit && !rollClass.missed) {
-                        superConditionColor = "color:#b59800";
-                    }
-                    else if (rollClass.crit && rollClass.missed) {
-                        superConditionColor = "color:#b00000"                      
-                    }
-                    else if (!rollClass.crit && rollClass.missed) {
-                        superConditionColor = "color:#914014"                      
-                    }
-                    else if (rollClass.autoCrit) {
-                        superConditionColor = "color:#a6b500";
-                    }
-                    
-                    var diceRollsDisplay = "";
-                    var bonusToHit = +rollClass.attacker.EquipWeapon[0][1];
-                    if (rollsOrder.length > 0) {
-                        var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<table style="width: 100%">
-                                                <tr>
-                                                    <td class="hitRoll">
-                                                        <span style="color:${vantageColor}">
-                                                            [${+rollsOrder[0] + bonusToHit}]
-                                                        </span>
-                                                        <span class="hitRollTip">
-                                                            🎲${rollsOrder[0]} + ${bonusToHit}
-                                                        </span>
-                                                    </td>
-                                                    <td class="hitRoll">
-                                                        <span style="color:lightgrey">
-                                                            [${+rollsOrder[1]  + bonusToHit}]
-                                                        </span>
-                                                        <span class="hitRollTip">
-                                                            🎲${rollsOrder[1]} + ${bonusToHit}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                </table>`;
-                    }
-                    else {
-                        diceRollsDisplay = `<span class="hitRoll"><span>[${+rollClass.attackRoll1 + bonusToHit}]</span>
-                                                <span class="hitRollTip">
-                                                      🎲${rollClass.attackRoll1} + ${bonusToHit}
-                                                </span></span>`;
-                    }
-                    
-                    var damageTotalsDisplay = "";
-                    if (!rollClass.missed) {
-                        for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
-                            damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
-                                                      <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
-                                                    </span>
-                                                    <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
-                                                      ${rollClass.rollBreakdown[dmg]}
-                                                    </span></span>`;
-                                 
-                        }
-                            
-                    }
-                    else if (rollClass.missed && rollClass.crit) {
-                        damageTotalsDisplay = "-";
-                        rollClass.message = "Crit Miss!";
-                    }
-                    else {
-                        damageTotalsDisplay = "-";
-                        rollClass.message = "Miss";
-                    }
-                    
-                    var message = "";
-                    if (rollClass.message != "") {
-                        message = rollClass.message;
-                    }
-                    
-                    detailAppend += `<tr class="attackDetail" style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
-                    
+                var superConditionColor = "";
+                if (rollClass.crit && !rollClass.missed) {
+                    superConditionColor = "color:#b59800";
                 }
+                else if (rollClass.crit && rollClass.missed) {
+                    superConditionColor = "color:#b00000"                      
+                }
+                else if (!rollClass.crit && rollClass.missed) {
+                    superConditionColor = "color:#914014"                      
+                }
+                else if (rollClass.autoCrit) {
+                    superConditionColor = "color:#a6b500";
+                }
+                
+                var creatureColumn = ""
+                if (rollClass.attacker.multiattack) {
+                    if (rollClass.attacker.multiattack % j  == 1) {
+                        creatureColumn = `<td rowspan="${rollClass.attacker.multiattack}"><span>${rollClass.attacker.Number}</span></td>`;
+                    }
+                }
+
+                var diceRollsDisplay = getDiceRollOutput(rollClass)
+
+                var damageTotalsDisplay = "";
+                if (!rollClass.missed) {
+                    for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
+                        damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
+                                                    <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
+                                                </span>
+                                                <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
+                                                    ${rollClass.rollBreakdown[dmg]}
+                                                </span></span>`;
+                                
+                    }
+                        
+                }
+                else if (rollClass.missed && rollClass.crit) {
+                    damageTotalsDisplay = "-";
+                    rollClass.message = "Crit Miss!";
+                }
+                else {
+                    damageTotalsDisplay = "-";
+                    rollClass.message = "Miss";
+                }
+                
+                var message = "";
+                if (rollClass.message != "") {
+                    message = rollClass.message;
+                }
+                
+                detailAppend += `<tr class="attackDetail" style="${superConditionColor}">${creatureColumn}<td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
+                    
+                
             }
         }   
         detailAppend += "</table></div>";
@@ -870,6 +843,49 @@ function toggleDetails(event, rollArray) {
         detailElement.remove();
         document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-right";
     }
+}
+
+function getDiceRollOutput(rollClass) {
+    var rollsOrder = [];
+    if (rollClass.vantage >= 1) {
+        rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
+    }
+    else if (rollClass.vantage <= -1) {
+        rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
+    }
+                                            
+    var diceRollsDisplay = "";
+    var bonusToHit = +rollClass.attacker.EquipWeapon[0][1];
+    if (rollsOrder.length > 0) {
+        var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
+        diceRollsDisplay = `<table style="width: 100%">
+                                <tr>
+                                    <td class="hitRoll">
+                                        <span style="color:${vantageColor}">
+                                            [${+rollsOrder[0] + bonusToHit}]
+                                        </span>
+                                        <span class="hitRollTip">
+                                            🎲${rollsOrder[0]} + ${bonusToHit}
+                                        </span>
+                                    </td>
+                                    <td class="hitRoll">
+                                        <span style="color:lightgrey">
+                                            [${+rollsOrder[1]  + bonusToHit}]
+                                        </span>
+                                        <span class="hitRollTip">
+                                            🎲${rollsOrder[1]} + ${bonusToHit}
+                                        </span>
+                                    </td>
+                                </tr>
+                                </table>`;
+    }
+    else {
+        diceRollsDisplay = `<span class="hitRoll"><span>[${+rollClass.attackRoll1 + bonusToHit}]</span>
+                                <span class="hitRollTip">
+                                      🎲${rollClass.attackRoll1} + ${bonusToHit}
+                                </span></span>`;
+    }
+    return diceRollsDisplay;
 }
 
 async function launchAttack() {
@@ -1236,7 +1252,10 @@ function parseMobs(numBlocks) {
                     if (!weapon) {
                         return false;
                     }
-                    mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, mobTag, serial+1))
+                    
+                    var multiattack = numWeapons > 1 ? numWeapons : false;
+
+                    mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack))
                 }   
             }
         }           
