@@ -2,6 +2,16 @@
 
 == Current Version: 1.0.2
 
+=== Ver 1.1.0
+* We're just skipping over the deployment of 1.0.3 because this has gotten so much larger than I expected it to be.
+* Added Extra Attack functionality to mobs
+  - Updates to post attack details to support multiattackers
+  - List of multiattack creature types: Velociraptor (the OG),
+
+=== Ver 1.0.3
+* Code improvements. No visible changes.
+* Altered a few regex using 's' flag. Almost all browsers support it, but the tool does not work at all if a person is using an older version for whatever reason.
+
 === Ver 1.0.2
 * Added creature variants:
   - Kobold/Winged Kobold
@@ -9,7 +19,7 @@
   - Elk/Giant Elk
   - Boar/GiantBoar
   - Psn Snake/GP Snake/Flying Snake/Constrictor Snake
-
+* Variants display/hide button
 * Conditions outside of a DC block were not applying correctly. Now they are.
 
 === Ver 1.0.1
