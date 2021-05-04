@@ -1195,9 +1195,6 @@ function determineCreatureVantage(newCreature, ailments, inMelee) {
     return [newCreature, allowParalyzeCrit];
 }
 
-function determineAttack(attackRollClass) {
-
-}
 
 // Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
 // Returns an array [[]] filled with Mob objects
@@ -1207,36 +1204,49 @@ function parseMobs(numBlocks) {
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
-        if (!document.getElementById(blockArray[i].concat("-Enabled")).checked) {
+        var mobTag = blockArray[i];
+        if (!document.getElementById(mobTag.concat("-Enabled")).checked) {
             continue; // If the box is not checked, skip that mob block
         }        
         
-        var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon"));
-        icon = icon.options[icon.selectedIndex].innerHTML;
-        var weapon = getWeaponSet(blockArray[i]);    
-        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
-        
+        var name = document.getElementById(`${mobTag}-Name`).value;
+        var icon = document.getElementById(`${mobTag}-Icon`);
+        icon = icon.options[icon.selectedIndex].innerHTML;            
+        var number = document.getElementById(`${mobTag}-Number`).value;        
+        var advantage = document.getElementById(`${mobTag}-Adv`).checked;
+        var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
         var vantage = advantage + disadvantage;
-        
-        if (!weapon) {
-            return false;
-        }
 
         mobArray.push(new Array());
-        for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j+1))
-        }                
+
+        var numWeapons = findNumberOfWeaponsInBlock(mobTag);
+        for (var j=0; j < numWeapons; j++) {
+            var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+            var weapon = getWeaponSet(mobTag, weaponNum);                        
+            
+            if (!weapon) {
+                return false;
+            }
+            
+            for(var serial=0; serial < number; serial++) {
+                for (var j=0; j < numWeapons; j++) {
+                    var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+                    var weapon = getWeaponSet(mobTag, weaponNum);                        
+                    
+                    if (!weapon) {
+                        return false;
+                    }
+                    mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, mobTag, serial+1))
+                }   
+            }
+        }           
     }
     return mobArray;
 }
 
 // Collects all weapon mods and returns them in an array
-function getWeaponSet(mobTag, weaponCount) {
-    var weaponNum = ""
-    if (weaponCount) {
+function getWeaponSet(mobTag, weaponNum="") {
+    if (weaponNum != "") {    
         weaponNum = `-${weaponCount}`;
     }
 
