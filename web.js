@@ -224,7 +224,7 @@ function createPresent(presentName) {
         var newMob = filtered[0];
         if (newMob.Multiattack) {
             for (var i=0; i < newMob.Multiattack.length; i++) {
-                var weaponMods = newMob.Weapons.filter(a => a.name == newMob.Multiattack[i])[0].WeaponMods;
+                var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
                 if (i > 0) {
                     addExtraAttack(mobTag);
                     changeMobWeapon(mobTag, weaponMods, weaponNum=i);
