@@ -16,6 +16,8 @@ export default class Velociraptor extends Mob {
     ];
     
     this.EquipWeapon = this.Weapons[0];
+
+    this.Multiattack = ["Bite", "Claws"];
     
   }
   

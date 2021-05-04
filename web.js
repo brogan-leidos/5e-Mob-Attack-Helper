@@ -222,7 +222,21 @@ function createPresent(presentName) {
    var filtered = mobReference.filter(a => a.Name == presentName);
    if (filtered.length != 0) {
         var newMob = filtered[0];
-        changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        if (newMob.Multiattack) {
+            for (var i=0; i < newMob.Multiattack.length; i++) {
+                var weaponMods = newMob.Weapons.filter(a => a.name == newMob.Multiattack[i])[0].WeaponMods;
+                if (i > 0) {
+                    addExtraAttack(mobTag);
+                    changeMobWeapon(mobTag, weaponMods, weaponNum=i);
+                }
+                else {
+                    changeMobWeapon(mobTag, weaponMods);
+                }
+            }
+        }
+        else {
+            changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        }
         if (newMob.Variants) {
             assignVariants(mobTag, newMob.Variants)
         }
@@ -595,7 +609,7 @@ function collapseRow(id, weaponNum="") {
     checkForExistingDc()              
 }
 
-function addExtraAttack(mobTag, element) {
+function addExtraAttack(mobTag, element=null) {
     var weaponNum = findNumberOfWeaponsInBlock(mobTag);
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
@@ -606,7 +620,7 @@ function addExtraAttack(mobTag, element) {
     }
     var htmlToHitInsert = `<tr ${style}><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
     var htmlWeaponInsert = `<tr ${style}><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
-    var menuRow = element.parentElement.parentElement.parentElement;
+    var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
@@ -676,7 +690,7 @@ function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
     
     for (var i=3; i < weaponMods.length; i++) {
         expandWeapon(mobTag, weaponNum.substr(1))
-        forceOption(mobTag, i-3, weaponNum, weaponMods[i]);        
+        forceOption(mobTag, i-3, weaponNum, weaponMods[i]);                
     }                     
 }
 
