@@ -227,7 +227,7 @@ function createPresent(presentName) {
                 var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
                 if (i > 0) {
                     addExtraAttack(mobTag);
-                    changeMobWeapon(mobTag, weaponMods, weaponNum=i);
+                    changeMobWeapon(mobTag, weaponMods, i);
                 }
                 else {
                     changeMobWeapon(mobTag, weaponMods);
@@ -620,7 +620,7 @@ function addExtraAttack(mobTag, element=null) {
     }
     var htmlToHitInsert = `<tr ${style}><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
     var htmlWeaponInsert = `<tr ${style}><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
-    var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement.parentElement;
+    var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
