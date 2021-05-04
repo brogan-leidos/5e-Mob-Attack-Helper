@@ -756,15 +756,14 @@ function toggleDetails(event, rollArray) {
         var detailAppend = `<div id="${mobTag}-Details" style="cursor:auto"><table class="detailTable" style="margin-left: 15px; border-collapse: collapse">`;
         detailAppend += `<tr class="detailHeader">`;
         for (var i=0; i < rollArray.length; i++) {
-            var selectedCreature = rollArray[i][0].attacker;
-            if (selectedCreature.Multiattack) {
-                detailAppend += `<td>Creature</td>`;
-            }
-            detailAppend += `<td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
-
+            var selectedCreature = rollArray[i][0].attacker;            
             var mobBlockRolls = [];
             if (selectedCreature.MobName == mobTag) {
                 mobBlockRolls = rollArray[i];
+                if (selectedCreature.Multiattack) {
+                    detailAppend += `<td>Creature</td>`;
+                }
+                detailAppend += `<td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
             }
             else {
                 continue;
