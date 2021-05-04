@@ -1228,7 +1228,7 @@ function parseMobs(numBlocks) {
                 return false;
             }
             
-            for(var serial=0; serial < number; serial++) {
+            for (var serial=0; serial < number; serial++) {
                 for (var j=0; j < numWeapons; j++) {
                     var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
                     var weapon = getWeaponSet(mobTag, weaponNum);                        
@@ -1247,7 +1247,7 @@ function parseMobs(numBlocks) {
 // Collects all weapon mods and returns them in an array
 function getWeaponSet(mobTag, weaponNum="") {
     if (weaponNum != "") {    
-        weaponNum = `-${weaponCount}`;
+        weaponNum = `-${weaponNum}`;
     }
 
     var toHit = document.getElementById(mobTag + `-ToHit${weaponNum}`).value;
