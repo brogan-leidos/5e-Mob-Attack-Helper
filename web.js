@@ -674,7 +674,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
     elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
     var modCount = 0;
     while (true) {
-        if (document.getElementById(`${mobTag}-${modCount}-Mod-Select`)) {
+        if (document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`)) {
             elementsToDelete.push(document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`).parentElement.parentElement);
             modCount++;
         } else {
