@@ -618,7 +618,7 @@ function addExtraAttack(mobTag, element=null) {
     if (weaponNum % 2 == 1) {
         style = `style="background-color: rgba(100, 100, 100, .5)"`;
     }
-    var htmlToHitInsert = `<tr ${style}><td><span id="${mobTag}-Weapon-${weaponNum}-Delete" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
+    var htmlToHitInsert = `<tr ${style}><td><span id="${mobTag}-Weapon-Delete-${weaponNum}" class="mobCloseButton"><i class="fa fa-trash-o"></i></span></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
     var htmlWeaponInsert = `<tr ${style}><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
@@ -641,10 +641,13 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
     document.getElementById(`${mobTag}-Range-${weaponNum}`).addEventListener('click', (e) => {
         toggleRange(e.target);
     });
-
     document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).addEventListener('change', (e) => {
         changeMobWeapon(mobTag, e.target.value, weaponNum);        
     });
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
+        deleteMobWeapon(mobTag, weaponNum);
+    });
+        
 }
 
 // Returns the number of weapon rows on the mob block
@@ -658,6 +661,26 @@ function findNumberOfWeaponsInBlock(mobTag) {
         break;
     }
     return count;
+}
+
+function highlightMobWeapon(mobTag, weaponNum) {
+    
+}
+
+function deleteMobWeapon(mobTag, weaponNum) {
+    var elementsToDelete = [];
+    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
+    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
+    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
+    var modCount = 0;
+    while (true) {
+        if (document.getElementById(`${mobTag}-${modCount}-Mod-Select`)) {
+            elementsToDelete.append(document.getElementById(`${mobTag}-${modCount}-Mod-Select`).parentElement.parentElement);
+        }
+    }
+    for (var i=elementsToDelete.length; i >= 0; i--) {
+        elementsToDelete[i].remove();
+    }
 }
 
 function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
