@@ -669,13 +669,13 @@ function highlightMobWeapon(mobTag, weaponNum) {
 
 function deleteMobWeapon(mobTag, weaponNum) {
     var elementsToDelete = [];
-    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
-    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
-    elementsToDelete.append(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
+    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
+    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
+    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
     var modCount = 0;
     while (true) {
         if (document.getElementById(`${mobTag}-${modCount}-Mod-Select`)) {
-            elementsToDelete.append(document.getElementById(`${mobTag}-${modCount}-Mod-Select`).parentElement.parentElement);
+            elementsToDelete.push(document.getElementById(`${mobTag}-${modCount}-Mod-Select`).parentElement.parentElement);
         }
     }
     for (var i=elementsToDelete.length; i >= 0; i--) {
