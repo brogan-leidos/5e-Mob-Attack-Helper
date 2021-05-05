@@ -681,7 +681,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
             break;
         }
     }
-    for (var i=elementsToDelete.length; i >= 0; i--) {
+    for (var i=elementsToDelete.length - 1; i >= 0; i--) {
         elementsToDelete[i].remove();
     }
 }
