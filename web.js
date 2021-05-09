@@ -696,7 +696,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
         // reveal old attack button
         document.getElementById(`${mobTag}-ExtraAttack-${weaponNum-1}`).style.display = "inline-block";
     } else {
-        document.getElementById(`${mobTag}-ExtraAttack}`).style.display = "inline-block";
+        document.getElementById(`${mobTag}-ExtraAttack`).style.display = "inline-block";
     }
 }
 
