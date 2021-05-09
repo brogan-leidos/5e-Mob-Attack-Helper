@@ -625,6 +625,9 @@ function addExtraAttack(mobTag, element=null) {
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
     
+    var findNum = weaponNum > 0 ? "" : `-${weaponNum}`;
+    document.getElementById(`${mobTag}-ExtraAttack${findNum}`).style.display = "none"; // Hide the old button
+
     var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
     changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
 
@@ -647,6 +650,9 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
     document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
         deleteMobWeapon(mobTag, weaponNum);
     });
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('mouseover', (e) => {
+        highlightMobWeapon(mobTag, weaponNum);
+    });
         
 }
 
@@ -664,6 +670,7 @@ function findNumberOfWeaponsInBlock(mobTag) {
 }
 
 function highlightMobWeapon(mobTag, weaponNum) {
+
     
 }
 
@@ -683,6 +690,13 @@ function deleteMobWeapon(mobTag, weaponNum) {
     }
     for (var i=elementsToDelete.length - 1; i >= 0; i--) {
         elementsToDelete[i].remove();
+    }
+
+    if (weaponNum > 1) {
+        // reveal old attack button
+        document.getElementById(`${mobTag}-ExtraAttack-${weaponNum-1}`).style.display = "inline-block";
+    } else {
+        document.getElementById(`${mobTag}-ExtraAttack}`).style.display = "inline-block";
     }
 }
 
