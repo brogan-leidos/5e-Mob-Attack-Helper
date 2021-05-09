@@ -625,8 +625,8 @@ function addExtraAttack(mobTag, element=null) {
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
     
-    var findNum = weaponNum > 0 ? "" : `-${weaponNum}`;
-    document.getElementById(`${mobTag}-ExtraAttack${findNum}`).style.display = "none"; // Hide the old button
+    // var findNum = weaponNum > 0 ? "" : `-${weaponNum}`;
+    // document.getElementById(`${mobTag}-ExtraAttack${findNum}`).style.display = "none"; // Hide the old button
 
     var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
     changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
@@ -650,8 +650,11 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
     document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
         deleteMobWeapon(mobTag, weaponNum);
     });
-    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('mouseover', (e) => {
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('onmouseover', (e) => {
         highlightMobWeapon(mobTag, weaponNum);
+    });
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('onmouseout', (e) => {
+        unHighlightMobWeapon(mobTag, weaponNum);
     });
         
 }
@@ -669,39 +672,41 @@ function findNumberOfWeaponsInBlock(mobTag) {
     return count;
 }
 
-function highlightMobWeapon(mobTag, weaponNum) {
-
-    
-}
-
-function deleteMobWeapon(mobTag, weaponNum) {
-    var elementsToDelete = [];
-    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
-    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
-    elementsToDelete.push(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
+function getMobWeaponElements(mobTag, weaponNum) {
+    var elementsToReturn = [];
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
     var modCount = 0;
     while (true) {
         if (document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`)) {
-            elementsToDelete.push(document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`).parentElement.parentElement);
+            elementsToReturn.push(document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`).parentElement.parentElement);
             modCount++;
         } else {
             break;
         }
     }
+    return elementsToReturn;
+}
+
+function highlightMobWeapon(mobTag, weaponNum) {
+    var elementsToHighlight = getMobWeaponElements(mobTag, weaponNum);
+    for (element in elementsToHighlight) {
+        element.style.backgroundColor = "rgba(255, 50, 50, .05)";
+    }    
+}
+
+function unHighlightMobWeapon(mobTag, weaponNum) {
+    var elementsToHighlight = getMobWeaponElements(mobTag, weaponNum);
+    for (element in elementsToHighlight) {
+        element.style.backgroundColor = "transparent";
+    }    
+}
+
+function deleteMobWeapon(mobTag, weaponNum) {
+    var elementsToDelete = getMobWeaponElements(mobTag, weaponNum);
     for (var i=elementsToDelete.length - 1; i >= 0; i--) {
         elementsToDelete[i].remove();
-    }
-
-    if (weaponNum > 1) {
-        // reveal old attack button
-        var element = document.getElementById(`${mobTag}-ExtraAttack-${weaponNum}`).parentElement.parentElement;
-        for (var i=0; i < modCount; i++) {
-            element = element.previousElementSibling;
-        }
-        element = element.children[2];
-        element.style.display = "inline-block";
-    } else {
-        document.getElementById(`${mobTag}-ExtraAttack`).style.display = "inline-block";
     }
 }
 
