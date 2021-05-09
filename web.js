@@ -694,7 +694,12 @@ function deleteMobWeapon(mobTag, weaponNum) {
 
     if (weaponNum > 1) {
         // reveal old attack button
-        document.getElementById(`${mobTag}-ExtraAttack-${weaponNum-1}`).style.display = "inline-block";
+        var element = document.getElementById(`${mobTag}-ExtraAttack-${weaponNum}`).parentElement.parentElement;
+        for (var i=0; i < modCount; i++) {
+            element = element.previousElementSibling;
+        }
+        element = element.children[2];
+        element.style.display = "inline-block";
     } else {
         document.getElementById(`${mobTag}-ExtraAttack`).style.display = "inline-block";
     }
