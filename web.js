@@ -650,10 +650,10 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
     document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
         deleteMobWeapon(mobTag, weaponNum);
     });
-    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('onmouseover', (e) => {
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.addEventListener('onmouseover', (e) => {
         highlightMobWeapon(mobTag, weaponNum);
     });
-    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('onmouseout', (e) => {
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.addEventListener('onmouseout', (e) => {
         unHighlightMobWeapon(mobTag, weaponNum);
     });
         
