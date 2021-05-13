@@ -239,6 +239,22 @@ button {
   cursor: pointer;
 }
 
+.mobBlock button.weaponDeleteButton {
+  color: #666;
+  /* width: 100%; */
+}
+
+.mobBlock button.weaponDeleteButton:hover {
+  background-color: rgb(255, 50, 50);
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlock button.weaponDeleteButton:active {
+  transition-duration: 0s;
+  background-color: rgb(255, 150, 150);
+}
+
 .mobBlockMenu .mobCloneButton:active {
   transition-duration: 0s;
   background-color: lightgrey;
