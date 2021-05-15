@@ -620,7 +620,7 @@ function addExtraAttack(mobTag, element=null) {
     var htmlWeaponInsert = `<tr ${style}><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
-    var newMenuRow = menuRow.nextElementSibling.style = style;
+    menuRow.nextElementSibling.style = style;
     menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
     menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
     
