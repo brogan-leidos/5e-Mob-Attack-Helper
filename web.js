@@ -52,7 +52,6 @@ export default () => {
         launchAttack();
     });
          
-    // infoButton
     document.getElementById('infoButton').addEventListener('click', () => {        
         displayHelp();
     });
@@ -64,10 +63,7 @@ export default () => {
     document.getElementById('dmSavesInfo').addEventListener('click', () => {        
         alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
     });
-
-
-         
-         
+     
 };
 
 
@@ -154,15 +150,72 @@ function minimizeMob(mobTag) {
 }
 
 function cloneMob(mobTag) {        
-    var newMobTag = "Mob" + mobIncrement.toString();
-    blockArray.push(mobTag);
-    mobIncrement++;
-    
-    var mobHtml = document.getElementById(mobTag).innerHTML.replace(mobTag, newMobTag);    
-    mobBlockArea.insertAdjacentHTML('beforeend', mobHtml);
-    
-    assignEventsToBlock(newMobTag)
-    
+    originalMob = createMobsFromBlock(mobTag, true);    
+    var newMobTag = mobIncrement;
+    createPresent(""); 
+    changeBlockToMob(newMobTag, originalMob);
+}
+
+function createMobsFromBlock(mobTag, ignoreEnable=false) {
+    if (!document.getElementById(mobTag.concat("-Enabled")).checked && !ignoreEnable) {
+        continue; // If the box is not checked, skip that mob block
+    }        
+    var mobArray = [];
+
+    var name = document.getElementById(`${mobTag}-Name`).value + "-Clone";
+    var icon = document.getElementById(`${mobTag}-Icon`);
+    icon = icon.options[icon.selectedIndex].innerHTML;            
+    var number = document.getElementById(`${mobTag}-Number`).value;        
+    var advantage = document.getElementById(`${mobTag}-Adv`).checked;
+    var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
+    var vantage = advantage + disadvantage;
+
+    var numWeapons = findNumberOfWeaponsInBlock(mobTag);
+    for (var j=0; j < numWeapons; j++) {
+        var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+        var weapon = getWeaponSet(mobTag, weaponNum);                        
+        
+        if (!weapon) {
+            return [];
+        }
+        
+        for (var serial=0; serial < number; serial++) {
+            for (var j=0; j < numWeapons; j++) {
+                var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+                var weapon = getWeaponSet(mobTag, weaponNum);                        
+                
+                if (!weapon) {
+                    return [];
+                }
+                
+                var multiattack = numWeapons > 1 ? numWeapons : false;
+
+                mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack));
+            }
+        }
+    }
+
+    return mobArray;
+}
+
+// mobTag -- block to change, mob -- a new Mob() with all the details needed to change the block
+function changeBlockToMob(mobTag, newMob) {
+    var html = generateMobBlockHTML(mobTag, "", newMob);
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">](?:.|\n)*[^<\/div>$]`, "g");
+    var match = html.match(divStripRegex);
+    html = match[0];
+    var mobBlock = document.getElementById(mobTag);
+    mobBlock.innerHTML = html;
+
+    changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+    if (newMob.Variants) {
+        assignVariants(mobTag, newMob.Variants)
+    }
+    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value);        
+    });
+
+    assignEventsToBlock(mobTag, false);
 }
 
 function toggleMob(mobTag) {
@@ -249,9 +302,15 @@ function createPresent(presentName) {
          
 }
 
-function generateMobBlockHTML(mobTag, presentName) {
+function generateMobBlockHTML(mobTag, presentName, newMob=null) {
     var appendBlock = mobBlock();
-    var filtered = mobReference.filter(a => a.Name == presentName);
+    var filtered = [];
+    if (newMob != null) {
+        filtered = [newMob];
+    } else {
+        filtered = mobReference.filter(a => a.Name == presentName);
+    }
+    
     if (filtered.length == 0) {  // Generic
         // No weapons to add so remove it here
         appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "");
@@ -335,7 +394,7 @@ function toggleVariantsMenu(mobTag, source="user") {
 
 function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
-    // Gotta strip away the DIV container so we dont duplicate it
+    // Gotta strip away the DIV container so we don't duplicate it
     var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">](?:.|\n)*[^<\/div>$]`, "g");
     var match = html.match(divStripRegex);
     html = match[0];
@@ -378,9 +437,9 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         minimizeMob(mobTag);
     });
          
-    // document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
-    //     cloneMob(mobTag);
-    // });
+    document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
+        cloneMob(mobTag);
+    });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
@@ -1258,7 +1317,6 @@ function determineCreatureVantage(newCreature, ailments, inMelee) {
     return [newCreature, allowParalyzeCrit];
 }
 
-
 // Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
 // Returns an array [[]] filled with Mob objects
 function parseMobs(numBlocks) {
@@ -1268,44 +1326,7 @@ function parseMobs(numBlocks) {
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
         var mobTag = blockArray[i];
-        if (!document.getElementById(mobTag.concat("-Enabled")).checked) {
-            continue; // If the box is not checked, skip that mob block
-        }        
-        
-        var name = document.getElementById(`${mobTag}-Name`).value;
-        var icon = document.getElementById(`${mobTag}-Icon`);
-        icon = icon.options[icon.selectedIndex].innerHTML;            
-        var number = document.getElementById(`${mobTag}-Number`).value;        
-        var advantage = document.getElementById(`${mobTag}-Adv`).checked;
-        var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
-        var vantage = advantage + disadvantage;
-
-        mobArray.push(new Array());
-
-        var numWeapons = findNumberOfWeaponsInBlock(mobTag);
-        for (var j=0; j < numWeapons; j++) {
-            var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
-            var weapon = getWeaponSet(mobTag, weaponNum);                        
-            
-            if (!weapon) {
-                return false;
-            }
-            
-            for (var serial=0; serial < number; serial++) {
-                for (var j=0; j < numWeapons; j++) {
-                    var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
-                    var weapon = getWeaponSet(mobTag, weaponNum);                        
-                    
-                    if (!weapon) {
-                        return false;
-                    }
-                    
-                    var multiattack = numWeapons > 1 ? numWeapons : false;
-
-                    mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack))
-                }   
-            }
-        }           
+        mobArray.push(createMobsFromBlock(mobTag));        
     }
     return mobArray;
 }
