@@ -191,7 +191,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
                 
                 var multiattack = numWeapons > 1 ? numWeapons : false;
                 var mobToAdd = new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack);
-                mobToAdd.Weapons = mobToAdd.EquipWeapon;
+                mobToAdd.Weapons = [mobToAdd.EquipWeapon];
 
                 mobArray[mobArray.length-1].push(mobToAdd);
             }
@@ -309,7 +309,7 @@ function generateMobBlockHTML(mobTag, presentName, newMob=null) {
     var appendBlock = mobBlock();
     var filtered = [];
     if (newMob != null) {
-        filtered = [newMob];
+        filtered = newMob;
     } else {
         filtered = mobReference.filter(a => a.Name == presentName);
     }
