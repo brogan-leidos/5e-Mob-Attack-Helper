@@ -310,7 +310,7 @@ function generateMobBlockHTML(mobTag, presentName, newMob=null) {
     var appendBlock = mobBlock();
     var filtered = [];
     if (newMob != null) {
-        filtered = newMob;
+        filtered = [newMob];
     } else {
         filtered = mobReference.filter(a => a.Name == presentName);
     }
