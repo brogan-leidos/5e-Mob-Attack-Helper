@@ -11,8 +11,8 @@ export function mobBlock() {
   <tbody>
     <tr>
       <td><span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span></td>
-      <td style="">Name:</td>
-      <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
+      <td>Name:</td>
+      <td><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
       <td>

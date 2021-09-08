@@ -158,7 +158,7 @@ function cloneMob(mobTag) {
 
 function createMobsFromBlock(mobTag, ignoreEnable=false) {
     if (!document.getElementById(mobTag.concat("-Enabled")).checked && !ignoreEnable) {
-        continue; // If the box is not checked, skip that mob block
+        return []; // If the box is not checked, skip that mob block
     }        
     var mobArray = [];
 
@@ -172,7 +172,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
 
     var numWeapons = findNumberOfWeaponsInBlock(mobTag);
     for (var j=0; j < numWeapons; j++) {
-        var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+        var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
         var weapon = getWeaponSet(mobTag, weaponNum);                        
         
         if (!weapon) {
@@ -181,7 +181,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         
         for (var serial=0; serial < number; serial++) {
             for (var j=0; j < numWeapons; j++) {
-                var weaponNum = j != 0 ? j : ""; // Dont sent a number if its the first weapon
+                var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
                 var weapon = getWeaponSet(mobTag, weaponNum);                        
                 
                 if (!weapon) {
@@ -1019,7 +1019,7 @@ async function launchAttack() {
     var critImmune = document.getElementById('critImmune').checked;
     var dmSaves = document.getElementById('dmSaves').checked;
     
-    // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
+    // discovery is for when we don't know the target AC, it will step the attacks sequentially until we figure it out
     var discoveryModeFlag = false;
     if (targetAc <= 0) {
         discoveryModeFlag = true;
@@ -1130,7 +1130,7 @@ async function launchAttack() {
                 var roll = Math.floor(Math.random() * 20 + 1);
                 var autoFailSave = false;
                 
-                if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadv to dex saves
+                if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadvantage to dex saves
                     var roll2 = Math.floor(Math.random() * 20 + 1);
                     roll = Math.min(roll, roll2);
                 }
@@ -1281,11 +1281,11 @@ async function launchAttack() {
                 }
             }
         }
-        infoAppend += "</div>";        
-    }    
-         
+        infoAppend += "</div>";
+    }
+
     generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray, ailments); 
-    
+
 }
 
 function determineCreatureVantage(newCreature, ailments, inMelee) {
