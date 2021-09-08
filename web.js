@@ -192,6 +192,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
                 var multiattack = numWeapons > 1 ? numWeapons : false;
                 var mobToAdd = new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack);
                 mobToAdd.Weapons = [mobToAdd.EquipWeapon];
+                mobToAdd.EquipWeapon.WeaponMods = mobToAdd.EquipWeapon
 
                 mobArray[mobArray.length-1].push(mobToAdd);
             }
