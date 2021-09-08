@@ -7,7 +7,7 @@ import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
-         GiantElk, GiantSpider, GiantWolfSpider} from './presents/index.js'
+         GiantElk, GiantSpider, GiantWolfSpider, Weapon} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 
@@ -192,8 +192,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
                 var multiattack = numWeapons > 1 ? numWeapons : false;
                 var mobToAdd = new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack);
                 mobToAdd.Weapons = [mobToAdd.EquipWeapon];
-                mobToAdd.EquipWeapon = null;
-                mobToAdd.EquipWeapon.WeaponMods = mobToAdd.EquipWeapon;
+                mobToAdd.EquipWeapon = new Weapon("Equip TEST", mobToAdd.EquipWeapon);                
 
                 mobArray[mobArray.length-1].push(mobToAdd);
             }
