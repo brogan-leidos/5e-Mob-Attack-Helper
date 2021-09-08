@@ -153,7 +153,7 @@ function cloneMob(mobTag) {
     var originalMob = createMobsFromBlock(mobTag, true);    
     var newMobTag = mobIncrement;
     createPresent(""); 
-    changeBlockToMob(newMobTag, originalMob);
+    changeBlockToMob(newMobTag, originalMob[0]);
 }
 
 function createMobsFromBlock(mobTag, ignoreEnable=false) {
