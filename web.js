@@ -328,8 +328,10 @@ function generateMobBlockHTML(mobTag, presentName, newMob=null) {
      else {
          var newMob = filtered[0];
  
-         var additionalOptions = weaponsToHtml(newMob.Weapons);
-         appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         if (!newMob) {
+            var additionalOptions = weaponsToHtml(newMob.Weapons);
+            appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         }
          var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
          appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
  
