@@ -306,11 +306,11 @@ function createPresent(presentName) {
          
 }
 
-function generateMobBlockHTML(mobTag, presentName, newMob=null) {
+function generateMobBlockHTML(mobTag, presentName, injectMob=null) {
     var appendBlock = mobBlock();
     var filtered = [];
-    if (newMob != null) {
-        filtered = [newMob];
+    if (injectMob != null) {
+        filtered = [injectMob];
     } else {
         filtered = mobReference.filter(a => a.Name == presentName);
     }
@@ -329,7 +329,7 @@ function generateMobBlockHTML(mobTag, presentName, newMob=null) {
      else {
          var newMob = filtered[0];
  
-         if (!newMob) {
+         if (!injectMob) {
             var additionalOptions = weaponsToHtml(newMob.Weapons);
             appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
          }
