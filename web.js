@@ -161,6 +161,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         return []; // If the box is not checked, skip that mob block
     }        
     var mobArray = [];
+    mobArray.push(new Array());
 
     var name = document.getElementById(`${mobTag}-Name`).value + "-Clone";
     var icon = document.getElementById(`${mobTag}-Icon`);
