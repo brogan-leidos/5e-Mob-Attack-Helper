@@ -150,9 +150,9 @@ function minimizeMob(mobTag) {
 }
 
 function cloneMob(mobTag) {        
-    var originalMob = createMobsFromBlock(mobTag, true);    
-    var newMobTag = mobIncrement;
+    var originalMob = createMobsFromBlock(mobTag, true);        
     createPresent(""); 
+    var newMobTag = mobIncrement;
     changeBlockToMob(newMobTag, originalMob[0]);
 }
 
