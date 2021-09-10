@@ -153,53 +153,42 @@ function cloneMob(mobTag) {
     var originalMob = createMobsFromBlock(mobTag, true);        
     createPresent(""); 
     var newMobTag = mobIncrement - 1;
-    changeBlockToMob(`Mob${newMobTag}`, originalMob[0][0]);
+    changeBlockToMob(`Mob${newMobTag}`, originalMob);
 }
 
 function createMobsFromBlock(mobTag, ignoreEnable=false) {
     if (!document.getElementById(mobTag.concat("-Enabled")).checked && !ignoreEnable) {
         return []; // If the box is not checked, skip that mob block
     }        
-    var mobArray = [];
-    mobArray.push(new Array());
 
     var name = document.getElementById(`${mobTag}-Name`).value + "-Clone";
     var icon = document.getElementById(`${mobTag}-Icon`);
-    icon = icon.options[icon.selectedIndex].innerHTML;            
+    icon = icon.options[icon.selectedIndex].value;            
     var number = document.getElementById(`${mobTag}-Number`).value;        
     var advantage = document.getElementById(`${mobTag}-Adv`).checked;
     var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
     var vantage = advantage + disadvantage;
 
     var numWeapons = findNumberOfWeaponsInBlock(mobTag);
+    var multiattack = numWeapons > 1 ? numWeapons : false;
+    var mobToAdd = new Mob(name, icon, [], vantage, mobTag, 1, multiattack);
     for (var j=0; j < numWeapons; j++) {
         var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
-        var weapon = getWeaponSet(mobTag, weaponNum);                        
+        var weapon = getWeaponSet(mobTag, weaponNum);
+        var weaponName = `WeaponNum-${j}`                      
         
         if (!weapon) {
             return [];
-        }
-        
-        for (var serial=0; serial < number; serial++) {
-            for (var j=0; j < numWeapons; j++) {
-                var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
-                var weapon = getWeaponSet(mobTag, weaponNum);                        
-                
-                if (!weapon) {
-                    return [];
-                }
-                
-                var multiattack = numWeapons > 1 ? numWeapons : false;
-                var mobToAdd = new Mob(name, icon, weapon, vantage, mobTag, serial+1, multiattack);
-                mobToAdd.Weapons = [mobToAdd.EquipWeapon];
-                mobToAdd.EquipWeapon = new Weapon("Equip TEST", mobToAdd.EquipWeapon);                
-
-                mobArray[mobArray.length-1].push(mobToAdd);
-            }
-        }
+        }                                       
+        var newWeapon = new Weapon(weaponName, mobToAdd.EquipWeapon);                
+        mobToAdd.Weapons.push(newWeapon);
+        mobToAdd.EquipWeapon = newWeapon;
+        if (multiattack) {
+            mobToAdd.multiattack.push(weaponName);
+        }          
     }
 
-    return mobArray;
+    return newMob;
 }
 
 // mobTag -- block to change, mob -- a new Mob() with all the details needed to change the block
