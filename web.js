@@ -676,7 +676,7 @@ function collapseRow(id, weaponNum="") {
     checkForExistingDc()              
 }
 
-function addExtraAttack(mobTag, element=null) {
+function addExtraAttack(mobTag, defaultWeapon=true) {
     var weaponNum = findNumberOfWeaponsInBlock(mobTag);
     var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
     weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
@@ -694,8 +694,10 @@ function addExtraAttack(mobTag, element=null) {
     // var findNum = weaponNum > 0 ? "" : `-${weaponNum}`;
     // document.getElementById(`${mobTag}-ExtraAttack${findNum}`).style.display = "none"; // Hide the old button
 
-    var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
-    changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
+    if (defaultWeapon) {
+        var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
+        changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
+    }
 
     assignEventsToNewWeapon(mobTag, weaponNum);
 }
