@@ -188,7 +188,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         }          
     }
 
-    return newMob;
+    return mobToAdd;
 }
 
 // mobTag -- block to change, mob -- a new Mob() with all the details needed to change the block
