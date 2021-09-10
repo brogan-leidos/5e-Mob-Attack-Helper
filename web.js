@@ -173,21 +173,18 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
     var multiattack = numWeapons > 1 ? numWeapons : false;
     var mobToAdd = new Mob(name, icon, [], vantage, mobTag, 1, multiattack);
     if (multiattack) {
-        mobToAdd.multiattack = [];
+        mobToAdd.Multiattack = [];
     }
     for (var j=0; j < numWeapons; j++) {
         var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
         var weaponStats = getWeaponSet(mobTag, weaponNum);
         var weaponName = `WeaponNum-${j}`                      
-        
-        if (!weaponStats) {
-            return [];
-        }                                       
+                                        
         var newWeapon = new Weapon(weaponName, weaponStats);                
         mobToAdd.Weapons.push(newWeapon);
         mobToAdd.EquipWeapon = newWeapon;
         if (multiattack) {
-            mobToAdd.multiattack.push(weaponName);
+            mobToAdd.Multiattack.push(weaponName);
         }          
     }
 
