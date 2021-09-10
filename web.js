@@ -1334,11 +1334,12 @@ function parseMobs(numBlocks) {
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
+        mobArray.push(new Array());
         var mobTag = blockArray[i];
         var newMob = createMobsFromBlock(mobTag);
         var number = document.getElementById(`${mobTag}-Number`).value;
-        for (var i=0; i < number; i++) {
-            mobArray.push(newMob); 
+        for (var j=0; j < number; j++) {
+            mobArray[j].push(newMob); 
         };
         
     }
