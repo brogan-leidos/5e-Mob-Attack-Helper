@@ -60,7 +60,7 @@ export default class Mob {
             this.rollClass.crit = true;            
         }
         
-        this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon[0][1]);
+        this.rollClass.hitRoll = attackRoll + parseInt(this.EquipWeapon.BonusToHit);
         
         return this.rollClass;
     }
