@@ -153,7 +153,7 @@ function cloneMob(mobTag) {
     var originalMob = createMobsFromBlock(mobTag, true);        
     createPresent(""); 
     var newMobTag = mobIncrement - 1;
-    changeBlockToMob(`Mob${newMobTag}`, originalMob);
+    changeBlockToMob(`Mob${newMobTag}`, originalMob);   
 }
 
 function createMobsFromBlock(mobTag, ignoreEnable=false) {
@@ -210,6 +210,19 @@ function changeBlockToMob(mobTag, newMob) {
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
         changeMobWeapon(mobTag, e.target.value);        
     });
+
+    if (newMob.Multiattack) {
+        for (var i=0; i < newMob.Multiattack.length; i++) {
+            var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
+            if (i > 0) {
+                addExtraAttack(mobTag);
+                changeMobWeapon(mobTag, weaponMods, i);
+            }
+            else {
+                changeMobWeapon(mobTag, weaponMods);
+            }
+        }
+    }
 
     assignEventsToBlock(mobTag, false);
 }
