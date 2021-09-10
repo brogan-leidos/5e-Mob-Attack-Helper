@@ -163,8 +163,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
 
     var name = document.getElementById(`${mobTag}-Name`).value + "-Clone";
     var icon = document.getElementById(`${mobTag}-Icon`);
-    icon = icon.options[icon.selectedIndex].value;            
-    var number = document.getElementById(`${mobTag}-Number`).value;        
+    icon = icon.options[icon.selectedIndex].value;                
     var advantage = document.getElementById(`${mobTag}-Adv`).checked;
     var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
     var vantage = advantage + disadvantage;
@@ -1336,7 +1335,12 @@ function parseMobs(numBlocks) {
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
         var mobTag = blockArray[i];
-        mobArray.push(createMobsFromBlock(mobTag));        
+        var newMob = createMobsFromBlock(mobTag);
+        var number = document.getElementById(`${mobTag}-Number`).value;
+        for (var i=0; i < number; i++) {
+            mobArray.push(newMob); 
+        };
+        
     }
     return mobArray;
 }
