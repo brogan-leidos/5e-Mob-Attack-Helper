@@ -177,7 +177,7 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         var weaponStats = getWeaponSet(mobTag, weaponNum);
         var weaponName = `WeaponNum-${j}`                      
         
-        if (!weapon) {
+        if (!weaponStats) {
             return [];
         }                                       
         var newWeapon = new Weapon(weaponName, weaponStats);                
