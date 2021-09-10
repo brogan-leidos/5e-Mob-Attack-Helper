@@ -212,7 +212,7 @@ function changeBlockToMob(mobTag, newMob) {
         for (var i=0; i < newMob.Multiattack.length; i++) {
             var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
             if (i > 0) {
-                addExtraAttack(mobTag);
+                addExtraAttack(mobTag, false);
                 changeMobWeapon(mobTag, weaponMods, i);
             }
             else {
