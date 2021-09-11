@@ -180,9 +180,12 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         var weaponStats = getWeaponSet(mobTag, weaponNum);
         var weaponName = `WeaponNum-${j}`                      
                                         
-        var newWeapon = new Weapon(weaponName, weaponStats);                
+        var newWeapon = new Weapon(weaponName, weaponStats); 
+        newWeapon.BonusToHit = newWeapon.WeaponMods[0][1];
+        newWeapon.IsMelee = newWeapon.WeaponMods[1][1];
+        newWeapon.WeaponString = newWeapon.WeaponMods[2][1];          
         mobToAdd.Weapons.push(newWeapon);
-        mobToAdd.EquipWeapon = newWeapon;
+        mobToAdd.EquipWeapon = weaponStats;
         if (multiattack) {
             mobToAdd.Multiattack.push(weaponName);
         }          
