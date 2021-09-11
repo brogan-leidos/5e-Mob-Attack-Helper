@@ -150,14 +150,14 @@ function minimizeMob(mobTag) {
 }
 
 function cloneMob(mobTag) {        
-    var originalMob = createMobsFromBlock(mobTag, true);        
+    var originalMob = createMobFromBlock(mobTag, true);        
     createPresent(""); 
     var newMobTag = mobIncrement - 1;
     originalMob.name += "-Clone";
     changeBlockToMob(`Mob${newMobTag}`, originalMob);   
 }
 
-function createMobsFromBlock(mobTag, ignoreEnable=false) {
+function createMobFromBlock(mobTag, ignoreEnable=false) {
     if (!document.getElementById(mobTag.concat("-Enabled")).checked && !ignoreEnable) {
         return []; // If the box is not checked, skip that mob block
     }        
@@ -1340,7 +1340,7 @@ function parseMobs(numBlocks) {
         //Name, Icon, to hit, weapon, number
         mobArray.push(new Array());
         var mobTag = blockArray[i];
-        var newMob = createMobsFromBlock(mobTag);
+        var newMob = createMobFromBlock(mobTag);
         var number = document.getElementById(`${mobTag}-Number`).value;
         for (var j=0; j < number; j++) {
             mobArray[j].push(newMob); 
