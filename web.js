@@ -1344,7 +1344,7 @@ function parseMobs(numBlocks) {
         var number = document.getElementById(`${mobTag}-Number`).value;
         for (var j=0; j < number; j++) {            
             newMob.Number = j+1;
-            var newObjectMob = nObject.create(newMob);
+            var newObjectMob = Object.create(newMob);
             mobArray[i].push(newObjectMob); 
         };
         
