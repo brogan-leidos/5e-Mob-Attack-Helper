@@ -153,6 +153,7 @@ function cloneMob(mobTag) {
     var originalMob = createMobsFromBlock(mobTag, true);        
     createPresent(""); 
     var newMobTag = mobIncrement - 1;
+    originalMob.name += "-Clone";
     changeBlockToMob(`Mob${newMobTag}`, originalMob);   
 }
 
@@ -161,9 +162,9 @@ function createMobsFromBlock(mobTag, ignoreEnable=false) {
         return []; // If the box is not checked, skip that mob block
     }        
 
-    var name = document.getElementById(`${mobTag}-Name`).value + "-Clone";
+    var name = document.getElementById(`${mobTag}-Name`).value;
     var icon = document.getElementById(`${mobTag}-Icon`);
-    icon = icon.options[icon.selectedIndex].value;                
+    icon = icon.options[icon.selectedIndex].innerHTML;                
     var advantage = document.getElementById(`${mobTag}-Adv`).checked;
     var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
     var vantage = advantage + disadvantage;
