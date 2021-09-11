@@ -1343,7 +1343,8 @@ function parseMobs(numBlocks) {
         var newMob = createMobFromBlock(mobTag);
         var number = document.getElementById(`${mobTag}-Number`).value;
         for (var j=0; j < number; j++) {
-            mobArray[j].push(newMob); 
+            newMob.Number = j+1;
+            mobArray[i].push(newMob); 
         };
         
     }
