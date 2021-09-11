@@ -1080,7 +1080,7 @@ async function launchAttack() {
                   continue;
               } 
               if (attackRoll < minAc || minAc == -1) { // If we're unsure if it hit or not, or its our first time here, prompt
-                  var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon[0][1], attackRollClass.attacker);
+                  var response = await discoveryStep(attackRoll, attackRollClass.attacker.EquipWeapon.BonusToHit, attackRollClass.attacker);
                   if (response) {
                       rollResult = newCreature.dealDamage();
                       hitTarget = true;
