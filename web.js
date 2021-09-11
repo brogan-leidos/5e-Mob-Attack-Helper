@@ -1342,9 +1342,10 @@ function parseMobs(numBlocks) {
         var mobTag = blockArray[i];
         var newMob = createMobFromBlock(mobTag);
         var number = document.getElementById(`${mobTag}-Number`).value;
-        for (var j=0; j < number; j++) {
+        for (var j=0; j < number; j++) {            
             newMob.Number = j+1;
-            mobArray[i].push(new newMob); 
+            var newObjectMob = nObject.create(newMob);
+            mobArray[i].push(newObjectMob); 
         };
         
     }
