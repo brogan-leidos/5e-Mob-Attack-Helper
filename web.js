@@ -1345,7 +1345,7 @@ function parseMobs(numBlocks) {
         for (var j=0; j < number; j++) {            
             newMob.Number = j+1;
             var newObjectMob = new Mob();
-            Object.assign(newObjectMob, newMob);
+            newObjectMob.assignPropertiesFromMob(newMob);
             mobArray[i].push(newObjectMob); 
         };
         
