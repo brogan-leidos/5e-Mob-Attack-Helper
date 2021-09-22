@@ -203,7 +203,7 @@ function changeBlockToMob(mobTag, newMob) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
 
-    changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+    changeMobWeapon(mobTag, newMob.EquipWeapon);
     if (newMob.Variants) {
         assignVariants(mobTag, newMob.Variants)
     }
