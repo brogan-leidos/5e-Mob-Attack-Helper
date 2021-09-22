@@ -256,11 +256,11 @@ export default class Mob {
         this.Name = mobToPullFrom.Name;
         this.Icon = mobToPullFrom.Icon;        
         this.MobName = mobToPullFrom.MobName;
-        this.Number = mobToPullFrom.number;
+        this.Number = mobToPullFrom.Number;
             
-        this.Vantage = mobToPullFrom.vantage;
+        this.Vantage = mobToPullFrom.Vantage;
 
-        this.Multiattack = mobToPullFrom.multiattack;
+        this.Multiattack = mobToPullFrom.Multiattack;
     }
     
 }
