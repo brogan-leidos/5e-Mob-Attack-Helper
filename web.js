@@ -163,8 +163,8 @@ function createMobFromBlock(mobTag, ignoreEnable=false) {
     }        
 
     var name = document.getElementById(`${mobTag}-Name`).value;
-    var icon = document.getElementById(`${mobTag}-Icon`).value;
-    icon = icon.options[icon.selectedIndex].innerHTML;                
+    var icon = document.getElementById(`${mobTag}-Icon`);
+    icon = icon.options[icon.selectedIndex].value;                
     var advantage = document.getElementById(`${mobTag}-Adv`).checked;
     var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
     var vantage = advantage + disadvantage;
