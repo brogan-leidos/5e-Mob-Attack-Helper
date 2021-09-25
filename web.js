@@ -1347,7 +1347,7 @@ function parseMobs(numBlocks) {
                     var mobClone = new Mob();
                     mobClone.assignPropertiesFromMob(newMob);
                     const weaponToSwitchToName = mobClone.Multiattack[multi];
-                    mobClone.EquipWeapon = mobClone.Weapons.filter(a => a.Name == weaponToSwitchToName)[0];
+                    mobClone.EquipWeapon = mobClone.Weapons.filter(a => a.Name == weaponToSwitchToName)[0].WeaponMods;
                     mobArray[i].push(mobClone);
                 }
             }
