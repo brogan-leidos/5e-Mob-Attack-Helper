@@ -1053,9 +1053,7 @@ async function launchAttack() {
             var newCreature = mobArray[block][i];
             var creatureNotes = new CreatureNotes();
 
-            // Pass this functions any global variables it needs
-            // performCreatureAttack(newCreature, creatureNotes, ailments);
-
+            // Calculates advantage based on mob block checkboxes, and creature ailments (like prone and what not)
             var vantageResult = determineCreatureVantage(newCreature, ailments);
             newCreature = vantageResult[0];
             var allowParalyzeCrit = vantageResult[1]; 
@@ -1063,10 +1061,7 @@ async function launchAttack() {
             var rollResult = "";
             var hitTarget = false;
             var attackRollClass = newCreature.makeAttack();
-            
-            // Determine if attack hits or not
-            // rollResult = determineAttack(attackRollClass); // Returns {"crit":true/false, "miss":true/false, "rollResult":string, }
-            
+                        
             var attackRoll = attackRollClass.hitRoll;
             
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
@@ -1342,13 +1337,21 @@ function parseMobs(numBlocks) {
         var mobTag = blockArray[i];
         var newMob = createMobFromBlock(mobTag);
         var number = document.getElementById(`${mobTag}-Number`).value;
-        for (var j=0; j < number; j++) {            
-            newMob.Number = j+1;
+        for (var j=1; j <= number; j++) {                    
             var newObjectMob = new Mob();
             newObjectMob.assignPropertiesFromMob(newMob);
+            newObjectMob.Number = j;
             mobArray[i].push(newObjectMob); 
-        };
-        
+            if (newMob.multiattack.length > 1) {
+                for (var multi=1; multi < newMob.multiattack.length; multi++) {
+                    var mobClone = new Mob();
+                    mobClone.assignPropertiesFromMob(newMob);
+                    const weaponToSwitchToName = mobClone.multiattack[multi];
+                    mobClone.EquipWeapon = mobClone.Weapon.filter(a => a.name == weaponToSwitchToName)[0];
+                    mobArray[i].push(mobClone);
+                }
+            }
+        };        
     }
     return mobArray;
 }
