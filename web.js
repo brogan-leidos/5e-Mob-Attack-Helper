@@ -1342,11 +1342,11 @@ function parseMobs(numBlocks) {
             newObjectMob.assignPropertiesFromMob(newMob);
             newObjectMob.Number = j;
             mobArray[i].push(newObjectMob); 
-            if (newMob.multiattack.length > 1) {
-                for (var multi=1; multi < newMob.multiattack.length; multi++) {
+            if (newMob.Multiattack.length > 1) {
+                for (var multi=1; multi < newMob.Multiattack.length; multi++) {
                     var mobClone = new Mob();
                     mobClone.assignPropertiesFromMob(newMob);
-                    const weaponToSwitchToName = mobClone.multiattack[multi];
+                    const weaponToSwitchToName = mobClone.Multiattack[multi];
                     mobClone.EquipWeapon = mobClone.Weapon.filter(a => a.name == weaponToSwitchToName)[0];
                     mobArray[i].push(mobClone);
                 }
