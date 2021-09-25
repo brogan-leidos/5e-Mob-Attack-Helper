@@ -813,10 +813,6 @@ button.creatureVariantButton:nth-last-child(1) {
   padding: 0px 3px 0px 3px;
 }
 
-.attackDetail td::nth-child(even) {
-  background-color: #ddd;
-}
-
 .damageRoll:hover .damageRollTip {
   display: inline-block;
 }
