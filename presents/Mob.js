@@ -254,7 +254,7 @@ export default class Mob {
         this.EquipWeapon = mobToPullFrom.EquipWeapon; // An array of modifiers
                                 // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
         this.Name = mobToPullFrom.Name;
-        this.Icon = mobToPullFrom.Icon.value;        
+        this.Icon = mobToPullFrom.Icon.value ? mobToPullFrom.Icon.value : mobToPullFrom.Icon;        
         this.MobName = mobToPullFrom.MobName;
         this.Number = mobToPullFrom.Number;
             
