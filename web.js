@@ -1340,13 +1340,13 @@ function parseMobs(numBlocks) {
         for (var j=1; j <= number; j++) {                    
             var newObjectMob = new Mob();
             newObjectMob.assignPropertiesFromMob(newMob);
+            newObjectMob.Icon = document.getElementById(`${mobTag}-Icon`).value[newObjectMob.Icon];
             newObjectMob.Number = j;
             mobArray[i].push(newObjectMob); 
             if (newMob.Multiattack.length > 1) {
                 for (var multi=1; multi < newMob.Multiattack.length; multi++) {
                     var mobClone = new Mob();
                     mobClone.assignPropertiesFromMob(newObjectMob);
-                    mobClone.Icon = document.getElementById(`${mobTag}-Icon`).value[mobClone.Icon];
                     const weaponToSwitchToName = mobClone.Multiattack[multi];
                     mobClone.EquipWeapon = mobClone.Weapons.filter(a => a.Name == weaponToSwitchToName)[0].WeaponMods;
                     mobArray[i].push(mobClone);
