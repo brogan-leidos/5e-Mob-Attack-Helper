@@ -8,6 +8,7 @@
   - Updates to post attack details to support multiattackers
   - List of multiattack creature types: Velociraptor (the OG),
   - Added a button to clone a mob. Helpful! (and painful to code!)
+* Added "Clone Mob" button to toolbar, was way harder to implement that it probably should have been
 
 === Ver 1.0.3
 * Code improvements. No visible changes.
