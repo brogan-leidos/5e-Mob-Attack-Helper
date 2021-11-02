@@ -914,7 +914,7 @@ function toggleDetails(event, rollArray) {
                 var creatureColumn = ""
                 if (rollClass.attacker.Multiattack) {
                     if (j % rollClass.attacker.Multiattack.length == 0) {
-                        creatureColumn = `<td rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroup">${rollClass.attacker.Number}</span></td>`;
+                        creatureColumn = `<td class="masterGroup" rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
                     }
                 }
 
