@@ -1,6 +1,6 @@
 = Change Log
 
-== Current Version: 1.0.2
+== Current Version: 1.1.0
 
 === Ver 1.1.0
 * We're just skipping over the deployment of 1.0.3 because this has gotten so much larger than I expected it to be.
