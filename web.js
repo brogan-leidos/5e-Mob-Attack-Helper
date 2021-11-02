@@ -1339,8 +1339,9 @@ function parseMobs(numBlocks) {
         var number = document.getElementById(`${mobTag}-Number`).value;
         for (var j=1; j <= number; j++) {                    
             var newObjectMob = new Mob();
-            newObjectMob.assignPropertiesFromMob(newMob);
-            newObjectMob.Icon = document.getElementById(`${mobTag}-Icon`).value[newObjectMob.Icon];
+            newObjectMob.assignPropertiesFromMob(newMob); //icon.options[icon.selectedIndex]
+            var iconElement = document.getElementById(`${mobTag}-Icon`);
+            newObjectMob.Icon = iconElement.options[iconElement.selectedIndex];
             newObjectMob.Number = j;
             mobArray[i].push(newObjectMob); 
             if (newMob.Multiattack.length > 1) {
