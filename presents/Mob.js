@@ -2,25 +2,19 @@ import Weapon from "./Weapon.js"
 import DamageRoll from './DamageRoll.js'
 
 export default class Mob {
-    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", number=-1) {
-    this.AC = 0;
-    this.Health = 0;
-    this.Str = 0;
-    this.Dex = 0; 
-    this.Con = 0; 
-    this.Int = 0;
-    this.Wis = 0;
-    this.Chr = 0;
-    this.Weapons = [];
-    this.EquipWeapon = weapon; // An array of modifiers
-                               // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
-    this.Name = name;
-    this.Icon = icon;        
-    this.MobName = mobname;
-    this.Number = number;
-        
-    this.rollClass = new DamageRoll();
-    this.Vantage = vantage;
+    constructor(name= "", icon= "", weapon=null, vantage=0, mobname="default", number=-1, multiattack=false) {
+        this.Weapons = [];
+        this.EquipWeapon = weapon; // An array of modifiers
+                                // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
+        this.Name = name;
+        this.Icon = icon;        
+        this.MobName = mobname;
+        this.Number = number;
+            
+        this.rollClass = new DamageRoll();
+        this.Vantage = vantage;
+
+        this.Multiattack = multiattack;
 
     }
     
@@ -89,7 +83,7 @@ export default class Mob {
     }
         
     // Crit using equip weapon!
-     dealCrit() {               
+    dealCrit() {               
         var ret = this.dealDamage(true)
         this.rollClass.crit = true;
         this.rollClass.message += `Crit! `;
@@ -253,6 +247,20 @@ export default class Mob {
             }
         }
         return this.rollClass;
+    }
+
+    assignPropertiesFromMob(mobToPullFrom) {
+        this.Weapons = mobToPullFrom.Weapons;
+        this.EquipWeapon = mobToPullFrom.EquipWeapon; // An array of modifiers
+                                // EX: [["ToHit", 3], ["Weapon","1d6 + 3 slashing"], ["DC", 10, "Str"], ["Condition", "Knock Prone"]]
+        this.Name = mobToPullFrom.Name;
+        this.Icon = mobToPullFrom.Icon;        
+        this.MobName = mobToPullFrom.MobName;
+        this.Number = mobToPullFrom.Number;
+            
+        this.Vantage = mobToPullFrom.Vantage;
+
+        this.Multiattack = mobToPullFrom.Multiattack;
     }
     
 }

@@ -1,5 +1,5 @@
 import Mob from './presents/Mob.js'
-import { mobBlock } from './templates/Mob-Block.js'
+import { mobBlock, weaponMenu } from './templates/Mob-Block.js'
 import { weaponsToHtml } from './templates/utils.js'
 import CreatureNotes from './templates/utils.js'
 import { discoveryTemplate, dcTemplate, dcTemplateDmSaves } from './templates/Discovery-Template.js'
@@ -7,7 +7,7 @@ import { modifierRow, chooseModifierType } from './templates/WeaponModMenu.js'
 import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, ObjectLarge, ObjectHuge, TinyServant,
          Dretch, Mane, Berserk, Elk, Imp, Quasit, AbyssalWretch, Boar, GiantSnake, GiantOwl, Velociraptor, Orc, Goblin, 
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
-         GiantElk } from './presents/index.js'
+         GiantElk, GiantSpider, GiantWolfSpider, Weapon} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 
@@ -26,7 +26,8 @@ var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(),
                     new ObjectTiny(), new ObjectSmall(), new ObjectMedium(), new ObjectLarge(), new ObjectHuge(), new TinyServant(),
                     new Dretch(), new Mane(), new Berserk(), new Elk(), new Imp(), new Quasit(), new AbyssalWretch(), new Boar(),
                     new GiantSnake(), new GiantOwl(), new Velociraptor(), new Orc(), new Goblin(), new Bandit(), new Kobold(), new WingedKobold(), 
-                    new Hobgoblin(), new Bugbear(), new DireWolf(), new GiantElk(), new GiantBoar(), new ConstrictSnake(), new PoisonSnake(), new FlyingSnake()];
+                    new Hobgoblin(), new Bugbear(), new DireWolf(), new GiantElk(), new GiantBoar(), new ConstrictSnake(), new PoisonSnake(), new FlyingSnake(),
+                    new GiantSpider(), new GiantWolfSpider()];
 
 export default () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
@@ -51,7 +52,6 @@ export default () => {
         launchAttack();
     });
          
-    // infoButton
     document.getElementById('infoButton').addEventListener('click', () => {        
         displayHelp();
     });
@@ -63,10 +63,7 @@ export default () => {
     document.getElementById('dmSavesInfo').addEventListener('click', () => {        
         alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
     });
-
-
-         
-         
+     
 };
 
 
@@ -153,15 +150,81 @@ function minimizeMob(mobTag) {
 }
 
 function cloneMob(mobTag) {        
-    var newMobTag = "Mob" + mobIncrement.toString();
-    blockArray.push(mobTag);
-    mobIncrement++;
-    
-    var mobHtml = document.getElementById(mobTag).innerHTML.replace(mobTag, newMobTag);    
-    mobBlockArea.insertAdjacentHTML('beforeend', mobHtml);
-    
-    assignEventsToBlock(newMobTag)
-    
+    var originalMob = createMobFromBlock(mobTag, true);        
+    createPresent(""); 
+    var newMobTag = mobIncrement - 1;
+    originalMob.Name += "-Clone";
+    changeBlockToMob(`Mob${newMobTag}`, originalMob);   
+}
+
+function createMobFromBlock(mobTag, ignoreEnable=false) {
+    if (!document.getElementById(mobTag.concat("-Enabled")).checked && !ignoreEnable) {
+        return []; // If the box is not checked, skip that mob block
+    }        
+
+    var name = document.getElementById(`${mobTag}-Name`).value;
+    var icon = document.getElementById(`${mobTag}-Icon`);
+    icon = `"${icon.options[icon.selectedIndex].value}"`;
+    var advantage = document.getElementById(`${mobTag}-Adv`).checked;
+    var disadvantage = document.getElementById(`${mobTag}-Dis`).checked * -1;
+    var vantage = advantage + disadvantage;
+
+    var numWeapons = findNumberOfWeaponsInBlock(mobTag);
+    var multiattack = numWeapons > 1 ? numWeapons : false;
+    var mobToAdd = new Mob(name, icon, [], vantage, mobTag, 1, multiattack);
+    if (multiattack) {
+        mobToAdd.Multiattack = [];
+    }
+    for (var j=0; j < numWeapons; j++) {
+        var weaponNum = j != 0 ? j : ""; // Don't sent a number if its the first weapon
+        var weaponStats = getWeaponSet(mobTag, weaponNum);
+        var weaponName = `WeaponNum-${j}`                      
+                                        
+        var newWeapon = new Weapon(weaponName, weaponStats); 
+        newWeapon.BonusToHit = newWeapon.WeaponMods[0][1];
+        newWeapon.IsMelee = newWeapon.WeaponMods[1][1];
+        newWeapon.WeaponString = newWeapon.WeaponMods[2][1];          
+        mobToAdd.Weapons.push(newWeapon);
+        mobToAdd.EquipWeapon = weaponStats;
+        if (multiattack) {
+            mobToAdd.Multiattack.push(weaponName);
+        }          
+    }
+
+    return mobToAdd;
+}
+
+// mobTag -- block to change, mob -- a new Mob() with all the details needed to change the block
+function changeBlockToMob(mobTag, newMob) {
+    var html = generateMobBlockHTML(mobTag, "", newMob);
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">](?:.|\n)*[^<\/div>$]`, "g");
+    var match = html.match(divStripRegex);
+    html = match[0];
+    var mobBlock = document.getElementById(mobTag);
+    mobBlock.innerHTML = html;
+
+    changeMobWeapon(mobTag, newMob.EquipWeapon);
+    if (newMob.Variants) {
+        assignVariants(mobTag, newMob.Variants)
+    }
+    document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value);        
+    });
+
+    if (newMob.Multiattack) {
+        for (var i=0; i < newMob.Multiattack.length; i++) {
+            var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
+            if (i > 0) {
+                addExtraAttack(mobTag, false);
+                changeMobWeapon(mobTag, weaponMods, i);
+            }
+            else {
+                changeMobWeapon(mobTag, weaponMods);
+            }
+        }
+    }
+
+    assignEventsToBlock(mobTag, false);
 }
 
 function toggleMob(mobTag) {
@@ -181,30 +244,31 @@ function toggleMob(mobTag) {
     }
 }
 
-function toggleRange(mobTag) {    
-    var isMelee = document.getElementById(mobTag + "-Range").checked;
+function toggleRange(element) {   
+    var rangeElement = element.parentElement;
+    var isMelee = rangeElement.checked;
     if (isMelee) {
-        document.getElementById(mobTag + "-Ranged").style.color = "black";
-        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Range").checked = false;
+        rangeElement.children[1].style.color = "black"; // Ranged
+        rangeElement.children[0].style.color = "lightgrey"; // Melee
+        rangeElement.checked = false;
     }
     else {
-        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Melee").style.color = "black";
-        document.getElementById(mobTag + "-Range").checked = true;
+        rangeElement.children[1].style.color = "lightgrey";
+        rangeElement.children[0].style.color = "black";
+        rangeElement.checked = true;
     }
 }
 
-function setRange(mobTag, isMelee) {
+function setRange(mobTag, isMelee, weaponNum="") {
     if (!isMelee) {
-        document.getElementById(mobTag + "-Ranged").style.color = "black";
-        document.getElementById(mobTag + "-Melee").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Range").checked = false;
+        document.getElementById(`${mobTag}-Ranged${weaponNum}`).style.color = "black";
+        document.getElementById(`${mobTag}-Melee${weaponNum}`).style.color = "lightgrey";
+        document.getElementById(`${mobTag}-Range${weaponNum}`).checked = false;
     }
     else {
-        document.getElementById(mobTag + "-Ranged").style.color = "lightgrey";
-        document.getElementById(mobTag + "-Melee").style.color = "black";
-        document.getElementById(mobTag + "-Range").checked = true;
+        document.getElementById(`${mobTag}-Ranged${weaponNum}`).style.color = "lightgrey";
+        document.getElementById(`${mobTag}-Melee${weaponNum}`).style.color = "black";
+        document.getElementById(`${mobTag}-Range${weaponNum}`).checked = true;
     }
 }
 
@@ -220,7 +284,21 @@ function createPresent(presentName) {
    var filtered = mobReference.filter(a => a.Name == presentName);
    if (filtered.length != 0) {
         var newMob = filtered[0];
-        changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        if (newMob.Multiattack) {
+            for (var i=0; i < newMob.Multiattack.length; i++) {
+                var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
+                if (i > 0) {
+                    addExtraAttack(mobTag);
+                    changeMobWeapon(mobTag, weaponMods, i);
+                }
+                else {
+                    changeMobWeapon(mobTag, weaponMods);
+                }
+            }
+        }
+        else {
+            changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
+        }
         if (newMob.Variants) {
             assignVariants(mobTag, newMob.Variants)
         }
@@ -233,25 +311,33 @@ function createPresent(presentName) {
          
 }
 
-function generateMobBlockHTML(mobTag, presentName) {
+function generateMobBlockHTML(mobTag, presentName, injectMob=null) {
     var appendBlock = mobBlock();
-    var filtered = mobReference.filter(a => a.Name == presentName);
+    var filtered = [];
+    if (injectMob != null) {
+        filtered = [injectMob];
+    } else {
+        filtered = mobReference.filter(a => a.Name == presentName);
+    }
+    
     if (filtered.length == 0) {  // Generic
+        // No weapons to add so remove it here
+        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "");
         appendBlock = appendBlock.replace(/FILLER-BLOCK/g, mobTag);
         appendBlock = appendBlock.replace("FILLER-NAME", mobTag);
         
         appendBlock = appendBlock.replace("FILLER-WEAPON", "1d6 + 3 slashing");
         appendBlock = appendBlock.replace("FILLER-TOHIT", "2");
-
-        // No weapons to add so remove it here
-        appendBlock = appendBlock.replace(/<select.*FILLER-BLOCK-Weapon-Select(?:.|\n)*<\/select>/g, "")
+        
         return appendBlock;
      }
      else {
          var newMob = filtered[0];
  
-         var additionalOptions = weaponsToHtml(newMob.Weapons);
-         appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         if (!injectMob) {
+            var additionalOptions = weaponsToHtml(newMob.Weapons);
+            appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
+         }
          var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
          appendBlock = appendBlock.replace(equipName, equipName.concat(" selected"));
  
@@ -319,8 +405,8 @@ function toggleVariantsMenu(mobTag, source="user") {
 
 function changeMobVariant(mobTag, presentName) {
     var html = generateMobBlockHTML(mobTag, presentName);
-    // Gotta strip away the DIV container so we dont duplicate it
-    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">].*[^<\/div>$]`, "gs");
+    // Gotta strip away the DIV container so we don't duplicate it
+    var divStripRegex = new RegExp(`[^<div id="${mobTag}" class="overheadMobBlock">](?:.|\n)*[^<\/div>$]`, "g");
     var match = html.match(divStripRegex);
     html = match[0];
     var mobBlock = document.getElementById(mobTag);
@@ -362,9 +448,9 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         minimizeMob(mobTag);
     });
          
-    // document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
-    //     cloneMob(mobTag);
-    // });
+    document.getElementById(mobTag + "-Clone").addEventListener('click', () => {        
+        cloneMob(mobTag);
+    });
     
     document.getElementById(mobTag + "-Adv").addEventListener('change', (e) => {
         changeVantage(mobTag);        
@@ -375,8 +461,11 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     document.getElementById(mobTag + "-Weapon-Expand").addEventListener('click', (e) => {
         expandWeapon(mobTag);        
     });
+    document.getElementById(mobTag + "-ExtraAttack").addEventListener('click', (e) => {
+        addExtraAttack(mobTag, e.target);        
+    });
     document.getElementById(mobTag + "-Range").addEventListener('click', (e) => {
-        toggleRange(mobTag);
+        toggleRange(e.target);
     });
          
     document.getElementById(mobTag + "-Move-Up").addEventListener('click', (e) => {
@@ -415,76 +504,80 @@ function moveMob(mobTag, direction) {
            
 }
 
-function expandWeapon(mobTag) {
-    var modRow = getNumModRows(mobTag);
-    var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select`);
-    if (!modSelect) {
-        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";  
-        document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(e.target.parentElement.id);
+function expandWeapon(mobTag, weaponNum="") {
+    if (weaponNum != "") {
+        weaponNum = `-${weaponNum}`;
+    }
+
+    var modRow = getNumModRows(mobTag, weaponNum); // Returns 0 if none
+    var modSelect = document.getElementById(`${mobTag}-${modRow-1}-Mod-Select${weaponNum}`);
+    if (!modSelect) { // If its the first additional effect, add some new buttons 
+        document.getElementById(`${mobTag}-Weapon-Expand${weaponNum}`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse${weaponNum}"><i class="fa fa-minus-square-o"></i></span>`);
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip${weaponNum}`).style.display = "none";
+        document.getElementById(`${mobTag}-ExtraAttack-Tip${weaponNum}`).style.display = "none";  
+        document.getElementById(`${mobTag}-Weapon-Collapse${weaponNum}`).addEventListener('click', (e) => {
+            collapseRow(e.target.parentElement.id, weaponNum);
         });  
     }
-    var underDc = checkIfUnderDc(mobTag, modRow);
-    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;    
+    var underDc = checkIfUnderDc(mobTag, modRow, weaponNum);
+    var newRow = modifierRow(underDc, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`); //example: Mob0-0-Mod-Select, or, Mob0-0-Mod
+    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand${weaponNum}`).parentElement.parentElement;    
     parentRow.insertAdjacentHTML('beforebegin', newRow);
          
-    modifyRow("Extra Damage", mobTag, modRow);
-    assignListenersToModRow(mobTag, modRow);                     
+    modifyRow("Extra Damage", mobTag, modRow, false, weaponNum);
+    assignListenersToModRow(mobTag, modRow, weaponNum);
+    
+    return modRow;
 }
 
-function getNumModRows(mobTag) {
-    return document.getElementById(mobTag).children[1].firstElementChild.children.length - 8;
-}
-
-// Not created by user, used to change present weapons
-function assignWeaponMod(mobTag, weaponMod) {
-    if (!document.getElementById(`${mobTag}-Weapon-Collapse`) && weaponMod) {
-        document.getElementById(`${mobTag}-Weapon-Expand`).insertAdjacentHTML('beforebegin',`<span class="weaponCollapseButton" id="${mobTag}-Weapon-Collapse"><i class="fa fa-minus-square-o"></i></span>`);
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "none";     
-        document.getElementById(mobTag + "-Weapon-Collapse").addEventListener('click', (e) => {
-            collapseRow(`${mobTag}-Weapon-Collapse`);
-        });  
+function getNumModRows(mobTag, weaponNum="") {
+    var count = 0;
+    while (true) {
+        if (document.getElementById(`${mobTag}-${count}-Mod-Select${weaponNum}`)) {
+            count++;
+            continue;
+        }
+        break;
     }
-         
-    var modRow = getNumModRows(mobTag);
-    var underDc = checkIfUnderDc(mobTag, modRow);
-    var newRow = modifierRow(underDc).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-    
-    var parentRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
-    parentRow.insertAdjacentHTML('beforebegin', newRow);
-    
-    modifyRow(weaponMod[0], mobTag, modRow, true);
-    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).value = weaponMod[0];
-    document.getElementById(`${mobTag}-${modRow}-Mod`).value = weaponMod[1];
+    return count;
+}
+
+// Used to force the options of a weapon mod row to change
+// Weapon mod is [<type string>, <select2 string>, <DC attribute if applicable>]
+function forceOption(mobTag, modRow, weaponNum, weaponMod) {
+    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).value = weaponMod[0];
+    modifyRow(weaponMod[0], mobTag, modRow, true, weaponNum); // Assigns the options for the second cell
+
+    document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).value = weaponMod[1];
     if (weaponMod[2]) {
-        document.getElementById(`${mobTag}-${modRow}-Mod-Dc`).value = weaponMod[2];
+        document.getElementById(`${mobTag}-${modRow}-Mod-Dc${weaponNum}`).value = weaponMod[2];
     }
-    assignListenersToModRow(mobTag, modRow); 
+
+    assignListenersToModRow(mobTag, modRow, weaponNum); 
 }
 
-function assignListenersToModRow(mobTag, modRow) {
-    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+function assignListenersToModRow(mobTag, modRow, weaponNum="") {
+    var modSelect = document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`);
     modSelect.addEventListener('change', (e) => {
-        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0]);
+        modifyRow(e.target.value, e.target.id.split("-")[0], e.target.id.split("-")[1].split("-")[0], false, weaponNum);
     });  
 }
 
-function modifyRow(value, mobTag, modRow, automated=false) {    
-    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod`);    
-    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow);
+// Based on what kind of row this is, assigns options for the second (and maybe 3rd) cell in the row
+function modifyRow(value, mobTag, modRow, automated=false, weaponNum="") {
+    var targetCell = document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`);    
+    targetCell.parentElement.innerHTML = chooseModifierType(value, mobTag, modRow, weaponNum);
     if (value == "DC") {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     } else {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = "transparent"
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = "transparent"
     }
-    updateModDcGrouping(value, mobTag, modRow, automated);
+    updateModDcGrouping(value, mobTag, modRow, automated, weaponNum);
 }
 
-function checkIfUnderDc(mobTag, modRow) {
+function checkIfUnderDc(mobTag, modRow, weaponNum="") {
     for (var i = modRow-1; i >= 0; i--) {
-        var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select`);
+        var selectSeek = document.getElementById(`${mobTag}-${i}-Mod-Select${weaponNum}`);
         if (selectSeek.value == "DC") {
             return true;          
         }
@@ -493,36 +586,37 @@ function checkIfUnderDc(mobTag, modRow) {
 }
 
 // Updates DC grouping/ungrouping
-function updateModDcGrouping(value, mobTag, modRow, automated=false) {
+function updateModDcGrouping(value, mobTag, modRow, automated=false, weaponNum="") {
     // If it falls under a DC, mark it as so
-    if (checkIfUnderDc(mobTag, modRow)) {
-        document.getElementById(`${mobTag}-${modRow}-Mod`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+    if (checkIfUnderDc(mobTag, modRow, weaponNum)) {
+        document.getElementById(`${mobTag}-${modRow}-Mod${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
     }
-    else if (((+modRow + 1) == getNumModRows(mobTag)) && (value == "DC") && !automated) {
+    else if ((+modRow + 1) == getNumModRows(mobTag, weaponNum) && (value == "DC") && !automated) {
         // User created DC on the last available row. Create a new row to help them out
-        assignWeaponMod(mobTag, ["Condition", "Knock Prone"]);
+        var modRow = expandWeapon(mobTag, weaponNum.substr(1));
+        forceOption(mobTag, modRow, weaponNum, ["Condition", "Knock Prone"]);
     }
     else {
         // Scan down - if value is DC mark all below as DC, if its not mark all below as not until we hit DC
         while(true) {
             modRow++;
-            var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select`);
+            var seekMod = document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`);
             if (seekMod) {
                 if (seekMod.innerHTML.includes("DC") && value == "DC") { // Not marked as under DC, but under focus row which is DC
                      // fix the selection
                     var rowReplace = seekMod.parentElement.parentElement;
-                    rowReplace.innerHTML = modifierRow(true).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    modifyRow("Damage (1/2 on save)", mobTag, modRow);
-                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
-                    assignListenersToModRow(mobTag, modRow);
+                    rowReplace.innerHTML = modifierRow(true, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    modifyRow("Damage (1/2 on save)", mobTag, modRow, false, weaponNum=weaponNum);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).parentElement.parentElement.style.backgroundColor = mobBlockDcColor;
+                    assignListenersToModRow(mobTag, modRow, weaponNum);
                 }
                 else if (!seekMod.innerHTML.includes("DC") && value != "DC") { // Marked as under DC, but under focus row which is not DC
                     // Fix row
                     var rowReplace = seekMod.parentElement.parentElement;
-                    rowReplace.innerHTML = modifierRow(false).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
-                    modifyRow("Extra Damage", mobTag, modRow);
-                    document.getElementById(`${mobTag}-${modRow}-Mod-Select`).parentElement.parentElement.style.backgroundColor = "transparent";
-                    assignListenersToModRow(mobTag, modRow);
+                    rowReplace.innerHTML = modifierRow(false, weaponNum).replace(/FILLER-BLOCK/g, `${mobTag}-${modRow}`);
+                    modifyRow("Extra Damage", mobTag, modRow, false, weaponNum=weaponNum);
+                    document.getElementById(`${mobTag}-${modRow}-Mod-Select${weaponNum}`).parentElement.parentElement.style.backgroundColor = "transparent";
+                    assignListenersToModRow(mobTag, modRow, weaponNum);
                 }               
                 else { break; }
             }       
@@ -543,6 +637,7 @@ function checkForExistingDc() {
     }
 }
 
+// Looks for DC on any mobs
 function scanAllMobs() {
     for (var i=0; i < blockArray.length; i++) {
         var rowCounter = 0;
@@ -561,7 +656,7 @@ function scanAllMobs() {
 }
 
 // Expects ID of collapse button
-function collapseRow(id) {
+function collapseRow(id, weaponNum="") {
     var prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;    
     prevTr.remove();
     prevTr = document.getElementById(id).parentElement.parentElement.previousElementSibling;
@@ -575,40 +670,147 @@ function collapseRow(id) {
         } 
     }
     
-    if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon`) {
+    if (prevTr.children[2].firstElementChild.id == `${mobTag}-Weapon${weaponNum}`) {
         document.getElementById(id).remove();
-        document.getElementById(`${mobTag}-Weapon-Expand-Tip`).style.display = "inline-block";
+        document.getElementById(`${mobTag}-Weapon-Expand-Tip${weaponNum}`).style.display = "inline-block";
+        document.getElementById(`${mobTag}-ExtraAttack-Tip${weaponNum}`).style.display = "inline-block";
     }
     
     checkForExistingDc()              
 }
 
-function changeMobWeapon (mobTag, weaponMods) {
+function addExtraAttack(mobTag, defaultWeapon=true) {
+    var weaponNum = findNumberOfWeaponsInBlock(mobTag);
+    var weaponMenuHtml = document.getElementById(`${mobTag}-Weapon-Select`).outerHTML;
+    weaponMenuHtml = weaponMenuHtml.replace(`${mobTag}-Weapon-Select`, `${mobTag}-Weapon-Select-${weaponNum}`);
+
+    var style = `background-color: rgba(100, 100, 100, ${weaponNum * .15})`;
+    
+    var htmlToHitInsert = `<tr style="${style}"><td><button id="${mobTag}-Weapon-Delete-${weaponNum}" class="weaponDeleteButton"><i class="fa fa-trash-o"></i></button></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
+    var htmlWeaponInsert = `<tr style="${style}"><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
+    var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
+    menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
+    menuRow.nextElementSibling.style = style;
+    menuRow.insertAdjacentHTML('afterend', htmlWeaponInsert);
+    menuRow.insertAdjacentHTML('afterend', htmlToHitInsert);
+    
+    // var findNum = weaponNum > 0 ? "" : `-${weaponNum}`;
+    // document.getElementById(`${mobTag}-ExtraAttack${findNum}`).style.display = "none"; // Hide the old button
+
+    if (defaultWeapon) {
+        var defaultWeapon = document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).options[1].value;
+        changeMobWeapon(mobTag, defaultWeapon, weaponNum); 
+    }
+
+    assignEventsToNewWeapon(mobTag, weaponNum);
+}
+
+function assignEventsToNewWeapon(mobTag, weaponNum) {
+    document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).addEventListener('click', (e) => {
+        expandWeapon(mobTag, weaponNum);        
+    });
+    document.getElementById(`${mobTag}-ExtraAttack-${weaponNum}`).addEventListener('click', (e) => {
+        addExtraAttack(mobTag, e.target);        
+    });
+    document.getElementById(`${mobTag}-Range-${weaponNum}`).addEventListener('click', (e) => {
+        toggleRange(e.target);
+    });
+    document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).addEventListener('change', (e) => {
+        changeMobWeapon(mobTag, e.target.value, weaponNum);        
+    });
+    document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
+        deleteMobWeapon(mobTag, weaponNum);
+    });
+    // document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).onmouseenter = highlightMobWeapon(mobTag, weaponNum);
+    // });
+    // document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.addEventListener('onmouseleave', (e) => {
+    //     unHighlightMobWeapon(mobTag, weaponNum);
+    // });
+        
+}
+
+// Returns the number of weapon rows on the mob block
+function findNumberOfWeaponsInBlock(mobTag) {
+    var count = 1;
+    while (true) {
+        if (document.getElementById(`${mobTag}-Weapon-${count}`)) {
+            count++;
+            continue;
+        }
+        break;
+    }
+    return count;
+}
+
+function getMobWeaponElements(mobTag, weaponNum) {
+    var elementsToReturn = [];
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).parentElement.parentElement);
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-${weaponNum}`).parentElement.parentElement);
+    elementsToReturn.push(document.getElementById(`${mobTag}-Weapon-Expand-${weaponNum}`).parentElement.parentElement);
+    var modCount = 0;
+    while (true) {
+        if (document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`)) {
+            elementsToReturn.push(document.getElementById(`${mobTag}-${modCount}-Mod-Select-${weaponNum}`).parentElement.parentElement);
+            modCount++;
+        } else {
+            break;
+        }
+    }
+    return elementsToReturn;
+}
+
+function highlightMobWeapon(mobTag, weaponNum) {
+    var elementsToHighlight = getMobWeaponElements(mobTag, weaponNum);
+    for (element in elementsToHighlight) {
+        element.style.backgroundColor = "rgba(255, 50, 50, .05)";
+    }    
+}
+
+function unHighlightMobWeapon(mobTag, weaponNum) {
+    var elementsToHighlight = getMobWeaponElements(mobTag, weaponNum);
+    for (element in elementsToHighlight) {
+        element.style.backgroundColor = "transparent";
+    }    
+}
+
+function deleteMobWeapon(mobTag, weaponNum) {
+    var elementsToDelete = getMobWeaponElements(mobTag, weaponNum);
+    for (var i=elementsToDelete.length - 1; i >= 0; i--) {
+        elementsToDelete[i].remove();
+    }
+}
+
+function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
     if (typeof weaponMods == "string") {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
     }
+
+    if (weaponNum != "") {
+        weaponNum = `-${weaponNum}`;
+    }
     
     // clean up existing rows
     while(true) {
-        var numModRows = getNumModRows(mobTag);
+        var numModRows = getNumModRows(mobTag, weaponNum);
         if (numModRows == 0) {
             break;
         }
         else {
-            collapseRow(`${mobTag}-Weapon-Collapse`);
+            collapseRow(`${mobTag}-Weapon-Collapse${weaponNum}`, weaponNum);
         }
     }
             
     var toHit = weaponMods[0][1];
     var weapon = weaponMods[2][1];
     var isMelee = weaponMods[1][1];
-    document.getElementById(mobTag + "-ToHit").value = toHit;
-    document.getElementById(mobTag + "-Weapon").value = weapon;    
-    setRange(mobTag, isMelee)   
+    document.getElementById(`${mobTag}-ToHit${weaponNum}`).value = toHit;
+    document.getElementById(`${mobTag}-Weapon${weaponNum}`).value = weapon;    
+    setRange(mobTag, isMelee, weaponNum)   
     
     for (var i=3; i < weaponMods.length; i++) {
-        assignWeaponMod(mobTag, weaponMods[i]);        
+        expandWeapon(mobTag, weaponNum.substr(1))
+        forceOption(mobTag, i-3, weaponNum, weaponMods[i]);                
     }                     
 }
 
@@ -672,11 +874,16 @@ function toggleDetails(event, rollArray) {
     var detailElement = document.getElementById(mobTag + "-Details");
     if (detailElement == null) {
         var detailAppend = `<div id="${mobTag}-Details" style="cursor:auto"><table class="detailTable" style="margin-left: 15px; border-collapse: collapse">`;
-        detailAppend += `<tr class="detailHeader"><td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
+        detailAppend += `<tr class="detailHeader">`;
         for (var i=0; i < rollArray.length; i++) {
+            var selectedCreature = rollArray[i][0].attacker;            
             var mobBlockRolls = [];
-            if (rollArray[i][0].attacker.MobName == mobTag) {
+            if (selectedCreature.MobName == mobTag) {
                 mobBlockRolls = rollArray[i];
+                if (selectedCreature.Multiattack) {
+                    detailAppend += `<td>Creature</td>`;
+                }
+                detailAppend += `<td>Rolls</td><td>Damage</td><td>Notes</td></tr>`;
             }
             else {
                 continue;
@@ -686,96 +893,64 @@ function toggleDetails(event, rollArray) {
             mobBlockRolls.sort(function(a, b) {return a.attacker.Number - b.attacker.Number});
             
             for (var j=0; j < mobBlockRolls.length; j++) {
-                var rollClass = mobBlockRolls[j];
-                if (rollClass.attacker.MobName == mobTag) {
-                    //function: create a span with [roll1] [roll2 if applicable] Total damage from all sources
-                    var rollsOrder = [];
-                    var superConditionColor = "";
-                    var damageIcon = rollClass.attacker.EquipWeapon[1][1] == true ? "fa fa-gavel" : "fa fa-crosshairs";
+                var rollClass = mobBlockRolls[j];                
+                var superConditionColor = "";
+                var damageIcon = rollClass.attacker.EquipWeapon[1][1] == true ? "fa fa-gavel" : "fa fa-crosshairs";
 
-                    if (rollClass.vantage >= 1) {
-                        rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
-                    }
-                    else if (rollClass.vantage <= -1) {
-                        rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
-                    }
-                    
-                    var superConditionColor = "";
-                    if (rollClass.crit && !rollClass.missed) {
-                        superConditionColor = "color:#b59800";
-                    }
-                    else if (rollClass.crit && rollClass.missed) {
-                        superConditionColor = "color:#b00000"                      
-                    }
-                    else if (!rollClass.crit && rollClass.missed) {
-                        superConditionColor = "color:#914014"                      
-                    }
-                    else if (rollClass.autoCrit) {
-                        superConditionColor = "color:#a6b500";
-                    }
-                    
-                    var diceRollsDisplay = "";
-                    var bonusToHit = +rollClass.attacker.EquipWeapon[0][1];
-                    if (rollsOrder.length > 0) {
-                        var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
-                        diceRollsDisplay = `<table style="width: 100%">
-                                                <tr>
-                                                    <td class="hitRoll">
-                                                        <span style="color:${vantageColor}">
-                                                            [${+rollsOrder[0] + bonusToHit}]
-                                                        </span>
-                                                        <span class="hitRollTip">
-                                                            🎲${rollsOrder[0]} + ${bonusToHit}
-                                                        </span>
-                                                    </td>
-                                                    <td class="hitRoll">
-                                                        <span style="color:lightgrey">
-                                                            [${+rollsOrder[1]  + bonusToHit}]
-                                                        </span>
-                                                        <span class="hitRollTip">
-                                                            🎲${rollsOrder[1]} + ${bonusToHit}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                                </table>`;
-                    }
-                    else {
-                        diceRollsDisplay = `<span class="hitRoll"><span>[${+rollClass.attackRoll1 + bonusToHit}]</span>
-                                                <span class="hitRollTip">
-                                                      🎲${rollClass.attackRoll1} + ${bonusToHit}
-                                                </span></span>`;
-                    }
-                    
-                    var damageTotalsDisplay = "";
-                    if (!rollClass.missed) {
-                        for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
-                            damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
-                                                      <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
-                                                    </span>
-                                                    <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
-                                                      ${rollClass.rollBreakdown[dmg]}
-                                                    </span></span>`;
-                                 
-                        }
-                            
-                    }
-                    else if (rollClass.missed && rollClass.crit) {
-                        damageTotalsDisplay = "-";
-                        rollClass.message = "Crit Miss!";
-                    }
-                    else {
-                        damageTotalsDisplay = "-";
-                        rollClass.message = "Miss";
-                    }
-                    
-                    var message = "";
-                    if (rollClass.message != "") {
-                        message = rollClass.message;
-                    }
-                    
-                    detailAppend += `<tr class="attackDetail" style="${superConditionColor}"><td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
-                    
+                var superConditionColor = "";
+                if (rollClass.crit && !rollClass.missed) {
+                    superConditionColor = "color:#b59800";
                 }
+                else if (rollClass.crit && rollClass.missed) {
+                    superConditionColor = "color:#b00000"                      
+                }
+                else if (!rollClass.crit && rollClass.missed) {
+                    superConditionColor = "color:#914014"                      
+                }
+                else if (rollClass.autoCrit) {
+                    superConditionColor = "color:#a6b500";
+                }
+                
+                var creatureColumn = ""
+                var isDark = rollClass.attacker.Number % 2 == 0 ? 'creatureClassDark' : '';
+                if (rollClass.attacker.Multiattack) {
+                    if (j % rollClass.attacker.Multiattack.length == 0) {
+                        creatureColumn = `<td rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
+                    }
+                }
+
+                var diceRollsDisplay = getDiceRollOutput(rollClass)
+
+                var damageTotalsDisplay = "";
+                if (!rollClass.missed) {
+                    for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
+                        damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
+                                                    <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
+                                                </span>
+                                                <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
+                                                    ${rollClass.rollBreakdown[dmg]}
+                                                </span></span>`;
+                                
+                    }
+                        
+                }
+                else if (rollClass.missed && rollClass.crit) {
+                    damageTotalsDisplay = "-";
+                    rollClass.message = "Crit Miss!";
+                }
+                else {
+                    damageTotalsDisplay = "-";
+                    rollClass.message = "Miss";
+                }
+                
+                var message = "";
+                if (rollClass.message != "") {
+                    message = rollClass.message;
+                }
+                
+                detailAppend += `<tr class="attackDetail ${isDark}" style="${superConditionColor}">${creatureColumn}<td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
+                    
+                
             }
         }   
         detailAppend += "</table></div>";
@@ -788,6 +963,49 @@ function toggleDetails(event, rollArray) {
         detailElement.remove();
         document.getElementById(`${mobTag}-Caret`).classList = "fa fa-caret-right";
     }
+}
+
+function getDiceRollOutput(rollClass) {
+    var rollsOrder = [];
+    if (rollClass.vantage >= 1) {
+        rollsOrder = [Math.max(rollClass.attackRoll1, rollClass.attackRoll2), Math.min(rollClass.attackRoll1, rollClass.attackRoll2)]                        
+    }
+    else if (rollClass.vantage <= -1) {
+        rollsOrder = [Math.min(rollClass.attackRoll1, rollClass.attackRoll2), Math.max(rollClass.attackRoll1, rollClass.attackRoll2)]                        
+    }
+                                            
+    var diceRollsDisplay = "";
+    var bonusToHit = +rollClass.attacker.EquipWeapon[0][1];
+    if (rollsOrder.length > 0) {
+        var vantageColor = rollClass.vantage >= 1 ? "#004713" : "#470200";
+        diceRollsDisplay = `<table style="width: 100%">
+                                <tr>
+                                    <td class="hitRoll">
+                                        <span style="color:${vantageColor}">
+                                            [${+rollsOrder[0] + bonusToHit}]
+                                        </span>
+                                        <span class="hitRollTip">
+                                            🎲${rollsOrder[0]} + ${bonusToHit}
+                                        </span>
+                                    </td>
+                                    <td class="hitRoll">
+                                        <span style="color:lightgrey">
+                                            [${+rollsOrder[1]  + bonusToHit}]
+                                        </span>
+                                        <span class="hitRollTip">
+                                            🎲${rollsOrder[1]} + ${bonusToHit}
+                                        </span>
+                                    </td>
+                                </tr>
+                                </table>`;
+    }
+    else {
+        diceRollsDisplay = `<span class="hitRoll"><span>[${+rollClass.attackRoll1 + bonusToHit}]</span>
+                                <span class="hitRollTip">
+                                      🎲${rollClass.attackRoll1} + ${bonusToHit}
+                                </span></span>`;
+    }
+    return diceRollsDisplay;
 }
 
 async function launchAttack() {
@@ -815,7 +1033,7 @@ async function launchAttack() {
     var critImmune = document.getElementById('critImmune').checked;
     var dmSaves = document.getElementById('dmSaves').checked;
     
-    // discovery is for when we dont know the target AC, it will step the attacks sequentially until we figure it out
+    // discovery is for when we don't know the target AC, it will step the attacks sequentially until we figure it out
     var discoveryModeFlag = false;
     if (targetAc <= 0) {
         discoveryModeFlag = true;
@@ -828,43 +1046,25 @@ async function launchAttack() {
     var existingAilments = document.getElementById(`targetCondition`).value;
     ailments[existingAilments] = true;
     
-    // Create a unit for every creature in each mob
+    // Go through the array of mob objects we created in parseMobs()
     for (var block=0; block < mobArray.length;block++) {
         rollArray[block] = new Array();
-        for (var i=0; i < mobArray[block].length; i++) { // Go through one mob at a time, spawn units
+        for (var i=0; i < mobArray[block].length; i++) {                                    
             document.getElementById("discoveryArea").innerHTML = ""; // Cleanup prompt space at start of rolls
             var newCreature = mobArray[block][i];
             var creatureNotes = new CreatureNotes();
 
-            var advantage = 0;
-            var disadvantage = 0;
-            var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
-            var allowParalyzeCrit = false;
-            if (ailments["Knock Prone"]) {
-                if (inMelee) {
-                    advantage = 1;                
-                } else {
-                    disadvantage = -1;                    
-                }
-            }
-            if (ailments["Restrain"]) {
-                // advantage, disadv on dex saves
-                advantage = 1;
-            }
-             if (ailments["Paralyze"]) {
-                // advantage, auto fails str/dex saves
-                 advantage = 1;
-                 if (inMelee) {
-                    allowParalyzeCrit = true;
-                 }
-            }
-            
-            newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]            
-                 
+            // Calculates advantage based on mob block checkboxes, and creature ailments (like prone and what not)
+            var vantageResult = determineCreatureVantage(newCreature, ailments);
+            newCreature = vantageResult[0];
+            var allowParalyzeCrit = vantageResult[1]; 
+
             var rollResult = "";
             var hitTarget = false;
             var attackRollClass = newCreature.makeAttack();
+                        
             var attackRoll = attackRollClass.hitRoll;
+            
             if (attackRollClass.crit && !attackRollClass.missed && !critImmune) {
                 rollResult = newCreature.dealCrit();
                 numCrits = numCrits + 1;
@@ -908,8 +1108,16 @@ async function launchAttack() {
                 continue;
             }
          
-            // On a hit, apply non-DC conditions if we have any
+            // On a hit, assign an autocrit if the target is already paralyzed, and assign it any automatic on hit conditions
             if (hitTarget) {
+                if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
+                    newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
+                    rollResult = newCreature.dealCrit();
+                    rollResult.crit = false;
+                    rollResult.autoCrit = true;
+                    numCrits = numCrits + 1;
+                }
+
                 var nonDcConditions = newCreature.getNonDcConditions();
                 if (nonDcConditions.length > 0) {
                     for (var cond=0; cond < nonDcConditions.length; cond++) {                        
@@ -917,21 +1125,12 @@ async function launchAttack() {
                             ailments[nonDcConditions[cond]] = true;
                             creatureNotes.addInfliction(nonDcConditions[cond]);
                         }
-                        // rollResult.message += `Inflicted: ${nonDcConditions[cond]} `;
                     }
-                }
+                }                
             }
 
             // Everything past here is assumed to take part on a hit
-            // =============== DC LOGIC ==================
-                        
-            if (allowParalyzeCrit && !attackRollClass.crit && !critImmune) {
-                newCreature.purgeDamageResults(); // Clear that basic hit we just made, this is a crit!
-                rollResult = newCreature.dealCrit();
-                rollResult.crit = false;
-                rollResult.autoCrit = true;
-                numCrits = numCrits + 1;
-            }
+            // =============== DC LOGIC ==================                                    
             
             var mobDcInfo = newCreature.checkIfHasDc();
             if (mobDcInfo != false) { // If there is a DC included somewhere in the mob block
@@ -940,7 +1139,7 @@ async function launchAttack() {
                 var roll = Math.floor(Math.random() * 20 + 1);
                 var autoFailSave = false;
                 
-                if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadv to dex saves
+                if (ailments["Restrain"] && dcType == "Dex") { // Gives Disadvantage to dex saves
                     var roll2 = Math.floor(Math.random() * 20 + 1);
                     roll = Math.min(roll, roll2);
                 }
@@ -1003,13 +1202,11 @@ async function launchAttack() {
                                 if (!ailments[conditionName]) {
                                     ailments[conditionName] = true;
                                     creatureNotes.addInfliction(conditionName);
-                                    // rollResult.message += `Inflicted: ${conditionName}`;
                                 }
                             }
                             else {
                                 ailments[conditionName] = true;
                                 creatureNotes.addInfliction(conditionName);
-                                // rollResult.message += `Inflicted: ${conditionName}`;
                             }
                         }
                         else if (effectType == "Roll Class") {
@@ -1043,7 +1240,7 @@ async function launchAttack() {
     var totalDamage = 0;
     var totalDamageBreakdown = {};
     var totalHits = 0;
-    var infoAppend = "";    
+    var infoAppend = "";
     
     // Go through each block, take a sum of damage and # of hits
     for (var block=0; block < rollArray.length; block++) {
@@ -1051,7 +1248,6 @@ async function launchAttack() {
             continue; // This means no one in the block landed a hit. Beep Boop Sad Toot
         }        
         var attacker = rollArray[block][0].attacker;
-        var blockTotalDamage = 0;
         var blockDamageBreakdown = {};
         
         // Go through each unit in the block and tally up that damage
@@ -1064,14 +1260,13 @@ async function launchAttack() {
                 var wepDamage = rollArray[block][i].damageResults[weps][0];
                 var damageType = rollArray[block][i].damageResults[weps][1];
                 totalDamage += wepDamage;
-                blockTotalDamage += wepDamage;
                 
-                if (!totalDamageBreakdown[damageType]) { 
+                if (!totalDamageBreakdown[damageType]) {
                     totalDamageBreakdown[damageType] = 0;
                 }
                 totalDamageBreakdown[damageType] += wepDamage;
                 
-                if (!blockDamageBreakdown[damageType]) { 
+                if (!blockDamageBreakdown[damageType]) {
                     blockDamageBreakdown[damageType] = 0;
                 }
                 blockDamageBreakdown[damageType] += wepDamage;
@@ -1095,51 +1290,84 @@ async function launchAttack() {
                 }
             }
         }
-        infoAppend += "</div>";        
-    }    
-         
+        infoAppend += "</div>";
+    }
+
     generateFinalOutput(infoAppend, numBlocks, totalDamageBreakdown, totalDamage, totalHits, numCrits, rollArray, ailments); 
+
+}
+
+function determineCreatureVantage(newCreature, ailments, inMelee) {
+    var advantage = 0;
+    var disadvantage = 0;
+    var allowParalyzeCrit = false;
+    var inMelee = document.getElementById(`${newCreature.MobName}-Range`).checked;
+
+    if (ailments["Knock Prone"]) {
+        if (inMelee) {
+            advantage = 1;
+        } else {
+            disadvantage = -1;                    
+        }
+    }
+    if (ailments["Restrain"]) {
+        // advantage, disadv on dex saves
+        advantage = 1;
+    }
+     if (ailments["Paralyze"]) {
+        // advantage, auto fails str/dex saves
+         advantage = 1;
+         if (inMelee) {
+            allowParalyzeCrit = true;
+         }
+    }
     
+    newCreature.Vantage += advantage + disadvantage; // [-1,0,1] += [-1,0,1]   
+    return [newCreature, allowParalyzeCrit];
 }
 
 // Parses through all the html mob blocks and converts them into Mob classes usable by the algorithm
+// Returns an array [[]] filled with Mob objects
 function parseMobs(numBlocks) {
     var mobArray = []; // 2d arrays: Block type, attacks of that block    
 
     // Go though each creature block, spawn a number of mobs with those stats
     for(var i=0;i < numBlocks;i++) {
         //Name, Icon, to hit, weapon, number
-        if (!document.getElementById(blockArray[i].concat("-Enabled")).checked) {
-            continue; // If the box is not checked, skip that mob block
-        }        
-        
-        var name = document.getElementById(blockArray[i].concat("-Name")).value;
-        var icon = document.getElementById(blockArray[i].concat("-Icon"));
-        icon = icon.options[icon.selectedIndex].innerHTML;
-        var weapon = getWeaponSet(blockArray[i]);    
-        var number = document.getElementById(blockArray[i].concat("-Number")).value;        
-        var advantage = document.getElementById(blockArray[i].concat("-Adv")).checked;
-        var disadvantage = document.getElementById(blockArray[i].concat("-Dis")).checked * -1;
-        
-        var vantage = advantage + disadvantage;
-        
-        if (!weapon) {
-            return false;
-        }
-
         mobArray.push(new Array());
-        for(var j=0; j < number; j++) {
-            mobArray[mobArray.length-1].push(new Mob(name, icon, weapon, vantage, blockArray[i], j+1))
-        }                
+        var mobTag = blockArray[i];
+        var newMob = createMobFromBlock(mobTag);
+        var number = document.getElementById(`${mobTag}-Number`).value;
+        for (var j=1; j <= number; j++) {                    
+            var newObjectMob = new Mob();
+            newObjectMob.assignPropertiesFromMob(newMob); //icon.options[icon.selectedIndex]
+            var iconElement = document.getElementById(`${mobTag}-Icon`);
+            newObjectMob.Icon = iconElement.options[iconElement.selectedIndex].text;
+            newObjectMob.Number = j;
+            mobArray[i].push(newObjectMob); 
+            if (newMob.Multiattack.length > 1) {
+                for (var multi=1; multi < newMob.Multiattack.length; multi++) {
+                    var mobClone = new Mob();
+                    mobClone.assignPropertiesFromMob(newObjectMob);
+                    const weaponToSwitchToName = mobClone.Multiattack[multi];
+                    mobClone.EquipWeapon = mobClone.Weapons.filter(a => a.Name == weaponToSwitchToName)[0].WeaponMods;
+                    mobArray[i].push(mobClone);
+                }
+            }
+        };        
     }
     return mobArray;
 }
 
 // Collects all weapon mods and returns them in an array
-function getWeaponSet(mobTag) {
-    var toHit = document.getElementById(mobTag + "-ToHit").value;
-    var weapon = document.getElementById(mobTag + "-Weapon").value;
-    var isMelee = document.getElementById(mobTag + "-Range").checked;
+function getWeaponSet(mobTag, weaponNum="") {
+    if (weaponNum != "") {    
+        weaponNum = `-${weaponNum}`;
+    }
+
+    var toHit = document.getElementById(mobTag + `-ToHit${weaponNum}`).value;
+    var weapon = document.getElementById(mobTag + `-Weapon${weaponNum}`).value;
+    var isMelee = document.getElementById(mobTag + `-Range${weaponNum}`).checked;
     
     //Run weapon error check
     var errorCheck = checkIfValidWeapon(weapon, mobTag);

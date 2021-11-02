@@ -239,6 +239,22 @@ button {
   cursor: pointer;
 }
 
+.mobBlock button.weaponDeleteButton {
+  color: #666;
+  /* width: 100%; */
+}
+
+.mobBlock button.weaponDeleteButton:hover {
+  background-color: rgb(255, 50, 50);
+  color: white;
+  cursor: pointer;
+}
+
+.mobBlock button.weaponDeleteButton:active {
+  transition-duration: 0s;
+  background-color: rgb(255, 150, 150);
+}
+
 .mobBlockMenu .mobCloneButton:active {
   transition-duration: 0s;
   background-color: lightgrey;
@@ -276,6 +292,34 @@ button {
   margin-right: 5px;
   vertical-align: top;
   cursor: pointer;
+}
+
+.mobBlock .extraAttackButton {
+  background-color: transparent;
+  color: #444;
+  transition-duration: 0.2s;
+  font-size: 12px;
+  padding: 0px;
+  width: auto;
+  margin-right: 5px;
+  vertical-align: top;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+
+.mobBlock .extraAttackButton:hover {
+  color: green
+}
+
+.menuTip {
+    font-size: 10px;
+    margin-left: 1px;
+    color: black;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 1px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .mobBlock .rangeToggleButton {
@@ -771,6 +815,10 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .damageRoll:hover .damageRollTip {
   display: inline-block;
+}
+
+tr.creatureClassDark {
+  background-color: rgba(100, 100, 100, 0.1);
 }
 
 .damageRollTip {

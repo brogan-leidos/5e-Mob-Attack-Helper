@@ -5,13 +5,14 @@ export function mobBlock() {
 <div class="mobBlockMenu">
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>  
+  <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
 </div>
 <table class="mobBlock">
   <tbody>
     <tr>
       <td><span class="disableLabel" id="FILLER-BLOCK-Disable-Label"></span></td>
-      <td style="">Name:</td>
-      <td style=""><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
+      <td>Name:</td>
+      <td><input id="FILLER-BLOCK-Name" type="text" value="FILLER-NAME" /></td>
     </tr>
     <tr>
       <td>
@@ -31,20 +32,21 @@ export function mobBlock() {
         <option value="rex">🦖</option>
         <option value="unicorn">🦄</option>
         <option value="devil">😈</option>
-        <option value="ogre">👹</option>
+        <option value="ogre">👹</option>spider
         <option value="goblin">👺</option>
         <option value="alien">👽</option>
         <option value="alienmonster">👾</option>        
         <option value="wolf">🐺</option>
         <option value="cat">🐱</option>
         <option value="bird">🦅</option>
+        <option value="owl">🦉</option>
         <option value="elk">🦌</option>
         <option value="bear">🐻</option>
         <option value="boar">🐗</option>
+        <option value="spider">🕷</option>
         <option value="frog">🐸</option>
         <option value="snake">🐍</option>
         <option value="dolphin">🐬</option>
-        <option value="owl">🦉</option>
         <option value="plant">🌲</option>      
       </select></td>
     </tr>
@@ -70,20 +72,7 @@ export function mobBlock() {
       <td>Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Recommended format is XdX +/- X" /></td>
     </tr>
-    <tr>
-      <td></td>
-      <td id="FILLER-BLOCK-Range" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
-          <span id="FILLER-BLOCK-Melee" style="color:black">Melee</span>
-            / 
-          <span id="FILLER-BLOCK-Ranged">Ranged</span>       
-      </td>
-      <td style="display:flex">
-        <span class="weaponExpandButton" id="FILLER-BLOCK-Weapon-Expand">
-          <i class="fa fa-plus-square-o"></i>
-          <span id="FILLER-BLOCK-Weapon-Expand-Tip" style="font-size: 10px; margin-left: 1px; color: black; vertical-align:top; display:inline-block; padding-top: 1px">Additional Effects</span>
-        </span>
-      </td>
-    </tr>
+    ${weaponMenu()}
     <tr>
       <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up" style="display:block"></i></button></td>
       <td>Number:</td>
@@ -99,3 +88,26 @@ export function mobBlock() {
 </div>`
 }
 
+export function weaponMenu(mobTag="FILLER-BLOCK", weaponNum="") {
+  if (weaponNum != "") {
+    weaponNum = `-${weaponNum}`;
+  }
+  return `<tr>
+  <td></td>
+  <td id="${mobTag}-Range${weaponNum}" class="rangeToggleButton" title="Melee assumes the attack is within 5ft">        
+      <span id="${mobTag}-Melee${weaponNum}" style="color:black">Melee</span>
+        / 
+      <span id="${mobTag}-Ranged${weaponNum}">Ranged</span>       
+  </td>
+  <td style="display:flex">
+    <span class="weaponExpandButton" id="${mobTag}-Weapon-Expand${weaponNum}">
+      <i class="fa fa-plus-square-o"></i>
+      <span id="${mobTag}-Weapon-Expand-Tip${weaponNum}" class="menuTip">Additional Effects</span>
+    </span>
+    <span class="extraAttackButton" id="${mobTag}-ExtraAttack${weaponNum}">
+      <i class="fa fa-plus-circle"></i>
+      <span id="${mobTag}-ExtraAttack-Tip${weaponNum}" class="menuTip">Extra Attack</span>
+    </span>
+  </td>
+</tr>`
+}

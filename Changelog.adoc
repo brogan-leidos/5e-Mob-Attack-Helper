@@ -7,6 +7,8 @@
 * Added Extra Attack functionality to mobs
   - Updates to post attack details to support multiattackers
   - List of multiattack creature types: Velociraptor (the OG),
+  - Added a button to clone a mob. Helpful! (and painful to code!)
+* Added "Clone Mob" button to toolbar, was way harder to implement that it probably should have been
 
 === Ver 1.0.3
 * Code improvements. No visible changes.
@@ -21,6 +23,7 @@
   - Psn Snake/GP Snake/Flying Snake/Constrictor Snake
 * Variants display/hide button
 * Conditions outside of a DC block were not applying correctly. Now they are.
+* Cleaned up how the notes look when inflicting multiple conditions at once (LOOKING AT YOU CONSTRICTOR SNAKE)
 
 === Ver 1.0.1
 * Added Mobs:
