@@ -813,7 +813,7 @@ button.creatureVariantButton:nth-last-child(1) {
   padding: 0px 3px 0px 3px;
 }
 
-.attackDetail:hover td {
+.masterGroup:nth-child(even) {
   background-color:rgba(100, 100, 100, 0.3);
 }
 
