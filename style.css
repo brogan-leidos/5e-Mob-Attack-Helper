@@ -818,7 +818,7 @@ button.creatureVariantButton:nth-last-child(1) {
 }
 
 tr.creatureClassDark {
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: rgba(100, 100, 100, 0.1);
 }
 
 .damageRollTip {

@@ -915,7 +915,7 @@ function toggleDetails(event, rollArray) {
                 var isDark = rollClass.attacker.Number % 2 == 0 ? 'creatureClassDark' : '';
                 if (rollClass.attacker.Multiattack) {
                     if (j % rollClass.attacker.Multiattack.length == 0) {
-                        creatureColumn = `<td class="${isDark}" rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
+                        creatureColumn = `<td rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
                     }
                 }
 
