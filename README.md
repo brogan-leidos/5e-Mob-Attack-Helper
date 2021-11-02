@@ -14,6 +14,8 @@ Ideas in no particular order:
   + Update the damage total output AS the run is ongoing. Something to look into!
 
 Actual Priorities:
+  Priority #1: Port this to an Angular project so we can use mat libraries and chunk the code so its not aweful to work with
+    - Drag and drop mob block that can be grouped up 
   1. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone 🤷‍♀️
   2. A pathfinder text change for some conditions? Not really sure how it works, sorry its low priority earlier edition folks 🙏
   3. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
