@@ -912,9 +912,10 @@ function toggleDetails(event, rollArray) {
                 }
                 
                 var creatureColumn = ""
+                var isDark = rollClass.attacker.Number % 2 == 0 ? 'creatureClassDark' : '';
                 if (rollClass.attacker.Multiattack) {
                     if (j % rollClass.attacker.Multiattack.length == 0) {
-                        creatureColumn = `<td class="${rollClass.attacker.Number % 2 == 0 ? 'creatureClassDark' : ''}" rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
+                        creatureColumn = `<td class="${isDark}" rowspan="${rollClass.attacker.Multiattack.length}"><span class="creatureGroupNumber">${rollClass.attacker.Number}</span></td>`;
                     }
                 }
 
@@ -923,10 +924,10 @@ function toggleDetails(event, rollArray) {
                 var damageTotalsDisplay = "";
                 if (!rollClass.missed) {
                     for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
-                        damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
+                        damageTotalsDisplay += `<span class="damageRoll ${isDark}"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
                                                     <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
                                                 </span>
-                                                <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
+                                                <span class="damageRollTip ${isDark}" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
                                                     ${rollClass.rollBreakdown[dmg]}
                                                 </span></span>`;
                                 
