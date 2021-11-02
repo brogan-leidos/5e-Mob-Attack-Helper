@@ -817,7 +817,7 @@ button.creatureVariantButton:nth-last-child(1) {
   display: inline-block;
 }
 
-td.creatureClassDark {
+tr.creatureClassDark {
   background-color: rgba(100, 100, 100, 0.3);
 }
 
