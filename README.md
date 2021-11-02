@@ -14,11 +14,9 @@ Ideas in no particular order:
   + Update the damage total output AS the run is ongoing. Something to look into!
 
 Actual Priorities:
-  1. Extra attack support for guys like the Velociraptor and maybe the panther idk
-  2. A "Copy Mob button" - to quickly an easily create a variant on something you already made
-  3. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone 🤷‍♀️
-  4. A pathfinder text change for some conditions? Not really sure how it works, sorry its low priority earlier edition folks 🙏
-  5. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
+  1. Convenience DC checks for non stacking conditions. If all we do is knock prone, its not like they can get even more prone 🤷‍♀️
+  2. A pathfinder text change for some conditions? Not really sure how it works, sorry its low priority earlier edition folks 🙏
+  3. Some kind of option to have or not have stacking of certain conditions (stacking grappling is pretty good for example)
   Far Future: Save a JSON of current configuration
 
 == Known issues:
