@@ -1341,7 +1341,7 @@ function parseMobs(numBlocks) {
             var newObjectMob = new Mob();
             newObjectMob.assignPropertiesFromMob(newMob); //icon.options[icon.selectedIndex]
             var iconElement = document.getElementById(`${mobTag}-Icon`);
-            newObjectMob.Icon = iconElement.options[iconElement.selectedIndex];
+            newObjectMob.Icon = iconElement.options[iconElement.selectedIndex].text;
             newObjectMob.Number = j;
             mobArray[i].push(newObjectMob); 
             if (newMob.Multiattack.length > 1) {
