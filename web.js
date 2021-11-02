@@ -1346,6 +1346,7 @@ function parseMobs(numBlocks) {
                 for (var multi=1; multi < newMob.Multiattack.length; multi++) {
                     var mobClone = new Mob();
                     mobClone.assignPropertiesFromMob(newObjectMob);
+                    mobClone.Icon = document.getElementById(`${mobTag}-Icon`).value[mobClone.Icon];
                     const weaponToSwitchToName = mobClone.Multiattack[multi];
                     mobClone.EquipWeapon = mobClone.Weapons.filter(a => a.Name == weaponToSwitchToName)[0].WeaponMods;
                     mobArray[i].push(mobClone);
