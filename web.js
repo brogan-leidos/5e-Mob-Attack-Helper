@@ -924,10 +924,10 @@ function toggleDetails(event, rollArray) {
                 var damageTotalsDisplay = "";
                 if (!rollClass.missed) {
                     for (var dmg=0; dmg < rollClass.damageResults.length; dmg++) {
-                        damageTotalsDisplay += `<span class="damageRoll ${isDark}"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
+                        damageTotalsDisplay += `<span class="damageRoll"><span id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}"> 
                                                     <i class="${damageIcon}" style="font-size: 13px; margin-right: 1px"></i>${rollClass.damageResults[dmg][0]}
                                                 </span>
-                                                <span class="damageRollTip ${isDark}" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
+                                                <span class="damageRollTip" id="${rollClass.attacker.Name}-${rollClass.attacker.Number}-DamageRoll-${dmg}-Details">
                                                     ${rollClass.rollBreakdown[dmg]}
                                                 </span></span>`;
                                 
@@ -948,7 +948,7 @@ function toggleDetails(event, rollArray) {
                     message = rollClass.message;
                 }
                 
-                detailAppend += `<tr class="attackDetail" style="${superConditionColor}">${creatureColumn}<td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
+                detailAppend += `<tr class="attackDetail ${isDark}" style="${superConditionColor}">${creatureColumn}<td>${diceRollsDisplay}</td> <td>${damageTotalsDisplay}</td><td>${message}</td></tr>`;
                     
                 
             }
