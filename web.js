@@ -73,9 +73,21 @@ export default () => {
 
 function fetchMonsterInfo(value) {
     console.log(value);
+    document.getElementById('fetchError').classList.add('hidden');
     fetch(`https://www.dnd5eapi.co/api/monsters/${value}`)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                showFetchError();
+                return;
+            }
+        })
         .then(data => console.log(data))
+}
+
+function showFetchError() {
+    document.getElementById('fetchError').classList.remove('hidden');
 }
 
 // Checks if the target ac is below zero, if so enable discovery mode
