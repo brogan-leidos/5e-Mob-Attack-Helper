@@ -100,7 +100,7 @@ function fetchMonsterInfo(value) {
         for (let action of actions) {
             var weapons = [];
             for (let entry of action.entries) {            
-                if (entry.find('{@atk')) {
+                if (entry.indexOf('{@atk') !== -1) {
                     newWeapon = new Weapon();
                     newWeapon.Name = action.name;
                     newWeapon.BonusToHit = entry.match(/{@hit (\d+)/)[1];
