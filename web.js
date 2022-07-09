@@ -65,11 +65,18 @@ export default () => {
     });
 
     document.getElementById('monsterSearchGo').addEventListener('click', () => {        
-        alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
+        fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
      
 };
 
+
+function fetchMonsterInfo(value) {
+    console.log(value);
+    fetch(`https://www.dnd5eapi.co/api/monsters/${value}`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
 
 // Checks if the target ac is below zero, if so enable discovery mode
 function discoveryCheck(newAc) {
