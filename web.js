@@ -11,6 +11,8 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 
 
+var monsterManualJson;
+
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
@@ -83,7 +85,11 @@ function fetchMonsterInfo(value) {
                 return;
             }
         })
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            monsterManualJson = data;
+        })
+    
 }
 
 function showFetchError() {
