@@ -63,6 +63,10 @@ export default () => {
     document.getElementById('dmSavesInfo').addEventListener('click', () => {        
         alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
     });
+
+    document.getElementById('monsterSearchGo').addEventListener('click', () => {        
+        alert("When this is checked, the tool will prompt you for a generic Saved/Failed response rather than rolling for the DM");
+    });
      
 };
 
