@@ -81,7 +81,7 @@ export default () => {
         })
         .then(data => {
             console.log(data);
-            monsterManualJson = JSON.parse(data);
+            monsterManualJson = data;
             
         })
      
