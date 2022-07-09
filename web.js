@@ -69,13 +69,7 @@ export default () => {
     document.getElementById('monsterSearchGo').addEventListener('click', () => {        
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
-     
-};
 
-
-function fetchMonsterInfo(value) {
-    console.log(value);
-    document.getElementById('fetchError').classList.add('hidden');
     fetch(`https://5e.tools/data/bestiary/bestiary-mm.json`)
         .then(response => {
             if (response.status === 200) {
@@ -87,9 +81,35 @@ function fetchMonsterInfo(value) {
         })
         .then(data => {
             console.log(data);
-            monsterManualJson = data;
+            monsterManualJson = JSON.parse(data);
+            
         })
-    
+     
+};
+
+
+function fetchMonsterInfo(value) {
+    document.getElementById('fetchError').classList.add('hidden');        
+    var foundMonster = monsterManualJson['monster'].filter(a => a.name === value);
+    if (foundMonster.length === 0) {
+        showFetchError();
+        return;
+    } else {
+        var monster = foundMonster[0];
+        var actions = monster['action'];
+        for (let action of actions) {
+            weapons = [];
+            for (let entry of action.entries) {            
+                if (entry.find('{@atk')) {
+                    newWeapon = new Weapon();
+                    newWeapon.Name = action.name;
+                    newWeapon.BonusToHit = entry.match(/{@hit (\d+)/)[1];
+                    newWeapon.IsMelee = entry.find(/{[^}]*mw[^}]*}/);
+                    console.log(newWeapon);
+                }
+            }
+        }
+    }
 }
 
 function showFetchError() {

@@ -21,6 +21,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  margin-top: 19%;
 }
 
 .monsterSearchClass .searchLabel {
