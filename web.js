@@ -90,7 +90,7 @@ export default () => {
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
-    var foundMonster = monsterManualJson['monster'].filter(a => a.name === value);
+    var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowercase() === value.toLocaleLowercase());
     if (foundMonster.length === 0) {
         showFetchError();
         return;
