@@ -102,11 +102,14 @@ function fetchMonsterInfo(value) {
             for (let entry of action.entries) {            
                 if (entry.indexOf('{@atk') !== -1) {
                     var newWeapon;
-                    newWeapon.Name = action.name;
-                    newWeapon.BonusToHit = entry.match(/{@hit (\d+)/)[1];
-                    newWeapon.IsMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
+                    var name = action.name;
+                    var bonusToHit = entry.match(/{@hit (\d+)/)[1];
+                    var damage = entry.match(/{@damage ([^}]+)}/)[1];
+                    var damageType = entry.match(/{@damage [^}]+}) (\w) damage/)[1]
+                    var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
+                    var weaponString = `${damage} ${damageType}}`
                     console.log(newWeapon);
-                    
+
                 }
             }
         }
