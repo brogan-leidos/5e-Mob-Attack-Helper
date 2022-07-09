@@ -131,7 +131,7 @@ function fetchMonsterInfo(value) {
                 }
             }
         }
-        mobType = monster['type'];
+        var mobType = monster['type'];
         if (mobType['type']) {
             mobType = mobType['type'];
         }
