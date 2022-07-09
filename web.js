@@ -88,6 +88,22 @@ export default () => {
 };
 
 
+var mobCategoryMap = {
+    'aberration': 'alienmonster',
+    'beast': 'bear',
+    'celestial': 'unicorn',
+    'construct': 'robot',
+    'dragon': 'dragon',
+    'elemental': 'fire',
+    'fey': 'smile',
+    'fiend': 'ogre',
+    'giant': 'beard',
+    'monstrosity': 'goblin',
+    'ooze': 'alien',
+    'plant': 'plant',    
+    'humanoid': 'wizard'
+}
+
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
     var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase());
@@ -97,8 +113,8 @@ function fetchMonsterInfo(value) {
     } else {
         var monster = foundMonster[0];
         var actions = monster['action'];
+        var weapons = [];
         for (let action of actions) {
-            var weapons = [];
             for (let entry of action.entries) {            
                 if (entry.indexOf('{@atk') !== -1) {
                     var newWeapon;
@@ -107,12 +123,25 @@ function fetchMonsterInfo(value) {
                     var damage = entry.match(/{@damage ([^}]+)}/)[1];
                     var damageType = entry.match(/{@damage [^}]+}\) (\w+) damage/)[1]
                     var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
-                    var weaponString = `${damage} ${damageType}}`
+                    var weaponString = `${damage} ${damageType}`
+                    var newWeapon = new Weapon(name, [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]]);
+                    weapons.push(newWeapon);
                     console.log(newWeapon);
-
+                    // new Weapon("Ram (Charge)", [["ToHit", 5],  ["IsMelee", true], ["Weapon","1d6 + 3 bludgeoning"], ["Extra Damage", "2d6 + 0 bludgeoning"], ["DC", 13, "Str"], ["Condition", "Knock Prone"]]),
                 }
             }
         }
+        var mobIcon = mobCategoryMap[monster['type']];
+        if (mobIcon['type']) {
+            mobIcon = mobIcon['type'];
+        }
+
+        var asMob = new Mob(monster['name'], mobIcon, weapons[0]);
+        asMob.Weapons = weapons;
+
+        var mobTag = createPresent('');
+        changeBlockToMob(mobTag, asMob);
+
     }
 }
 
@@ -361,6 +390,7 @@ function createPresent(presentName) {
     }
     
     assignEventsToBlock(mobTag);
+    return mobTag;
          
 }
 
