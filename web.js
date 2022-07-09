@@ -104,7 +104,7 @@ function fetchMonsterInfo(value) {
                     newWeapon = new Weapon();
                     newWeapon.Name = action.name;
                     newWeapon.BonusToHit = entry.match(/{@hit (\d+)/)[1];
-                    newWeapon.IsMelee = entry.find(/{[^}]*mw[^}]*}/);
+                    newWeapon.IsMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
                     console.log(newWeapon);
                 }
             }
