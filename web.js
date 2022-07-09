@@ -131,11 +131,12 @@ function fetchMonsterInfo(value) {
                 }
             }
         }
-        var mobIcon = mobCategoryMap[monster['type']];
-        if (mobIcon['type']) {
-            mobIcon = mobIcon['type'];
+        mobType = monster['type'];
+        if (mobType['type']) {
+            mobType = mobType['type'];
         }
-
+        var mobIcon = mobCategoryMap[mobType];
+  
         var asMob = new Mob(monster['name'], mobIcon, weapons[0]);
         asMob.Weapons = weapons;
 
