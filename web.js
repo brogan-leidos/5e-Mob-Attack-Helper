@@ -98,7 +98,7 @@ function fetchMonsterInfo(value) {
         var monster = foundMonster[0];
         var actions = monster['action'];
         for (let action of actions) {
-            weapons = [];
+            var weapons = [];
             for (let entry of action.entries) {            
                 if (entry.find('{@atk')) {
                     newWeapon = new Weapon();
