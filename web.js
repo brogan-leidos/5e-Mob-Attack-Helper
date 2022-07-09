@@ -101,11 +101,12 @@ function fetchMonsterInfo(value) {
             var weapons = [];
             for (let entry of action.entries) {            
                 if (entry.indexOf('{@atk') !== -1) {
-                    newWeapon = new Weapon();
+                    var newWeapon;
                     newWeapon.Name = action.name;
                     newWeapon.BonusToHit = entry.match(/{@hit (\d+)/)[1];
                     newWeapon.IsMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
                     console.log(newWeapon);
+                    
                 }
             }
         }
