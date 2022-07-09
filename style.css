@@ -3,6 +3,10 @@
   src: url(Candara.ttf);
 }
 
+.hidden {
+  display: none;
+}
+
 body {
   background-color: #f0f0f0;
   font-family: Candara;

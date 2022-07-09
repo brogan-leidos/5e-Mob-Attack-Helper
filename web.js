@@ -74,7 +74,7 @@ export default () => {
 function fetchMonsterInfo(value) {
     console.log(value);
     document.getElementById('fetchError').classList.add('hidden');
-    fetch(`https://www.dnd5eapi.co/api/monsters/${value}`)
+    fetch(`https://5e.tools/data/bestiary/bestiary-mm.json`)
         .then(response => {
             if (response.status === 200) {
                 return response.json();
