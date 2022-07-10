@@ -11,7 +11,7 @@
 
   --text-color-primary: white;
   --text-color-hint: rgba(240, 240, 240, 0.7);
-  --text-color-error: #910000;
+  --text-color-error: #fbff00;
 }
 
 
@@ -39,6 +39,7 @@ button {
 }
 
 .monsterSearchInput {
+  margin-top: 2px;
   margin-left: 5px;
 }
 
@@ -48,6 +49,7 @@ button {
 
 .monsterSearchError {
   color: var(--text-color-error);
+  margin-left: 5px;
 }
 
 .addMobArea div div.monsterSearchHeader {
