@@ -100,7 +100,8 @@ var mobCategoryMap = {
     'giant': 'beard',
     'monstrosity': 'goblin',
     'ooze': 'alien',
-    'plant': 'plant',    
+    'plant': 'plant',
+    'undead': 'skull',
     'humanoid': 'wizard'
 }
 
