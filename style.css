@@ -1029,6 +1029,7 @@ tr.creatureClassDark {
   .monsterSearchClass {
     grid-row: 4;
     grid-column: 1;
+    margin-top: 0;
     border-top: 5px solid var(--menu-dark);
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
