@@ -147,6 +147,8 @@ function fetchMonsterInfo(value) {
                                 condition = 'Paralyze';
                             } else if (condition === 'Restrained') {
                                 condition = 'Restrain';
+                            } else if (condition === 'Prone') {
+                                condition = 'Knocked Prone';
                             }
 
                             modArray.push(['Condition', condition])
