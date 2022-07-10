@@ -971,7 +971,7 @@ tr.creatureClassDark {
     padding: 5px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    
+    grid-row: 1;
     font-size: 19px;
     font-weight: normal;
   }
@@ -1029,6 +1029,7 @@ tr.creatureClassDark {
   .monsterSearchClass {
     grid-row: 4;
     grid-column: 1;
+    border-top: 5px solid var(--menu-dark);
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
   }
