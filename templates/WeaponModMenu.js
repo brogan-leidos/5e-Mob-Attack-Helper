@@ -59,6 +59,7 @@ export function chooseModifierType(type, mobTag, modRow, weaponNum="") {
         <option>Frightened</option>
         <option>Grappled</option>
         <option>Poisoned</option>
+        <option>Unconscious</option>
       </optgroup>
     </select>`;
   }
