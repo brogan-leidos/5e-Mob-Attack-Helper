@@ -132,7 +132,7 @@ function fetchMonsterInfo(value) {
                         if (regexMatch.indexOf('dc') !== -1) {
                             modArray.push(['DC', regexMatch.substring(6, regexMatch.length - 1)])
                         } else if (regexMatch.indexOf('condition') !== -1) {
-                            modArray.push(['Condition', titleCase(regexMatch.substring(13, regexMatch.length - 1))])
+                            modArray.push(['Condition', titleCase(regexMatch.substring(12, regexMatch.length - 1))])
                         } else if (regexMatch.indexOf('damage') !== -1) {
                             if (!postMainAttack) {
                             postMainAttack = true;
