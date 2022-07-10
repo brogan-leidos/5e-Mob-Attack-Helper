@@ -134,10 +134,10 @@ function fetchMonsterInfo(value) {
                     var damageType;
                     if (!damage) {
                         damage = "1";                
-                        
+                        damageType = entry.match(/{@h} 1 (\w+) damage/)[1];
                     } else {
                         damage = damage[1];
-                        damageType = entry.match(/{@h} 1 (\w+) damage/)[1]
+                        damageType = entry.match(/{@damage [^}]+}\) (\w+) damage/)[1];
                     }
                     
                     var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
