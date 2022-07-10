@@ -125,14 +125,14 @@ function fetchMonsterInfo(value) {
                     var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
                     var weaponString = `${damage} ${damageType}`
                     
-                    var allConditionsRegex = entry.match(/{@[^}]+}/g);
+                    var allConditionsRegex = entry.match(/{@[^}]+} \w+/g);
                     var postMainAttack = false;
                     var modArray = [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]];
                     for (let regexMatch of allConditionsRegex) {
                         if (regexMatch.indexOf('dc') !== -1) {
-                            modArray.push(['DC', regexMatch.substring(6, regexMatch.length - 1)])
+                            modArray.push(['DC', regexMatch.substring(5, regexMatch.indexOf('}') - 1), regexMatch.substring(regexMatch.indexOf('}') +  2)])
                         } else if (regexMatch.indexOf('condition') !== -1) {
-                            var condition = titleCase(regexMatch.substring(12, regexMatch.length - 1));
+                            var condition = titleCase(regexMatch.substring(12, regexMatch.indexOf('}') - 1));
                             if (condition === 'Paralyzed') {
                                 condition = 'Paralyze';
                             } else if (condition === 'Restrained') {
@@ -144,7 +144,7 @@ function fetchMonsterInfo(value) {
                             if (!postMainAttack) {
                             postMainAttack = true;
                             } else {
-                                modArray.push(['Damage (1/2 on save)', regexMatch.substring(7, regexMatch.length - 1)])
+                                modArray.push(['Damage (1/2 on save)', regexMatch.substring(7, regexMatch.indexOf('}') - 1)])
                             }
                         }
                     }
