@@ -29,6 +29,7 @@ button {
 }
 
 .monsterSearchClass {
+  border-left: 5px solid var(--menu-light);
   color: var(--text-color-primary);
   display: flex;
   flex-direction: column;
@@ -38,6 +39,7 @@ button {
 
 .addMovArea div div.monsterSearchHeader {
   background-color: var(--menu-medium);
+  border-top: 5px solid var(--menu-light);
   color: white;
   font-weight: bold;
   text-align: center;
