@@ -1041,14 +1041,14 @@ tr.creatureClassDark {
 
   .addMobArea #targetInfoTitle {
    margin-top: 10px;
-   grid-row: 4;
+   grid-row: 5;
    grid-column: 1;
    padding-left: 5px;
    border: none;
   }
   
   .addMobArea .optionsDivider {
-   grid-row: 5;  
+   grid-row: 6;  
    grid-column: 1;
    padding-left: 5px;
    margin-bottom: 10px;
