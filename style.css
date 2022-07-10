@@ -258,7 +258,7 @@ button {
 .mobBlockMenu .mobMinimizeButton {
   color:black;  
   font-size: 8px;
-  grid-row: 1/3;
+  grid-row: 1;
   grid-column: 2;
   vertical-align: bottom;
   padding: 4px 0px 6px 0px;
@@ -278,7 +278,7 @@ button {
 .mobBlockMenu .mobCloneButton {
   color:black;  
   font-size: 11px;
-  grid-row: 1/3;
+  grid-row: 1;
   grid-column: 3;
   padding: 4px 0px 3px 0px;
   border-bottom-left-radius: 4px;
@@ -715,7 +715,7 @@ button.creatureVariantButton:nth-last-child(1) {
 
 #infoAreaDiv {
   margin: 0px 0px 5px 15px;
-  grid-row: 1/3;
+  grid-row: 1;
   grid-column: 2;
   display: none;
 }
