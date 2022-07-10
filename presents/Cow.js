@@ -16,8 +16,6 @@ export default class Cow extends Mob {
     ];
     
     this.EquipWeapon = this.Weapons[1];
-    
-    this.Variants = [];
   }
   
 }
