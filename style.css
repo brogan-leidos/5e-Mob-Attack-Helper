@@ -29,6 +29,7 @@ button {
 }
 
 .monsterSearchClass {
+  color: var(--text-color-primary);
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -36,7 +37,7 @@ button {
 }
 
 .monsterSearchHeader {
-  background-color: #97b3cf !important;
+  background-color: var(--menu-medium) !important;
   color: white;
   text-align: center;
 }
@@ -104,7 +105,7 @@ button {
   font-family: Candara, Italic,  sans-serif;
   box-shadow: 2px 2px 2px #666;
   text-align: left;
-  border-bottom: 5px solid #b5cce3;
+  border-bottom: 5px solid var(--menu-light);
 }
 
 .overheadMobBlock {
@@ -450,7 +451,7 @@ button.creatureVariantButton:nth-last-child(1) {
 /* Add mob text*/
 .addMobArea .title {
   color: #f2f2f2;
-  background-color: #97b3cf;
+  background-color: var(--menu-medium);
   font-weight: bold;
   text-align: center;
   grid-row: 1;
@@ -471,12 +472,12 @@ button.creatureVariantButton:nth-last-child(1) {
   vertical-align: top;
   grid-row:1;
   grid-column: 6;
-  border-left: 5px solid #b5cce3;
+  border-left: 5px solid var(--menu-light);
 }
 
 .addMobArea .mobileNotificationArea {
   color: #f2f2f2;
-  background-color: #97b3cf;
+  background-color: var(--menu-medium);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 15px;
@@ -492,7 +493,7 @@ button.creatureVariantButton:nth-last-child(1) {
 /* Add mob area */
 .addMobArea div div {
   background-color: #90b3d5;
-  background-color: #65819c;
+  background-color: var(--menu-dark);
   text-align: left;
   vertical-align: top;
 }
@@ -531,7 +532,7 @@ button.creatureVariantButton:nth-last-child(1) {
 }
 
 .launchArea {
-  background-color: #97b3cf; 
+  background-color: var(--menu-medium); 
   padding: 5px 0px 5px 0px;
   margin-bottom: 5px;
   box-shadow: 2px 2px 2px #666;
@@ -580,7 +581,7 @@ button.creatureVariantButton:nth-last-child(1) {
   margin-bottom: 5px;
   border: thin solid black;  
   box-shadow: 2px 2px 2px #666;
-  background-color: #97b3cf;
+  background-color: var(--menu-medium);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: white;
@@ -590,13 +591,13 @@ button.creatureVariantButton:nth-last-child(1) {
 .discoveryBlock tr:nth-child(1) td {
   font-size: 12px;
   padding: 1px 3px 1px 3px;
-  background-color: #65819c;
+  background-color: var(--menu-dark);
 }
 
 .discoveryBlock tr:nth-child(4) td {
   font-size: 9px;
   padding: 1px 3px 1px 3px;
-  background-color: #65819c;
+  background-color: var(--menu-dark);
 }
 
 .dcBlock tr:nth-child(2) td {
@@ -720,7 +721,7 @@ button.creatureVariantButton:nth-last-child(1) {
 
 #totalDamageTitle {
   font-size: larger;
-  border-bottom: #97b3cf solid thin;
+  border-bottom: var(--menu-medium) solid thin;
   padding: 3px;
   background-color: var(--title-blue);
   text-decoration: underline dotted #ffffff5e;
@@ -735,13 +736,13 @@ button.creatureVariantButton:nth-last-child(1) {
 
 #hitsOverview {
   font-size: smaller;
-  background-color: #65819c;
+  background-color: var(--menu-dark);
   padding: 3px;
 }
 
 #ailmentsOverview {
   font-size: 10px;
-  background-color: #65819c;
+  background-color: var(--menu-dark);
 }
 
 #discoveryArea {
@@ -783,7 +784,7 @@ button.creatureVariantButton:nth-last-child(1) {
 }
 
 .optionsDivider .advancedOptions {
-  background-color: #65819c;
+  background-color: var(--menu-dark);
   padding: 10px;
   display: table;
   margin-left: 5px;
@@ -800,13 +801,13 @@ button.creatureVariantButton:nth-last-child(1) {
 .optionsDivider .advancedOptions .optionsSavingThrows {
   border-collapse: collapse;
   margin-top: 2px;
-  background-color: #b5cce3;
+  background-color: var(--menu-light);
   border: solid black 1px;
 }
 
 .optionsDivider .advancedOptions .optionsSavingThrows td {
   padding: 2px;
-  background-color: #97b3cf;
+  background-color: var(--menu-medium);
 }
 
 .optionsDivider .advancedOptions .optionsSavingThrows tr:nth-child(1) {
@@ -817,13 +818,13 @@ button.creatureVariantButton:nth-last-child(1) {
   vertical-align: middle;
   border-top: solid thin black;
   border-bottom: solid thin black;
-  background-color: #b5cce3;
+  background-color: var(--menu-light);
 }
 
 #targetInfoTitle {
   grid-row: 1;
   grid-column: 4;  
-  border-left: 5px solid #b5cce3;
+  border-left: 5px solid var(--menu-light);
 }
 
 .detailTable {
@@ -860,8 +861,8 @@ tr.creatureClassDark {
 .damageRollTip {
   display: none;
   position: absolute;
-  border: solid thin #b5cce3;
-  background-color: #65819c;
+  border: solid thin var(--menu-light);
+  background-color: var(--menu-dark);
   color: #fff;
   padding: 2px;
   box-shadow: 2px 2px 2px #666;
@@ -877,8 +878,8 @@ tr.creatureClassDark {
 .hitRollTip {
   display: none;
   position: absolute;
-  border: solid thin #b5cce3;
-  background-color: #65819c;
+  border: solid thin var(--menu-light);
+  background-color: var(--menu-dark);
   color: #fff;
   padding: 2px;
   box-shadow: 2px 2px 2px #666;
@@ -892,7 +893,7 @@ tr.creatureClassDark {
 }
 
 .notification:hover {
-  color: #b5cce3;
+  color: var(--menu-light);
   cursor: help;
 }
 
