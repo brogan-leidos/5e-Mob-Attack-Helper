@@ -170,7 +170,7 @@ function fetchMonsterInfo(value) {
         if (mobType['type']) {
             mobType = mobType['type'];
         }
-        var mobIcon = mobCategoryMap[mobType];
+        var mobIcon = `"mobCategoryMap[mobType]"`;
   
         var asMob = new Mob(monster['name'], mobIcon, weapons[0]);
         asMob.Weapons = weapons;
@@ -463,8 +463,14 @@ function generateMobBlockHTML(mobTag, presentName, injectMob=null) {
      else {
          var newMob = filtered[0];
  
-         if (!injectMob) {
-            var additionalOptions = weaponsToHtml(newMob.Weapons);
+         if (!injectMob || injectMob.Weapons) {
+            var mobToUse;
+            if (injectMob) {
+                mobToUse = injectMob;
+            } else {
+                mobToUse = newMob;
+            }
+            var additionalOptions = weaponsToHtml(mobToUse.Weapons);
             appendBlock = appendBlock.replace("ADDITIONAL-WEAPONS", additionalOptions);
          }
          var equipName = "\"" + newMob.EquipWeapon.Name + "\"";
