@@ -116,11 +116,15 @@ var longToShortAbilities= {
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
-    var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase());
+    var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
     if (foundMonster.length === 0) {
         showFetchError();
         return;
     } else {
+        if (foundMonster.length > 1) {
+            showFetchMultiple();
+        }
+
         var monster = foundMonster[0];
         var actions = monster['action'];
         var weapons = [];
@@ -203,6 +207,10 @@ function titleCase(str) {
 
 function showFetchError() {
     document.getElementById('fetchError').classList.remove('hidden');
+}
+
+function showFetchMultiple() {
+    document.getElementById('fetchError').value = "Multiple monsters of similar names were found"
 }
 
 // Checks if the target ac is below zero, if so enable discovery mode
