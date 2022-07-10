@@ -131,7 +131,7 @@ function fetchMonsterInfo(value) {
                     var name = action.name;
                     var bonusToHit = entry.match(/{@hit (\d+)/)[1];
                     var damage = entry.match(/{@damage ([^}]+)}/);
-                    if (!damage[1]) {
+                    if (!damage) {
                         damage = "1";                
                     } else {
                         damage = damage[1];
