@@ -36,9 +36,10 @@ button {
   margin-top: 25px;
 }
 
-.monsterSearchHeader {
-  background-color: var(--menu-medium) !important;
+.addMovArea div div.monsterSearchHeader {
+  background-color: var(--menu-medium);
   color: white;
+  font-weight: bold;
   text-align: center;
 }
 
