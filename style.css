@@ -21,7 +21,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  margin-top: 14%;
+  margin-top: 25px;
 }
 
 .monsterSearchHeader {
