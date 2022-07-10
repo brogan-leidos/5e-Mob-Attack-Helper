@@ -1036,7 +1036,7 @@ tr.creatureClassDark {
     border-bottom-right-radius: 6px;
   }
 
-  .monsterSearchHeader {
+  .addMobArea div div.monsterSearchHeader {
     background-color: var(--menu-medium);
     font-weight: normal;
     font-size: 15px;
