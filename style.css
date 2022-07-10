@@ -3,6 +3,17 @@
   src: url(Candara.ttf);
 }
 
+:root {
+  --title-blue: #64a3e3;
+  --menu-dark: #65819c;
+  --menu-medium: #97b3cf;
+  --menu-light: #b5cce3;
+
+  --text-color-primary: white;
+  --text-color-hint: rgba(240, 240, 240, 0.7);
+}
+
+
 .hidden {
   display: none;
 }
@@ -25,7 +36,7 @@ button {
 }
 
 .monsterSearchHeader {
-  background-color: #90b3d5 !important;
+  background-color: #97b3cf !important;
   color: white;
   text-align: center;
 }
@@ -88,7 +99,7 @@ button {
 
 .header {
   padding: 5px 10px;
-  background-color: #64a3e3;
+  background-color: var(--title-blue);
   color: #f2f2f2;
   font-family: Candara, Italic,  sans-serif;
   box-shadow: 2px 2px 2px #666;
@@ -711,7 +722,7 @@ button.creatureVariantButton:nth-last-child(1) {
   font-size: larger;
   border-bottom: #97b3cf solid thin;
   padding: 3px;
-  background-color: #64a3e3;
+  background-color: var(--title-blue);
   text-decoration: underline dotted #ffffff5e;
 }
 
