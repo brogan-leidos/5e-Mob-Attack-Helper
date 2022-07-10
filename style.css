@@ -39,7 +39,7 @@ button {
   margin-top: 25px;
 }
 
-.addMovArea div div.monsterSearchHeader {
+.addMobArea div div.monsterSearchHeader {
   background-color: var(--menu-medium);
   border-top: 5px solid var(--menu-light);
   color: white;
