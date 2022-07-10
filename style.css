@@ -1025,6 +1025,13 @@ tr.creatureClassDark {
    border-bottom-left-radius: 6px;
    border-bottom-right-radius: 6px;
   }
+
+  .monsterSearchClass {
+    grid-row: 4;
+    grid-column: 1;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
   
   .addMobArea .addMobCol2 .mobButtons:nth-last-child(1) {
     margin-bottom: 0px;    
