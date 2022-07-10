@@ -124,10 +124,26 @@ function fetchMonsterInfo(value) {
                     var damageType = entry.match(/{@damage [^}]+}\) (\w+) damage/)[1]
                     var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
                     var weaponString = `${damage} ${damageType}`
-                    var newWeapon = new Weapon(name, [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]]);
+                    
+                    var allConditionsRegex = entry.match(/{@[^}]+}/g);
+                    var postMainAttack = false;
+                    for (let regexMatch of allConditionsRegex) {
+                        if (regexMatch.indexOf('dc') !== -1) {
+                            modArray.push(['DC', regexMatch.substring(6, regexMatch.length - 1)])
+                        } else if (regexMatch.indexOf('condition')) {
+                            modArray.push(['Condition', titleCase(regexMatch.substring(8, regexMatch.length - 1))])
+                        } else if (regexMatch.indexOf('damage')) {
+                            if (!postMainAttack) {
+                            postMainAttack = true;
+                            } else {
+                                modArray.push(['Damage (1/2 on save)', regexMatch.substring(7, regexMatch.length - 1)])
+                            }
+                        }
+                    }
+                    var modArray = [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]];
+                    var newWeapon = new Weapon(name, modArray);
                     newWeapon.WeaponString = weaponString;
                     weapons.push(newWeapon);
-                    console.log(newWeapon);
                     // new Weapon("Ram (Charge)", [["ToHit", 5],  ["IsMelee", true], ["Weapon","1d6 + 3 bludgeoning"], ["Extra Damage", "2d6 + 0 bludgeoning"], ["DC", 13, "Str"], ["Condition", "Knock Prone"]]),
                 }
             }
@@ -144,8 +160,17 @@ function fetchMonsterInfo(value) {
 
         var mobTag = createPresent('');
         changeBlockToMob(mobTag, asMob);
+    }
+}
+
+function titleCase(str) {
+    str = str.toLowerCase();
+    str = str.split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
 
     }
+    return str.join(' ');
 }
 
 function showFetchError() {
