@@ -104,6 +104,15 @@ var mobCategoryMap = {
     'humanoid': 'wizard'
 }
 
+var longToShortAbilities= {
+    'Strength': 'Str',
+    'Dexterity': 'Dex',
+    'Constitution': 'Con',
+    'Intelligence': 'Int',
+    'Wisdom': 'Wis',
+    'Charisma': 'Chr',
+}
+
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
     var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase());
@@ -130,9 +139,9 @@ function fetchMonsterInfo(value) {
                     var modArray = [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]];
                     for (let regexMatch of allConditionsRegex) {
                         if (regexMatch.indexOf('dc') !== -1) {
-                            modArray.push(['DC', regexMatch.substring(5, regexMatch.indexOf('}') - 1), regexMatch.substring(regexMatch.indexOf('}') +  2)])
+                            modArray.push(['DC', regexMatch.substring(5, regexMatch.indexOf('}')), longToShortAbilities[regexMatch.substring(regexMatch.indexOf('}') +  2)]])
                         } else if (regexMatch.indexOf('condition') !== -1) {
-                            var condition = titleCase(regexMatch.substring(12, regexMatch.indexOf('}') - 1));
+                            var condition = titleCase(regexMatch.substring(12, regexMatch.indexOf('}')));
                             if (condition === 'Paralyzed') {
                                 condition = 'Paralyze';
                             } else if (condition === 'Restrained') {
