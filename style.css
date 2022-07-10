@@ -29,8 +29,6 @@ button {
 }
 
 .monsterSearchClass {
-  grid-row: 2;
-  grid-column: 3;
   border-left: 5px solid var(--menu-light);
   color: var(--text-color-primary);
   display: flex;
@@ -44,6 +42,7 @@ button {
   border-top: 5px solid var(--menu-light);
   color: white;
   font-weight: bold;
+  padding: 2px;
   text-align: center;
 }
 
@@ -943,6 +942,12 @@ tr.creatureClassDark {
     grid-template-rows: auto minmax(min-content, 1fr) auto;
   }
   
+  .monsterSearchClass {
+    border-left: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
   .addMobArea {
     box-shadow: 0px 0px 0px #666;
     margin: 5px;
