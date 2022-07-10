@@ -1030,8 +1030,8 @@ tr.creatureClassDark {
     background-color: var(--menu-medium);
     grid-row: 4;
     grid-column: 1;
+    margin-top: 0;
     font-weight: normal;
-    margin-top: -5px;
     border-top: 10px solid var(--menu-dark);
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
