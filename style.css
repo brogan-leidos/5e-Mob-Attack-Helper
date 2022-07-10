@@ -11,12 +11,13 @@
 
   --text-color-primary: white;
   --text-color-hint: rgba(240, 240, 240, 0.7);
+  --text-color-error: #910000;
 }
 
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
 body {
   background-color: #f0f0f0;
@@ -37,6 +38,18 @@ button {
   margin-top: 25px;
 }
 
+.monsterSearchInput {
+  margin-left: 5px;
+}
+
+.monsterSearchError.hidden {
+  color: transparent;
+}
+
+.monsterSearchError {
+  color: var(--text-color-error);
+}
+
 .addMobArea div div.monsterSearchHeader {
   background-color: var(--menu-medium);
   border-top: 5px solid var(--menu-light);
@@ -48,10 +61,6 @@ button {
 
 .monsterSearchGoButton {
   margin-left: 5px;
-}
-
-.monsterSearchClass .searchLabel {
-  color: white;
 }
 
 .addMobArea button.addMobButton {
@@ -943,7 +952,10 @@ tr.creatureClassDark {
   }
   
   .monsterSearchClass {
-    border-left: none;
+    border-left: none;    
+  }
+
+  .monsterSearchInput {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
   }
