@@ -127,6 +127,7 @@ function fetchMonsterInfo(value) {
                     
                     var allConditionsRegex = entry.match(/{@[^}]+}/g);
                     var postMainAttack = false;
+                    var modArray = [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]];
                     for (let regexMatch of allConditionsRegex) {
                         if (regexMatch.indexOf('dc') !== -1) {
                             modArray.push(['DC', regexMatch.substring(6, regexMatch.length - 1)])
@@ -140,7 +141,7 @@ function fetchMonsterInfo(value) {
                             }
                         }
                     }
-                    var modArray = [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]];
+                    
                     var newWeapon = new Weapon(name, modArray);
                     newWeapon.WeaponString = weaponString;
                     weapons.push(newWeapon);
