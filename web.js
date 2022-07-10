@@ -170,7 +170,7 @@ function fetchMonsterInfo(value) {
         if (mobType['type']) {
             mobType = mobType['type'];
         }
-        var mobIcon = `"mobCategoryMap[mobType]"`;
+        var mobIcon = `"${mobCategoryMap[mobType]}"`;
   
         var asMob = new Mob(monster['name'], mobIcon, weapons[0]);
         asMob.Weapons = weapons;
