@@ -95,7 +95,7 @@ var mobCategoryMap = {
     'construct': 'robot',
     'dragon': 'dragon',
     'elemental': 'fire',
-    'fey': 'smile',
+    'fey': 'fairy',
     'fiend': 'ogre',
     'giant': 'beard',
     'monstrosity': 'goblin',
