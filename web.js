@@ -140,6 +140,7 @@ function fetchMonsterInfo(value) {
   
         var asMob = new Mob(monster['name'], mobIcon, weapons[0]);
         asMob.Weapons = weapons;
+        asMob.EquipWeapon = asMob.Weapons[0].WeaponMods;
 
         var mobTag = createPresent('');
         changeBlockToMob(mobTag, asMob);
