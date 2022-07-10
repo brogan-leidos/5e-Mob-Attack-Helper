@@ -125,6 +125,7 @@ function fetchMonsterInfo(value) {
                     var isMelee = entry.search(/{[^}]*mw[^}]*}/) !== -1;
                     var weaponString = `${damage} ${damageType}`
                     var newWeapon = new Weapon(name, [["ToHit", bonusToHit], ["IsMelee", isMelee], ["Weapon", weaponString]]);
+                    newWeapon.WeaponString = weaponString;
                     weapons.push(newWeapon);
                     console.log(newWeapon);
                     // new Weapon("Ram (Charge)", [["ToHit", 5],  ["IsMelee", true], ["Weapon","1d6 + 3 bludgeoning"], ["Extra Damage", "2d6 + 0 bludgeoning"], ["DC", 13, "Str"], ["Condition", "Knock Prone"]]),
