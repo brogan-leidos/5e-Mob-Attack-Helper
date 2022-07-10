@@ -24,6 +24,16 @@ button {
   margin-top: 14%;
 }
 
+.monsterSearchHeader {
+  background-color: #90b3d5 !important;
+  color: white;
+  text-align: center;
+}
+
+.monsterSearchGoButton {
+  margin-left: 5px;
+}
+
 .monsterSearchClass .searchLabel {
   color: white;
 }
