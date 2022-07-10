@@ -1027,7 +1027,6 @@ tr.creatureClassDark {
   }
 
   .monsterSearchClass {
-    background-color: var(--menu-medium);
     grid-row: 4;
     grid-column: 1;
     margin-top: 0;
@@ -1036,11 +1035,17 @@ tr.creatureClassDark {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
   }
+
+  .monsterSearchHeader {
+    background-color: var(--menu-medium);
+    font-weight: normal;
+    font-size: 15px;
+  }
   
   .addMobArea .addMobCol2 .mobButtons:nth-last-child(1) {
     margin-bottom: 0px;    
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    /* border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; */
   }
 
   .addMobArea #targetInfoTitle {
