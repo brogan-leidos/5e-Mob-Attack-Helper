@@ -461,6 +461,7 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .addMobArea .addMobGrid {
   grid-template-columns: 70px 20% auto 70px auto 30%;
+  grid-template-rows: auto;
 }
 
 /* Add mob text*/
