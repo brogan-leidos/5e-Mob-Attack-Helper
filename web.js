@@ -71,7 +71,7 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    monsterManualJson = JSON.parse(mm);
+    monsterManualJson = mm;
 
     // fetch(`https://5e.tools/data/bestiary/bestiary-mm.json`)
     //     .then(response => {
