@@ -9,6 +9,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
+import * as mm from './monster-sets/mm.json'
 
 
 var monsterManualJson;
@@ -70,20 +71,22 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    fetch(`https://5e.tools/data/bestiary/bestiary-mm.json`)
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else {
-                showFetchError();
-                return;
-            }
-        })
-        .then(data => {
-            console.log(data);
-            monsterManualJson = data;
+    monsterManualJson = JSON.parse(mm);
+
+    // fetch(`https://5e.tools/data/bestiary/bestiary-mm.json`)
+    //     .then(response => {
+    //         if (response.status === 200) {
+    //             return response.json();
+    //         } else {
+    //             showFetchError();
+    //             return;
+    //         }
+    //     })
+    //     .then(data => {
+    //         console.log(data);
+    //         monsterManualJson = data;
             
-        })
+    //     })
      
 };
 
