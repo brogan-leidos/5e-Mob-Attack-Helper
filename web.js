@@ -9,7 +9,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
-import * as mm from './monster-sets/mm.json'
+import * as mm from './monster-sets/mm.json' assert { type: "json" }
 
 
 var monsterManualJson;
