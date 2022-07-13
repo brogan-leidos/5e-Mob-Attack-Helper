@@ -68,7 +68,7 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    var monsterList = monsterManualJson.monster.default;
+    var monsterList = monsterManualJson.default.monster;
     autocomplete(document.getElementById('monsterSearch'), monsterList.map(item => item.name));
 
 };
