@@ -407,7 +407,7 @@ function changeBlockToMob(mobTag, newMob) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value);        
+        changeMobWeapon(mobTag, e.target.value, '', e.target.id);        
     });
 
     if (newMob.Multiattack) {
@@ -502,7 +502,7 @@ function createPresent(presentName) {
             assignVariants(mobTag, newMob.Variants)
         }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-            changeMobWeapon(mobTag, e.target.value);        
+            changeMobWeapon(mobTag, e.target.value, '', e.target.id);        
         });
     }
     
@@ -986,7 +986,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
     }
 }
 
-function changeMobWeapon (mobTag, weaponMods, weaponNum="", weaponName="") {
+function changeMobWeapon(mobTag, weaponMods, weaponNum="", weaponName="") {
     if (weaponName) {
         document.getElementById(`${mobTag}-Name`).value = `${document.getElementById(`${mobTag}-Name`).value} (${weaponName})`
     }
