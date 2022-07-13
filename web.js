@@ -9,10 +9,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
-import * as mm from './monster-sets/mm.json' assert { type: "json" }
-
-
-var monsterManualJson;
+import * as monsterManualJson from './monster-sets/mm.json' assert { type: "json" }
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
@@ -71,9 +68,7 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    monsterManualJson = mm;
-    console.log(monsterManualJson);
-    autocomplete(document.getElementById('monsterSearch'), monsterManualJson['monster'].map(item => item.name));
+    autocomplete(document.getElementById('monsterSearch'), [...monsterManualJson['monster']].map(item => item.name));
 
 };
 
