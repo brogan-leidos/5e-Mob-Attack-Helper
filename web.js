@@ -73,8 +73,50 @@ export default () => {
     monsterManualList = mm.default.monster;
     autocomplete(document.getElementById('monsterSearch'), monsterManualList.map(item => item.name));
 
+    document.getElementById('colorPickerRed').addEventListener('click', () => {    
+        colorSwap('red');        
+    });
+
+    document.getElementById('colorPickerGreen').addEventListener('click', () => { 
+        colorSwap('green');               
+    });
+
+    document.getElementById('colorPickerBlue').addEventListener('click', () => { 
+        colorSwap('blue');               
+    });
+
 };
 
+
+function colorSwap(color) {
+    var title, menuLight, menuMedium, menuDark, menuMediumAccent;
+    if (color === 'red') {
+        title= '#BD0806';
+        menuDark= '#391410';
+        menuMedium= '#D7CED0';
+        menuMediumAccent= 'rgba(255, 255, 255, 0.2)';
+        menuLight= '#AA817A';
+    } else if (color === 'green') {
+        title= '#599365';
+        menuDark= '#30783f';
+        menuMedium= '#83ae8c';
+        menuMediumAccent= 'rgba(255, 255, 255, 0.2)';
+        menuLight= '#d6e4d9';
+    } else if (color === 'blue') {
+        title= '#64a3e3';
+        menuDark= '#65819c';
+        menuMedium= '#97b3cf';
+        menuMediumAccent= 'rgba(255, 255, 255, 0.2)';
+        menuLight= '#b5cce3';
+    }
+
+    var root = document.querySelector(':root');
+    root.style.setProperty('--title-blue', title);
+    root.style.setProperty('--menu-dark', menuDark);
+    root.style.setProperty('--menu-medium', menuMedium);
+    root.style.setProperty('--menu-medium-accent', menuMediumAccent);
+    root.style.setProperty('--menu-light', menuLight);
+}
 
 var mobCategoryMap = {
     'aberration': 'alienmonster',
