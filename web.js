@@ -625,7 +625,7 @@ function changeMobVariant(mobTag, presentName) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value, '', e.target.id);        
+        changeMobWeapon(mobTag, e.target.value, '', e.target[e.target.selectedIndex].id);        
     });
 
     assignEventsToBlock(mobTag, false) 
@@ -922,7 +922,7 @@ function assignEventsToNewWeapon(mobTag, weaponNum) {
         toggleRange(e.target);
     });
     document.getElementById(`${mobTag}-Weapon-Select-${weaponNum}`).addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value, weaponNum);        
+        changeMobWeapon(mobTag, e.target.value, weaponNum, e.target[e.target.selectedIndex].id);        
     });
     document.getElementById(`${mobTag}-Weapon-Delete-${weaponNum}`).addEventListener('click', (e) => {
         deleteMobWeapon(mobTag, weaponNum);
