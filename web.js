@@ -344,7 +344,7 @@ function changeBlockToMob(mobTag, newMob) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value, '', e.target.id);        
+        changeMobWeapon(mobTag, e.target.value, '', e.target[e.target.selectedIndex].id);        
     });
 
     if (newMob.Multiattack) {
