@@ -68,7 +68,8 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    autocomplete(document.getElementById('monsterSearch'), [...monsterManualJson['monster']].map(item => item.name));
+    var monsterParts = monsterManualJson.monster;
+    autocomplete(document.getElementById('monsterSearch'), monsterParts.map(item => item.name));
 
 };
 
