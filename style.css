@@ -608,6 +608,7 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .launchArea {
   background-color: var(--menu-medium); 
+  display: flex;
   padding: 5px 0px 5px 0px;
   margin-bottom: 5px;
   box-shadow: 2px 2px 2px #666;
@@ -615,6 +616,10 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .launchArea button {
   box-shadow: 0px 0px 0px aliceblue;
+}
+
+.color-picker-area {
+  align-self: end;
 }
 
 .attackDivMobile {
