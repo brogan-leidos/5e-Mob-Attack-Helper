@@ -106,7 +106,7 @@ var longToShortAbilities= {
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
-    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase());
+    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase().trim());
     if (foundMonster.length === 0) {
         showFetchError();
         return;
