@@ -989,7 +989,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
 function changeMobWeapon(mobTag, weaponMods, weaponNum="", weaponName="") {
     if (weaponName) {
         var creatureName = document.getElementById(`${mobTag}-Name`).value;
-        if (creatureName.search(/\([^\)]+\)$/)) {
+        if (creatureName.search(/\([^\)]+\)$/) != -1) {
             var creatureNameMatch = creatureName.match(/(.*)\([^\)]+\)/);
             creatureName = creatureNameMatch[1];
         }
