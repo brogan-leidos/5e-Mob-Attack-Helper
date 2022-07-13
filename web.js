@@ -9,7 +9,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
-import * as monsterManualJson from './monster-sets/mm.json' assert { type: "json" }
+import * as mm from './monster-sets/mm.json' assert { type: "json" }
 
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
@@ -68,8 +68,8 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    var monsterList = monsterManualJson.default.monster;
-    autocomplete(document.getElementById('monsterSearch'), monsterList.map(item => item.name));
+    var monsterManualList = mm.default.monster;
+    autocomplete(document.getElementById('monsterSearch'), monsterManualList.map(item => item.name));
 
 };
 
@@ -199,7 +199,7 @@ function autocomplete(inp, arr) {
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
-    var foundMonster = monsterManualJson['monster'].filter(a => a.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
+    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
     if (foundMonster.length === 0) {
         showFetchError();
         return;
