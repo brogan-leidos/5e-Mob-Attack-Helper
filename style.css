@@ -57,17 +57,17 @@ button {
 }
 
 .autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
+  /*position the autocomplete items to be the same width as the container:*/
   border-bottom: none;
   border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
+  border: 1px solid #d4d4d4;
   height: 200px;
+  left: 0;
   overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 99;
 }
 
 .autocomplete-items div {

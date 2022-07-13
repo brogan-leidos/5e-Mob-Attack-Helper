@@ -402,7 +402,7 @@ function changeBlockToMob(mobTag, newMob) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
 
-    changeMobWeapon(mobTag, newMob.EquipWeapon);
+    changeMobWeapon(mobTag, newMob.EquipWeapon, '', newMob.EquipWeapon.Name);
     if (newMob.Variants) {
         assignVariants(mobTag, newMob.Variants)
     }
@@ -986,7 +986,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
     }
 }
 
-function changeMobWeapon (mobTag, weaponMods, weaponNum="") {
+function changeMobWeapon (mobTag, weaponMods, weaponNum="", weaponName="") {
     if (typeof weaponMods == "string") {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
