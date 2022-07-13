@@ -11,6 +11,7 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 import * as mm from './monster-sets/mm.json' assert { type: "json" }
 
+var monsterManualList;
 var mobBlockDefaultColor = "#f9f9eb";
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
