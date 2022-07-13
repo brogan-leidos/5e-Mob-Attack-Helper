@@ -990,7 +990,7 @@ function changeMobWeapon(mobTag, weaponMods, weaponNum="", weaponName="") {
     if (weaponName) {
         var creatureName = document.getElementById(`${mobTag}-Name`).value;
         if (creatureName.search(/\([^\)]+\)$/) != -1) {
-            var creatureNameMatch = creatureName.match(/(.*)\([^\)]+\)/);
+            var creatureNameMatch = creatureName.match(/([^\s]+)\([^\)]+\)/);
             creatureName = creatureNameMatch[1];
         }
         document.getElementById(`${mobTag}-Name`).value = `${creatureName} (${weaponName})`
