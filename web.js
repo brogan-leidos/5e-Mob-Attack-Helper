@@ -72,7 +72,7 @@ export default () => {
     });
 
     monsterManualJson = mm;   
-    autocomplete(document.getElementById('monsterSearch'), monsterManualJson.map(item => item.name));
+    autocomplete(document.getElementById('monsterSearch'), monsterManualJson['monsters'].map(item => item.name));
 
 };
 
