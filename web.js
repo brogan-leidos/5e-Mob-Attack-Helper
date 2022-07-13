@@ -169,7 +169,7 @@ function autocomplete(inp, arr) {
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
-    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
+    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase());
     if (foundMonster.length === 0) {
         showFetchError();
         return;
