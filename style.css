@@ -608,10 +608,15 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .launchArea {
   background-color: var(--menu-medium); 
-  display: flex;
   padding: 5px 0px 5px 0px;
   margin-bottom: 5px;
   box-shadow: 2px 2px 2px #666;
+}
+
+.launchArea.mobile-hide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .launchArea button {

@@ -190,26 +190,29 @@
   
 <div class="launchArea mobile-hide">		
 	<!-- Launch attack -->
-	<button id="goButton"><b>LAUNCH ATTACK</b></button>
-	<span id="notificationArea">
-		<span class="hitRollNotification"><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
-		<span class="notification hitRollNotification" id="hitRollNotification" title="When the AC is set to lower than 1, the tool will ask if the roll hits or not." style="vertical-align: text-bottom;">
-			<i class="fa fa-commenting"></i> Hit Rolls
+	<div>
+		<button id="goButton"><b>LAUNCH ATTACK</b></button>
+		<span id="notificationArea">
+			<span class="hitRollNotification"><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
+			<span class="notification hitRollNotification" id="hitRollNotification" title="When the AC is set to lower than 1, the tool will ask if the roll hits or not." style="vertical-align: text-bottom;">
+				<i class="fa fa-commenting"></i> Hit Rolls
+			</span>
+			<span class="savingThrowNotification" style="display:none"><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
+			<span class="notification savingThrowNotification" id="savingThrowNotification" title="The tool does not know what the target's saving throw modifiers are. The tool will roll for the target and ask you if it succeeds its saves." style="vertical-align: text-bottom;display:none">
+				<i class="fa fa-commenting"></i> Saving Throws
+			</span>		
 		</span>
-		<span class="savingThrowNotification" style="display:none"><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
-		<span class="notification savingThrowNotification" id="savingThrowNotification" title="The tool does not know what the target's saving throw modifiers are. The tool will roll for the target and ask you if it succeeds its saves." style="vertical-align: text-bottom;display:none">
-			<i class="fa fa-commenting"></i> Saving Throws
-		</span>		
-	</span>
-	<span><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
-	<span id="resultsNotification" style="vertical-align: text-bottom;color: rgb(101, 129, 156);">
-		Results
-	</span>
-
-	<div class="color-picker-area">
-		<button class="colorPicker red"></button>
-		<button class="colorPicker blue"></button>
-		<button class="colorPicker green"></button>
+		<span><i class="fa fa-long-arrow-right" style="color: rgb(101, 129, 156)"></i></span>
+		<span id="resultsNotification" style="vertical-align: text-bottom;color: rgb(101, 129, 156);">
+			Results
+		</span>
+	</div>
+	<div>
+		<span class="color-picker-area">
+			<button class="colorPicker red"></button>
+			<button class="colorPicker blue"></button>
+			<button class="colorPicker green"></button>
+		</span>
 	</div>
 </div>
 	
