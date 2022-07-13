@@ -1012,7 +1012,7 @@ tr.creatureClassDark {
   }
   
   .mobile-hide {
-    display: none;
+    display: none !important;
   } 
   
   .mobile-display {
