@@ -91,11 +91,11 @@ export default () => {
 function colorSwap(color) {
     var title, menuLight, menuMedium, menuDark, menuMediumAccent;
     if (color === 'red') {
-        title= '#BD0806';
-        menuDark= '#391410';
-        menuMedium= '#D7CED0';
+        title= '#e0486a';
+        menuDark= '#d81a45';
+        menuMedium= '#e8768f';
         menuMediumAccent= 'rgba(255, 255, 255, 0.2)';
-        menuLight= '#AA817A';
+        menuLight= '#f7d1da';
     } else if (color === 'green') {
         title= '#599365';
         menuDark= '#30783f';
