@@ -66,6 +66,8 @@ button {
   top: 100%;
   left: 0;
   right: 0;
+  height: 200px;
+  overflow: auto;
 }
 
 .autocomplete-items div {
