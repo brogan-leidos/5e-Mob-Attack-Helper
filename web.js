@@ -89,11 +89,11 @@ var swapColors = [
         menuLight= '#b5cce3',
     },
     { // green
-        title= '#599365';
-        menuDark= '#30783f';
-        menuMedium= '#83ae8c';
-        menuMediumAccent= 'rgba(255, 255, 255, 0.2)';
-        menuLight= '#d6e4d9';
+        title= '#599365',
+        menuDark= '#30783f',
+        menuMedium= '#83ae8c',
+        menuMediumAccent= 'rgba(255, 255, 255, 0.2)',
+        menuLight= '#d6e4d9',
     }
 ]
 
