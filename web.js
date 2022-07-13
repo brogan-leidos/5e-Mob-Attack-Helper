@@ -107,6 +107,7 @@ function updateNameUsingWeapons(mogTag) {
     var nameField = document.getElementById(`${mobTag}-Name`);
 }
 
+// Given a value from the search bar, look through the json for the right monster and turn it into a block
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        
     var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase().trim());
@@ -188,6 +189,7 @@ function fetchMonsterInfo(value) {
     }
 }
 
+// String helper for title case
 function titleCase(str) {
     str = str.toLowerCase();
     str = str.split(' ');

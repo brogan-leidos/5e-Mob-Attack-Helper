@@ -19,20 +19,20 @@
 .colorPicker {
   height: 24px;
   width: 24px;
-  border: thin solid var(--menu-light);
+  border: 2px solid var(--menu-light);
   border-radius: 3px;
 }
 
 .colorPicker.red {
-  background-color: linear-gradient(45deg, rgb(255, 0, 0) 50%, rgba(153,153,153,1) 100%);
+  background: linear-gradient(45deg, rgb(255, 0, 0) 50%, rgba(153,153,153,1) 100%);
 }
 
 .colorPicker.blue {
-  background-color: linear-gradient(45deg, rgb(9, 106, 231) 50%, rgba(153,153,153,1) 100%);
+  background: linear-gradient(45deg, rgb(9, 106, 231) 50%, rgba(153,153,153,1) 100%);
 }
 
 .colorPicker.green {
-  background-color: linear-gradient(45deg, rgb(0, 158, 79) 50%, rgba(153,153,153,1) 100%);
+  background: linear-gradient(45deg, rgb(0, 158, 79) 50%, rgba(153,153,153,1) 100%);
 }
 
 .flex {
@@ -184,7 +184,7 @@ button {
 
 .overheadMobBlock {
   margin-bottom: 7px;
-  animation: fadeIn 0.5s;
+  animation: fadeIn 0.25s;
 }
 
 @keyframes fadeIn {
