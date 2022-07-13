@@ -102,7 +102,10 @@ var longToShortAbilities= {
     'Charisma': 'Chr',
 }
 
-
+// WIP
+function updateNameUsingWeapons(mogTag) {
+    var nameField = document.getElementById(`${mobTag}-Name`);
+}
 
 function fetchMonsterInfo(value) {
     document.getElementById('fetchError').classList.add('hidden');        

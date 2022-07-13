@@ -16,6 +16,29 @@
 }
 
 
+.colorPicker {
+  height: 24px;
+  width: 24px;
+  border: thin solid var(--menu-light);
+  border-radius: 3px;
+}
+
+.colorPicker.red {
+  background-color: linear-gradient(45deg, rgb(255, 0, 0) 50%, rgba(153,153,153,1) 100%);
+}
+
+.colorPicker.blue {
+  background-color: linear-gradient(45deg, rgb(9, 106, 231) 50%, rgba(153,153,153,1) 100%);
+}
+
+.colorPicker.green {
+  background-color: linear-gradient(45deg, rgb(0, 158, 79) 50%, rgba(153,153,153,1) 100%);
+}
+
+.flex {
+  display: flex;
+}
+
 /* .hidden {
   display: none;
 } */
@@ -38,8 +61,8 @@ button {
 }
 
 .monsterSearchInput {
-  margin-top: 2px;
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 .monsterSearchError.hidden {
@@ -61,7 +84,7 @@ button {
   border-bottom: none;
   border-top: none;
   border: 1px solid #d4d4d4;
-  height: 200px;
+  max-height: 200px;
   left: 0;
   overflow: auto;
   position: absolute;

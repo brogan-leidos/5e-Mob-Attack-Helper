@@ -1,6 +1,13 @@
 = Change Log
 
-== Current Version: 1.1.0
+== Current Version: 1.2.1
+
+=== Ver 1.2.1
+* Beeg updates this time around.
+* Added a search bar to the add mobs area. Allows the importing of any monster from the monster manual with some degree of accuracy
+* Mob names now change to reflect their current weapon when their weapons are changed
+* Broke the weapon menu on cloned mobs, oops
+
 
 === Ver 1.1.0
 * We're just skipping over the deployment of 1.0.3 because this has gotten so much larger than I expected it to be.
