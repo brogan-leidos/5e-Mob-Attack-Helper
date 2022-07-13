@@ -402,12 +402,12 @@ function changeBlockToMob(mobTag, newMob) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
 
-    changeMobWeapon(mobTag, newMob.EquipWeapon, '', newMob.EquipWeapon.Name);
+    changeMobWeapon(mobTag, newMob.EquipWeapon, '', newMob);
     if (newMob.Variants) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value);        
+        changeMobWeapon(mobTag, e.target.value, '', newMob);        
     });
 
     if (newMob.Multiattack) {
@@ -415,10 +415,10 @@ function changeBlockToMob(mobTag, newMob) {
             var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
             if (i > 0) {
                 addExtraAttack(mobTag, false);
-                changeMobWeapon(mobTag, weaponMods, i);
+                changeMobWeapon(mobTag, weaponMods, i, newMob);
             }
             else {
-                changeMobWeapon(mobTag, weaponMods);
+                changeMobWeapon(mobTag, weaponMods, '', newMob);
             }
         }
     }
@@ -986,7 +986,7 @@ function deleteMobWeapon(mobTag, weaponNum) {
     }
 }
 
-function changeMobWeapon (mobTag, weaponMods, weaponNum="", weaponName="") {
+function changeMobWeapon (mobTag, weaponMods, weaponNum="", mobRef=null) {
     if (typeof weaponMods == "string") {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
