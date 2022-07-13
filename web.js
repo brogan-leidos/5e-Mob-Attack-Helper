@@ -402,12 +402,12 @@ function changeBlockToMob(mobTag, newMob) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.innerHTML = html;
 
-    changeMobWeapon(mobTag, newMob.EquipWeapon, '', newMob);
+    changeMobWeapon(mobTag, newMob.EquipWeapon);
     if (newMob.Variants) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value, '', newMob);        
+        changeMobWeapon(mobTag, e.target.value);        
     });
 
     if (newMob.Multiattack) {
@@ -415,10 +415,10 @@ function changeBlockToMob(mobTag, newMob) {
             var weaponMods = newMob.Weapons.filter(a => a.Name == newMob.Multiattack[i])[0].WeaponMods;
             if (i > 0) {
                 addExtraAttack(mobTag, false);
-                changeMobWeapon(mobTag, weaponMods, i, newMob);
+                changeMobWeapon(mobTag, weaponMods, i);
             }
             else {
-                changeMobWeapon(mobTag, weaponMods, '', newMob);
+                changeMobWeapon(mobTag, weaponMods);
             }
         }
     }
@@ -625,7 +625,7 @@ function changeMobVariant(mobTag, presentName) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
-        changeMobWeapon(mobTag, e.target.value);        
+        changeMobWeapon(mobTag, e.target.value, '', e.target.id);        
     });
 
     assignEventsToBlock(mobTag, false) 
@@ -986,7 +986,11 @@ function deleteMobWeapon(mobTag, weaponNum) {
     }
 }
 
-function changeMobWeapon (mobTag, weaponMods, weaponNum="", mobRef=null) {
+function changeMobWeapon (mobTag, weaponMods, weaponNum="", weaponName="") {
+    if (weaponName) {
+        document.getElementById(`${mobTag}-Name`).value = `${document.getElementById(`${mobTag}-Name`).value} (${weaponName})`
+    }
+    
     if (typeof weaponMods == "string") {
         weaponMods = weaponMods.replace(/'/g, "\"");
         weaponMods = JSON.parse(weaponMods)
