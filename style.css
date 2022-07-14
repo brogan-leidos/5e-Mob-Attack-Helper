@@ -620,6 +620,12 @@ button.creatureVariantButton:nth-last-child(1) {
   box-shadow: 0px 0px 0px aliceblue;
 }
 
+.launchAreaDivider {
+  padding:3px;
+  background-color: var(--menu-light);
+  box-shadow: 2px 2px 2px #666;
+}
+
 .color-picker-area {
   align-self: end;
 }
