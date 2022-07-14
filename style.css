@@ -18,11 +18,12 @@
 
 .colorPicker {
   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  border-radius: 3px;
+  border: 2px solid var(--menu-light);
   cursor: pointer;
   height: 24px;
+  margin-right: 10px;
   width: 24px;
-  border: 2px solid var(--menu-light);
-  border-radius: 3px;
 }
 
 .flex {
