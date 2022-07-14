@@ -991,7 +991,7 @@ tr.creatureClassDark {
 }
 
 .notification {
-  color: rgb(101, 129, 156);
+  color: var(--menu-dark);
 }
 
 .notification:hover {

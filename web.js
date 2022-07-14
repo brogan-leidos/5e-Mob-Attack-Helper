@@ -103,7 +103,7 @@ var swapIndex = 0;
 
 function colorSwap(color) {
     swapIndex++;
-    if (swapIndex > swapColors.length) {
+    if (swapIndex >= swapColors.length) {
         swapIndex = 0;
     }
     var root = document.querySelector(':root');
