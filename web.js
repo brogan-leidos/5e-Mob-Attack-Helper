@@ -81,19 +81,21 @@ export default () => {
 };
 
 var swapColors = [
-    { // blue
-        title= '#64a3e3',
-        menuDark= '#65819c',
-        menuMedium= '#97b3cf',
-        menuMediumAccent= 'rgba(255, 255, 255, 0.2)',
-        menuLight= '#b5cce3',
+    {
+        name: 'blue',
+        title: '#64a3e3',
+        menuDark: '#65819c',
+        menuMedium: '#97b3cf',
+        menuMediumAccent: 'rgba(255, 255, 255, 0.2)',
+        menuLight: '#b5cce3',
     },
-    { // green
-        title= '#599365',
-        menuDark= '#30783f',
-        menuMedium= '#83ae8c',
-        menuMediumAccent= 'rgba(255, 255, 255, 0.2)',
-        menuLight= '#d6e4d9',
+    {
+        name: 'green',
+        title: '#599365',
+        menuDark: '#30783f',
+        menuMedium: '#83ae8c',
+        menuMediumAccent: 'rgba(255, 255, 255, 0.2)',
+        menuLight: '#d6e4d9',
     }
 ]
 
