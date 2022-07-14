@@ -87,6 +87,7 @@ var swapColors = [
         menuDark: '#65819c',
         menuMedium: '#97b3cf',
         menuMediumAccent: 'rgba(255, 255, 255, 0.2)',
+        menuMediumDark: '#7491b0',
         menuLight: '#b5cce3',
     },
     {
@@ -95,6 +96,7 @@ var swapColors = [
         menuDark: '#30783f',
         menuMedium: '#83ae8c',
         menuMediumAccent: 'rgba(255, 255, 255, 0.2)',
+        menuMediumDark: '#507e53',
         menuLight: '#d6e4d9',
     }
 ]
@@ -112,6 +114,7 @@ function colorSwap(color) {
     root.style.setProperty('--menu-medium', swapColors[swapIndex].menuMedium);
     root.style.setProperty('--menu-medium-accent', swapColors[swapIndex].menuMediumAccent);
     root.style.setProperty('--menu-light', swapColors[swapIndex].menuLight);
+    root.style.setProperty('--menu-medium-dark', swapColors[swapIndex].menuMediumDark);
 }
 
 var mobCategoryMap = {

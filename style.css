@@ -6,6 +6,7 @@
 :root {
   --title-blue: #64a3e3;
   --menu-dark: #65819c;
+  --menu-medium-dark: #7491b0;
   --menu-medium: #97b3cf;
   --menu-medium-accent: rgba(255, 255, 255, 0.2);
   --menu-light: #b5cce3;
@@ -705,7 +706,7 @@ button.creatureVariantButton:nth-last-child(1) {
 .dcBlock tr:nth-child(2) td {
   font-size: 10px;
   padding: 1px 3px 1px 3px;
-  background-color: #7491b0;
+  background-color: var(--menu-medium-dark);
 }
 
 .dcBlock tr:nth-child(4) td {
@@ -716,11 +717,11 @@ button.creatureVariantButton:nth-last-child(1) {
 .dcBlock tr:nth-child(5) td {
   font-size: 9px;
   padding: 1px 3px 1px 3px;
-  background-color: #7491b0;
+  background-color: var(--menu-medium-dark);
 }
 
 .dcBlock tr:nth-last-child(1) {
-  background-color: #7491b0
+  background-color: var(--menu-medium-dark)
 }
 
 .discoveryBlock .hitButton:hover {
