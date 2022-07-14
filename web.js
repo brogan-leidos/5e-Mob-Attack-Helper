@@ -1760,7 +1760,7 @@ Ask your DM if the target saved or failed their saving throw, and click the corr
 }
 
 function resetPromptNotificationHighlighting() {
-    document.getElementById("resultsNotification").style.color = "rgb(101, 129, 156)";
+    document.getElementById("resultsNotification").style.color = "var(--menu-dark)";
 
     var hitRollNotes = document.getElementsByClassName("hitRollNotification");
     for (var x of hitRollNotes) {
