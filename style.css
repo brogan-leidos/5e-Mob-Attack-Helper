@@ -681,6 +681,7 @@ button.creatureVariantButton:nth-last-child(1) {
 }
 
 .discoveryBlock {
+  animation: fadeIn 0.25s;
   margin-left: 15px;
   margin-bottom: 5px;
   border: thin solid black;  
