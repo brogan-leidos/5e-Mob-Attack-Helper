@@ -99,6 +99,15 @@ var swapColors = [
         menuMediumDark: '#507e53',
         menuLight: '#d6e4d9',
     }
+    {
+        name: 'purple',
+        title: '#8058a4',
+        menuDark: '#602e8d',
+        menuMedium: '#a082bb',
+        menuMediumAccent: 'rgba(255, 255, 255, 0.2)',
+        menuMediumDark: '#bfabd1',
+        menuLight: '#dfd5e8',
+    }
 ]
 
 var swapIndex = 0;
