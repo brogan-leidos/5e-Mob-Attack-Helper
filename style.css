@@ -796,6 +796,7 @@ button.creatureVariantButton:nth-last-child(1) {
 }
 
 #infoArea {
+  animation: fadeIn 0.25s;
   box-shadow: 2px 2px 2px #666;
   border: solid thin black;
   background-color: white;
