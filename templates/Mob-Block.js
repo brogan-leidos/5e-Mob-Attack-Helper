@@ -72,7 +72,7 @@ export function mobBlock() {
           ADDITIONAL-WEAPONS
         </select>
       </td>
-      <td>Weapon:</td>
+      <td><i class="fa fa-caret-right" style="margin-left: -2px;">Weapon:</td>
       <td><input id="FILLER-BLOCK-Weapon" type="text" value="FILLER-WEAPON" title="Recommended format is XdX +/- X" /></td>
     </tr>
     ${weaponMenu()}
