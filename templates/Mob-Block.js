@@ -19,7 +19,7 @@ export function mobBlock() {
         <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye" style="display:block"></i></button>
       </td>
       <td>Icon:</td>
-      <td><select id="FILLER-BLOCK-Icon" name="Icons">
+      <td><select id="FILLER-BLOCK-Icon" name="Icons" title="An icon used to identify this mob at a glance">
         <option value="smile">😀</option>
         <option value="beard">🧔</option>
         <option value="wizard">🧙‍</option>
@@ -79,7 +79,7 @@ export function mobBlock() {
     <tr>
       <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Up" title="Move Up"><i class="fa fa-angle-double-up" style="display:block"></i></button></td>
       <td>Number:</td>
-      <td><input id="FILLER-BLOCK-Number" type="number" value="1" /></td>
+      <td><input id="FILLER-BLOCK-Number" type="number" value="1" title="The number of creatures in this mob" /></td>
     </tr>
     <tr>
       <td><button class="mobMoveButton" id="FILLER-BLOCK-Move-Down" title="Move Down"><i class="fa fa-angle-double-down" style="display:block"></i></button></td>
@@ -104,11 +104,11 @@ export function weaponMenu(mobTag="FILLER-BLOCK", weaponNum="") {
   </td>
   <td style="display:flex">
     <span class="weaponExpandButton" id="${mobTag}-Weapon-Expand${weaponNum}">
-      <i class="fa fa-plus-square-o"></i>
+      <i class="fa fa-plus-square-o" title="Add additional effects to this weapon"></i>
       <span id="${mobTag}-Weapon-Expand-Tip${weaponNum}" class="menuTip">Additional Effects</span>
     </span>
     <span class="extraAttackButton" id="${mobTag}-ExtraAttack${weaponNum}">
-      <i class="fa fa-plus-circle"></i>
+      <i class="fa fa-plus-circle" title="Give the creature another attack"></i>
       <span id="${mobTag}-ExtraAttack-Tip${weaponNum}" class="menuTip">Extra Attack</span>
     </span>
   </td>
