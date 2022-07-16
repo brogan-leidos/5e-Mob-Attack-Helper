@@ -241,7 +241,7 @@ function fetchMonsterInfo(value) {
 }
 
 function setMobBackground(mobTag, creatureName) {
-    var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(' ', '%20')}.jpg`;
+    var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
     var block = document.getElementById(`${mobTag}`);
     console.log(block);
     var table = block.children[1]; // Should be table
