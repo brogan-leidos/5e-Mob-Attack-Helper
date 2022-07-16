@@ -1274,4 +1274,8 @@ tr.creatureClassDark {
     max-width:  -webkit-fill-available;
     width: 100%;     
   }
+
+  button.creatureVariantButton.small {
+    font-size: 10px;
+  }
 }
