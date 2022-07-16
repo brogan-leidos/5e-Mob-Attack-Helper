@@ -1275,7 +1275,7 @@ tr.creatureClassDark {
     width: 100%;     
   }
 
-  button.creatureVariantButton.small {
-    font-size: 10px;
+  button.creatureVariantButton {
+    font-size: 12px;
   }
 }
