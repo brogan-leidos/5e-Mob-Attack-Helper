@@ -885,7 +885,7 @@ function addExtraAttack(mobTag, defaultWeapon=true) {
     var style = `background-color: rgba(100, 100, 100, ${weaponNum * .15})`;
     
     var htmlToHitInsert = `<tr style="${style}"><td><button id="${mobTag}-Weapon-Delete-${weaponNum}" class="weaponDeleteButton"><i class="fa fa-trash-o"></i></button></td><td>Bonus To Hit:</td><td><input id="${mobTag}-ToHit-${weaponNum}" type="number" value="0"></td></tr>`;
-    var htmlWeaponInsert = `<tr style="${style}"><td>${weaponMenuHtml}</td><td>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
+    var htmlWeaponInsert = `<tr style="${style}"><td>${weaponMenuHtml}</td><td><i class="fa fa-caret-right" style="margin-left: -2px;"></i>Weapon:</td><td><input id="${mobTag}-Weapon-${weaponNum}" type="text" value="0" title="Recommended format is XdX +/- X"></td></tr>`;
     var menuRow = document.getElementById(`${mobTag}-Weapon-Expand`).parentElement.parentElement;
     menuRow.insertAdjacentHTML('afterend', weaponMenu(mobTag, weaponNum));
     menuRow.nextElementSibling.style = style;
