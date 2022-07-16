@@ -247,6 +247,7 @@ function setMobBackground(mobTag, creatureName) {
     table.style.background = `rgba(249, 249, 235, 0.8) url(${imageUrl}) no-repeat`;
     table.style.backgroundPosition = 'center';
     table.style.backgroundBlendMode = 'lighten';
+    table.style.backgroundSize = 'cover';
 }
 
 // String helper for title case
