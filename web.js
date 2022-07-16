@@ -247,7 +247,7 @@ function setMobBackground(mobTag, creatureName, creatureType) {
     var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
-    table.style.background = `rgba(249, 249, 235, 0.8) url(${imageUrl}) no-repeat`;
+    table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
     table.style.backgroundPosition = ['undead', 'humanoid'].includes(creatureType) ? 'top' : 'center';
     table.style.backgroundBlendMode = 'lighten';
     table.style.backgroundSize = 'cover';
