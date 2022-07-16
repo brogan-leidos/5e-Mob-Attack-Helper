@@ -1,11 +1,13 @@
 = Change Log
 
-== Current Version: 1.2.1
+== Current Version: 1.2.0
 
-=== Ver 1.2.1
+=== Ver 1.2.0
 * Beeg updates this time around.
 * Added a search bar to the add mobs area. Allows the importing of any monster from the monster manual with some degree of accuracy
 * Mob names now change to reflect their current weapon when their weapons are changed
+* Added a color changer! Its not much, but its a start to something greater
+* Added some small animation flares around the app
 * Broke the weapon menu on cloned mobs, oops
 
 
