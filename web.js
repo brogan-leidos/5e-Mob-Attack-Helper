@@ -245,7 +245,7 @@ function setMobBackground(mobTag, creatureName) {
     var block = document.getElementById(`${mobTag}`);
     console.log(block);
     var table = block.children[1]; // Should be table
-    table.style.background = `rgba(249, 249, 235, 0.8) url(${imageUrl}) no-repeat`;
+    table.style.background = `rgba(249, 249, 235, 0.8) url(${imageUrl}) no-repeat cover`;
     table.style.backgroundPosition = 'center';
     table.style.backgroundBlendMode = 'lighten';
 }
