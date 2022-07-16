@@ -241,6 +241,9 @@ function fetchMonsterInfo(value) {
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
+    if (creatureType['type']) {
+        creatureType = creatureType['type'];
+    }
     var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
