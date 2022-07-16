@@ -236,7 +236,18 @@ function fetchMonsterInfo(value) {
 
         var mobTag = createPresent('');
         changeBlockToMob(mobTag, asMob);
+        setMobBackground(mobTag, monster['name']);
     }
+}
+
+function setMobBackground(mobTag, creatureName) {
+    var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName}.jpg`;
+    var block = document.getElementById(`${mobTag}`);
+    console.log(block);
+    var table = block.children[1]; // Should be table
+    table.style.background = `rgba(249, 249, 235, 0.8) url(${imageUrl}) no-repeat`;
+    table.style.backgroundPosition = 'center';
+    table.style.backgroundBlendMode = 'lighten';
 }
 
 // String helper for title case
