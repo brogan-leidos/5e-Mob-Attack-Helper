@@ -10,7 +10,8 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
 import * as mm from './monster-sets/mm.json' assert { type: "json" }
-import autocomplete from './autocomplete/autocomplete.js'
+import autocomplete from './autocomplete/autocomplete.js';
+import { getCreatureStatBlock } from './templates/Creature-Stat-Block.js';
 
 var monsterManualList;
 var mobBlockDefaultColor = "#f9f9eb";
@@ -237,7 +238,13 @@ function fetchMonsterInfo(value) {
         var mobTag = createPresent('');
         changeBlockToMob(mobTag, asMob);
         setMobBackground(mobTag, monster['name'], monster['type']);
+        setVisibleStatBlock(monster);
     }
+}
+
+function setVisibleStatBlock(monster) {
+    var generatedHtml = getCreatureStatBlock(monster);
+    document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
