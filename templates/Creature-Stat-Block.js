@@ -29,9 +29,22 @@ export function getCreatureStatBlock(creatureJson) {
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
     <div class="creature-type">${creatureJson['type']}, ${alignment}</div>
-    <div class="armor-class">Armor Class ${creatureJson['ac'][0] ? creatureJson['ac'][0] : creatureJson['ac']}</div>
-    <div class="hit-points">Hit Points ${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</div>
-    <div class="speed">${creatureJson['speed']}</div>
+    <table>
+        <tr>
+            <td>Armor Class</td>
+            <td>Hit points</td>
+            <td>Speed</td>
+            <td>CR</td>
+            <td>PB</td>
+        </td>
+        <tr>
+            <td>${creatureJson['ac'][0] ? creatureJson['ac'][0] : creatureJson['ac']}</td>
+            <td>${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</td>
+            <td>${creatureJson['speed']}</td>
+            <td>${creatureJson['cr']}</td>
+            <td>${creatureJson['pb']}</td>
+        </tr>
+    </table>
     <div class="stat-spread">
         <table>
             <tr>
@@ -55,8 +68,10 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="skills"><b>Skills</b> ${skills}</div>
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
-    <div class="challenge-rating"><b>Challenge</b> ${creatureJson['cr']}</div>
-    <div class="traits">${traits}</div>
+    <div class="traits">
+        <div class="section-title">Traits</div>    
+        ${traits}
+    </div>
     <div class="actions">
         <div class="section-title">Actions</div>
         ${actions}

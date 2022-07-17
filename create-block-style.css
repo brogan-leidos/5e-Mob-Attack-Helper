@@ -24,14 +24,10 @@
     font-weight: 700;
 }
 
-.traits {
+.traits, .actions {
     white-space: pre-wrap;
 }
 
 .traits div, .actions div {
     margin-bottom: 2px;
-}
-
-.actions {
-    white-space: pre-wrap;
 }
