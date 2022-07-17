@@ -1,7 +1,7 @@
 export function drillDownValue(creatureJson, value) {
     var currentLevel = creatureJson[value];
     while(true) {
-        oldValue = currentLevel;
+        var oldValue = [...currentLevel];
         currentLevel = currentLevel[0] ?? currentLevel[value];
         if (oldValue === currentLevel) {
             break;
