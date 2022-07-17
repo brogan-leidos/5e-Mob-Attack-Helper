@@ -248,7 +248,7 @@ function setMobBackground(mobTag, creatureName, creatureType) {
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
     table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
-    table.style.backgroundPosition = ['undead', 'humanoid'].includes(creatureType) ? 'top' : 'center';
+    table.style.backgroundPosition = ['beast', 'monstrosity', 'aberration', 'plant'].includes(creatureType) ? 'center' : 'top';
     table.style.backgroundBlendMode = 'lighten';
     table.style.backgroundSize = 'cover';
 }
