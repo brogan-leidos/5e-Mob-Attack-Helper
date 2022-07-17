@@ -251,6 +251,7 @@ function setMobBackground(mobTag, creatureName, creatureType) {
     table.style.backgroundPosition = ['beast', 'monstrosity', 'aberration', 'plant'].includes(creatureType) ? 'center' : 'top';
     table.style.backgroundBlendMode = 'lighten';
     table.style.backgroundSize = 'cover';
+    table.style.backgroundPositionY = '-20px';
 }
 
 // String helper for title case
