@@ -3,7 +3,7 @@ export function getCreatureStatBlock(creatureJson) {
     var type = '';
     var alignment = '';
     var actions = '';
-    for (let action of creatureJson['actions']) {
+    for (let action of creatureJson['action']) {
         actions += `${action['name']}: ${action['entries'].join('\n')}\n`;
     }
 
