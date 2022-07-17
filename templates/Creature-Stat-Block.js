@@ -4,13 +4,13 @@ export function getCreatureStatBlock(creatureJson) {
     var alignment = '';
     var actions = '';
     for (let action of creatureJson['action']) {
-        actions += `${action['name']}: ${action['entries'].join('\n')}\n`;
+        actions += `<b>${action['name']}</b>: ${action['entries'].join('\n')}\n`;
     }
     actions = actions.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
     var traits = '';
     for (let trait of creatureJson['trait']) {
-        traits += `${trait['name']}: ${trait['entries'].join('\n')}\n`;
+        traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n')}</div>`;
     }
     traits = traits.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
