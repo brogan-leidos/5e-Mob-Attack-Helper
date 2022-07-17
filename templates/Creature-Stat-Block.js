@@ -17,6 +17,12 @@ export function getCreatureStatBlock(creatureJson) {
     }
     traits = traits.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
+    var skills = '';
+    for (let skill of creatureJson['skill']) {
+        skills += `<div><b>${skill['name']}</b>: ${skill['entries'].join('\n')}</div>`;
+    }
+    skills = skills.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
+
 
     return `
 <div class="creature-stat-block">
@@ -45,7 +51,7 @@ export function getCreatureStatBlock(creatureJson) {
             </tr>
         </table>
     </div>
-    <div class="skills">Skills ${creatureJson['skill']}</div>
+    <div class="skills">Skills ${skills}</div>
     <div class="senses">Senses ${creatureJson['senses']}</div>
     <div class="languages">Languages ${creatureJson['languages']}</div>
     <div class="challenge-rating">Challenge ${creatureJson['cr']}</div>
