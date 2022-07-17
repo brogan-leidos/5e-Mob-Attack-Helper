@@ -20,7 +20,7 @@ export function getCreatureStatBlock(creatureJson) {
     var skills = '';
     var skillKeys = Object.keys(creatureJson['skill']);
     for (let skill of skillKeys) {
-        skills += `<div><b>${skill}</b>: ${creatureJson['skill'][skill]}</div>`;
+        skills += `${skill} ${creatureJson['skill'][skill]}, `;
     }
     skills = skills.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
@@ -52,10 +52,10 @@ export function getCreatureStatBlock(creatureJson) {
             </tr>
         </table>
     </div>
-    <div class="skills">Skills ${skills}</div>
-    <div class="senses">Senses ${creatureJson['senses']}</div>
-    <div class="languages">Languages ${creatureJson['languages']}</div>
-    <div class="challenge-rating">Challenge ${creatureJson['cr']}</div>
+    <div class="skills"><b>Skills</b> ${skills}</div>
+    <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
+    <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
+    <div class="challenge-rating"><b>Challenge</b> ${creatureJson['cr']}</div>
     <div class="traits">${traits}</div>
     <div class="actions">
         <div class="section-title">Actions</div>
