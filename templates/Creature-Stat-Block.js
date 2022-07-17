@@ -39,7 +39,7 @@ export function getCreatureStatBlock(creatureJson) {
     return `
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
-    <div class="creature-type">${drillDownValue(creatureJson, 'type')}, ${alignment}</div>
+    <div class="creature-type">${type}, ${alignment}</div>
     <table>
         <tr>
             <td>Armor Class</td>
