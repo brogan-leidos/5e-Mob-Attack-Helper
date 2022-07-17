@@ -16,9 +16,9 @@ export function getCreatureStatBlock(creatureJson) {
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
     <div class="creature-type">${creatureJson['type']}, ${alignment}</div>
-    <div class="armor-class">Armor Class ${ac}</div>
+    <div class="armor-class">Armor Class ${creatureJson['ac'][0]}</div>
     <div class="hit-points">Hit Points ${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</div>
-    <div class="speed">${speed}</div>
+    <div class="speed">${creatureJson['speed']}</div>
     <div class="stat-spread">
         <table>
             <tr>
@@ -40,7 +40,7 @@ export function getCreatureStatBlock(creatureJson) {
         </table>
     </div>
     <div class="skills">Skills ${creatureJson['skill']}</div>
-    <div class="senses">Senses ${senses}</div>
+    <div class="senses">Senses ${creatureJson['senses']}</div>
     <div class="languages">Languages ${creatureJson['languages']}</div>
     <div class="challenge-rating">Challenge ${creatureJson['cr']}</div>
     <div class="traits">${traits}</div>
