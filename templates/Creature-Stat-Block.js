@@ -57,6 +57,7 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="challenge-rating">Challenge ${creatureJson['cr']}</div>
     <div class="traits">${traits}</div>
     <div class="actions">
+        <div class="section-title">Actions</div>
         ${actions}
     </div>
 </div>

@@ -18,6 +18,16 @@
     font-weight: 700;
 }
 
+.section-title {
+    color: #58180D;
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .traits {
+    white-space: pre-wrap;
+}
+
+.actions {
     white-space: pre-wrap;
 }
