@@ -1,0 +1,23 @@
+.stat-block-area {
+    grid-row: 1;
+    grid-column: 5;
+}
+
+.creature-stat-block {
+    background-color: #f9f9eb;
+    border-color: black solid thin;
+    border: thin solid black;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #666;
+    padding: 10px;
+}
+
+.creature-name {
+    color: #58180D;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.traits {
+    white-space: pre-wrap;
+}

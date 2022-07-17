@@ -6,11 +6,14 @@ export function getCreatureStatBlock(creatureJson) {
     for (let action of creatureJson['action']) {
         actions += `${action['name']}: ${action['entries'].join('\n')}\n`;
     }
+    actions = actions.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
     var traits = '';
     for (let trait of creatureJson['trait']) {
         traits += `${trait['name']}: ${trait['entries'].join('\n')}\n`;
     }
+    traits = traits.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
+
 
     return `
 <div class="creature-stat-block">
@@ -35,7 +38,7 @@ export function getCreatureStatBlock(creatureJson) {
                 <td>${creatureJson['con']}</td>
                 <td>${creatureJson['int']}</td>
                 <td>${creatureJson['wis']}</td>
-                <td>${creatureJson['chr']}</td>
+                <td>${creatureJson['cha']}</td>
             </tr>
         </table>
     </div>
