@@ -28,6 +28,10 @@
     white-space: pre-wrap;
 }
 
+.traits div, .actions div {
+    margin-bottom: 2px;
+}
+
 .actions {
     white-space: pre-wrap;
 }
