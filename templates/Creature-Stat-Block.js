@@ -1,6 +1,9 @@
 export function getCreatureStatBlock(creatureJson) {
     var name = creatureJson['name'];
-    var type = '';
+    var type = creatureJson['type'];
+    if (type['type']) {
+        type = type['type'];
+    }
     var alignment = '';
     var actions = '';
     for (let action of creatureJson['action']) {
@@ -19,7 +22,7 @@ export function getCreatureStatBlock(creatureJson) {
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
     <div class="creature-type">${creatureJson['type']}, ${alignment}</div>
-    <div class="armor-class">Armor Class ${creatureJson['ac'][0]}</div>
+    <div class="armor-class">Armor Class ${creatureJson['ac'][0] ? creatureJson['ac'][0] : creatureJson['ac']}</div>
     <div class="hit-points">Hit Points ${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</div>
     <div class="speed">${creatureJson['speed']}</div>
     <div class="stat-spread">
