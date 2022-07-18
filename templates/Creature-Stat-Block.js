@@ -94,6 +94,7 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="skills"><b>Skills</b> ${skills}</div>
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
+    <div class="divider"></div>
     <div class="traits">
         ${traits}
     </div>

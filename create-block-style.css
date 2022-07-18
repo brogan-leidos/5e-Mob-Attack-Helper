@@ -12,20 +12,24 @@
     padding: 10px;
 }
 
+:root {
+    --stat-block-primary: #58180D;
+}
+
 .creature-name {
-    color: #58180D;
+    color: var(--stat-block-primary);
     font-size: 20px;
     font-weight: 700;
 }
 
 .section-title {
-    color: #58180D;
+    color: var(--stat-block-primary);
     font-size: 18px;
     font-weight: 700;
 }
 
 .traits, .actions {
-    white-space: pre-wrap;
+    white-space: pre-line;
 }
 
 .traits div, .actions div {
@@ -56,4 +60,9 @@ table tr:nth-child(1) {
 
 .creature-type {
     font-style: italic;
+}
+
+.divider {
+    width: 100%;
+    border-top: thin solid var(--stat-block-primary);
 }
