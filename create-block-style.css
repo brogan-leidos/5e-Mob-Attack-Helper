@@ -32,6 +32,11 @@
     margin-bottom: 2px;
 }
 
+
+.creature-header-stats, .stat-spread {
+    width: 100%;
+}
+
 .creature-header-stats td {
     text-align: center;
 }
