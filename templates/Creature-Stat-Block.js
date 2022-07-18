@@ -7,7 +7,7 @@ export function drillDownValue(creatureJson, value) {
             break;
         }        
     }
-    return currentLevel;
+    return oldValue;
 }
 
 export function getCreatureStatBlock(creatureJson) {
