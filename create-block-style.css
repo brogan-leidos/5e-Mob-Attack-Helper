@@ -37,8 +37,13 @@
     width: 100%;
 }
 
-.stat-spread {
+.stat-spread table {
     width: 100%;
+    font-weight: 600;
+}
+
+.stat-spread table tr:nth-child(1) {
+    background-color: rgba(0,0,0,0.1);
 }
 
 .creature-header-stats td {

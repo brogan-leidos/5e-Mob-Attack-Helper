@@ -47,7 +47,7 @@ export function getCreatureStatBlock(creatureJson) {
     var speedArray = [];
     var speedKeys = Object.keys(creatureJson['speed']);
     for (let speed of speedKeys) {
-        speedArray.push(`${speed} ${creatureJson['speed'][speed]} ft`);
+        speedArray.push(`${speed} ${creatureJson['speed'][speed]}`);
     }
     
 
@@ -65,7 +65,7 @@ export function getCreatureStatBlock(creatureJson) {
         </td>
         <tr>
             <td>${drillDownValue(creatureJson, 'ac')}</td>
-            <td>${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</td>
+            <td>${creatureJson['hp']['average']} (${creatureJson['hp']['formula']})</td>
             <td>${speedArray.join(', ')} ft</td>
             <td>${creatureJson['cr']}</td>
             <td>${creatureJson['pb']}</td>
