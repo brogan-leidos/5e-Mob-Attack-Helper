@@ -77,12 +77,11 @@ export function getCreatureStatBlock(creatureJson) {
     }
     traits = traits.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
-    var skills = '';
+    var skills = [];
     var skillKeys = Object.keys(creatureJson['skill']);
     for (let skill of skillKeys) {
-        skills += `${skill} ${creatureJson['skill'][skill]}, `;
+        skills.push(`${skill} ${creatureJson['skill'][skill]}`.replace(/@[^\s]+/g, '').replace(/[{}]/g, ''));
     }
-    skills = skills.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
     var speedArray = [];
     var speedKeys = Object.keys(creatureJson['speed']);
@@ -131,7 +130,7 @@ export function getCreatureStatBlock(creatureJson) {
             </tr>
         </table>
     </div>
-    <div class="skills"><b>Skills</b> ${skills}</div>
+    <div class="skills"><b>Skills</b> ${skills.join(', ')}</div>
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
     <div class="divider"></div>
