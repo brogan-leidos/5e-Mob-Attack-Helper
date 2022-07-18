@@ -33,7 +33,11 @@
 }
 
 
-.creature-header-stats, .stat-spread {
+.creature-header-stats {
+    width: 100%;
+}
+
+.stat-spread {
     width: 100%;
 }
 

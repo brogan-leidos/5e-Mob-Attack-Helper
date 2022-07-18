@@ -13,12 +13,10 @@ export function drillDownValue(creatureJson, value) {
 }
 
 export function getCreatureStatBlock(creatureJson) {
-    var name = creatureJson['name'];
     var type = creatureJson['type'];
     if (type['type']) {
         type = type['type'];
     }
-    var alignment = '';
     var actions = '';
     for (let action of creatureJson['action']) {
         actions += `<b>${action['name']}</b>: ${action['entries'].join('\n')}\n`;
@@ -38,6 +36,12 @@ export function getCreatureStatBlock(creatureJson) {
     }
     skills = skills.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
+    var speedArray = [];
+    var speedKeys = Object.keys(creatureJson['speed']);
+    for (let speed of speedKeys) {
+        speedArray.push(`${speed} ${creatureJson['speed'][speed]} ft`);
+    }
+    
 
     return `
 <div class="creature-stat-block">
@@ -54,7 +58,7 @@ export function getCreatureStatBlock(creatureJson) {
         <tr>
             <td>${drillDownValue(creatureJson, 'ac')}</td>
             <td>${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</td>
-            <td>${drillDownValue(creatureJson, 'speed')} ft</td>
+            <td>${speedArray.join(', ')} ft</td>
             <td>${creatureJson['cr']}</td>
             <td>${creatureJson['pb']}</td>
         </tr>
@@ -87,7 +91,7 @@ export function getCreatureStatBlock(creatureJson) {
     </div>
     <div class="actions">
         <div class="section-title">Actions</div>
-        ${actions}
+        <div>${actions}</div>
     </div>
 </div>
 `;
