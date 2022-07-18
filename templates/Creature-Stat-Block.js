@@ -7,6 +7,7 @@ export function drillDownValue(creatureJson, value) {
             break;
         }        
     }
+    return currentLevel;
 }
 
 export function getCreatureStatBlock(creatureJson) {
@@ -39,7 +40,7 @@ export function getCreatureStatBlock(creatureJson) {
     return `
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
-    <div class="creature-type">${type}, ${alignment}</div>
+    <div class="creature-type">${creatureJson['type']}</div>
     <table>
         <tr>
             <td>Armor Class</td>
@@ -51,7 +52,7 @@ export function getCreatureStatBlock(creatureJson) {
         <tr>
             <td>${drillDownValue(creatureJson, 'ac')}</td>
             <td>${creatureJson['hp']['average']} ${creatureJson['hp']['formula']}</td>
-            <td>${drillDownValue(creatureJson, 'speed')}</td>
+            <td>${drillDownValue(creatureJson, 'speed')} ft</td>
             <td>${creatureJson['cr']}</td>
             <td>${creatureJson['pb']}</td>
         </tr>
