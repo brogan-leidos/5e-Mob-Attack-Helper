@@ -25,7 +25,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     var traits = '';
     for (let trait of creatureJson['trait']) {
-        traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n')}</div>`;
+        traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n  ')}</div>`;
     }
     traits = traits.replace(/@[^\s]+/g, '').replace(/[{}]/g, '');
 
