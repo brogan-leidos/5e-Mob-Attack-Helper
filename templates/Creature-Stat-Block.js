@@ -40,8 +40,8 @@ export function getCreatureStatBlock(creatureJson) {
     return `
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
-    <div class="creature-type">${creatureJson['type']}</div>
-    <table>
+    <div class="creature-type">${drillDownValue(creatureJson, 'type')}</div>
+    <table class="creature-header-stats">
         <tr>
             <td>Armor Class</td>
             <td>Hit points</td>

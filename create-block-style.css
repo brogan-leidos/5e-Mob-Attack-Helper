@@ -31,3 +31,11 @@
 .traits div, .actions div {
     margin-bottom: 2px;
 }
+
+.creature-header-stats td {
+    text-align: center;
+}
+
+.stat-spread td {
+    text-align: center;
+}
