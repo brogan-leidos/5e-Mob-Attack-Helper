@@ -42,7 +42,7 @@
     font-weight: 600;
 }
 
-.stat-spread table tr:nth-child(1) {
+table tr:nth-child(1) {
     background-color: rgba(0,0,0,0.1);
 }
 
