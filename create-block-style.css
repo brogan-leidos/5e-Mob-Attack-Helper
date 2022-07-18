@@ -43,6 +43,7 @@
 }
 
 .stat-spread table {
+    margin-top: 10px;
     width: 100%;
     font-weight: 600;
 }
