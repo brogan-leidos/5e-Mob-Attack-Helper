@@ -44,3 +44,7 @@
 .stat-spread td {
     text-align: center;
 }
+
+.creature-type {
+    font-style: italic;
+}

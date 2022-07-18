@@ -1,3 +1,5 @@
+import { titleCase } from "../web";
+
 export function drillDownValue(creatureJson, value) {
     var currentLevel = creatureJson[value];
     while(true) {
@@ -40,7 +42,7 @@ export function getCreatureStatBlock(creatureJson) {
     return `
 <div class="creature-stat-block">
     <div class="creature-name">${creatureJson['name']}</div>
-    <div class="creature-type">${drillDownValue(creatureJson, 'type')}</div>
+    <div class="creature-type">${titleCase(drillDownValue(creatureJson, 'type'))}</div>
     <table class="creature-header-stats">
         <tr>
             <td>Armor Class</td>
@@ -81,7 +83,6 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
     <div class="traits">
-        <div class="section-title">Traits</div>    
         ${traits}
     </div>
     <div class="actions">
