@@ -45,11 +45,15 @@
 .stat-spread table {
     margin-top: 10px;
     width: 100%;
-    font-weight: 600;
 }
 
 table tr:nth-child(1) {
     background-color: rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+
+table b {
+    color: var(--stat-block-primary);
 }
 
 .creature-header-stats td {
