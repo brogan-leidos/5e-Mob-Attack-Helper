@@ -262,7 +262,7 @@ function setMobBackground(mobTag, creatureName, creatureType) {
 }
 
 // String helper for title case
-function titleCase(str) {
+export function titleCase(str) {
     str = str.toLowerCase();
     str = str.split(' ');
     for (var i = 0; i < str.length; i++) {
