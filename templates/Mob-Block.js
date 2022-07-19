@@ -6,6 +6,7 @@ export function mobBlock() {
   <span class="mobCloseButton" id="FILLER-BLOCK-Delete" title="Delete mob">&times</span>
   <span class="mobMinimizeButton" id="FILLER-BLOCK-Minimize" title="Minimize Mob"/><i class="fa fa-window-minimize"></i></span>  
   <span class="mobCloneButton" id="FILLER-BLOCK-Clone" title="Clone Mob"/><i class="fa fa-clone"></i></span>
+  <span class="mobEnableButton" id="FILLER-BLOCK-Enable" title="Enable/Disable Mob"/><i class="fa fa-ban"></i></span>
 </div>
 <table class="mobBlock">
   <tbody>

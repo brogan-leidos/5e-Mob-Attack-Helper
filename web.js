@@ -669,10 +669,10 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         deleteMob(mobTag);
     });
     
-    // document.getElementById(mobTag + "-Enabled").checked = true;
-    // document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
-    //     toggleMob(mobTag);
-    // });
+    document.getElementById(mobTag + "-Enabled").checked = true;
+    document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
+        toggleMob(mobTag);
+    });
     
     document.getElementById(mobTag + "-Show").addEventListener('click', () => {        
         setVisibleStatBlock(mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName));
