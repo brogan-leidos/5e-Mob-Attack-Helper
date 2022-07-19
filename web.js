@@ -172,6 +172,9 @@ function fetchMonsterInfo(value) {
 
         var monster = foundMonster[0];
         var actions = monster['action'];
+        if (!actions) {
+            actions = [];
+        }
         var weapons = [];
         for (let action of actions) {
             for (let entry of action.entries) {            
