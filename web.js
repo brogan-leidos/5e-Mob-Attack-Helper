@@ -257,6 +257,7 @@ function setStatBlockEventListeners() {
 function setVisibleStatBlock(monster) {
     var generatedHtml = getCreatureStatBlock(monster);
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
+    document.getElementsByClassName('statBlockContainer')[0].style.display = 'inherit';
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
