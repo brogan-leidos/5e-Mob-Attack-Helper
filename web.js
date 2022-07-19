@@ -464,7 +464,7 @@ function toggleMob(mobTag) {
     if (!enabled.checked) {
         enabled.checked = true;
         changeVantage(mobTag); 
-        toggle.classList = "fa ban";
+        toggle.classList = "fa fa-ban";
         document.getElementById(mobTag).children[1].classList.remove('disabled')
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
        
