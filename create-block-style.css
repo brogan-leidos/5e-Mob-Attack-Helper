@@ -23,10 +23,11 @@
     font-weight: 700;
 }
 
-.section-title {
+.actions .section-title {
     color: var(--stat-block-primary);
     font-size: 18px;
     font-weight: 700;
+    margin-bottom: -10px;
 }
 
 .traits, .actions {
@@ -76,4 +77,13 @@
     width: 100%;
     margin: 5px 0 -5px 0;
     border-top: 2px solid var(--stat-block-primary);
+}
+
+.creature-stat-block i {
+    font-weight: 600;
+}
+
+.creature-stat-block b {
+    font-size: 14px;
+    font-weight: 600;
 }
