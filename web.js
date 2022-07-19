@@ -673,7 +673,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     // });
     
     document.getElementById(mobTag + "-Show").addEventListener('click', () => {        
-        setVisibleStatBlock(document.getElementById(mobTag).creatureName);
+        setVisibleStatBlock(mm.default.monster[document.getElementById(mobTag).creatureName]);
     });
 
     document.getElementById(mobTag + "-Minimize").checked = true;
