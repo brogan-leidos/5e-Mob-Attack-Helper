@@ -1069,8 +1069,10 @@ function changeMobWeapon(mobTag, weaponMods, weaponNum="", weaponName="") {
 function changeVantage(mobTag) {
     var adv = document.getElementById(mobTag + "-Adv").checked;
     var dis = document.getElementById(mobTag + "-Dis").checked;
-    var mob = document.getElementById(mobTag);
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
+
+    var blockTable = document.getElementById(mobTag).children[1];
+    blockTable.classList.remove(['advantage', 'disadvantage']);
 
     if (!enabled) {
         return;
@@ -1078,9 +1080,12 @@ function changeVantage(mobTag) {
          
     if (adv && !dis) {
         shiftMobBlockColors(mobTag, mobBlockAdvantageColor);
+        blockTable.classList.add(['advantage']);
+
     }
     else if (!adv && dis) {
         shiftMobBlockColors(mobTag, mobBlockDisadvantageColor);
+        blockTable.classList.add(['disadvantage']);
     }
     else {
         shiftMobBlockColors(mobTag, mobBlockDefaultColor);
