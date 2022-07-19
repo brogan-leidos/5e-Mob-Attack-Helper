@@ -258,6 +258,8 @@ function setVisibleStatBlock(monster) {
     var generatedHtml = getCreatureStatBlock(monster);
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'inherit';
+
+    document.getElementsByClassName('statBlockContainer')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name']}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.75)`;
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
