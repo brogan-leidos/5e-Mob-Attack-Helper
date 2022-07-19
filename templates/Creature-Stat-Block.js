@@ -76,17 +76,21 @@ export function getCreatureStatBlock(creatureJson) {
     actions = replaceTags(actions);
 
     var traits = '';
-    for (let trait of creatureJson['trait']) {
-        traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n  ')}</div>`;
+    if (creatureJson['trait']) {
+        for (let trait of creatureJson['trait']) {
+            traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n  ')}</div>`;
+        }
+        traits = replaceTags(traits);
     }
-    traits = replaceTags(traits);
 
     var skills = [];
-    var skillKeys = Object.keys(creatureJson['skill']);
-    for (let skill of skillKeys) {
-        skills.push(`${skill} ${creatureJson['skill'][skill]}`);
+    if (creatureJson['skill']) {
+        var skillKeys = Object.keys(creatureJson['skill']);
+        for (let skill of skillKeys) {
+            skills.push(`${skill} ${creatureJson['skill'][skill]}`);
+        }
     }
-
+    
     var speedArray = [];
     var speedKeys = Object.keys(creatureJson['speed']);
     for (let speed of speedKeys) {
