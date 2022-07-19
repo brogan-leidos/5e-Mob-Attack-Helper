@@ -92,7 +92,7 @@
     content: "+";
 }
 
-.creature-stat-block damage, .creature-stat-block condition {
+.creature-stat-block .actions damage, .creature-stat-block .actions condition {
     font-weight: 600;
     color: var(--title-blue);
 }
