@@ -15,7 +15,7 @@ import { getCreatureStatBlock } from './templates/Creature-Stat-Block.js';
 
 var monsterManualList;
 //var mobBlockDefaultColor = "#f9f9eb";rgb(249, 249, 235)
-var mobBlockDefaultColor = 'rgb(249, 249, 235)';
+var mobBlockDefaultColor = 'rgba(249, 249, 235, 0.75)';
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
