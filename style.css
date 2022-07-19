@@ -215,12 +215,20 @@ button {
   width: 36px;
 }
 
+table.mobBlock.advantage td:nth-child(1) {
+  background-color: rgba(100, 255, 100, 0.3);
+}
+
+table.mobBlock.disadvantage td:nth-child(1) {
+  background-color: rgba(255, 100, 100, 0.3);
+}
+
 .mobBlock .weaponSelect {
   width: 30px;
 }
 
 .mobBlock button {
-  background-color: white;
+  background-color: transparent;
   color:grey;
   border: none;
   transition-duration: 0.2s;
