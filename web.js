@@ -113,7 +113,7 @@ var swapColors = [
 
 var swapIndex = 0;
 
-function colorSwap(color) {
+function colorSwap() {
     swapIndex++;
     if (swapIndex >= swapColors.length) {
         swapIndex = 0;
@@ -242,12 +242,12 @@ function fetchMonsterInfo(value) {
         changeBlockToMob(mobTag, asMob);
         setMobBackground(mobTag, monster['name'], monster['type']);
         setVisibleStatBlock(monster);
-        setStatBlockEventListeners();
+        setStatBlockEventListeners(mobTag, monster['name']);
     }
 }
 
-function setStatBlockEventListeners() {
-    
+function setStatBlockEventListeners(mobTag, monsterName) {
+    document.getElementById(mobTag).creatureName = monsterName;
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
         document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
     });
@@ -667,11 +667,15 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         deleteMob(mobTag);
     });
     
-    document.getElementById(mobTag + "-Enabled").checked = true;
-    document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
-        toggleMob(mobTag);
-    });
+    // document.getElementById(mobTag + "-Enabled").checked = true;
+    // document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
+    //     toggleMob(mobTag);
+    // });
     
+    document.getElementById(mobTag + "-Show").addEventListener('click', () => {        
+        setVisibleStatBlock(document.getElementById(mobTag).creatureName);
+    });
+
     document.getElementById(mobTag + "-Minimize").checked = true;
     document.getElementById(mobTag + "-Minimize").addEventListener('click', () => {        
         minimizeMob(mobTag);

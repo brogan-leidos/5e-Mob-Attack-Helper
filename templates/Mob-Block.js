@@ -16,7 +16,7 @@ export function mobBlock() {
     </tr>
     <tr>
       <td>
-        <button class="mobEnableButton" id="FILLER-BLOCK-Enabled" title="Enable/Disable mob"/><i class="fa fa-eye" style="display:block"></i></button>
+        <button class="mobEnableButton" id="FILLER-BLOCK-Show" title="Show creature statblock"/><i class="fa fa-eye" style="display:block"></i></button>
       </td>
       <td>Icon:</td>
       <td><select id="FILLER-BLOCK-Icon" name="Icons" title="An icon used to identify this mob at a glance">
