@@ -104,7 +104,10 @@ export function getCreatureStatBlock(creatureJson) {
 
     return `
 <div class="creature-stat-block">
-    <div class="creature-name">${creatureJson['name']}</div>
+    <div class="flex-row">
+        <div class="creature-name">${creatureJson['name']}</div>
+        <div><button id="statBlockCloseButton">&times;</button</div>
+    </div>
     <div class="creature-type">${titleCase(drillDownValue(creatureJson, 'type'))}</div>
     <table class="creature-header-stats">
         <tr>
