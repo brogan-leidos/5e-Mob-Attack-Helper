@@ -465,12 +465,14 @@ function toggleMob(mobTag) {
         enabled.checked = true;
         changeVantage(mobTag); 
         toggle.classList = "fa ban";
+        document.getElementById(mobTag).children[1].classList.remove('disabled')
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
        
     } else {
         shiftMobBlockColors(mobTag, mobBlockDisableColor);
         toggle.classList = "fa fa-check";
         enabled.checked = false;
+        document.getElementById(mobTag).children[1].classList.add('disabled');
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "Disabled";
     }
 }
