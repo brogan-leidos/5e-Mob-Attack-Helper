@@ -14,7 +14,8 @@ import autocomplete from './autocomplete/autocomplete.js';
 import { getCreatureStatBlock } from './templates/Creature-Stat-Block.js';
 
 var monsterManualList;
-var mobBlockDefaultColor = "#f9f9eb";
+//var mobBlockDefaultColor = "#f9f9eb";rgb(249, 249, 235)
+var mobBlockDefaultColor = rgb(249, 249, 235);
 var mobBlockDisableColor = "#666666";
 var mobBlockAdvantageColor = "#efffe6";
 var mobBlockDisadvantageColor = "#ffede6";
@@ -259,7 +260,7 @@ function setVisibleStatBlock(monster) {
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'inherit';
 
-    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name']}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.8)`;
+    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name']}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
@@ -461,12 +462,12 @@ function toggleMob(mobTag) {
     if (!enabled.checked) {
         enabled.checked = true;
         changeVantage(mobTag); 
-        toggle.classList = "fa fa-eye";
+        toggle.classList = "fa ban";
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "";
        
     } else {
         shiftMobBlockColors(mobTag, mobBlockDisableColor);
-        toggle.classList = "fa fa-eye-slash";
+        toggle.classList = "fa fa-check";
         enabled.checked = false;
         document.getElementById(mobTag + "-Disable-Label").innerHTML = "Disabled";
     }
@@ -1089,20 +1090,22 @@ function shiftMobBlockColors(mobTag, color) {
     var mobBlock = document.getElementById(mobTag);
     mobBlock.children[1].style.backgroundColor = color;
     
-    for(var i=0; i < mobBlock.children[1].firstElementChild.childElementCount; i++) {
-        var scanColor = mobBlock.children[1].firstElementChild.children[i].style.backgroundColor;
-        if (scanColor != "") {
-            var red = parseInt(color.substring(1,3), 16);
-            var green = parseInt(color.substring(3,5), 16);
-            var blue = parseInt(color.substring(5,7), 16);
+
+
+    // for(var i=0; i < mobBlock.children[1].firstElementChild.childElementCount; i++) {
+    //     var scanColor = mobBlock.children[1].firstElementChild.children[i].style.backgroundColor;
+    //     if (scanColor != "") {
+    //         var red = parseInt(color.substring(1,3), 16);
+    //         var green = parseInt(color.substring(3,5), 16);
+    //         var blue = parseInt(color.substring(5,7), 16);
             
-            red = Math.max(red - 75, 0);
-            green = Math.max(green - 75, 0);
-            blue = Math.max(blue - 75, 0);
+    //         red = Math.max(red - 75, 0);
+    //         green = Math.max(green - 75, 0);
+    //         blue = Math.max(blue - 75, 0);
             
-            mobBlock.children[1].firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
-        }
-    }
+    //         mobBlock.children[1].firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+    //     }
+    // }
     
 }
 
