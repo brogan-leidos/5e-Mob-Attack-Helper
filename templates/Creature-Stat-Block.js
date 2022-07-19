@@ -61,7 +61,7 @@ export function drillDownValue(creatureJson, value) {
 }
 
 function replaceTags(text) {
-    return text.replace(/{@([^\s]+)\s([^}]+)}/g, '<$1>$2</$1>').replace(/\w+||(\w+)/, '$1');
+    return text.replace(/{@h}/, '').replace(/{@([^\s]+)\s([^}]+)}/g, '<$1>$2</$1>').replace(/\w+||(\w+)/, '$1');
 }
 
 export function getCreatureStatBlock(creatureJson) {
@@ -84,7 +84,7 @@ export function getCreatureStatBlock(creatureJson) {
     var skills = [];
     var skillKeys = Object.keys(creatureJson['skill']);
     for (let skill of skillKeys) {
-        skills.push(replaceTags(`${skill} ${creatureJson['skill'][skill]}`));
+        skills.push(`${skill} ${creatureJson['skill'][skill]}`);
     }
 
     var speedArray = [];
