@@ -70,10 +70,12 @@ export function getCreatureStatBlock(creatureJson) {
         type = type['type'];
     }
     var actions = '';
-    for (let action of creatureJson['action']) {
-        actions += `<b>${action['name']}</b>: ${action['entries'].join('\n')}\n`;
+    if (creatureJson['action']) {
+        for (let action of creatureJson['action']) {
+            actions += `<b>${action['name']}</b>: ${action['entries'].join('\n')}\n`;
+        }
+        actions = replaceTags(actions);
     }
-    actions = replaceTags(actions);
 
     var traits = '';
     if (creatureJson['trait']) {
