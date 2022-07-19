@@ -17,8 +17,10 @@ var monsterManualList;
 //var mobBlockDefaultColor = "#f9f9eb";rgb(249, 249, 235)
 var mobBlockDefaultColor = 'rgba(249, 249, 235, 0.75)';
 var mobBlockDisableColor = "#666666";
-var mobBlockAdvantageColor = "#efffe6";
-var mobBlockDisadvantageColor = "#ffede6";
+// var mobBlockAdvantageColor = "#efffe6";
+var mobBlockAdvantageColor = 'rgba(200, 250, 200, 0.85)';
+// var mobBlockDisadvantageColor = "#ffede6"
+var mobBlockDisadvantageColor = 'rgba(249, 200, 200, 0.85)';
 var mobBlockDcColor = "#aeaea0";
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
