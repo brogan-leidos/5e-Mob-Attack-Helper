@@ -1072,7 +1072,8 @@ function changeVantage(mobTag) {
     var enabled = document.getElementById(mobTag + "-Enabled").checked;
 
     var blockTable = document.getElementById(mobTag).children[1];
-    blockTable.classList.remove(['advantage', 'disadvantage']);
+    blockTable.classList.remove('advantage');
+    blockTable.classList.remove('disadvantage');    
 
     if (!enabled) {
         return;
