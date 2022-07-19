@@ -223,6 +223,10 @@ table.mobBlock.disadvantage td:nth-child(1) {
   background-color: rgba(255, 100, 100, 0.3);
 }
 
+table.mobBlock.disabled td:nth-child(1) {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
 .mobBlock .weaponSelect {
   width: 30px;
 }
