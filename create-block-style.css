@@ -33,6 +33,10 @@
     white-space: pre-line;
 }
 
+.traits {
+    border-bottom: 2px solid var(--stat-block-primary);
+}
+
 .traits div, .actions div {
     margin-bottom: 2px;
 }
