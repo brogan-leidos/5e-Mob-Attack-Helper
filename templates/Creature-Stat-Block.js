@@ -104,7 +104,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     return `
 <div class="creature-stat-block">
-    <div class="flex-row">
+    <div class="flex-row flex-align-space-between">
         <div class="creature-name">${creatureJson['name']}</div>
         <div><button id="statBlockCloseButton">&times;</button></div>
     </div>

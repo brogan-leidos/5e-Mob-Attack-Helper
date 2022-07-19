@@ -249,7 +249,7 @@ function fetchMonsterInfo(value) {
 function setStatBlockEventListeners() {
     
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
-        document.getElementsByClassName('creature-stat-block')[0].display = 'none';
+        document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
     });
     return;
 }
