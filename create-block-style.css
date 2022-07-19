@@ -87,3 +87,12 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+.creature-stat-block hit::before {
+    content: "+";
+}
+
+.creature-stat-block damage {
+    font-weight: 600;
+    color: var(--title-blue);
+}
