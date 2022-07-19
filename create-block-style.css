@@ -4,6 +4,7 @@
 }
 
 .creature-stat-block {
+    animation: fadeIn 0.25s;
     background-color: #f9f9eb;
     border-color: black solid thin;
     border: thin solid black;
