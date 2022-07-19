@@ -102,3 +102,7 @@
 .creature-stat-block .actions {
     margin-top: -10px;
 }
+
+#statBlockCloseButton {
+    cursor: pointer;
+}
