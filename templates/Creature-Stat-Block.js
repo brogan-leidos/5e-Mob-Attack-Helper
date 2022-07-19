@@ -61,7 +61,7 @@ export function drillDownValue(creatureJson, value) {
 }
 
 function replaceTags(text) {
-    return text.replace(/{@([^\s]+)\s([^}]+)}/g, '<$1>$2</$1>');
+    return text.replace(/{@([^\s]+)\s([^}]+)}/g, '<$1>$2</$1>').replace(/\w+||(\w+)/, '$1');
 }
 
 export function getCreatureStatBlock(creatureJson) {
