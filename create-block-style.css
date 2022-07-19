@@ -75,7 +75,7 @@
 
 .divider {
     width: 100%;
-    margin: 5px 0 -5px 0;
+    margin: 5px 0 5px 0;
     border-top: 2px solid var(--stat-block-primary);
 }
 
@@ -92,7 +92,7 @@
     content: "+";
 }
 
-.creature-stat-block damage {
+.creature-stat-block damage, .creature-stat-block condition {
     font-weight: 600;
     color: var(--title-blue);
 }
