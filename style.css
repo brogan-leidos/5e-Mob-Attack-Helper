@@ -41,6 +41,11 @@
   flex-direction: column;
 }
 
+.flex-align-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .hidden {
   display: none;
 }
