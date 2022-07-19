@@ -242,7 +242,12 @@ function fetchMonsterInfo(value) {
         changeBlockToMob(mobTag, asMob);
         setMobBackground(mobTag, monster['name'], monster['type']);
         setVisibleStatBlock(monster);
+        setStatBlockEventListeners();
     }
+}
+
+function setStatBlockEventListeners() {
+    return;
 }
 
 function setVisibleStatBlock(monster) {
