@@ -97,3 +97,7 @@
     font-weight: 600;
     color: var(--title-blue);
 }
+
+.creature-stat-block .actions {
+    margin-top: -5px;
+}
