@@ -1,7 +1,6 @@
 .stat-block-area {
     grid-row: 1;
     grid-column: 5;
-    width: 400px;
 }
 
 .creature-stat-block {
@@ -12,6 +11,8 @@
     box-shadow: 2px 2px 2px #666;
     font-size: 13px;
     padding: 10px;
+    width: 400px;
+
 }
 
 :root {
