@@ -682,7 +682,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     document.getElementById(mobTag + "-Show").addEventListener('click', () => { 
         var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
         setVisibleStatBlock(monster);
-        setStatBlockEventListeners(mobTag, monster['name']);        
+        setStatBlockEventListeners(mobTag, monster['name'].replace(' ', '%20'));        
     });
 
     document.getElementById(mobTag + "-Minimize").checked = true;
