@@ -72,7 +72,7 @@ export function getCreatureStatBlock(creatureJson) {
     var actions = '';
     if (creatureJson['action']) {
         for (let action of creatureJson['action']) {
-            actions += `<b>${action['name']}</b>: ${action['entries'].join('\n')}\n`;
+            actions += `<b>${action['name'].replace('{@recharge}', '')}</b>: ${action['entries'].join('\n')}\n`;
         }
         actions = replaceTags(actions);
     }
