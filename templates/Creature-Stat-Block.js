@@ -147,7 +147,7 @@ export function getCreatureStatBlock(creatureJson) {
         for(var i=0; i < creatureJson['legendary'].length; i++) {
             var actionName =  creatureJson['legendary'][i]['name'];
             var actionEffect = creatureJson['legendary'][i]['entries'][0];;
-            legendary += `<div class="legendary-action">${actionName}. ${actionEffect}</div>`
+            legendary += `<div class="legendary-action"><b>${actionName}.</b> ${actionEffect}</div>`
         }
         legendary += '</div>'
 
