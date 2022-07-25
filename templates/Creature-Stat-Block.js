@@ -109,11 +109,10 @@ export function getCreatureStatBlock(creatureJson) {
         spellcasting += "<div>"
         for (let spell of creatureJson['spellcasting']) {
             var spellName = spell.name;
-            var entry = spell['headerEntries'][0];
+            var entry = replaceTags(['headerEntries'][0]);
             spellcasting += `<div class="spell-entry">${spellName}: ${entry}</div>`;
         }
         spellcasting += "</div>"
-        var spellcastingKeys = Object.keys(creatureJson['spellcasting'])
     }
     
 
