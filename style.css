@@ -1043,7 +1043,7 @@ tr.creatureClassDark {
   display: none;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 775px) {
   
   body {
     margin: 0;
