@@ -85,6 +85,7 @@ export function getCreatureStatBlock(creatureJson) {
     }
     var actions = '';
     if (creatureJson['action']) {
+        actions += `<div class="section-title">Actions</div>`;
         for (let action of creatureJson['action']) {
             actions += `<b>${action['name'].replace('{@recharge}', '')}</b>: ${action['entries'].join('\n')}\n`;
         }
@@ -94,7 +95,7 @@ export function getCreatureStatBlock(creatureJson) {
     var traits = '';
     if (creatureJson['trait']) {
         traits += `<div class="section-title">Traits</div>`;
-        traits = `<div class="traits">`;
+        traits += `<div class="traits">`;
         for (let trait of creatureJson['trait']) {
             traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n  ')}</div>`;
         }
