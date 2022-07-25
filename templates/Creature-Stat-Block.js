@@ -103,6 +103,18 @@ export function getCreatureStatBlock(creatureJson) {
     for (let speed of speedKeys) {
         speedArray.push(`${speed} ${creatureJson['speed'][speed]}`);
     }
+
+    var spellcasting = "";
+    if (creatureJson['spellcasting'].length > 0) {
+        spellcasting += "<div>"
+        for (let spell of creatureJson['spellcasting']) {
+            var spellName = spell.name;
+            var entry = spell['headerEntries'][0];
+            spellcasting += `<div class="spell-entry">${spellName}: ${entry}</div>`;
+        }
+        spellcasting += "</div>"
+        var spellcastingKeys = Object.keys(creatureJson[;'spellcasting'])
+    }
     
 
     return `
@@ -153,6 +165,7 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
     <div class="divider"></div>
     ${traits}
+    ${spellcasting}
     <div class="actions">
         <div class="section-title">Actions</div>
         <div>${actions}</div>
