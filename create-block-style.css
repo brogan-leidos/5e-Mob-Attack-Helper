@@ -111,3 +111,8 @@
 #statBlockCloseButton {
     cursor: pointer;
 }
+
+.legendary {    
+    border-bottom: 2px solid var(--stat-block-primary);
+    padding: 3px;
+}
