@@ -139,6 +139,18 @@ export function getCreatureStatBlock(creatureJson) {
         }
         spellcasting += "</div>"
     }
+
+    var legendary = '';
+    if (creatureJson['legendary']) {
+        legendary += '<div class="legendary">'
+        for(var i=0; i < creatureJson['legendary'].length; i++) {
+            var actionName =  creatureJson['legendary'][i]['name'];
+            var actionEffect = creatureJson['legendary'][i]['entries'][0];;
+            legendary += `<div class="legendary-action">${actionName}. ${actionEffect}</div>`
+        }
+        legendary += '</div>'
+
+    }
     
 
     return `
