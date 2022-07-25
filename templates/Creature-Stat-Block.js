@@ -93,6 +93,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     var traits = '';
     if (creatureJson['trait']) {
+        traits += `<div class="section-title">Traits</div>`;
         traits = `<div class="traits">`;
         for (let trait of creatureJson['trait']) {
             traits += `<div><b>${trait['name']}</b>: ${trait['entries'].join('\n  ')}</div>`;
@@ -201,12 +202,12 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
     <div class="divider"></div>
-    ${traits}
-    ${spellcasting}
     <div class="actions">
         <div class="section-title">Actions</div>
         <div>${actions}</div>
     </div>
+    ${traits}
+    ${spellcasting}
     ${legendary}
 </div>
 `;
