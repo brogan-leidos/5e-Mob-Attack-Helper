@@ -202,6 +202,7 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="divider"></div>
     ${traits}
     ${spellcasting}
+    ${legendary}
     <div class="actions">
         <div class="section-title">Actions</div>
         <div>${actions}</div>
