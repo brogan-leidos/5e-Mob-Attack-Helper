@@ -86,10 +86,12 @@ export function getCreatureStatBlock(creatureJson) {
     var actions = '';
     if (creatureJson['action']) {
         actions += `<div class="section-title">Actions</div>`;
+        actions += `<div class="actions">`;
         for (let action of creatureJson['action']) {
             actions += `<b>${action['name'].replace('{@recharge}', '')}</b>: ${action['entries'].join('\n')}\n`;
         }
         actions = replaceTags(actions);
+        actions += "</div>";
     }
 
     var traits = '';
@@ -203,10 +205,7 @@ export function getCreatureStatBlock(creatureJson) {
     <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
     <div class="divider"></div>
-    <div class="actions">
-        <div class="section-title">Actions</div>
-        <div>${actions}</div>
-    </div>
+    ${actions}
     ${traits}
     ${spellcasting}
     ${legendary}
