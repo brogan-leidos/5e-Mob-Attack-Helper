@@ -119,7 +119,7 @@ export function getCreatureStatBlock(creatureJson) {
     }
 
     var spellcasting = "";
-    if (creatureJson['spellcasting'].length > 0) {
+    if (creatureJson['spellcasting']?.length > 0) {
         spellcasting += "<div>"
         for (let spellContainer of creatureJson['spellcasting']) {
             var spellName = spellContainer['name'];
@@ -130,7 +130,7 @@ export function getCreatureStatBlock(creatureJson) {
             for (var i=0; i < length; i++) {
                 var header = numberToSpellLevelMap[i];
                 var spellList = [];
-                var slots = i === 0 ? '' : ` (${spellContainer['spells'][i]['slots']})`;
+                var slots = i === 0 ? '' : ` (${spellContainer['spells'][i]['slots']} slots)`;
                 for (let spellname of spellContainer['spells'][i]['spells']) {
                     spellList.push(replaceTags(spellname));
                 }                    

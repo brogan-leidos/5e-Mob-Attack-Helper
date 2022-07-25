@@ -84,6 +84,7 @@
 
 .creature-stat-block i {
     font-weight: 600;
+    margin-left: 5px;
 }
 
 .creature-stat-block b {
