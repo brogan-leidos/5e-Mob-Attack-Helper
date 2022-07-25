@@ -124,7 +124,8 @@ export function getCreatureStatBlock(creatureJson) {
         for (let spellContainer of creatureJson['spellcasting']) {
             var spellName = spellContainer['name'];
             var entry = replaceTags(spellContainer['headerEntries'][0]);
-            for (var i=0; i > spellContainer['spells'].length; i++) {
+            var length = Object.keys(spellContainer['spells']).length;
+            for (var i=0; i < length; i++) {
                 var header = numberToSpellLevelMap[i];
                 var spellList = [];
                 var slots = i === 0 ? '' : ` (${spellContainer['spells'][i]['slots']})`;
