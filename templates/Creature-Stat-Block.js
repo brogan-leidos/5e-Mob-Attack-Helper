@@ -113,7 +113,7 @@ export function getCreatureStatBlock(creatureJson) {
             spellcasting += `<div class="spell-entry">${spellName}: ${entry}</div>`;
         }
         spellcasting += "</div>"
-        var spellcastingKeys = Object.keys(creatureJson[;'spellcasting'])
+        var spellcastingKeys = Object.keys(creatureJson['spellcasting'])
     }
     
 
