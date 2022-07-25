@@ -31,7 +31,7 @@
     font-size: 18px;
     font-weight: 700;
     border-bottom: 2px solid var(--stat-block-primary);
-    padding: 3px;
+    padding: 3px 3px 0 3px;
 }
 
 .traits, .actions {
