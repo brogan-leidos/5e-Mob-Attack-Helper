@@ -30,10 +30,8 @@
     color: var(--stat-block-primary);
     font-size: 18px;
     font-weight: 700;
-}
-
-.actions .section-title {
-    margin-bottom: -10px;
+    border-bottom: 2px solid var(--stat-block-primary);
+    padding: 3px;
 }
 
 .traits, .actions {
@@ -110,11 +108,6 @@
 
 #statBlockCloseButton {
     cursor: pointer;
-}
-
-.legendary {    
-    border-top: 2px solid var(--stat-block-primary);
-    padding: 3px;
 }
 
 .legendary-action {
