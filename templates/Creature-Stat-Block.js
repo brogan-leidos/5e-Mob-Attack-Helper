@@ -131,7 +131,7 @@ export function getCreatureStatBlock(creatureJson) {
                 for (let spellname of spell['spells'][i]['spells']) {
                     spellList.push(spellname);
                 }                    
-                spellcasting += `<div class="spell-level">${header}${slots}: ${spellList.join(', ')}</div>`;}
+                spellcasting += `<div class="spell-level">${header}${slots}: ${spellList.join(', ')}</div>`;
             }
             spellcasting += `<div class="spell-entry"><b>${spellName}</b>: ${entry}</div>`;
         }
