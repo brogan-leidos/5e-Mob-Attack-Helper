@@ -26,10 +26,13 @@
     font-weight: 700;
 }
 
-.actions .section-title {
+.section-title {
     color: var(--stat-block-primary);
     font-size: 18px;
     font-weight: 700;
+}
+
+.actions .section-title {
     margin-bottom: -10px;
 }
 
