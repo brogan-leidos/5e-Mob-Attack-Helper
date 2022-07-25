@@ -102,10 +102,6 @@
     color: var(--title-blue);
 }
 
-.creature-stat-block .actions {
-    margin-top: -10px;
-}
-
 #statBlockCloseButton {
     cursor: pointer;
 }
