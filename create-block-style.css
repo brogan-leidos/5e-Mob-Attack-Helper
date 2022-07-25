@@ -113,6 +113,6 @@
 }
 
 .legendary {    
-    border-bottom: 2px solid var(--stat-block-primary);
+    border-top: 2px solid var(--stat-block-primary);
     padding: 3px;
 }
