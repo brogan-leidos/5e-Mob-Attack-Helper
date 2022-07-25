@@ -142,6 +142,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     var legendary = '';
     if (creatureJson['legendary']) {
+        legendary += `<div class="section-title">Legendary Actions</div>`
         legendary += '<div class="legendary">'
         for(var i=0; i < creatureJson['legendary'].length; i++) {
             var actionName =  creatureJson['legendary'][i]['name'];
