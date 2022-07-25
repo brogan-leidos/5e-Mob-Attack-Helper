@@ -122,7 +122,7 @@ export function getCreatureStatBlock(creatureJson) {
     if (creatureJson['spellcasting'].length > 0) {
         spellcasting += "<div>"
         for (let spellContainer of creatureJson['spellcasting']) {
-            var spellName = spell.name;
+            var spellName = spellContainer['name'];
             var entry = replaceTags(spellContainer['headerEntries'][0]);
             for (var i=0; i < spell['spells'].length; i++) {
                 var header = numberToSpellLevelMap[i];
