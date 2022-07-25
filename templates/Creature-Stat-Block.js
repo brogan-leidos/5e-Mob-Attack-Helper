@@ -109,8 +109,8 @@ export function getCreatureStatBlock(creatureJson) {
         spellcasting += "<div>"
         for (let spell of creatureJson['spellcasting']) {
             var spellName = spell.name;
-            var entry = replaceTags(['headerEntries'][0]);
-            spellcasting += `<div class="spell-entry">${spellName}: ${entry}</div>`;
+            var entry = replaceTags(spell['headerEntries'][0]);
+            spellcasting += `<div class="spell-entry"><b>${spellName}</b>: ${entry}</div>`;
         }
         spellcasting += "</div>"
     }
