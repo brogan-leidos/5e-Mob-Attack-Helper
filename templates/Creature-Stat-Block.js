@@ -64,6 +64,20 @@ function replaceTags(text) {
     return text.replace(/\{@h\}\d+/g, '').replace(/\{@atk \w+\}/g, '').replace(/\{@([^\s]+)\s([^}]+)\}/g, '<$1>$2</$1>').replace(/\w+\|\|(\w+)/g, '$1');
 }
 
+var numberToSpellLevelMap = {
+    0: 'Cantrips (at will)',
+    1: '1st level',
+    2: '2nd level',
+    3: '3rd level',
+    4: '4th level',
+    5: '5th level',
+    6: '6th level',
+    7: '7th level',
+    8: '8th level',
+    9: '9th level',
+}
+
+
 export function getCreatureStatBlock(creatureJson) {
     var type = creatureJson['type'];
     if (type['type']) {
@@ -107,9 +121,18 @@ export function getCreatureStatBlock(creatureJson) {
     var spellcasting = "";
     if (creatureJson['spellcasting'].length > 0) {
         spellcasting += "<div>"
-        for (let spell of creatureJson['spellcasting']) {
+        for (let spellContainer of creatureJson['spellcasting']) {
             var spellName = spell.name;
-            var entry = replaceTags(spell['headerEntries'][0]);
+            var entry = replaceTags(spellContainer['headerEntries'][0]);
+            for (var i=0; i < spell['spells'].length; i++) {
+                var header = numberToSpellLevelMap[i];
+                var spellList = [];
+                var slots = i === 0 ? '' : spell['spells'][i]['slots'];
+                for (let spellname of spell['spells'][i]['spells']) {
+                    spellList.push(spellname);
+                }                    
+                spellcasting += `<div class="spell-level">${header}: ${spellList.join(', ')}</div>`;}
+            }
             spellcasting += `<div class="spell-entry"><b>${spellName}</b>: ${entry}</div>`;
         }
         spellcasting += "</div>"
