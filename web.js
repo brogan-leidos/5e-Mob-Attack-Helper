@@ -92,7 +92,10 @@ export default () => {
 function getAnnouncements() {
     fetch('https://raw.githubusercontent.com/brogan-leidos/5e-Mob-Attack-Helper/master/announcements/announcements.json')
         .then((response) => response.json())
-        .then((data) => announcements = data);
+        .then((data) => {
+            announcements = data; 
+            updateAnnouncementText();
+        });
 
     document.getElementById('announcementLeft').addEventListener('click', () => {        
         cycleAnnouncement(false);
@@ -102,7 +105,7 @@ function getAnnouncements() {
         cycleAnnouncement(true);
     });
 
-    updateAnnouncementText();
+    
 }
 
 function cycleAnnouncement(forward) {
