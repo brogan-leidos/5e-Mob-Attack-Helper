@@ -1033,6 +1033,7 @@ tr.creatureClassDark {
 
 .mobile-hide {
   visibility: visible;
+  display:inherit;
 }
 
 .mobile-display {
@@ -1062,11 +1063,13 @@ tr.creatureClassDark {
   } 
   
   .mobile-display {
-    visibility: visible;    
+    visibility: visible; 
+    display:inherit;  
   }
 
   .mobile-display-inline {
-    visibility: visible;    
+    visibility: visible;   
+    display:inherit; 
   }
 
   .mobArea {
