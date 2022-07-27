@@ -1033,7 +1033,7 @@ tr.creatureClassDark {
 
 .mobile-hide {
   visibility: visible;
-  display:inherit;
+  display: inherit;
 }
 
 .mobile-display {
@@ -1058,7 +1058,7 @@ tr.creatureClassDark {
   }
   
   .mobile-hide {
-    display: none;
+    display: none !important;
     visibility: hidden;    
   } 
   
