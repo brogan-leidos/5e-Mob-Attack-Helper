@@ -6,17 +6,25 @@
     padding: 15px;
 }
 
-.announcementLeft {
+#announcementClose {
+    cursor: pointer;
+    position:absolute;
+    right:0;
+    top:0;
+    color: white;
+}
+
+#announcementLeft {
     margin-right: 10px;
     cursor: pointer;
 }
 
-.announcementLeft:hover, .announcementLeft:focus, .announcementRight:hover, .announcementRight:focus {
+#announcementLeft:hover, #announcementLeft:focus, #announcementRight:hover, #announcementRight:focus {
     color: var(--menu-dark);
 }
 
 
-.announcementRight {
+#announcementRight {
     margin-left: 10px;
     cursor: pointer;
 }
