@@ -90,7 +90,7 @@ export default () => {
 };
 
 function getAnnouncements() {
-    fetch('https://github.com/brogan-leidos/5e-Mob-Attack-Helper/blob/master/announcements/announcements.json')
+    fetch('https://raw.githubusercontent.com/brogan-leidos/5e-Mob-Attack-Helper/master/announcements/announcements.json')
         .then((response) => response.json())
         .then((data) => announcements = data);
 
