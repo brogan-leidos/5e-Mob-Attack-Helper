@@ -93,13 +93,6 @@ function getAnnouncements() {
     fetch('https://github.com/brogan-leidos/5e-Mob-Attack-Helper/blob/master/announcements/announcements.json')
         .then((response) => response.json())
         .then((data) => announcements = data);
-    var announcementsHTML = `
-    <div class="announcements>
-        <div id="announcementLeft"><i class="fa fa-arrow-left"></i></div>
-        <div id="displayedAnnouncement"></div>
-        <div id="announcementRight"><i class="fa fa-arrow-right"></i></div>
-    </div>
-    `;
 
     document.getElementById('announcementLeft').addEventListener('click', () => {        
         cycleAnnouncement(false);
@@ -108,6 +101,8 @@ function getAnnouncements() {
     document.getElementById('announcementRight').addEventListener('click', () => {        
         cycleAnnouncement(true);
     });
+
+    updateAnnouncementText();
 }
 
 function cycleAnnouncement(forward) {
