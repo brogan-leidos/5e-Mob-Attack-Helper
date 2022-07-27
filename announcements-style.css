@@ -1,0 +1,22 @@
+.announcements {
+    background-color: var(--menu-dark);
+    border-radius: 4px;
+    border: 2px solid var(--menu-light);
+    margin: auto 50px auto 0;
+    padding: 15px;
+}
+
+.announcementLeft {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.announcementLeft:hover, .announcementLeft:focus, .announcementRight:hover, .announcementRight:focus {
+    color: var(--menu-dark);
+}
+
+
+.announcementRight {
+    margin-left: 10px;
+    cursor: pointer;
+}
