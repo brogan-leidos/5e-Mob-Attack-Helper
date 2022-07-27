@@ -23,6 +23,10 @@ var mobBlockAdvantageColor = 'rgba(200, 250, 200, 0.85)';
 var mobBlockDisadvantageColor = 'rgba(249, 200, 200, 0.85)';
 var mobBlockDcColor = "#aeaea0";
 
+var announcements = [];
+var announcementIndex = 0;
+
+
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
 
@@ -82,7 +86,49 @@ export default () => {
     });
 
 
+    getAnnouncements();
 };
+
+function getAnnouncements() {
+    fetch('https://github.com/brogan-leidos/5e-Mob-Attack-Helper/blob/master/announcements/announcements.json')
+        .then((response) => response.json())
+        .then((data) => announcements = data);
+    var announcementsHTML = `
+    <div class="announcements>
+        <div id="announcementLeft"><i class="fa fa-arrow-left"></i></div>
+        <div id="displayedAnnouncement"></div>
+        <div id="announcementRight"><i class="fa fa-arrow-right"></i></div>
+    </div>
+    `;
+
+    document.getElementById('announcementLeft').addEventListener('click', () => {        
+        cycleAnnouncement(false);
+    });
+
+    document.getElementById('announcementRight').addEventListener('click', () => {        
+        cycleAnnouncement(true);
+    });
+}
+
+function cycleAnnouncement(forward) {
+    if (forward) {
+        announcementIndex++;
+    } else {
+        announcementIndex--;
+    }
+    if (announcementIndex > announcements.length) {
+        announcementIndex = 0;
+    }
+    else if (announcementIndex === -1) {
+        announcementIndex = announcements.length - 1;
+    }
+
+    updateAnnouncementText();
+}
+
+function updateAnnouncementText() {
+    document.getElementById('displayedAnnouncement').innerText = announcements[announcementIndex]['message'];
+}
 
 var swapColors = [
     {
