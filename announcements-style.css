@@ -7,11 +7,12 @@
 }
 
 #announcementClose {
-    cursor: pointer;
-    position:absolute;
-    right:0;
-    top:0;
     color: white;
+    cursor: pointer;
+    font-size: 21px;
+    position: absolute;
+    right: 66px;
+    top: 0px;
 }
 
 #announcementLeft {
