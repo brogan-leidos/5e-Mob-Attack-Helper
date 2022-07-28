@@ -105,6 +105,12 @@ function getAnnouncements() {
         cycleAnnouncement(true);
     });
 
+    document.getElementById('announcementClose').addEventListener('click', () => {        
+        hideAnnouncement();
+    });
+
+    
+
     
 }
 
@@ -126,6 +132,10 @@ function cycleAnnouncement(forward) {
 
 function updateAnnouncementText() {
     document.getElementById('displayedAnnouncement').innerText = announcements[announcementIndex]['message'];
+}
+
+function hideAnnouncement() {
+    document.getElementsByClassName('announcements')[0].classList.add('hidden');
 }
 
 var swapColors = [
