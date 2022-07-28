@@ -120,7 +120,7 @@ function cycleAnnouncement(forward) {
     } else {
         announcementIndex--;
     }
-    if (announcementIndex > announcements.length) {
+    if (announcementIndex > announcements.length - 1) {
         announcementIndex = 0;
     }
     else if (announcementIndex === -1) {
