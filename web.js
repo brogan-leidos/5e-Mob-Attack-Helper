@@ -309,7 +309,12 @@ function fetchMonsterInfo(value) {
 function setStatBlockEventListeners(mobTag, monsterName) {
     document.getElementById(mobTag).creatureName = monsterName;
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
-        document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
+        document.getElementsByClassName('statBlockContainer')[0].animate([
+            {transform: 'scale(0.5)', opacity: '0'}
+        ], {duration: 3000})
+        setTimeout(() => {
+            document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
+        })        
     });
     return;
 }
