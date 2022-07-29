@@ -301,7 +301,7 @@ function fetchMonsterInfo(value) {
         var mobTag = createPresent('');
         changeBlockToMob(mobTag, asMob);
         setMobBackground(mobTag, monster['name'], monster['type']);
-        setVisibleStatBlock(monster);
+        setVisibleStatBlock(mobTag, monster);
         setStatBlockEventListeners(mobTag, monster['name'], actions);
     }
 }
@@ -329,12 +329,17 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
     return;
 }
 
-function setVisibleStatBlock(monster) {
+function setVisibleStatBlock(mobTag, monster) {
     var generatedHtml = getCreatureStatBlock(monster);
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'inherit';
 
     document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name'].replace(' ', '%20')}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
+
+    document.getElementById(mobTag).classList.add('highlighted');
+    for (let block of blockArray) {
+        document.getElementById(block).classList.remove('highlighted');
+    }
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
@@ -753,7 +758,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     
     document.getElementById(mobTag + "-Show").addEventListener('click', () => { 
         var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
-        setVisibleStatBlock(monster);
+        setVisibleStatBlock(mobTag, monster);
         setStatBlockEventListeners(mobTag, monster['name']);        
     });
 
