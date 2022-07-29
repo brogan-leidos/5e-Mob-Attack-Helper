@@ -217,7 +217,7 @@ button {
 }
 
 .overheadMobBlock.highlighted .mobBlock {
-  box-shadow: 0 0 5px yellow 3px;
+  box-shadow: 2px 2px 5px 2px var(--title-blue)
 }
 
 @keyframes fadeIn {

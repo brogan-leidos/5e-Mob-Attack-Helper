@@ -311,10 +311,13 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
         document.getElementsByClassName('statBlockContainer')[0].animate([
             {transform: 'scale(0.5)', opacity: '0'}
-        ], {duration: 3000})
+        ], {duration: 300})
         setTimeout(() => {
+            for (let block of blockArray) {
+                document.getElementById(block).classList.remove('highlighted');
+            }
             document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
-        })        
+        }, 300)        
     });
 
     for (let action of actions) {
