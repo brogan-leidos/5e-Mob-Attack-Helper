@@ -216,8 +216,8 @@ button {
   animation: fadeIn 0.25s;
 }
 
-.overheadMobBlock.highlighted {
-  box-shadow: 0 0 5px yellow;
+.overheadMobBlock.highlighted .mobBlock {
+  box-shadow: 0 0 5px yellow 3px;
 }
 
 @keyframes fadeIn {
