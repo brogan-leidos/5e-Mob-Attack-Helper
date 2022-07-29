@@ -18,12 +18,8 @@
     margin-bottom: auto;
     margin-right: 15px;
     cursor: pointer;
+    transition: 0.5s;
 }
-
-#announcementLeft:hover, #announcementLeft:focus, #announcementRight:hover, #announcementRight:focus {
-    color: var(--menu-dark);
-}
-
 
 #announcementRight {
     margin-top: auto;
@@ -31,6 +27,12 @@
     margin-left: 15px;
     margin-right: 5px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+#announcementLeft:hover, #announcementLeft:focus, #announcementRight:hover, #announcementRight:focus {
+    color: var(--menu-medium-accent);
+    transform: scale(1.1);
 }
 
 .info-button-container {
