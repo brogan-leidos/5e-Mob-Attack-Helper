@@ -196,6 +196,8 @@ button {
 
 .header {
   padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
   background-color: var(--title-blue);
   color: #f2f2f2;
   font-family: Candara, Italic,  sans-serif;
@@ -1243,6 +1245,7 @@ tr.creatureClassDark {
     border: none;
     box-shadow: 0px 0px 0px;
     display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
     text-align: center;
   }
