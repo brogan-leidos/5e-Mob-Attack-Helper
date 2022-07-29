@@ -29,3 +29,9 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 775px) {
+    .announcements {
+        margin: auto;
+    }
+}
