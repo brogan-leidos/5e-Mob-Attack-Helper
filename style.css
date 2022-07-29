@@ -207,6 +207,10 @@ button {
   border-bottom: 5px solid var(--menu-light);
 }
 
+.header .header-title {
+  min-width: 400px;
+}
+
 .overheadMobBlock {
   margin-bottom: 7px;
   animation: fadeIn 0.25s;
@@ -1249,10 +1253,6 @@ tr.creatureClassDark {
     flex-direction: column;
     margin-bottom: 10px;
     text-align: center;
-  }
-
-  .header .header-title {
-    min-width: 400px;
   }
   
   .mobBlock label {
