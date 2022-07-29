@@ -28,6 +28,11 @@
     cursor: pointer;
 }
 
+.info-button-container {
+    margin-top: 5px;
+    justify-content: center;
+}
+
 @media screen and (max-width: 775px) {
     .announcements {
         margin: auto;
