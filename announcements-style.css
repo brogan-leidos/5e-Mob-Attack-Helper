@@ -29,6 +29,7 @@
 }
 
 .info-button-container {
+    display: none;
     margin-top: 5px;
     justify-content: center;
 }
@@ -36,5 +37,9 @@
 @media screen and (max-width: 775px) {
     .announcements {
         margin: auto;
+    }
+
+    .info-button-container {
+        display: inherit;
     }
 }
