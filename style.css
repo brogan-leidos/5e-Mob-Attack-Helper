@@ -216,6 +216,10 @@ button {
   animation: fadeIn 0.25s;
 }
 
+.overheadMobBlock.highlighted {
+  box-shadow: 0 0 5px yellow;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; transform: scale(.7) }
   100% { opacity: 1; transform: scale(1) }
@@ -228,10 +232,6 @@ button {
   /* margin-bottom: 5px; */
   box-shadow: 2px 2px 2px #666;
   grid-column: 1;
-}
-
-.mobBlock .highlighted {
-  box-shadow: 0 0 5px yellow;
 }
 
 .mobBlock td:nth-child(1) {
