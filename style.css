@@ -50,6 +50,21 @@
   display: none;
 }
 
+.mobile-hide {
+  visibility: visible;
+  display: inherit;
+}
+
+.mobile-display {
+  display: none;
+  visibility: hidden;  
+}
+
+.mobile-display-inline {
+  display: none;
+  visibility: hidden;  
+}
+
 body {
   background-color: #f0f0f0;
   font-family: Candara;
@@ -1031,20 +1046,7 @@ tr.creatureClassDark {
   cursor: help;
 }
 
-.mobile-hide {
-  visibility: visible;
-  display: inherit;
-}
 
-.mobile-display {
-  display: none;
-  visibility: hidden;  
-}
-
-.mobile-display-inline {
-  display: none;
-  visibility: hidden;  
-}
 
 @media screen and (max-width: 775px) {
   
@@ -1240,7 +1242,7 @@ tr.creatureClassDark {
   .header {
     border: none;
     box-shadow: 0px 0px 0px;
-    display: flex !important;
+    display: flex;
     margin-bottom: 10px;
     text-align: center;
   }
