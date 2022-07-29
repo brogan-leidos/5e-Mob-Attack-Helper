@@ -14,7 +14,9 @@
 }
 
 #announcementLeft {
-    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
     cursor: pointer;
 }
 
@@ -24,7 +26,9 @@
 
 
 #announcementRight {
-    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
     cursor: pointer;
 }
 
