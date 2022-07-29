@@ -230,6 +230,10 @@ button {
   grid-column: 1;
 }
 
+.mobBlock .highlighted {
+  box-shadow: 0 0 5px yellow;
+}
+
 .mobBlock td:nth-child(1) {
   border-right: thin solid #000;
   background-color: white;
