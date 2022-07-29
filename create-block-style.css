@@ -113,3 +113,8 @@
 recharge::before {
     content: 'Recharge '
 }
+
+.hover-highlight:hover {
+    color: var(--title-blue);
+    cursor: pointer;
+}

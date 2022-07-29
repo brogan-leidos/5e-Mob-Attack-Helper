@@ -323,6 +323,7 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
                 console.log(`changing to weapon: ${action['name']}`)
                 // changeMobWeapon
             })
+            document.getElementById(`stat-block-${action['name']}`).classList.add('hover-highlight')
         }
     }
 
