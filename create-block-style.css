@@ -5,15 +5,16 @@
 
 .creature-stat-block {
     animation: fadeIn 0.25s;
+    background-blend-mode: lighten;
     background-color: #f9f9eb;
     border-color: black solid thin;
-    border: thin solid black;
     border-radius: 3px;
+    border: thin solid black;
     box-shadow: 2px 2px 2px #666;
     font-size: 13px;
     padding: 10px;
     width: 400px;
-    background-blend-mode: lighten;
+    will-change: auto;
 }
 
 :root {
