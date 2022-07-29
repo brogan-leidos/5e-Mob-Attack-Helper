@@ -47,7 +47,8 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+  visibility: 0;
 }
 
 .mobile-hide {
@@ -1248,6 +1249,10 @@ tr.creatureClassDark {
     flex-direction: column;
     margin-bottom: 10px;
     text-align: center;
+  }
+
+  .header .header-title {
+    min-width: 400px;
   }
   
   .mobBlock label {
