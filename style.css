@@ -27,17 +27,17 @@
   width: 24px;
 }
 
-.flex {
-  display: flex !important;
+.flex {  
+  flex: 1;
 }
 
 .flex-row {
-  display: flex !important;
+  flex: 1;
   flex-direction: row;
 }
 
 .flex-column {
-  display: flex !important;
+  flex: 1;
   flex-direction: column;
 }
 
