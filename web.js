@@ -135,8 +135,10 @@ function hideAnnouncement() {
     document.getElementsByClassName('announcements')[0].animate([
         {transform: 'scale(0.5)', opacity: '0', display: 'none'}
     ], {duration: 300, fill: 'forwards'});
+    setTimeout(() => {
+        document.getElementsByClassName('announcements')[0].classList.add('hidden');
+    }, 300);
     
-    // document.getElementsByClassName('announcements')[0].classList.add('hidden');
 }
 
 var swapColors = [
