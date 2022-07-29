@@ -302,11 +302,11 @@ function fetchMonsterInfo(value) {
         changeBlockToMob(mobTag, asMob);
         setMobBackground(mobTag, monster['name'], monster['type']);
         setVisibleStatBlock(monster);
-        setStatBlockEventListeners(mobTag, monster['name']);
+        setStatBlockEventListeners(mobTag, monster['name'], actions);
     }
 }
 
-function setStatBlockEventListeners(mobTag, monsterName) {
+function setStatBlockEventListeners(mobTag, monsterName, actions) {
     document.getElementById(mobTag).creatureName = monsterName;
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
         document.getElementsByClassName('statBlockContainer')[0].animate([
@@ -316,6 +316,14 @@ function setStatBlockEventListeners(mobTag, monsterName) {
             document.getElementsByClassName('statBlockContainer')[0].style.display = 'none';
         })        
     });
+
+    for (let action of actions) {
+        if (action['entries'].join('\n').contains('hit')) {
+            console.log('event listener to ' + action['name']);
+            
+        }
+    }
+
     return;
 }
 
