@@ -5,6 +5,9 @@
 === Ver 1.2.0
 * Beeg updates this time around.
 * Added a search bar to the add mobs area. Allows the importing of any monster from the monster manual with some degree of accuracy
+* Added a mob stat block when a create a mob or hit the eye button.
+* Changed disable button to the "Ban" symbol to the left/top of the mob block
+* Made mobile buttons chonkier
 * Mob names now change to reflect their current weapon when their weapons are changed
 * Added a color changer! Its not much, but its a start to something greater
 * Added some small animation flares around the app
