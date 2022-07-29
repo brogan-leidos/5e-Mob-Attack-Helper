@@ -336,10 +336,11 @@ function setVisibleStatBlock(mobTag, monster) {
 
     document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name'].replace(' ', '%20')}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
 
-    document.getElementById(mobTag).classList.add('highlighted');
     for (let block of blockArray) {
         document.getElementById(block).classList.remove('highlighted');
     }
+    document.getElementById(mobTag).classList.add('highlighted');
+
 }
 
 function setMobBackground(mobTag, creatureName, creatureType) {
