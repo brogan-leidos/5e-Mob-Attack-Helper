@@ -118,3 +118,7 @@ recharge::before {
     color: var(--title-blue);
     cursor: pointer;
 }
+
+.hover-highlight {
+    text-decoration: underline;
+}
