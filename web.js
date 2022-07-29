@@ -134,7 +134,7 @@ function updateAnnouncementText() {
 function hideAnnouncement() {
     document.getElementsByClassName('announcements')[0].animate([
         {transform: 'scale(0.5)', opacity: '0', display: 'none'}
-    ], {duration: 700, fill: 'forwards'});
+    ], {duration: 300, fill: 'forwards'});
     
     // document.getElementsByClassName('announcements')[0].classList.add('hidden');
 }
