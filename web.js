@@ -324,7 +324,9 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
         if (action['entries'].join('\n').includes('{@atk')) {
             document.getElementById(`stat-block-${action['name']}`).addEventListener('click', () => {
                 console.log(`changing to weapon: ${action['name']}`)
-                // changeMobWeapon
+                var tag = document.getElementsByClassName('overheadMobBlock highlighted')[0].id;
+                var weaponString = document.getElementById(`${tag}-Weapon-Select`).options[action['name']].value;
+                changeMobWeapon(tag, weaponString);
             })
             document.getElementById(`stat-block-${action['name']}`).classList.add('hover-highlight')
         }
