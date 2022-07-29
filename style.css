@@ -28,16 +28,16 @@
 }
 
 .flex {
-  display: flex;
+  display: flex !important;
 }
 
 .flex-row {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
 }
 
 .flex-column {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 }
 
