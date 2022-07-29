@@ -318,9 +318,11 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
     });
 
     for (let action of actions) {
-        if (action['entries'].join('\n').contains('hit')) {
-            console.log('event listener to ' + action['name']);
-            
+        if (action['entries'].join('\n').includes('{@atk')) {
+            document.getElementById(`stat-block-${action['name']}`).addEventListener('click', () => {
+                console.log(`changing to weapon: ${action['name']}`)
+                // changeMobWeapon
+            })
         }
     }
 
