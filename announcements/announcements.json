@@ -1,4 +1,6 @@
 [
     {"date": "7/26/2022", "until": "9/27/2022", "message": "This is a test announcement. Check it out!"},
-    {"date": "7/27/2022", "until": "7/28/2022", "message": "This is a loooooooooooooooooooooooooooong second message that you can scroll to! Woohoo! lets go! Just... Like... Extending length here...!!!"}
+    {"date": "9/9/2022", "until": "9/17/2022", "message": "Mobby was updated! Check out this announcement!"},
+    {"date": "9/9/2022", "until": "9/17/2022", "message": "Theres also a search bar! Give it a try (only supports the monster manual for now)!"},
+
 ]
