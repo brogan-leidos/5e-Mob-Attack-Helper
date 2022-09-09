@@ -15,20 +15,27 @@
 }
 
 #announcementLeft {
-    margin-top: auto;
+    cursor: pointer;
     margin-bottom: auto;
     margin-right: 15px;
-    cursor: pointer;
+    margin-top: auto;
     transition: 0.5s;
 }
 
 #announcementRight {
-    margin-top: auto;
+    cursor: pointer;
     margin-bottom: auto;
     margin-left: 15px;
     margin-right: 5px;
-    cursor: pointer;
+    margin-top: auto;
     transition: 0.5s;
+}
+
+#announcementTotal {
+    font-size: 12px;
+    margin-left: -12px;
+    margin-top: -14px;
+    position: absolute;
 }
 
 #announcementLeft:hover, #announcementLeft:focus, #announcementRight:hover, #announcementRight:focus {

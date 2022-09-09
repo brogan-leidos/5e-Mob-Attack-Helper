@@ -93,7 +93,11 @@ function getAnnouncements() {
     fetch('https://raw.githubusercontent.com/brogan-leidos/5e-Mob-Attack-Helper/master/announcements/announcements.json')
         .then((response) => response.json())
         .then((data) => {
-            announcements = data; 
+            announcements = data;
+            var currentTime = new Date();
+            announcements = announcements.filter(item => {
+                return Date.parse(item['until']) > currentTime;                
+            })
             updateAnnouncementText();
         });
 
