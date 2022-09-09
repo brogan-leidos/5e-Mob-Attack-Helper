@@ -132,8 +132,12 @@ function cycleAnnouncement(forward) {
 }
 
 function updateAnnouncementText() {
-    document.getElementById('displayedAnnouncement').innerText = announcements[announcementIndex]['message'];
-    document.getElementById('announcementTotal').innerHTML = `${announcementIndex+1}/${announcements.length}`;
+    if (announcements.length > 0) {
+        document.getElementById('displayedAnnouncement').innerText = announcements[announcementIndex]['message'];
+        document.getElementById('announcementTotal').innerHTML = `${announcementIndex+1}/${announcements.length}`;
+    } else {
+        hideAnnouncement();
+    }
 
 }
 
