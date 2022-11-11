@@ -5,6 +5,7 @@
     border: 2px solid var(--menu-light);
     margin: auto 50px auto 0;
     padding: 15px;
+    position: relative;
 }
 
 #announcementClose {
@@ -33,10 +34,11 @@
 
 #announcementTotal {
     font-size: 12px;
-    margin-left: -12px;
-    margin-top: -14px;
     position: absolute;
+    bottom: 1px;
+    right: 3px;
 }
+
 
 #announcementLeft:hover, #announcementLeft:focus, #announcementRight:hover, #announcementRight:focus {
     color: var(--menu-medium-accent);

@@ -83,7 +83,6 @@ export function getCreatureStatBlock(creatureJson) {
     var pb = `${pbByCrMap[creatureJson['cr']]}`;
     if (cr['cr']) {
         pb = '';
-        singleCr = false;
         var keys = Object.keys(cr);
         crString = '';
         keys.forEach(key => {
