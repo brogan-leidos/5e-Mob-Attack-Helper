@@ -833,6 +833,12 @@ function moveMob(mobTag, direction) {
     
     var dir = direction == "Up" ? -1 : 1;
 
+    mobBlock.animate([
+        {transform: `translateY(${100 * dir}%)`},
+    ],
+    { duration: 500 },
+    );
+
     var holdBlock = document.getElementById(blockArray[selectedIndex]);    
     var swapBlock = document.getElementById(blockArray[selectedIndex + dir]);
     holdBlock.style.gridRow = selectedIndex + 1 + dir;
