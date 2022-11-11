@@ -79,6 +79,21 @@ var numberToSpellLevelMap = {
 
 
 export function getCreatureStatBlock(creatureJson) {
+    var cr = creatureJson['cr'];
+    var pb = `${pbByCrMap[creatureJson['cr']]}`;
+    if (cr['cr']) {
+        pb = '';
+        singleCr = false;
+        var keys = Object.keys(cr);
+        crString = '';
+        keys.forEach(key => {
+            crString += `${key}: ${cr[key]}, `
+            pb += `${pbByCrMap[cr[key]]}, `;
+        });
+        cr = crString.substring(0, crString.length -1);
+        pb = pb.substring(0, pb.length - 1);
+    }       
+
     var type = creatureJson['type'];
     if (type['type']) {
         type = type['type'];
@@ -177,8 +192,8 @@ export function getCreatureStatBlock(creatureJson) {
             <td>${drillDownValue(creatureJson, 'ac')}</td>
             <td>${creatureJson['hp']['average']} (${creatureJson['hp']['formula']})</td>
             <td>${speedArray.join(', ')} ft</td>
-            <td>${creatureJson['cr']}</td>
-            <td>${pbByCrMap[creatureJson['cr']]}</td>
+            <td>${cr}</td>
+            <td>${pb}</td>
         </tr>
     </table>
     <div class="stat-spread">
