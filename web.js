@@ -1212,25 +1212,7 @@ function changeVantage(mobTag) {
 
 function shiftMobBlockColors(mobTag, color) {
     var mobBlock = document.getElementById(mobTag);
-    mobBlock.children[1].style.backgroundColor = color;
-    
-
-
-    // for(var i=0; i < mobBlock.children[1].firstElementChild.childElementCount; i++) {
-    //     var scanColor = mobBlock.children[1].firstElementChild.children[i].style.backgroundColor;
-    //     if (scanColor != "") {
-    //         var red = parseInt(color.substring(1,3), 16);
-    //         var green = parseInt(color.substring(3,5), 16);
-    //         var blue = parseInt(color.substring(5,7), 16);
-            
-    //         red = Math.max(red - 75, 0);
-    //         green = Math.max(green - 75, 0);
-    //         blue = Math.max(blue - 75, 0);
-            
-    //         mobBlock.children[1].firstElementChild.children[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
-    //     }
-    // }
-    
+    mobBlock.children[1].style.backgroundColor = color;    
 }
 
 function throwError(msg) {
