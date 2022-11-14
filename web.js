@@ -406,13 +406,24 @@ function discoveryCheck(newAc) {
 
 function deleteMob(mobTag) {
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
-    document.getElementById(mobTag).remove();
     
-    for (var i=0; i < blockArray.length; i++) {
-        document.getElementById(blockArray[i]).style.gridRow = i+1;
-    }
+    var duration = 300;
+    document.getElementById(mobTag).animate([
+        { transform: 'scale(0.5)', opacity: 0 },
+    ],
+    {
+        duration: duration,
+    });
+
+    setTimeout(() => {
+        document.getElementById(mobTag).remove();
     
-    checkForExistingDc();
+        for (var i=0; i < blockArray.length; i++) {
+            document.getElementById(blockArray[i]).style.gridRow = i+1;
+        }
+        
+        checkForExistingDc();
+    }, duration - 50);        
 }
 
 function displayHelp() {
