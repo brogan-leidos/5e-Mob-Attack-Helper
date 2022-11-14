@@ -133,7 +133,11 @@ export function getCreatureStatBlock(creatureJson) {
     var speedArray = [];
     var speedKeys = Object.keys(creatureJson['speed']);
     for (let speed of speedKeys) {
-        speedArray.push(`${speed} ${creatureJson['speed'][speed]}`);
+        if (creatureJson['speed'][speed]['condition']) {
+            speedArray.push(`${speed} ${creatureJson['speed'][speed]['condition']} ${creatureJson['speed'][speed]['number']}`);
+        } else {
+            speedArray.push(`${speed} ${creatureJson['speed'][speed]}`);
+        }        
     }
 
     var spellcasting = "";
