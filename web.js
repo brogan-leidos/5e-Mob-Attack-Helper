@@ -349,6 +349,7 @@ function setVisibleStatBlock(mobTag, monster) {
     var generatedHtml = getCreatureStatBlock(monster);
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'block';
+    document.getElementsByClassName('statBlockContainer')[0].style.opacity = '100%';
 
     document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name'].replace(' ', '%20')}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
 
