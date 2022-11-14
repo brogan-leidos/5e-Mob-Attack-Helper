@@ -106,7 +106,7 @@ export function getCreatureStatBlock(creatureJson) {
             for (let entry of action['entries']) {
                 if (entry['items']) {
                     for (let item of entry['items']) {
-                        actions += `<div class="${item['style']} ${item['type']}">${item['name']}: ${item['entry']}</div>`;
+                        actions += `<div><span class="${item['style']} ${item['type']}">${item['name']}:</span> ${item['entry']}</div>`;
                     }
                 } else {
                     actions += `${entry}`

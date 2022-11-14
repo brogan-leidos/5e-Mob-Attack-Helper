@@ -123,3 +123,7 @@ recharge::before {
 .hover-highlight {
     text-decoration: underline;
 }
+
+.italics {
+    font-style: italic;
+}
