@@ -102,7 +102,17 @@ export function getCreatureStatBlock(creatureJson) {
         actions += `<div class="section-title">Actions</div>`;
         actions += `<div class="actions">`;
         for (let action of creatureJson['action']) {
-            actions += `<div><b id="stat-block-${action['name']}">${action['name'].replace('{@recharge}', '')}</b>: ${action['entries'].join('\n')}</div>`;
+            actions += `<div><b id="stat-block-${action['name']}">${action['name'].replace('{@recharge}', '')}</b>:`;
+            for (let entry of action['entries']) {
+                if (entry['items']) {
+                    for (let item of entry['items']) {
+                        actions += `<div class="${item['style']} ${item['type']}">${item['name']}: ${item['entry']}</div>`;
+                    }
+                } else {
+                    action += `${entry}`
+                }
+            }
+            action += `</div>`;                                                            
         }
         actions = replaceTags(actions);
         actions += "</div>";
