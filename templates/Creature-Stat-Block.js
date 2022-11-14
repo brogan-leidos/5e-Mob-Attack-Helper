@@ -109,10 +109,10 @@ export function getCreatureStatBlock(creatureJson) {
                         actions += `<div class="${item['style']} ${item['type']}">${item['name']}: ${item['entry']}</div>`;
                     }
                 } else {
-                    action += `${entry}`
+                    actions += `${entry}`
                 }
             }
-            action += `</div>`;                                                            
+            actions += `</div>`;                                                            
         }
         actions = replaceTags(actions);
         actions += "</div>";
