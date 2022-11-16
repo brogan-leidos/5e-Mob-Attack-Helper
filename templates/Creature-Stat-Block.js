@@ -106,6 +106,7 @@ export function getCreatureStatBlock(creatureJson) {
         actions += `<div class="section-title">Actions</div>`;
         actions += `<div class="actions">`;
         for (let action of creatureJson['action']) {
+            action["name"] = action["name"].replace(' {@recharge}', '');
             actions += `<div><b id="stat-block-${action['name']}">${action['name'].replace(' {@recharge}', '')}</b>:`;
             for (let entry of action['entries']) {
                 if (entry['items']) {
