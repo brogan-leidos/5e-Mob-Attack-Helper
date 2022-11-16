@@ -124,6 +124,6 @@ recharge::before {
     text-decoration: underline;
 }
 
-.italics {
+span.italic {
     font-style: italic;
 }
