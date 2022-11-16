@@ -108,10 +108,7 @@ export function getCreatureStatBlock(creatureJson) {
                     for (let item of entry['items']) {
                         if (item['entries']) {
                             actions += `<div><span class="${item['style']} ${item['type']}">${item['name']}:</span>`;
-                            actions += `${item['entries'].join('\n')}`;
-                            // for (let itemEntry of item['entries']) {
-                            //     actions += `${itemEntry}`;    
-                            // }
+                            actions += `${item['entries'].join('\n')}`;                            
                             actions += `</div>`;
                         } else {                        
                             actions += `<div><span class="${item['style']} ${item['type']}">${item['name']}:</span> ${item['entry']}</div>`;
@@ -187,8 +184,8 @@ export function getCreatureStatBlock(creatureJson) {
         legendary += '<div class="legendary">'
         for(var i=0; i < creatureJson['legendary'].length; i++) {
             var actionName =  creatureJson['legendary'][i]['name'];
-            var actionEffect = creatureJson['legendary'][i]['entries'][0];;
-            legendary += `<div class="legendary-action"><b>${actionName}.</b> ${actionEffect}</div>`
+            var actionEffect = creatureJson['legendary'][i]['entries'][0];
+            legendary += `<div class="legendary-action"><b>${actionName}.</b> ${replaceTags(actionEffect)}</div>`
         }
         legendary += '</div>'
 
@@ -239,8 +236,8 @@ export function getCreatureStatBlock(creatureJson) {
         </table>
     </div>
     ${skills}
-    <div class="senses"><b>Senses</b> ${creatureJson['senses']}</div>
-    <div class="languages"><b>Languages</b> ${creatureJson['languages']}</div>
+    <div class="senses"><b>Senses</b> ${creatureJson['senses'].join(', ')}</div>
+    <div class="languages"><b>Languages</b> ${creatureJson['languages'].join(', ')}</div>
     <div class="divider"></div>
     ${actions}
     ${traits}
