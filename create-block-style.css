@@ -28,10 +28,11 @@
 }
 
 .section-title {
+    border-bottom: 2px solid var(--stat-block-primary);
     color: var(--stat-block-primary);
     font-size: 18px;
     font-weight: 700;
-    border-bottom: 2px solid var(--stat-block-primary);
+    margin-top: 10px;
     padding: 3px 3px 0 3px;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .traits {
-    border-bottom: 2px solid var(--stat-block-primary);
+    /* border-bottom: 2px solid var(--stat-block-primary); */
 }
 
 .traits div, .actions div {
