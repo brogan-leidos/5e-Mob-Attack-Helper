@@ -61,7 +61,7 @@ export function drillDownValue(creatureJson, value) {
 }
 
 function replaceTags(text) {
-    return text.replace(/\{@h\}\d+/g, '').replace(/\{@atk \w+\}/g, '').replace(/\{@([^\s]+)\s([^}]+)\}/g, '<$1>$2</$1>').replace(/\w+\|\|(\w+)/g, '$1').replace(/\{@recharge \w+\}/g, '');
+    return text.replace(/\{@h\}\d+/g, '').replace(/\{@atk \w+\}/g, '').replace(/\{@recharge \w+\}/g, '').replace(/\{@([^\s]+)\s([^}]+)\}/g, '<$1>$2</$1>').replace(/\w+\|\|(\w+)/g, '$1');
 }
 
 var numberToSpellLevelMap = {
