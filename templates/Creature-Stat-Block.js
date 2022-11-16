@@ -169,6 +169,7 @@ export function getCreatureStatBlock(creatureJson) {
             var entry = replaceTags(spellContainer['headerEntries'][0]);
             spellcasting += `<div class="spell-entry"><b>${spellName}</b>: ${entry}</div>`;
 
+            // Parse out spell slot casters (lich for example)
             if (spellContainer['spells']) {
                 var length = Object.keys(spellContainer['spells']).length;
                 for (var i=0; i < length; i++) {
@@ -180,15 +181,19 @@ export function getCreatureStatBlock(creatureJson) {
                     }                    
                     spellcasting += `<div class="spell-level">${header}${slots}: ${spellList.join(', ')}</div>`;
                 }
-            } else if (spellContainer['daily']) {
+            } 
+            // Parse out innate casters (elementals, Dao)
+            else if (spellContainer['daily']) {
+                if (spellContainer['innate']) {
+                    spellcasting += `<div>${spellContainer['innate'].map(spell => replaceTags(spell)).join(', ')}</div>`;
+                }
+                
                 var keys = Object.keys(spellContainer['daily']);
                 for (let key of keys) {
                    var dailySpells = spellContainer['daily'][key];
-                   spellcasting += `<div>${dailySpells.join(', ')}</div>`;
+                   spellcasting += `<div>${dailySpells.map(spell => replaceTags(spell)).join(', ')}</div>`;
                 }
-                if (spellContainer['innate']) {
-                    spellcasting += `<div>${spellContainer['innate'].join(', ')}</div>`;
-                }
+                
 
             }
         }
