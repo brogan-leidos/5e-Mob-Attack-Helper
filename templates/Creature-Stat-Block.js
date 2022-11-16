@@ -238,7 +238,6 @@ export function getCreatureStatBlock(creatureJson) {
     ${skills}
     <div class="senses"><b>Senses</b> ${creatureJson['senses'].join(', ')}</div>
     <div class="languages"><b>Languages</b> ${creatureJson['languages'].join(', ')}</div>
-    <div class="divider"></div>
     ${actions}
     ${traits}
     ${spellcasting}
