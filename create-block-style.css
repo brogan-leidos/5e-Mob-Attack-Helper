@@ -127,3 +127,8 @@ recharge::before {
 span.italic {
     font-style: italic;
 }
+
+span.item {
+    margin-left: 5px;
+    font-weight: bold;
+}
