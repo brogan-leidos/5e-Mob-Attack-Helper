@@ -107,7 +107,7 @@ export function getCreatureStatBlock(creatureJson) {
         actions += `<div class="actions">`;
         for (let action of creatureJson['action']) {
             action["name"] = action["name"].replace(' {@recharge}', '');
-            actions += `<div><b id="stat-block-${action['name']}">${action['name'].replace(' {@recharge}', '')}</b>:`;
+            actions += `<div><b id="stat-block-${action['name']}">${action['name']}</b>:`;
             for (let entry of action['entries']) {
                 if (entry['items']) {
                     for (let item of entry['items']) {
@@ -169,15 +169,27 @@ export function getCreatureStatBlock(creatureJson) {
             var entry = replaceTags(spellContainer['headerEntries'][0]);
             spellcasting += `<div class="spell-entry"><b>${spellName}</b>: ${entry}</div>`;
 
-            var length = Object.keys(spellContainer['spells']).length;
-            for (var i=0; i < length; i++) {
-                var header = numberToSpellLevelMap[i];
-                var spellList = [];
-                var slots = i === 0 ? '' : ` (${spellContainer['spells'][i]['slots']} slots)`;
-                for (let spellname of spellContainer['spells'][i]['spells']) {
-                    spellList.push(replaceTags(spellname));
-                }                    
-                spellcasting += `<div class="spell-level">${header}${slots}: ${spellList.join(', ')}</div>`;
+            if (spellContainer['spells']) {
+                var length = Object.keys(spellContainer['spells']).length;
+                for (var i=0; i < length; i++) {
+                    var header = numberToSpellLevelMap[i];
+                    var spellList = [];
+                    var slots = i === 0 ? '' : ` (${spellContainer['spells'][i]['slots']} slots)`;
+                    for (let spellname of spellContainer['spells'][i]['spells']) {
+                        spellList.push(replaceTags(spellname));
+                    }                    
+                    spellcasting += `<div class="spell-level">${header}${slots}: ${spellList.join(', ')}</div>`;
+                }
+            } else if (spellContainer['daily']) {
+                var keys = Object.keys(spellContainer['daily']);
+                for (let key of keys) {
+                   var dailySpells = spellContainer['daily'][key];
+                   spellcasting += `<div>${dailySpells.join(', ')}</div>`;
+                }
+                if (spellContainer['innate']) {
+                    spellcasting += `<div>${spellContainer['innate'].join(', ')}</div>`;
+                }
+
             }
         }
         spellcasting += "</div>"
