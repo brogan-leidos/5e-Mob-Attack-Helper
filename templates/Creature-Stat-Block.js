@@ -192,7 +192,7 @@ export function getCreatureStatBlock(creatureJson) {
                 for (let key of keys) {
                    var dailySpells = spellContainer['daily'][key];
                    var numberPerDay = key.substring(0,1);
-                   spellcasting += `<div><span class="item>"${numberPerDay}/Day</span> `
+                   spellcasting += `<div><span class="item">${numberPerDay}/Day</span> `
                    spellcasting += `${dailySpells.map(spell => replaceTags(spell)).join(', ')}`;
                    spellcasting += '</div>';
                 }
