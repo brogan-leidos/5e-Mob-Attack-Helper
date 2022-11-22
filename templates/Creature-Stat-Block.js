@@ -187,6 +187,12 @@ export function getCreatureStatBlock(creatureJson) {
                 if (spellContainer['innate']) {
                     spellcasting += `<div>${spellContainer['innate'].map(spell => replaceTags(spell)).join(', ')}</div>`;
                 }
+
+                if (spellContainer['will']) {
+                    spellcasting += `<div><span class="item">At Will: </span> `
+                    spellcasting += `${spellContainer['will'].map(spell => replaceTags(spell)).join(', ')}`;
+                    spellcasting += '</div>';
+                }
                 
                 var keys = Object.keys(spellContainer['daily']);
                 for (let key of keys) {
