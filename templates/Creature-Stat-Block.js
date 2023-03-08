@@ -140,6 +140,26 @@ export function getCreatureStatBlock(creatureJson) {
         traits += "</div>";
     }
 
+    var senses = '';
+    if (creatureJson['senses']){    
+        senses = creatureJson['senses'].join(', ');
+    }
+
+    var languages = '';
+    if (creatureJson['languages']){    
+        senses = creatureJson['languages'].join(', ');
+    }
+
+    var immunities = '';
+    if (creatureJson['immune']) {
+        immunities = creatureJson['immune'].join(', ');
+    }
+
+    var resistances = '';
+    if (creatureJson['resist']) {
+        resistances = creatureJson['resist'].join(', ');
+    }
+
     var skills = ''
     
     if (creatureJson['skill']) {
@@ -257,22 +277,39 @@ export function getCreatureStatBlock(creatureJson) {
                 <td>CHR</td>
             </tr>
             <tr>
-                <td>${creatureJson['str']}</td>
-                <td>${creatureJson['dex']}</td>
-                <td>${creatureJson['con']}</td>
-                <td>${creatureJson['int']}</td>
-                <td>${creatureJson['wis']}</td>
-                <td>${creatureJson['cha']}</td>
+                <td>${creatureJson['str']} ${getModifierFromTotal(creatureJson['str'])}</td>
+                <td>${creatureJson['dex']} ${getModifierFromTotal(creatureJson['dex'])}</td>
+                <td>${creatureJson['con']} ${getModifierFromTotal(creatureJson['con'])}</td>
+                <td>${creatureJson['int']} ${getModifierFromTotal(creatureJson['int'])}</td>
+                <td>${creatureJson['wis']} ${getModifierFromTotal(creatureJson['wis'])}</td>
+                <td>${creatureJson['cha']} ${getModifierFromTotal(creatureJson['cha'])}</td>
             </tr>
         </table>
     </div>
     ${skills}
-    <div class="senses"><b>Senses</b> ${creatureJson['senses'].join(', ')}</div>
-    <div class="languages"><b>Languages</b> ${creatureJson['languages'].join(', ')}</div>
+    <div class="senses"><b>Senses</b> ${senses}</div>
+    <div class="languages"><b>Languages</b> ${languages}</div>
+    ${generateCreatureSection('Resistances', resistances)}
+    ${generateCreatureSection('Immunities', immunities)}
     ${traits}
     ${spellcasting}
     ${actions}
     ${legendary}
 </div>
 `;
+}
+
+function generateCreatureSection(sectionName, jsonElement) {
+    if (jsonElement !== '') {
+        return `<div class="${sectionName}"><b>${sectionName}</b>${jsonElement}</div>`;
+    }
+    return '';
+}
+
+function getModifierFromTotal(total) {
+    if (total >= 10) {
+        return `+${(total - 10) / 2}`;
+    } else {
+        return `-${(total - 10) / 2}`;
+    }
 }
