@@ -308,8 +308,8 @@ function generateCreatureSection(sectionName, jsonElement) {
 
 function getModifierFromTotal(total) {
     if (total >= 10) {
-        return `+${(total - 10) / 2}`;
+        return `+${Math.floor((total - 10) / 2)}`;
     } else {
-        return `-${(total - 10) / 2}`;
+        return `-${Mat.floor((total - 10) / 2)}`;
     }
 }
