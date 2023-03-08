@@ -287,8 +287,8 @@ export function getCreatureStatBlock(creatureJson) {
         </table>
     </div>
     ${skills}
-    <div class="senses"><b>Senses</b> ${senses}</div>
-    <div class="languages"><b>Languages</b> ${languages}</div>
+    ${generateCreatureSection('Senses', senses)}
+    ${generateCreatureSection('Languages', languages)}
     ${generateCreatureSection('Resistances', resistances)}
     ${generateCreatureSection('Immunities', immunities)}
     ${traits}
