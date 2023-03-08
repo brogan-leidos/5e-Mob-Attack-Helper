@@ -147,7 +147,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     var languages = '';
     if (creatureJson['languages']){    
-        senses = creatureJson['languages'].join(', ');
+        languages = creatureJson['languages'].join(', ');
     }
 
     var immunities = '';
