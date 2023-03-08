@@ -301,7 +301,7 @@ export function getCreatureStatBlock(creatureJson) {
 
 function generateCreatureSection(sectionName, jsonElement) {
     if (jsonElement !== '') {
-        return `<div class="${sectionName}"><b>${sectionName}</b>${jsonElement}</div>`;
+        return `<div class="${sectionName}"><b>${sectionName}</b> ${jsonElement}</div>`;
     }
     return '';
 }
