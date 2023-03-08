@@ -310,6 +310,6 @@ function getModifierFromTotal(total) {
     if (total >= 10) {
         return `+${Math.floor((total - 10) / 2)}`;
     } else {
-        return `-${Mat.floor((total - 10) / 2)}`;
+        return `-${Math.floor((total - 10) / 2)}`;
     }
 }
