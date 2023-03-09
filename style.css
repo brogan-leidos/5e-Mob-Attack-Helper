@@ -143,6 +143,11 @@ button {
   text-align: center;
 }
 
+.addMobArea div div.monsterSearchHeader .beta-tag {
+  font-size: 10px;
+  font-weight: bold;
+}
+
 .monsterSearchGoButton {
   margin-left: 5px;
 }

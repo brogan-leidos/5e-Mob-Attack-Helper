@@ -123,6 +123,7 @@ recharge::before {
 
 .hover-highlight {
     text-decoration: underline;
+    background-color: #00aaff30;
 }
 
 span.italic {
