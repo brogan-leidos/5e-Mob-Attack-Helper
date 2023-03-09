@@ -352,7 +352,7 @@ function setVisibleStatBlock(mobTag, monster) {
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'block';
     document.getElementsByClassName('statBlockContainer')[0].style.opacity = '100%';
 
-    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(https://5e.tools/img/bestiary/MM/${monster['name'].replace(' ', '%20')}.jpg) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
+    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(${getCreatureBackground(monster['name'])}) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
 
     for (let block of blockArray) {
         document.getElementById(block).classList.remove('highlighted');
@@ -365,6 +365,19 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
     if (creatureType['type']) {
         creatureType = creatureType['type'];
     }
+
+    var imageUrl = getCreatureBackground(creatureName)       
+       
+    var block = document.getElementById(`${mobTag}`);
+    var table = block.children[1]; // Should be table
+    table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
+    table.style.backgroundPosition = ['beast', 'monstrosity', 'aberration', 'plant'].includes(creatureType) ? 'center' : 'top';
+    table.style.backgroundBlendMode = 'lighten';
+    table.style.backgroundSize = 'cover';
+    table.style.backgroundPositionY = '-20px';
+}
+
+function getCreatureBackground(creatureName) {
     var imageUrl = ''
     
     imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
@@ -381,15 +394,9 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
                 response = await fetch(imageUrl);
             }
         }                    
-    } 
-       
-    var block = document.getElementById(`${mobTag}`);
-    var table = block.children[1]; // Should be table
-    table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
-    table.style.backgroundPosition = ['beast', 'monstrosity', 'aberration', 'plant'].includes(creatureType) ? 'center' : 'top';
-    table.style.backgroundBlendMode = 'lighten';
-    table.style.backgroundSize = 'cover';
-    table.style.backgroundPositionY = '-20px';
+    }  
+    
+    return imageUrl;
 }
 
 // String helper for title case
