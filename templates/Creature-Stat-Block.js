@@ -157,7 +157,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     var resistances = '';
     if (creatureJson['resist']) {
-        if (creatureJson['resist']['resist']) {
+        if (creatureJson['resist'][0]['resist']) {
             resistances = `${creatureJson['resist']['resist'].join(' ,')} ${creatureJson['resist']['note']}`
         } else {
             resistances = creatureJson['resist'].join(', ');
