@@ -361,11 +361,28 @@ function setVisibleStatBlock(mobTag, monster) {
 
 }
 
-function setMobBackground(mobTag, creatureName, creatureType) {
+async function setMobBackground(mobTag, creatureName, creatureType) {
     if (creatureType['type']) {
         creatureType = creatureType['type'];
     }
-    var imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
+    var imageUrl = ''
+    try {
+        imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
+        await fetch(imageUrl);
+    } catch {
+        try {
+            imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.png`;
+            await fetch(imageUrl);
+        } catch {
+            try {
+                imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
+                await fetch(imageUrl);
+            } catch {
+                imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.png`;
+                await fetch(imageUrl);
+            }
+        } 
+    }    
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
     table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
