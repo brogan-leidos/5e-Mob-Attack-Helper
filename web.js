@@ -366,23 +366,23 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
         creatureType = creatureType['type'];
     }
     var imageUrl = ''
-    try {
-        imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
-        await fetch(imageUrl);
-    } catch {
-        try {
-            imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.png`;
-            await fetch(imageUrl);
-        } catch {
-            try {
-                imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
-                await fetch(imageUrl);
-            } catch {
+    
+    imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
+    var response = await fetch(imageUrl);
+    if (!response.ok) {    
+        imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.png`;
+        response = await fetch(imageUrl);
+        if (!response.ok) {
+            imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
+            response = await fetch(imageUrl);
+        
+            if (!response.ok) {            
                 imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.png`;
-                await fetch(imageUrl);
+                response = await fetch(imageUrl);
             }
-        } 
-    }    
+        }                    
+    } 
+       
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
     table.style.background = `rgba(249, 249, 235, 0.75) url(${imageUrl}) no-repeat`;
