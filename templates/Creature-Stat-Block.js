@@ -299,6 +299,7 @@ export function getCreatureStatBlock(creatureJson) {
             </tr>
         </table>
     </div>
+    ${generateCreatureSection('Saves', saves)}
     ${skills}
     ${generateCreatureSection('Senses', senses)}
     ${generateCreatureSection('Languages', languages)}
