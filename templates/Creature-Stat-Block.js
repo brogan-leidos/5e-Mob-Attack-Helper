@@ -194,7 +194,7 @@ export function getCreatureStatBlock(creatureJson) {
     if (creatureJson['save']) {
         var keys = Object.keys(creatureJson['save']);
         keys.forEach(key => {
-            saves += creatureJson['save'][key] + ', '
+            saves += `${key} ${creatureJson['save'][key]}, `;
         });
         saves = saves.substring(0, saves.length - 2);
     }
