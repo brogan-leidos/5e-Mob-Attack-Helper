@@ -613,6 +613,12 @@ function setRange(mobTag, isMelee, weaponNum="") {
 }
 
 function createPresent(presentName) {
+    var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === value.toLocaleLowerCase().trim());
+    if (foundMonster.length !== 0) {
+        fetchMonsterInfo(presentName);
+        return;
+    }
+
    // Create a unique ID for this new mob
    var mobTag = "Mob" + mobIncrement.toString();
    blockArray.push(mobTag);
