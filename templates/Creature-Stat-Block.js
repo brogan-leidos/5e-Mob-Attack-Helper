@@ -175,6 +175,15 @@ export function getCreatureStatBlock(creatureJson) {
         skills = `<div class="skills"><b>Skills</b> ${skillsList.join(', ')}</div>`
     }
 
+    var saves = '';
+    if (creatureJson['save']) {
+        var keys = Object.keys(creatureJson['save']);
+        keys.forEach(key => {
+            saves += creatureJson['save'][key] + ', '
+        });
+        saves = saves.substring(0, saves.length - 2);
+    }
+
     var speedArray = [];
     var speedKeys = Object.keys(creatureJson['speed']);
     for (let speed of speedKeys) {
