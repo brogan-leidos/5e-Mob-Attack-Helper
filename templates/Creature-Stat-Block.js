@@ -158,7 +158,7 @@ export function getCreatureStatBlock(creatureJson) {
     var resistances = '';
     if (creatureJson['resist']) {
         if (creatureJson['resist'][0]['resist']) {
-            resistances = `${creatureJson['resist'][0]['resist'].join(' ,')} ${creatureJson['resist'][0]['note']}`
+            resistances = `${creatureJson['resist'][0]['resist'].join(', ')} ${creatureJson['resist'][0]['note']}`
         } else {
             resistances = creatureJson['resist'].join(', ');
         }
@@ -299,12 +299,12 @@ export function getCreatureStatBlock(creatureJson) {
             </tr>
         </table>
     </div>
-    ${generateCreatureSection('Saves', saves)}
+    ${generateCreatureSection('Saves', saves)}    
+    ${generateCreatureSection('Resistances', resistances)}
+    ${generateCreatureSection('Immunities', immunities)}
     ${skills}
     ${generateCreatureSection('Senses', senses)}
     ${generateCreatureSection('Languages', languages)}
-    ${generateCreatureSection('Resistances', resistances)}
-    ${generateCreatureSection('Immunities', immunities)}
     ${traits}
     ${spellcasting}
     ${actions}
