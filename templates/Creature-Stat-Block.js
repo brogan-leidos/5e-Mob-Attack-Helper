@@ -157,10 +157,14 @@ export function getCreatureStatBlock(creatureJson) {
 
     var resistances = '';
     if (creatureJson['resist']) {
-        resistances = creatureJson['resist'].join(', ');
+        if (creatureJson['resist']['resist']) {
+            resistances = `${creatureJson['resist']['resist'].join(' ,')} ${creatureJson['resist']['note']}`
+        } else {
+            resistances = creatureJson['resist'].join(', ');
+        }
     }
 
-    var skills = ''
+    var skills = '';
     
     if (creatureJson['skill']) {
         var skillsList = [];    
@@ -277,12 +281,12 @@ export function getCreatureStatBlock(creatureJson) {
                 <td>CHR</td>
             </tr>
             <tr>
-                <td>${creatureJson['str']} ${getModifierFromTotal(creatureJson['str'])}</td>
-                <td>${creatureJson['dex']} ${getModifierFromTotal(creatureJson['dex'])}</td>
-                <td>${creatureJson['con']} ${getModifierFromTotal(creatureJson['con'])}</td>
-                <td>${creatureJson['int']} ${getModifierFromTotal(creatureJson['int'])}</td>
-                <td>${creatureJson['wis']} ${getModifierFromTotal(creatureJson['wis'])}</td>
-                <td>${creatureJson['cha']} ${getModifierFromTotal(creatureJson['cha'])}</td>
+                <td>${creatureJson['str']} (${getModifierFromTotal(creatureJson['str'])})</td>
+                <td>${creatureJson['dex']} (${getModifierFromTotal(creatureJson['dex'])})</td>
+                <td>${creatureJson['con']} (${getModifierFromTotal(creatureJson['con'])})</td>
+                <td>${creatureJson['int']} (${getModifierFromTotal(creatureJson['int'])})</td>
+                <td>${creatureJson['wis']} (${getModifierFromTotal(creatureJson['wis'])})</td>
+                <td>${creatureJson['cha']} (${getModifierFromTotal(creatureJson['cha'])})</td>
             </tr>
         </table>
     </div>
