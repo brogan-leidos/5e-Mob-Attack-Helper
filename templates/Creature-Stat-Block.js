@@ -81,6 +81,15 @@ var numberToSpellLevelMap = {
     9: '9th level',
 }
 
+var letterToSizeMap = {
+    'T': 'Tiny',
+    'S': 'Small',
+    'M': 'Medium',
+    'L': 'Large',
+    'H': 'Huge',
+    'G': 'Gargantuan',
+}
+
 
 export function getCreatureStatBlock(creatureJson) {
     var cr = creatureJson['cr'];
@@ -101,6 +110,12 @@ export function getCreatureStatBlock(creatureJson) {
     if (type['type']) {
         type = type['type'];
     }
+
+    var size = '';
+    if (creatureJson['size']) {
+        size = letterToSizeMap[creatureJson['size']];
+    }
+
     var actions = '';
     if (creatureJson['action']) {
         actions += `<div class="section-title">Actions</div>`;
@@ -262,7 +277,7 @@ export function getCreatureStatBlock(creatureJson) {
         <div class="creature-name">${creatureJson['name']}</div>
         <div><button id="statBlockCloseButton">&times;</button></div>
     </div>
-    <div class="creature-type">${titleCase(drillDownValue(creatureJson, 'type'))}</div>
+    <div class="creature-type">${size + ' '}${titleCase(drillDownValue(creatureJson, 'type'))}</div>
     <table class="creature-header-stats">
         <tr>
             <td>Armor Class</td>
