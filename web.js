@@ -346,13 +346,13 @@ function setStatBlockEventListeners(mobTag, monsterName, actions) {
     return;
 }
 
-function setVisibleStatBlock(mobTag, monster) {
+async function setVisibleStatBlock(mobTag, monster) {
     var generatedHtml = getCreatureStatBlock(monster);
     document.getElementsByClassName('statBlockContainer')[0].innerHTML = generatedHtml;
     document.getElementsByClassName('statBlockContainer')[0].style.display = 'block';
     document.getElementsByClassName('statBlockContainer')[0].style.opacity = '100%';
 
-    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(${getCreatureBackground(monster['name'])}) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
+    document.getElementsByClassName('creature-stat-block')[0].style.background = `url(${await getCreatureBackground(monster['name'])}) center -20px / cover no-repeat rgba(249, 249, 235, 0.85)`;
 
     for (let block of blockArray) {
         document.getElementById(block).classList.remove('highlighted');
@@ -366,7 +366,7 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
         creatureType = creatureType['type'];
     }
 
-    var imageUrl = getCreatureBackground(creatureName)       
+    var imageUrl = await getCreatureBackground(creatureName)       
        
     var block = document.getElementById(`${mobTag}`);
     var table = block.children[1]; // Should be table
@@ -377,7 +377,7 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
     table.style.backgroundPositionY = '-20px';
 }
 
-function getCreatureBackground(creatureName) {
+async function getCreatureBackground(creatureName) {
     var imageUrl = ''
     
     imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
