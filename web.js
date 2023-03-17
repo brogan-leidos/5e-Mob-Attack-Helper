@@ -570,7 +570,7 @@ function changeBlockToMob(mobTag, newMob) {
     mobBlock.innerHTML = html;
 
     changeMobWeapon(mobTag, newMob.EquipWeapon);
-    if (newMob.Variants) {
+    if (newMob.Variants.length > 0) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
@@ -675,7 +675,7 @@ function createPresent(presentName) {
         else {
             changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
         }
-        if (newMob.Variants) {
+        if (newMob.Variants.length > 0) {
             assignVariants(mobTag, newMob.Variants)
         }
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
@@ -798,7 +798,7 @@ function changeMobVariant(mobTag, presentName) {
     var filtered = mobReference.filter(a => a.Name == presentName);
     var newMob = filtered[0];
     changeMobWeapon(mobTag, newMob.EquipWeapon.WeaponMods)
-    if (newMob.Variants) {
+    if (newMob.Variants.length > 0) {
         assignVariants(mobTag, newMob.Variants)
     }
     document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
