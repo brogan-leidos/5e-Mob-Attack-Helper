@@ -255,8 +255,12 @@ function fetchMonsterInfo(value) {
                     var damage = entry.match(/{@damage ([^}]+)}/);
                     var damageType;
                     if (!damage) {
-                        damage = "1";                
-                        damageType = entry.match(/{@h}1 (\w+) damage/)[1];
+                        if (entry.match(/@{h}1/)) {
+                            damage = "1";                
+                            damageType = entry.match(/{@h}1 (\w+) damage/)[1];
+                        } else {
+                            damage = "0";
+                        }
                     } else {
                         damage = damage[1];
                         damageType = entry.match(/{@damage [^}]+}\) (\w+) damage/)[1];
