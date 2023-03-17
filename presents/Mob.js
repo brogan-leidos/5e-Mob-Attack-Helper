@@ -15,6 +15,7 @@ export default class Mob {
         this.Vantage = vantage;
 
         this.Multiattack = multiattack;
+        this.Variants = [];
 
     }
     
