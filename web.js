@@ -824,7 +824,7 @@ function assignEventsToBlock(mobTag, changeRow=true) {
             setStatBlockEventListeners(mobTag, monster['name'], monster['action']);        
         });
     } else {
-        remove(document.getElementById(mobTag + "-Show"));
+        document.getElementById(mobTag + "-Show").remove();
     }
 
     document.getElementById(mobTag + "-Minimize").checked = true;
