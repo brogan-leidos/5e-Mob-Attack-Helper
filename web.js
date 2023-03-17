@@ -642,7 +642,7 @@ function setRange(mobTag, isMelee, weaponNum="") {
 
 function createPresent(presentName) {
     var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === presentName.toLocaleLowerCase().trim());
-    if (foundMonster.length !== 0 && presentName !== 'Giant Spider') {
+    if (foundMonster.length !== 0 || mobReference.find(a => a.Name == presentName)?.Variants !== [] ) {
         fetchMonsterInfo(presentName);
         return;
     }
