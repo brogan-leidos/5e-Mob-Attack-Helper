@@ -816,11 +816,16 @@ function assignEventsToBlock(mobTag, changeRow=true) {
         toggleMob(mobTag);
     });
     
-    document.getElementById(mobTag + "-Show").addEventListener('click', () => { 
-        var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
-        setVisibleStatBlock(mobTag, monster);
-        setStatBlockEventListeners(mobTag, monster['name'], monster['action']);        
-    });
+    var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
+    if (monster) {
+        document.getElementById(mobTag + "-Show").addEventListener('click', () => { 
+            var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
+            setVisibleStatBlock(mobTag, monster);
+            setStatBlockEventListeners(mobTag, monster['name'], monster['action']);        
+        });
+    } else {
+        delete(document.getElementById(mobTag + "-Show"));
+    }
 
     document.getElementById(mobTag + "-Minimize").checked = true;
     document.getElementById(mobTag + "-Minimize").addEventListener('click', () => {        
