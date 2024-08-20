@@ -9,7 +9,6 @@ import { Skeleton, Zombie, Ghoul, Wolf, ObjectTiny, ObjectSmall, ObjectMedium, O
          Bandit, Kobold, WingedKobold, Hobgoblin, Bugbear, DireWolf, GiantBoar, ConstrictSnake, PoisonSnake, FlyingSnake,
          GiantElk, GiantSpider, GiantWolfSpider, Weapon, Cow} from './presents/index.js'
 import { actionWords, badGuyNames, standalonePhrases } from './names/wordList.js';
-import * as mm from './monster-sets/mm.json' assert { type: "json" }
 import autocomplete from './autocomplete/autocomplete.js';
 import { getCreatureStatBlock } from './templates/Creature-Stat-Block.js';
 
@@ -26,6 +25,7 @@ var mobBlockDcColor = "#aeaea0";
 var announcements = [];
 var announcementIndex = 0;
 
+var mm; // Declare mm variable
 
 var mobIncrement = 0; // Used to generate unique names for each mob block
 var blockArray = []; // Used globally as a reference to what mob blocks exist on the page
@@ -39,10 +39,18 @@ var mobReference = [new Skeleton(), new Zombie(), new Ghoul(), new Wolf(),
                     new Hobgoblin(), new Bugbear(), new DireWolf(), new GiantElk(), new GiantBoar(), new ConstrictSnake(), new PoisonSnake(), new FlyingSnake(),
                     new GiantSpider(), new GiantWolfSpider(), new Cow()];
 
-export default () => {        
+export default async () => {        
     var mobBlockArea = document.getElementById('mobBlockArea');
     var infoArea = document.getElementById('infoArea'); // Debug info and roll info
     
+
+    try {
+        const response = await fetch('./monster-sets/mm.json');
+        mm = await response.json();
+    } catch (error) {
+        console.error('Error fetching the JSON file:', error);
+    }
+
     var buttons = document.getElementsByClassName("addMobButton");
     for (var i=0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", (e) => {
@@ -78,7 +86,7 @@ export default () => {
         fetchMonsterInfo(document.getElementById('monsterSearch').value);
     });
 
-    monsterManualList = mm.default.monster;
+    monsterManualList = mm.monster;
     autocomplete(document.getElementById('monsterSearch'), monsterManualList.map(item => item.name));
 
     document.getElementById('colorPickerButton').addEventListener('click', () => {    
@@ -322,7 +330,7 @@ function fetchMonsterInfo(value) {
 
 function setStatBlockEventListeners(mobTag, monsterName, actions) {
     document.getElementById(mobTag).creatureName = monsterName;
-    var duration = 300;
+    var duration = 200;
     document.getElementById('statBlockCloseButton').addEventListener('click', () => {
         document.getElementsByClassName('statBlockContainer')[0].animate([
             {transform: 'scale(0.5)', opacity: '0'}
@@ -382,25 +390,31 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
 }
 
 async function getCreatureBackground(creatureName) {
-    var imageUrl = ''
-    
-    imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
-    var response = await fetch(imageUrl);
-    if (!response.ok) {    
-        imageUrl = `https://5e.tools/img/bestiary/MM/${creatureName.replace(/ /g, '%20')}.png`;
-        response = await fetch(imageUrl);
-        if (!response.ok) {
-            imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.jpg`;
-            response = await fetch(imageUrl);
-        
-            if (!response.ok) {            
-                imageUrl = `https://5e.tools/img/MM/${creatureName.replace(/ /g, '%20')}.png`;
-                response = await fetch(imageUrl);
-            }
-        }                    
-    }  
-    
-    return imageUrl;
+    const formattedName = creatureName.replace(/ /g, '%20');
+
+    // Array of possible URL formats
+    const urlFormats = [
+        `https://5e.tools/img/bestiary/MM/${formattedName}.jpg`,
+        `https://5e.tools/img/bestiary/MM/${formattedName}.png`,
+        `https://5e.tools/img/bestiary/MM/${formattedName}.webp`,
+        `https://5e.tools/img/bestiary/tokens/MM/${formattedName}.jpg`,
+        `https://5e.tools/img/bestiary/tokens/MM/${formattedName}.png`,
+        `https://5e.tools/img/bestiary/tokens/MM/${formattedName}.webp`,
+        `https://5e.tools/img/tokens/MM/${formattedName}.jpg`,
+        `https://5e.tools/img/tokens/MM/${formattedName}.png`,
+        `https://5e.tools/img/tokens/MM/${formattedName}.webp`
+    ];
+
+    // Iterate through the array of URLs
+    for (const url of urlFormats) {
+        const response = await fetch(url);
+        if (response.ok) {
+            return url;  // Return the first valid URL
+        }
+    }
+
+    // If none of the URLs work, you can return a default or error URL
+    return 'https://example.com/default-image.png'; // Replace with an actual default image URL if necessary
 }
 
 // String helper for title case
@@ -435,7 +449,7 @@ function discoveryCheck(newAc) {
 function deleteMob(mobTag) {
     blockArray = blockArray.filter(function(a) { return (a != mobTag) } );
     
-    var duration = 300;
+    var duration = 200;
     document.getElementById(mobTag).animate([
         { transform: 'scale(0.5)', opacity: 0 },
     ],
@@ -816,16 +830,20 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     document.getElementById(mobTag + "-Delete").addEventListener('click', () => {        
         deleteMob(mobTag);
     });
+
+    document.getElementById(mobTag + "-Number").addEventListener('change', () => {        
+        checkForMulti(mobTag);
+    });
     
     document.getElementById(mobTag + "-Enabled").checked = true;
     document.getElementById(mobTag + "-Enabled").addEventListener('click', () => {        
         toggleMob(mobTag);
     });
     
-    var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
+    var monster = mm.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
     if (monster) {
         document.getElementById(mobTag + "-Show").addEventListener('click', () => { 
-            var monster = mm.default.monster.find(a => a.name === document.getElementById(mobTag).creatureName);
+            var monster = mm.monster.find(a => a.name.toLocaleLowerCase() === document.getElementById(mobTag).creatureName.toLocaleLowerCase());
             setVisibleStatBlock(mobTag, monster);
             setStatBlockEventListeners(mobTag, monster['name'], monster['action']);        
         });
@@ -868,6 +886,15 @@ function assignEventsToBlock(mobTag, changeRow=true) {
     document.getElementById(mobTag + "-Move-Down").addEventListener('click', (e) => {
         moveMob(mobTag, "Down");
     });
+}
+
+function checkForMulti(mobTag) {
+    var value = +document.getElementById(mobTag + "-Number").value;
+    if (value > 1) {
+        document.querySelector(`[id=${mobTag}] .mobBlock`).classList.add("many");
+    } else {
+        document.querySelector(`[id=${mobTag}] .mobBlock`).classList.remove("many");
+    }
 }
 
 function moveMob(mobTag, direction) {
