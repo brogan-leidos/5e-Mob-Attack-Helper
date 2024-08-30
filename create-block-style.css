@@ -12,9 +12,15 @@
     border: thin solid black;
     box-shadow: 2px 2px 2px #666;
     font-size: 13px;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
     width: 400px;
     will-change: auto;
+}
+
+.header {
+    border-bottom: 1px solid black;
+    margin: 0 -10px;
+    padding: 0px 10px;
 }
 
 :root {

@@ -273,7 +273,7 @@ export function getCreatureStatBlock(creatureJson) {
 
     return `
 <div class="creature-stat-block">
-    <div class="flex-row flex-align-space-between">
+    <div class="header flex-row flex-align-space-between">
         <div>Creature Stat Block</div>
         <div><button id="statBlockCloseButton">&times;</button></div>
     </div>
