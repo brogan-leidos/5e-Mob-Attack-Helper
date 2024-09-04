@@ -234,10 +234,11 @@ button {
 }
 
 .header .header-title .logo {
-  height: 66px;
+  height: 82px;
   position: absolute;
-  left: 0px;
+  left: -4px;
   top: 10px;
+  filter: invert(1);
 }
 
 .overheadMobBlock {
@@ -284,19 +285,6 @@ button {
 .mobBlock::after {
   transition: .1s ease-out;
 }
-
-/* .mobBlock.many::before,
-.mobBlock.many::after {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #00000090;
-  z-index: -1;  
-  transition: .2s ease-out;
-} */
 
 .mobBlock.many::after {
   transform: translate(3px, 3px); /* Adjust for positioning the layer */
@@ -758,18 +746,25 @@ button.creatureVariantButton:nth-last-child(1) {
   box-shadow: 2px 2px 2px #666;
 }
 
+.right-tools {
+  gap: 12px;
+}
+
 .color-picker-area {
   align-self: end;
 }
 
 .toolTipText {
   visibility: hidden;
+  position: absolute;
   width: 120px;
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
+  margin-top: 24px;
+  right: 0;
 }
 
 .color-picker-area:hover .toolTipText {
@@ -943,7 +938,7 @@ button.creatureVariantButton:nth-last-child(1) {
 
 .infoCloseButton {
   position: absolute;
-  margin-left: 3px;
+  right: 4px;
   cursor: pointer;
 }
 
@@ -953,6 +948,7 @@ button.creatureVariantButton:nth-last-child(1) {
   font-weight: bold;
   border-bottom: double black;
   text-align: center;
+  position: relative;
 }
 
 #totalDamageTitle {
@@ -1167,6 +1163,7 @@ tr.creatureClassDark {
   }
 
   .mobArea {
+    margin: auto;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto minmax(min-content, 1fr) auto;

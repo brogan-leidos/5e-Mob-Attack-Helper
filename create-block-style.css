@@ -17,10 +17,14 @@
     will-change: auto;
 }
 
-.header {
+.creature-stat-block .block-header {
+    background-color: var(--menu-dark);
+    color: #ffffffef;
     border-bottom: 1px solid black;
     margin: 0 -10px;
-    padding: 0px 10px;
+    padding: 4px 8px;
+    font-size: 16px;
+    margin-bottom: 4px;
 }
 
 :root {
@@ -112,6 +116,11 @@
 
 #statBlockCloseButton {
     cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
 }
 
 .legendary-action {

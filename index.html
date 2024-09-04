@@ -19,7 +19,7 @@
 <div class="page-splash"></div>
 <div class="content-wrap">
 <div class="header flex-align-space-between">
-	<div class="header-title"><h2> <img src="./images/logo-transparent.png" class="logo"/> Mobby - A DnD 5e Mob Attack Helper</h2></div>
+	<div class="header-title"><h2> <img src="./images/skull-transparent.png" class="logo"/> Mobby - A DnD 5e Mob Attack Helper</h2></div>
 	<div class="announcements flex-row">
 		<div id="announcementLeft"><i class="fa fa-arrow-left"></i></div>
 		<div id="displayedAnnouncement"></div>
@@ -78,7 +78,6 @@
 			</div>
 			<div class="mobButtons">
 				<button class="addMobButton" value="">New Creature</button>
-				<button class="addMobButton" value="Berserker">Berserker</button>
 			</div>
 		</div>
 		<div class="addMobCol2">
@@ -86,7 +85,7 @@
 				Fiends
 			</div>
 			<div class="mobButtons">
-				<button class="addMobButton" value="Mane">Mane</button>
+				<button class="addMobButton" value="Manes">Manes</button>
 				<button class="addMobButton" value="Abyssal Wretch">Aby Wretch</button>
 				<button class="addMobButton" value="Dretch">Dretch</button>
 				<button class="addMobButton" value="Quasit">Quasit</button>
@@ -102,6 +101,7 @@
 				<button class="addMobButton" value="Orc">Orc</button>
 				<button class="addMobButton" value="Hobgoblin">Hobgoblin</button>
 				<button class="addMobButton" value="Bugbear">Bugbear</button>
+				<button class="addMobButton" value="Berserker">Berserker</button>
 			</div>
 			
 		</div>
@@ -216,8 +216,11 @@
 			Results
 		</span>
 	</div>
-	<div>
-		<span class="color-picker-area">
+	<div class="flex-row right-tools">
+		<div class="flex-row">
+			<button id="clearAllButton">Clear Mob Area</button>
+		</div>
+		<span class="color-picker-area" style="position: relative">
 			<span class="toolTipText">Color Picker</span>
 			<button class="colorPicker" id="colorPickerButton"></button>			
 		</span>

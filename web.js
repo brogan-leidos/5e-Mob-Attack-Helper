@@ -13,12 +13,9 @@ import autocomplete from './autocomplete/autocomplete.js';
 import { getCreatureStatBlock } from './templates/Creature-Stat-Block.js';
 
 var monsterManualList;
-//var mobBlockDefaultColor = "#f9f9eb";rgb(249, 249, 235)
 var mobBlockDefaultColor = 'rgba(249, 249, 235, 0.75)';
 var mobBlockDisableColor = "#666666";
-// var mobBlockAdvantageColor = "#efffe6";
 var mobBlockAdvantageColor = 'rgba(200, 250, 200, 0.85)';
-// var mobBlockDisadvantageColor = "#ffede6"
 var mobBlockDisadvantageColor = 'rgba(249, 200, 200, 0.85)';
 var mobBlockDcColor = "#aeaea0";
 
@@ -120,6 +117,10 @@ function getAnnouncements() {
     document.getElementById('announcementClose').addEventListener('click', () => {        
         hideAnnouncement();
     });
+
+    document.getElementById('clearAllButton').addEventListener('click', () => {        
+        clearMobArea();
+    });
     
 }
 
@@ -157,6 +158,14 @@ function hideAnnouncement() {
         document.getElementsByClassName('announcements')[0].classList.add('hidden');
     }, 300);
     
+}
+
+function clearMobArea() {
+    // loop through all mob blocks using mobCloseButton
+    var closeButtons = document.getElementsByClassName('mobCloseButton');
+    for (var i=0; i < closeButtons.length; i++) {
+        closeButtons[i].click();
+    }    
 }
 
 var swapColors = [
@@ -399,10 +408,15 @@ async function setMobBackground(mobTag, creatureName, creatureType) {
     table.style.backgroundPositionY = '-20px';
 }
 
+const cache = new Map();
+
 async function getCreatureBackground(creatureName) {
+    if (cache.has(creatureName)) {
+        return cache.get(creatureName);
+    }
+
     const formattedName = creatureName.replace(/ /g, '%20');
 
-    // Array of possible URL formats
     const urlFormats = [
         `https://5e.tools/img/bestiary/MM/${formattedName}.jpg`,
         `https://5e.tools/img/bestiary/MM/${formattedName}.png`,
@@ -415,15 +429,19 @@ async function getCreatureBackground(creatureName) {
         `https://5e.tools/img/tokens/MM/${formattedName}.webp`
     ];
 
-    // Iterate through the array of URLs
-    for (const url of urlFormats) {
-        const response = await fetch(url);
-        if (response.ok) {
-            return url;  // Return the first valid URL
+    const fetchPromises = urlFormats.map(url => fetch(url).then(response => ({
+        url,
+        ok: response.ok
+    })));
+
+    for (const fetchPromise of fetchPromises) {
+        const { url, ok } = await fetchPromise;
+        if (ok) {
+            cache.set(creatureName, url); // Cache the successful URL
+            return url;
         }
     }
 
-    // If none of the URLs work, you can return a default or error URL
     return 'https://example.com/default-image.png'; // Replace with an actual default image URL if necessary
 }
 
@@ -666,10 +684,14 @@ function setRange(mobTag, isMelee, weaponNum="") {
 
 function createPresent(presentName) {
     var foundMonster = monsterManualList.filter(a => a.name.toLocaleLowerCase() === presentName.toLocaleLowerCase().trim());
+    var createExistInMMButUsingOurVersion = false;
     if (foundMonster.length !== 0) {
+        addMobImagesToBackground();
         if (!mobReference.find(a => a.Name == presentName) || mobReference.find(a => a.Name == presentName)?.Variants.length === 0) {
             fetchMonsterInfo(presentName);
             return;
+        } else {
+            createExistInMMButUsingOurVersion = true;  
         }
     }
 
@@ -705,9 +727,17 @@ function createPresent(presentName) {
         document.getElementById(mobTag + "-Weapon-Select").addEventListener('change', (e) => {
             changeMobWeapon(mobTag, e.target.value, '', e.target[e.target.selectedIndex].id);        
         });
-    }
-    
+    }    
+
     assignEventsToBlock(mobTag);
+
+    if (createExistInMMButUsingOurVersion) {
+        var monster = foundMonster[0];
+        setMobBackground(mobTag, monster['name'], monster['type']);  
+        setVisibleStatBlock(mobTag, monster);
+        setStatBlockEventListeners(mobTag, monster['name'], monster["actions"]);        
+    }
+
     return mobTag;
          
 }
@@ -783,6 +813,34 @@ function assignVariants(mobTag, newMobVariants) {
         element.addEventListener('click', (e) => {
             changeMobVariant(mobTag, e.target.value)
         });
+    }
+}
+
+async function addMobImagesToBackground() {
+    // Assuming blockArray contains the mob elements
+    for (let mobTag of blockArray) {
+        let mobElement = document.getElementById(mobTag);
+        let creatureName = mobElement.querySelector(`#${mobTag}-Name`).value;
+
+        // Get the image URL using the existing function
+        let imageUrl = await getCreatureBackground(creatureName);
+
+        // Create a new image element
+        let imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.style.position = 'absolute'; // Use absolute positioning
+        imgElement.style.left = `${Math.random() * 100}%`; // Random horizontal position
+        imgElement.style.top = `${Math.random() * 100}%`; // Random vertical position
+        imgElement.style.width = '150px'; // Fixed width for the images
+        imgElement.style.height = '150px'; // Fixed height for the images
+        imgElement.style.opacity = '0.5'; // Make the images semi-transparent
+
+        // Turn white pixels transparent using CSS filters
+        imgElement.style.filter = 'brightness(0) invert(1) sepia(1) saturate(0)';
+
+        // Append to the body or a specific background container
+        const pageSplash = document.querySelector('.page-splash');
+        document.body.appendChild(imgElement);
     }
 }
 

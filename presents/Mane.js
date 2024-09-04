@@ -5,7 +5,7 @@ import DamageRoll from './DamageRoll.js'
 export default class Mane extends Mob {
   constructor() {
     super();
-    this.Name = "Mane";
+    this.Name = "Manes";
     this.Icon = "\"devil\""   
     
     this.DamageRoll = new DamageRoll();
