@@ -817,6 +817,7 @@ function assignVariants(mobTag, newMobVariants) {
 }
 
 async function addMobImagesToBackground() {
+    return;
     // Assuming blockArray contains the mob elements
     for (let mobTag of blockArray) {
         let mobElement = document.getElementById(mobTag);
