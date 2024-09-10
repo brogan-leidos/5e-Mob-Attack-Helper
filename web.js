@@ -842,7 +842,7 @@ async function addMobImagesToBackground() {
 
         // Append to the body or a specific background container
         const pageSplash = document.querySelector('.page-splash');
-        document.body.appendChild(imgElement);
+        pageSplash.appendChild(imgElement);
     }
 }
 
