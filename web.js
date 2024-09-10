@@ -817,7 +817,7 @@ function assignVariants(mobTag, newMobVariants) {
 }
 
 async function addMobImagesToBackground() {
-    return;
+    // return;
     // Assuming blockArray contains the mob elements
     for (let mobTag of blockArray) {
         let mobElement = document.getElementById(mobTag);
@@ -835,6 +835,7 @@ async function addMobImagesToBackground() {
         imgElement.style.width = '150px'; // Fixed width for the images
         imgElement.style.height = '150px'; // Fixed height for the images
         imgElement.style.opacity = '0.5'; // Make the images semi-transparent
+        imgElement.style.zIndex = '-1'; // Make the images semi-transparent
 
         // Turn white pixels transparent using CSS filters
         imgElement.style.filter = 'brightness(0) invert(1) sepia(1) saturate(0)';
