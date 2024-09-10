@@ -838,7 +838,7 @@ async function addMobImagesToBackground() {
         imgElement.style.zIndex = '-1'; 
 
         // Turn white pixels transparent using CSS filters
-        imgElement.style.filter = 'brightness(0) invert(1) sepia(1) saturate(0)';
+        imgElement.style.mixBlendMode = 'multiply';
 
         // Append to the body or a specific background container
         const pageSplash = document.querySelector('.page-splash');
