@@ -829,13 +829,13 @@ async function addMobImagesToBackground() {
         // Create a new image element
         let imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.style.position = 'absolute'; // Use absolute positioning
-        imgElement.style.left = `${Math.random() * 100}%`; // Random horizontal position
-        imgElement.style.top = `${Math.random() * 100}%`; // Random vertical position
+        imgElement.style.position = 'fixed'; // Use absolute positioning
+        imgElement.style.left = `${30 + (Math.random() * 40)}%`; // Random horizontal position
+        imgElement.style.top = `${25 + (Math.random() * 50)}%`; // Random vertical position
         imgElement.style.width = '150px'; // Fixed width for the images
         imgElement.style.height = '150px'; // Fixed height for the images
         imgElement.style.opacity = '0.5'; // Make the images semi-transparent
-        imgElement.style.zIndex = '-1'; // Make the images semi-transparent
+        imgElement.style.zIndex = '-1'; 
 
         // Turn white pixels transparent using CSS filters
         imgElement.style.filter = 'brightness(0) invert(1) sepia(1) saturate(0)';
