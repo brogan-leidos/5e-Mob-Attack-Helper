@@ -1,6 +1,18 @@
 = Change Log
 
-== Current Version: 1.1.0
+== Current Version: 1.2.0
+
+=== Ver 1.2.0
+* It's been a while so I'll try my best here...
+* New logo and site texture
+* New "Search for a creature" feature
+* Implemented a monster manual integration to help
+* Stat blocks are visible on the right side of the page if the monster is from the MM
+  * sometimes you can click on the weapons there to port them over to your mob
+* Added Cows as an option
+* added a clear mob area button
+* increasing the mob number will add a little stack effect to the box
+
 
 === Ver 1.1.0
 * We're just skipping over the deployment of 1.0.3 because this has gotten so much larger than I expected it to be.
